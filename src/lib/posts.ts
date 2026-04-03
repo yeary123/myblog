@@ -11,7 +11,8 @@ export function sortPostsByDateDesc(posts: BlogEntry[]): BlogEntry[] {
 }
 
 export function postsInCategory(posts: BlogEntry[], category: string): BlogEntry[] {
+	const key = category.toLowerCase();
 	return sortPostsByDateDesc(
-		posts.filter((p) => getTopLevelCategoryFromId(p.id) === category),
+		posts.filter((p) => getTopLevelCategoryFromId(p.id).toLowerCase() === key),
 	);
 }

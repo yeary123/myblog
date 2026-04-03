@@ -1,26 +1,30 @@
 ---
 import Layout from '../../components/Layout.astro';
 import { getCollection } from 'astro:content';
-import { getTopLevelBlogCategorySlugs } from '../../utils/blog-categories';
+import { getTopLevelBlogCategories } from '../../utils/blog-categories';
 import { postsInCategory } from '../../lib/posts';
 
 export async function getStaticPaths() {
-	const slugs = getTopLevelBlogCategorySlugs();
-	return slugs.map((category) => ({ params: { category } }));
+	const categories = getTopLevelBlogCategories();
+	return categories.map(({ slug, label }) => ({
+		params: { category: slug },
+		props: { categoryLabel: label },
+	}));
 }
 
 const { category } = Astro.params;
+const { categoryLabel } = Astro.props;
 const allPosts = await getCollection('blog');
 const posts = postsInCategory(allPosts, category!);
 
-const title = `${category}`;
-const description = `All posts in the “${category}” category.`;
+const title = categoryLabel;
+const description = `All posts in the “${categoryLabel}” category.`;
 ---
 
 <Layout title={title} description={description}>
 	<p class="mb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">Category</p>
-	<h1 class="mb-8 text-2xl font-semibold tracking-tight text-zinc-900 capitalize">
-		{category}
+	<h1 class="mb-8 text-2xl font-semibold tracking-tight text-zinc-900">
+		{categoryLabel}
 	</h1>
 
 	{

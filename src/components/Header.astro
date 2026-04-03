@@ -1,8 +1,8 @@
 ---
-import { getTopLevelBlogCategorySlugs } from '../utils/blog-categories';
+import { getTopLevelBlogCategories } from '../utils/blog-categories';
 import HomeLink from './icons/HomeLink';
 
-const categories = getTopLevelBlogCategorySlugs();
+const categories = getTopLevelBlogCategories();
 ---
 
 <header class="border-b border-zinc-200/80 bg-white/90 backdrop-blur-sm">
@@ -16,12 +16,12 @@ const categories = getTopLevelBlogCategorySlugs();
 		</a>
 		<nav class="flex flex-wrap items-center gap-x-1 gap-y-2 text-sm" aria-label="Categories">
 			{
-				categories.map((cat) => (
+				categories.map(({ slug, label }) => (
 					<a
-						href={`/blog/${cat}`}
+						href={`/blog/${slug}`}
 						class="rounded-md px-2 py-1 text-zinc-600 transition hover:bg-zinc-100 hover:text-zinc-900"
 					>
-						{cat}
+						{label}
 					</a>
 				))
 			}
