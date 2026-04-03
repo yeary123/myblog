@@ -1,0 +1,54 @@
+---
+import Layout from '../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+import { getTopLevelBlogCategorySlugs } from '../../utils/blog-categories';
+import { postsInCategory } from '../../lib/posts';
+
+export async function getStaticPaths() {
+	const slugs = getTopLevelBlogCategorySlugs();
+	return slugs.map((category) => ({ params: { category } }));
+}
+
+const { category } = Astro.params;
+const allPosts = await getCollection('blog');
+const posts = postsInCategory(allPosts, category!);
+
+const title = `${category}`;
+const description = `All posts in the “${category}” category.`;
+---
+
+<Layout title={title} description={description}>
+	<p class="mb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">Category</p>
+	<h1 class="mb-8 text-2xl font-semibold tracking-tight text-zinc-900 capitalize">
+		{category}
+	</h1>
+
+	{
+		posts.length === 0 ? (
+			<p class="text-sm text-zinc-600">No posts in this category yet.</p>
+		) : (
+			<ul class="flex flex-col gap-6">
+				{posts.map((post) => {
+					const date = post.data.pubDate.toLocaleDateString('en-US', {
+						year: 'numeric',
+						month: 'short',
+						day: 'numeric',
+					});
+					return (
+						<li>
+							<a href={`/blog/${post.id}`} class="group block">
+								<h2 class="text-base font-medium text-zinc-900 group-hover:text-zinc-600">
+									{post.data.title}
+								</h2>
+								<p class="mt-1 line-clamp-2 text-sm text-zinc-600">{post.data.description}</p>
+								<time class="mt-2 block text-xs text-zinc-500" datetime={post.data.pubDate.toISOString()}>
+									{date}
+								</time>
+							</a>
+						</li>
+					);
+				})}
+			</ul>
+		)
+	}
+</Layout>

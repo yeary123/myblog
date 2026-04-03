@@ -1,0 +1,30 @@
+---
+import { getTopLevelBlogCategorySlugs } from '../utils/blog-categories';
+import HomeLink from './icons/HomeLink';
+
+const categories = getTopLevelBlogCategorySlugs();
+---
+
+<header class="border-b border-zinc-200/80 bg-white/90 backdrop-blur-sm">
+	<div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6">
+		<a
+			href="/"
+			class="flex items-center gap-2 text-sm font-medium tracking-tight text-zinc-900 transition hover:text-zinc-600"
+		>
+			<HomeLink client:load className="shrink-0 text-zinc-600" />
+			<span>Blog</span>
+		</a>
+		<nav class="flex flex-wrap items-center gap-x-1 gap-y-2 text-sm" aria-label="Categories">
+			{
+				categories.map((cat) => (
+					<a
+						href={`/blog/${cat}`}
+						class="rounded-md px-2 py-1 text-zinc-600 transition hover:bg-zinc-100 hover:text-zinc-900"
+					>
+						{cat}
+					</a>
+				))
+			}
+		</nav>
+	</div>
+</header>
