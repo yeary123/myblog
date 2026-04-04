@@ -25,7 +25,7 @@ const description = 'Recent writing — folder-based categories, minimal layout.
 				});
 				return (
 					<li class="border-b border-zinc-200/90 pb-8 last:border-0">
-						<a href={`/blog/${post.id}`} class="group block">
+						<a href={`${import.meta.env.BASE_URL}blog/${post.id}`} class="group block">
 							<h2 class="text-lg font-medium text-zinc-900 group-hover:text-zinc-600">
 								{post.data.title}
 							</h2>

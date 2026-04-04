@@ -26,7 +26,7 @@ const category = post.id.split('/')[0];
 <Layout title={title} description={description}>
 	<article>
 		<p class="mb-2 text-xs font-medium uppercase tracking-wider text-zinc-500">
-			<a href={`/blog/${category}`} class="transition hover:text-zinc-800 capitalize">
+			<a href={`${import.meta.env.BASE_URL}blog/${category}`} class="transition hover:text-zinc-800 capitalize">
 				{category}
 			</a>
 		</p>

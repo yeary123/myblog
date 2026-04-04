@@ -40,7 +40,7 @@ const description = `All posts in the “${categoryLabel}” category.`;
 					});
 					return (
 						<li>
-							<a href={`/blog/${post.id}`} class="group block">
+							<a href={`${import.meta.env.BASE_URL}blog/${post.id}`} class="group block">
 								<h2 class="text-base font-medium text-zinc-900 group-hover:text-zinc-600">
 									{post.data.title}
 								</h2>
