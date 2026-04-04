@@ -23,9 +23,7 @@ const base =
   (onGithubActions ? githubPagesBase() : undefined) ??
   '/';
 
-const site =
-  process.env.PUBLIC_SITE_URL ??
-  (onGithubActions && ghOwner ? `https://${ghOwner}.github.io` : PRODUCTION_SITE);
+const site = process.env.PUBLIC_SITE_URL ?? PRODUCTION_SITE;
 
 // https://astro.build/config
 export default defineConfig({
