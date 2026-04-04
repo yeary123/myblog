@@ -25,6 +25,11 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          # Project repo + custom domain is served at the domain root, not /repo/ — without this,
+          # asset URLs point at /repo/_astro/… and CSS/JS 404 on builtbyluna.cc.
+          ASTRO_BASE_PATH: /
+          PUBLIC_SITE_URL: https://builtbyluna.cc
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
