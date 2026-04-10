@@ -54,4 +54,4 @@ We may update this policy from time to time. Updated versions will be published 
 
 ## 9. Contact
 
-For privacy questions, contact: [YOUR SUPPORT EMAIL]
+For privacy questions, contact: support@builtbyluna.cc
