@@ -1,5 +1,5 @@
 ---
-title: Mouse: P.I. For Hire - The Ultimate Weapon Upgrade Guide
+title: "Mouse: P.I. For Hire - The Ultimate Weapon Upgrade Guide"
 pubDate: 2026-04-26
 ---
 
