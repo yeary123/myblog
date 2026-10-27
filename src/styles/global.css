@@ -1,2 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+/* Keep fenced code readable without changing inline code or Shiki token colors. */
+.prose pre code {
+  color: inherit;
+}
