@@ -4,9 +4,7 @@ import { assignedTags, buildReviewQueue, getRecord, groups, levelNames, matchesT
 
 const entries: Entry[]=allEntries;
 const storageKey='luna-link-library-v1';
-const source='https://new.web.cafe/ask/bounty/wlhmhdaoqg';
 const pageSize=20;
-const collectionDownload=`${import.meta.env.BASE_URL}data/external-links.csv`;
 
 export default function LinkLibrary(){
   const [data,setData]=useState<LibraryData>(newData);
@@ -137,7 +135,6 @@ export default function LinkLibrary(){
       </article>)}</div>
       {!filtered.length&&<div className="ll-empty"><p>没有匹配的外链，放宽筛选再试试。</p><button onClick={clearFilters}>清空全部筛选</button></div>}
       {filtered.length>pageSize&&<nav className="ll-pagination" aria-label="外链列表分页"><button disabled={currentPage===1} onClick={()=>setPage(currentPage-1)}>上一页</button><span>{currentPage} / {pages}</span><button disabled={currentPage===pages} onClick={()=>setPage(currentPage+1)}>下一页</button></nav>}
-      <footer className="ll-source"><p>来源：<a href={source} target="_blank" rel="noopener noreferrer">Web.Cafe「网站上线之后，你会去哪些地方提交外链？」</a></p><p>收集于 2026-11-06 · 保留 575 个平台、693 条存档可见的推荐理由。未展开的理由未包含在存档中。</p><p><a href={collectionDownload} download>下载外链列表 CSV</a></p></footer>
     </>}
   </section>;
 }

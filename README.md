@@ -8,7 +8,7 @@
 初始分类只覆盖有充分名称或原帖线索的条目，其余显示为待分类。
 
 个人标签、笔记和熟悉度保存在浏览器 localStorage，页面支持 JSON 导入与导出，
-并在页尾提供完整来源列表 CSV。新设备需要手动导入备份。
+完整来源列表保存在 `public/data/external-links.csv`。新设备需要手动导入备份。
 纯逻辑检查：`node --experimental-strip-types --test scripts/link-library.test.mjs`。
 部署沿用推送 main 后的 GitHub Pages workflow，正式地址为 https://builtbyluna.cc/links/ 。
 
