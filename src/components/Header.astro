@@ -15,6 +15,7 @@ const categories = getTopLevelBlogCategories();
 			<span>Blog</span>
 		</a>
 		<nav class="flex flex-wrap items-center gap-x-1 gap-y-2 text-sm" aria-label="Categories">
+			<a href={`${import.meta.env.BASE_URL}links/`} class="rounded-md px-2 py-1 text-zinc-600 transition hover:bg-zinc-100 hover:text-zinc-900">外链手册</a>
 			{
 				categories.map(({ slug, label }) => (
 					<a

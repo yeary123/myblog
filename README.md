@@ -1,5 +1,17 @@
 # Astro Starter Kit: Minimal
 
+## 外链手册
+
+`/links/` 提供 575 个平台的搜索、分组多标签、笔记、熟悉度与三条一轮的回忆练习。
+数据位于 `src/data/external-links.json`，引用 Web.Cafe 网页存档里的 693 条可见推荐理由；
+原帖费用、权重和效果描述保留为收集者经验，并未逐条重新核实。
+初始分类只覆盖有充分名称或原帖线索的条目，其余显示为待分类。
+
+个人标签、笔记和熟悉度保存在浏览器 localStorage，页面支持 JSON 导入与导出，
+并在页尾提供完整来源列表 CSV。新设备需要手动导入备份。
+纯逻辑检查：`node --experimental-strip-types --test scripts/link-library.test.mjs`。
+部署沿用推送 main 后的 GitHub Pages workflow，正式地址为 https://builtbyluna.cc/links/ 。
+
 ```sh
 npm create astro@latest -- --template minimal
 ```

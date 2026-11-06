@@ -5,15 +5,16 @@ import Header from './Header.astro';
 interface Props {
 	title: string;
 	description: string;
+	lang?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, lang = 'en' } = Astro.props;
 const documentTitle = title.endsWith(' · Blog') ? title : `${title} · Blog`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
