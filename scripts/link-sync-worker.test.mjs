@@ -4,7 +4,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFile } from 'node:fs/promises';
 import worker from '../worker/index.ts';
 import entries from '../src/data/external-links.json' with { type: 'json' };
-import { newData } from '../src/lib/link-library.ts';
+import { archiveTag, newData, restoreTag } from '../src/lib/link-library.ts';
 
 const schema = await readFile(new URL('../worker/migrations/0001_personal_library.sql', import.meta.url), 'utf8');
 const origin = 'https://builtbyluna.cc';
@@ -115,4 +115,39 @@ test('oversized personal libraries are rejected without truncating saved notes',
   const large = { ...newData(), records: Object.fromEntries(entries.map(entry => [entry.id, { note: '字'.repeat(2000), level: 0, seen: 1 }])) };
   assert.equal((await h.call('/library', { method: 'PUT', cookie, body: { revision: 1, data: large } })).status, 413);
   assert.deepEqual((await (await h.call('/library', { cookie })).json()).data, dataWith('保留原记录'));
+});
+
+test('recycle bin syncs across sessions and restores original associations without reverting notes', async t => {
+  const h = harness(t);
+  const a = await h.login(), b = await h.login();
+  const data = dataWith('保留笔记');
+  data.tags = [{ id: 'tag-uke', name: 'uke' }];
+  data.assignments = { [entries[0].id]: ['tag-uke'] };
+  await h.call('/library', { method: 'PUT', cookie: a, body: { revision: 0, data } });
+  const archived = archiveTag(data, 'tag-uke', 1000);
+  const saved = await h.call('/library', { method: 'PUT', cookie: a, body: { revision: 1, data: archived } });
+  assert.equal(saved.status, 200);
+  const onB = await (await h.call('/library', { cookie: b })).json();
+  assert.deepEqual(onB.data, archived);
+  onB.data.records[entries[0].id].note = '删除后继续编辑';
+  const restored = restoreTag(onB.data, 'tag-uke');
+  assert.equal((await h.call('/library', { method: 'PUT', cookie: b, body: { revision: onB.revision, data: restored } })).status, 200);
+  const result = await (await h.call('/library', { cookie: a })).json();
+  assert.deepEqual(result.data, restored);
+});
+
+test('legacy clients cannot permanently delete tags or wipe an existing recycle bin', async t => {
+  const h = harness(t);
+  const cookie = await h.login();
+  const data = dataWith('仍保留');
+  data.tags = [{ id: 'tag-uke', name: 'uke' }];
+  data.assignments = { [entries[0].id]: ['tag-uke'] };
+  await h.call('/library', { method: 'PUT', cookie, body: { revision: 0, data } });
+  const legacy = { version: 2, tags: [], assignments: { [entries[0].id]: [] }, records: data.records };
+  assert.equal((await h.call('/library', { method: 'PUT', cookie, body: { revision: 1, data: legacy } })).status, 200);
+  const archived = await (await h.call('/library', { cookie })).json();
+  assert.equal(archived.data.deletedTags[0].tag.name, 'uke');
+  assert.deepEqual(archived.data.deletedTags[0].entryIds, [entries[0].id]);
+  assert.equal((await h.call('/library', { method: 'PUT', cookie, body: { revision: 2, data: legacy } })).status, 200);
+  assert.deepEqual((await (await h.call('/library', { cookie })).json()).data.deletedTags, archived.data.deletedTags);
 });

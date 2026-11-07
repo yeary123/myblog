@@ -1,8 +1,9 @@
 import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type ChangeEvent } from 'react';
 import allEntries from '../../data/external-links.json';
-import { assignedTags, buildReviewQueue, getRecord, levelNames, matchesTagFilters, newData, validateBackup, type Entry, type LibraryData, type Tag } from '../../lib/link-library';
+import { archiveTag, assignedTags, buildReviewQueue, getRecord, levelNames, matchesTagFilters, newData, restoreTag, validateBackup, type Entry, type LibraryData, type Tag } from '../../lib/link-library';
 import PersonalSync from './PersonalSync';
 import { useLibrarySync } from './useLibrarySync';
+import ConfirmTagRemoval from './ConfirmTagRemoval';
 
 const entries: Entry[]=allEntries;
 const storageKey='luna-link-library-v1';
@@ -37,6 +38,8 @@ export default function LinkLibrary(){
   const [ready,setReady]=useState(false);
   const [storageWarning,setStorageWarning]=useState('');
   const [message,setMessage]=useState('');
+  const [removal,setRemoval]=useState<{tag:Tag;entry?:Entry}|null>(null);
+  const [undo,setUndo]=useState<{tag:Tag;entry?:Entry}|null>(null);
   const [query,setQuery]=useState('');const [level,setLevel]=useState('all');
   const [selected,setSelected]=useState<string[]>([]);
   const [page,setPage]=useState(1);
@@ -83,13 +86,39 @@ export default function LinkLibrary(){
     setData(old=>({...old,tags:existing?old.tags:[...old.tags,tag],assignments:entry?{...old.assignments,[entry.id]:[...new Set([...assignedTags(old,entry),tag.id])]}:old.assignments}));
     return null;
   };
-  const deleteTag=(id:string)=>{
-    setData(old=>({...old,tags:old.tags.filter(t=>t.id!==id),assignments:Object.fromEntries(Object.entries(old.assignments).map(([entryId,tags])=>[entryId,tags.filter(tagId=>tagId!==id)]))}));
-    setSelected(old=>old.filter(tagId=>tagId!==id));setMessage('标签已删除。');
+  const confirmRemoval=()=>{
+    if(!removal)return;
+    const {tag,entry}=removal;
+    try{
+      if(entry){
+        setData(old=>({...old,assignments:{...old.assignments,[entry.id]:assignedTags(old,entry).filter(tagId=>tagId!==tag.id)}}));
+        setMessage(`已从「${entry.name}」移除「${tag.name}」，可以撤销。`);
+      }else{
+        setData(archiveTag(data,tag.id));
+        setSelected(old=>old.filter(tagId=>tagId!==tag.id));
+        setMessage(`「${tag.name}」已移入回收站，原来的外链关联也已保留。`);
+      }
+      setUndo(removal);
+      setRemoval(null);
+    }catch(error){setMessage(error instanceof Error?error.message:'暂时无法移除标签。');setRemoval(null);}
   };
-  const removeAssignment=(entry:Entry,id:string)=>{
-    setData(old=>({...old,assignments:{...old.assignments,[entry.id]:assignedTags(old,entry).filter(tagId=>tagId!==id)}}));
-    setMessage('已移除此外链上的标签。');
+  const restoreArchivedTag=(id:string)=>{
+    const archived=data.deletedTags.find(item=>item.tag.id===id);
+    if(!archived)return;
+    try{
+      setData(restoreTag(data,id));
+      setUndo(null);
+      setMessage(`已恢复「${archived.tag.name}」及原来的 ${archived.entryIds.length} 个外链关联。`);
+    }catch(error){setMessage(error instanceof Error?error.message:'暂时无法恢复标签。');}
+  };
+  const undoRemoval=()=>{
+    if(!undo)return;
+    if(!undo.entry){restoreArchivedTag(undo.tag.id);return;}
+    const entry=undo.entry;
+    if(!data.tags.some(tag=>tag.id===undo.tag.id)){setMessage('请先从回收站恢复这个标签。');return;}
+    setData(old=>({...old,assignments:{...old.assignments,[entry.id]:[...new Set([...assignedTags(old,entry),undo.tag.id])]}}));
+    setMessage(`已恢复「${entry.name}」上的「${undo.tag.name}」。`);
+    setUndo(null);
   };
   const exportBackup=()=>{
     const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出熟悉度、笔记和标签备份。');
@@ -118,6 +147,8 @@ export default function LinkLibrary(){
     <PersonalSync sync={sync} />
     {storageWarning&&<p role="alert" className="ll-warning">{storageWarning}</p>}
     <p className="ll-message" role="status" aria-live="polite">{message}</p>
+    {undo&&(undo.entry||data.deletedTags.some(item=>item.tag.id===undo.tag.id))&&<div className="ll-undo" role="status"><span>刚移除的「{undo.tag.name}」可以恢复。</span><button onClick={undoRemoval}>撤销</button></div>}
+    {removal&&<ConfirmTagRemoval name={removal.tag.name} entryName={removal.entry?.name} count={Object.values(data.assignments).filter(ids=>ids.includes(removal.tag.id)).length} onCancel={()=>setRemoval(null)} onConfirm={confirmRemoval} />}
     {review ? review.done ? <div className="ll-complete"><h2 ref={reviewHeading} tabIndex={-1}>又和它们熟悉了一点。</h2><p>复习了 {review.queue.length} 个，其中 {Object.values(review.answers).filter(v=>v===2).length} 个能自己想起用途。</p><ul>{review.queue.map(entry=><li key={entry.id}><span>{entry.name}</span><span>{['再熟悉一下','有点印象','想起来了'][review.answers[entry.id]]}</span></li>)}</ul><div className="ll-actions"><button onClick={()=>setReview(null)}>回外链库</button><button className="ll-primary" onClick={startReview}>再复习几个</button></div></div> : (()=>{
       const entry=review.queue[review.index],answer=review.answers[entry.id],thought=review.thoughts[entry.id]||'';
       return <div className="ll-review"><p className="ll-small">本轮范围：{review.scope}</p><div className="ll-review-meta"><span>优先复习还不熟悉的外链</span><span>{review.index+1} / {review.queue.length}</span></div><progress value={review.index} max={review.queue.length} aria-label="本轮已完成" />
@@ -133,11 +164,12 @@ export default function LinkLibrary(){
     })() : <>
       <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索外链</span><input type="search" value={query} onChange={e=>{setQuery(e.target.value);resetPage();}} placeholder="搜索名称、标签、笔记或推荐理由" /></label><select aria-label="按熟悉度筛选" value={level} onChange={e=>{setLevel(e.target.value);resetPage();}}><option value="all">全部熟悉度</option><option value="-1">还没看</option>{levelNames.map((name,i)=><option value={i} key={i}>{name}</option>)}</select></div>
       <div className="ll-filter-heading"><span className="ll-small">我的标签 · 点击查看同类外链</span></div>
-      <div className="ll-tags ll-user-tags" role="group" aria-label="按标签查看外链"><button className="ll-tag" aria-pressed={!selected.length} onClick={()=>{setSelected([]);resetPage();}}>全部</button>{data.tags.map(tag=><span className="ll-tag-pair" key={tag.id}><button className="ll-tag" aria-pressed={selected.includes(tag.id)} onClick={()=>toggleFilter(tag.id)}>{tag.name} <span>{entries.filter(entry=>tagsFor(entry).includes(tag.id)).length}</span></button><button className="ll-remove-tag" aria-label={`删除标签 ${tag.name}`} onClick={()=>deleteTag(tag.id)}>×</button></span>)}</div>
+      <div className="ll-tags ll-user-tags" role="group" aria-label="按标签查看外链"><button className="ll-tag" aria-pressed={!selected.length} onClick={()=>{setSelected([]);resetPage();}}>全部</button>{data.tags.map(tag=><span className="ll-tag-pair" key={tag.id}><button className="ll-tag" aria-pressed={selected.includes(tag.id)} onClick={()=>toggleFilter(tag.id)}>{tag.name} <span>{entries.filter(entry=>tagsFor(entry).includes(tag.id)).length}</span></button><button className="ll-remove-tag" aria-label={`删除标签 ${tag.name}`} onClick={()=>setRemoval({tag})}>×</button></span>)}</div>
       <AddTagForm onAdd={name=>addTag(name)} tags={data.tags} />
+      {data.deletedTags.length>0&&<details className="ll-trash"><summary>标签回收站 · {data.deletedTags.length} 个</summary><p className="ll-small">标签和原来的外链关联会一起保留，可随时恢复。连接云端后，回收站也会跨设备同步。</p><ul>{[...data.deletedTags].reverse().map(item=><li key={item.tag.id}><div><span>{item.tag.name}</span><p className="ll-small">原关联 {item.entryIds.length} 个外链 · {new Date(item.deletedAt).toLocaleString('zh-CN')}</p></div><button aria-label={`恢复标签 ${item.tag.name}`} onClick={()=>restoreArchivedTag(item.tag.id)}>恢复标签和关联</button></li>)}</ul></details>}
       <div className="ll-overview" aria-live="polite"><span>{filtered.length} 个外链 / 共 {entries.length} 个</span><span>{entries.filter(e=>getRecord(data,e.id).level===2).length} 个熟悉了</span></div>
       <div className="ll-list">{filtered.slice((currentPage-1)*pageSize,currentPage*pageSize).map(entry=><article key={entry.id} className="ll-card"><div className="ll-card-top"><div><h2>{entry.name}</h2><span className="ll-domain">{entry.domain}</span></div><span className={'ll-status '+(getRecord(data,entry.id).level===2?'ll-known':'')}>{getRecord(data,entry.id).level===-1?'还没看':levelNames[getRecord(data,entry.id).level]}</span></div>
-        <div className="ll-tags ll-card-tags">{tagsFor(entry).map(id=><span className="ll-tag-pair" key={id}><button className="ll-tag" aria-pressed={selected.includes(id)} onClick={()=>toggleFilter(id)}>{data.tags.find(t=>t.id===id)?.name}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除标签 ${data.tags.find(t=>t.id===id)?.name}`} onClick={()=>removeAssignment(entry,id)}>×</button></span>)}</div>
+        <div className="ll-tags ll-card-tags">{tagsFor(entry).map(id=><span className="ll-tag-pair" key={id}><button className="ll-tag" aria-pressed={selected.includes(id)} onClick={()=>toggleFilter(id)}>{data.tags.find(t=>t.id===id)?.name}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除标签 ${data.tags.find(t=>t.id===id)?.name}`} onClick={()=>{const tag=data.tags.find(t=>t.id===id);if(tag)setRemoval({tag,entry});}}>×</button></span>)}</div>
         <div className="ll-card-actions"><AddTagForm onAdd={name=>addTag(name,entry)} tags={data.tags} entryName={entry.name} />{visit(entry)}</div>
         <Comments entry={entry} />
         <details className="ll-note-details"><summary>笔记与熟悉度</summary>{details(entry)}</details>

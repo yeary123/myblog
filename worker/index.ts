@@ -10,6 +10,7 @@ export type Env = {
   DB: { prepare(sql: string): Statement };
   SITE_ORIGIN: string;
   SYNC_KEY: string;
+  TAG_RECOVERY_MODE?: string;
   LOGIN_RATE_LIMITER: { limit(options: { key: string }): Promise<{ success: boolean }> };
 };
 
@@ -79,6 +80,7 @@ export default {
       headers.set('Access-Control-Max-Age', '600');
       return new Response(null, { status: 204, headers });
     }
+    if (env.TAG_RECOVERY_MODE === '1') return reply({ error: '正在恢复误删标签，请稍后同步；本机改动会继续保留。' }, 503);
     if (!env.SYNC_KEY || env.SYNC_KEY.length < 8 || env.SYNC_KEY.length > 256) return reply({ error: '个人同步服务尚未配置。' }, 503);
     try {
       const keyHash = await hash(env.SYNC_KEY);
@@ -115,6 +117,27 @@ export default {
         let data;
         try { data = validateBackup(body.data, entries); }
         catch (error) { throw new HttpError(400, error instanceof Error ? error.message : '记录格式不正确。'); }
+        const previous = await env.DB.prepare('SELECT data_json, revision FROM library WHERE id = 1').first<{ data_json: string; revision: number }>();
+        if (previous && previous.revision !== body.revision) return reply({ error: '云端有新改动，请重新同步后选择保留的记录。' }, 409);
+        if (previous) {
+          const before = validateBackup(JSON.parse(previous.data_json), entries);
+          const activeIds = new Set(data.tags.map(tag => tag.id));
+          const archivedIds = new Set(data.deletedTags.map(item => item.tag.id));
+          // Older open tabs must not permanently erase tags or an existing recycle bin.
+          if (body.data.version !== 3) for (const archived of before.deletedTags) {
+            if (!activeIds.has(archived.tag.id) && !archivedIds.has(archived.tag.id)) {
+              data.deletedTags.push(archived);
+              archivedIds.add(archived.tag.id);
+            }
+          }
+          before.tags.forEach((tag, position) => {
+            if (!activeIds.has(tag.id) && !archivedIds.has(tag.id)) data.deletedTags.push({
+              tag, position, deletedAt: Date.now(),
+              entryIds: Object.entries(before.assignments).filter(([, ids]) => ids.includes(tag.id)).map(([entryId]) => entryId),
+            });
+          });
+          if (data.deletedTags.length > 200) throw new HttpError(400, '标签回收站已满，请先恢复部分标签。');
+        }
         const serialized = JSON.stringify(data);
         if (encoder.encode(serialized).byteLength > 1_900_000) throw new HttpError(413, '个人记录超过当前云端容量，请先导出备份并精简笔记后重试。');
         const updatedAt = new Date().toISOString();

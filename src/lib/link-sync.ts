@@ -13,7 +13,7 @@ export function sameLibrary(a: LibraryData, b: LibraryData) {
   return JSON.stringify(ordered(a)) === JSON.stringify(ordered(b));
 }
 export function emptyLibrary(data: LibraryData) {
-  return !data.tags.length && !Object.values(data.assignments).some(tags => tags.length) &&
+  return !data.tags.length && !data.deletedTags.length && !Object.values(data.assignments).some(tags => tags.length) &&
     !Object.values(data.records).some(record => record.note || record.level !== -1 || record.seen);
 }
 export function planSync(local: LibraryData, cloud: CloudLibrary, base: SyncBase | null): 'push' | 'pull' | 'equal' | 'conflict' {
