@@ -8,7 +8,7 @@ import { newData } from '../src/lib/link-library.ts';
 
 const schema = await readFile(new URL('../worker/migrations/0001_personal_library.sql', import.meta.url), 'utf8');
 const origin = 'https://builtbyluna.cc';
-const secret = 'test-only-random-looking-key-at-least-32-characters';
+const secret = 'test1234';
 function harness(t) {
   const sqlite = new DatabaseSync(':memory:');
   sqlite.exec(schema);

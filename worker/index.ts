@@ -79,7 +79,7 @@ export default {
       headers.set('Access-Control-Max-Age', '600');
       return new Response(null, { status: 204, headers });
     }
-    if (!env.SYNC_KEY || env.SYNC_KEY.length < 32) return reply({ error: '个人同步服务尚未配置。' }, 503);
+    if (!env.SYNC_KEY || env.SYNC_KEY.length < 8 || env.SYNC_KEY.length > 256) return reply({ error: '个人同步服务尚未配置。' }, 503);
     try {
       const keyHash = await hash(env.SYNC_KEY);
       const token = sessionToken(request);
@@ -88,7 +88,7 @@ export default {
         const { success } = await env.LOGIN_RATE_LIMITER.limit({ key: 'personal-library-login' });
         if (!success) { headers.set('Retry-After', '60'); return reply({ error: '连接尝试过多，请一分钟后重试。' }, 429); }
         const body = await jsonBody(request, 1024);
-        if (typeof body?.key !== 'string' || body.key.length > 256 || !equalHash(await hash(body.key), keyHash)) return reply({ error: '同步密钥不正确。' }, 401);
+        if (typeof body?.key !== 'string' || body.key.length > 256 || !equalHash(await hash(body.key), keyHash)) return reply({ error: '同步口令不正确。' }, 401);
         const newToken = hex(crypto.getRandomValues(new Uint8Array(32)));
         const now = Math.floor(Date.now() / 1000);
         await env.DB.prepare('DELETE FROM sessions WHERE expires_at <= ? OR key_hash != ?').bind(now, keyHash).run();

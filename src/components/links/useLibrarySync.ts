@@ -72,7 +72,7 @@ export function useLibrarySync(data: LibraryData, setData: Dispatch<SetStateActi
       setConflict(null);
       setConnected(false);
       setStatus('signed-out');
-      setDetail(error.message === '同步密钥不正确。' ? error.message : '连接已过期，请重新输入同步密钥。本机改动已保留。');
+      setDetail(error.message === '同步口令不正确。' ? error.message : '连接已过期，请重新输入同步口令。本机改动已保留。');
     } else {
       setStatus('error');
       setDetail(error instanceof ApiError ? error.message : error instanceof Error && error.message.startsWith('云端记录') ? error.message : '暂时无法连接云端，改动仍保存在本机，恢复网络后可重试。');
