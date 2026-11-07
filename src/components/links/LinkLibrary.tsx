@@ -1,28 +1,33 @@
-import { useEffect, useMemo, useRef, useState, type FormEvent, type ChangeEvent } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type ChangeEvent } from 'react';
 import allEntries from '../../data/external-links.json';
-import { assignedTags, buildReviewQueue, getRecord, groups, levelNames, matchesTagFilters, newData, validateBackup, type Entry, type LibraryData, type Tag } from '../../lib/link-library';
+import { assignedTags, buildReviewQueue, getRecord, levelNames, matchesTagFilters, newData, validateBackup, type Entry, type LibraryData, type Tag } from '../../lib/link-library';
 
 const entries: Entry[]=allEntries;
 const storageKey='luna-link-library-v1';
 const pageSize=20;
 
-function CreateTagForm({onCreate,apply=false}:{onCreate:(name:string,group:Tag['group'])=>string|null;apply?:boolean}){
+function AddTagForm({onAdd,tags,entryName}:{onAdd:(name:string)=>string|null;tags:Tag[];entryName?:string}){
   const [name,setName]=useState('');
-  const [group,setGroup]=useState<Tag['group']>('topic');
   const [feedback,setFeedback]=useState('');
+  const listId=useId();
   const submit=(event:FormEvent)=>{
     event.preventDefault();
-    const error=onCreate(name.trim(),group);
-    if(error){setFeedback(error);return;}
-    setFeedback(apply?`已创建并应用「${name.trim()}」。`:`已创建「${name.trim()}」，可在外链卡片中勾选。`);
-    setName('');
+    const error=onAdd(name.trim());
+    setFeedback(error||`已添加「${name.trim()}」。`);
+    if(!error)setName('');
   };
-  return <form className="ll-create-tag" onSubmit={submit} aria-label={apply?'新增标签并应用':'新增标签'}>
-    <h2>{apply?'新增标签并应用':'新增标签'}</h2>
-    <div className="ll-form-row"><label><span className="ll-label">所属分组</span><select value={group} onChange={e=>setGroup(e.target.value as Tag['group'])}>{groups.map(g=><option key={g.id} value={g.id}>{g.name}</option>)}</select></label><label><span className="ll-label">标签名称</span><input maxLength={24} required value={name} onChange={e=>setName(e.target.value)} placeholder="例如：SEO、摄影" /></label></div>
-    <button className="ll-primary" type="submit">{apply?'创建并应用':'创建标签'}</button>
+  return <form className="ll-add-tag" onSubmit={submit} aria-label={entryName?`为 ${entryName} 添加标签`:'添加标签'}>
+    <div className="ll-actions"><label><span className="ll-sr">{entryName?`${entryName} 的标签名称`:'新标签名称'}</span><input list={entryName?listId:undefined} maxLength={24} required value={name} onChange={e=>setName(e.target.value)} placeholder={entryName?'输入或选择标签':'新标签名称'} /></label><button type="submit">添加标签</button></div>
+    {entryName&&<datalist id={listId}>{tags.map(tag=><option key={tag.id} value={tag.name} />)}</datalist>}
     {feedback&&<p className="ll-small" role="status">{feedback}</p>}
   </form>;
+}
+
+function Comments({entry}:{entry:Entry}){
+  return <details className="ll-comments" open><summary>评论 · {entry.reasons.length} 条</summary>
+    {entry.reasons.length?<ul className="ll-reasons">{entry.reasons.map((reason,i)=><li key={i}>{reason}</li>)}</ul>:<p className="ll-small">暂无评论。</p>}
+    {entry.recommendationTotal>entry.reasons.length&&<p className="ll-small">原帖显示 {entry.recommendationTotal} 条，存档保存了其中 {entry.reasons.length} 条。</p>}
+  </details>;
 }
 
 export default function LinkLibrary(){
@@ -31,11 +36,8 @@ export default function LinkLibrary(){
   const [storageWarning,setStorageWarning]=useState('');
   const [message,setMessage]=useState('');
   const [query,setQuery]=useState('');const [level,setLevel]=useState('all');
-  const [selected,setSelected]=useState<string[]>([]);const [unclassified,setUnclassified]=useState(false);
-  const [page,setPage]=useState(1);const [expanded,setExpanded]=useState<string|null>(null);const [editing,setEditing]=useState<string|null>(null);
-  const [manager,setManager]=useState(false);
-  const [managedTag,setManagedTag]=useState('code');const [rename,setRename]=useState('');
-  const [deleted,setDeleted]=useState<{tag:Tag;links:string[]}|null>(null);
+  const [selected,setSelected]=useState<string[]>([]);
+  const [page,setPage]=useState(1);
   const [review,setReview]=useState<{queue:Entry[];index:number;revealed:boolean;answers:Record<string,number>;thoughts:Record<string,string>;done:boolean;scope:string}|null>(null);
   const fileInput=useRef<HTMLInputElement>(null);
   const reviewHeading=useRef<HTMLHeadingElement>(null);
@@ -54,51 +56,37 @@ export default function LinkLibrary(){
   },[data,ready]);
   useEffect(()=>{if(review)reviewHeading.current?.focus();},[review?.index,review?.done]);
   const tagsFor=(entry:Entry)=>assignedTags(data,entry);
-  const hasType=(entry:Entry)=>tagsFor(entry).some(id=>data.tags.some(t=>t.id===id&&t.group==='type'));
   const filtered=useMemo(()=>{
     const needle=query.trim().toLowerCase();
-    return entries.filter(entry=>(level==='all'||getRecord(data,entry.id).level===Number(level))&&(!unclassified||!assignedTags(data,entry).some(id=>data.tags.some(t=>t.id===id&&t.group==='type')))&&matchesTagFilters(data,entry,selected)&&[entry.name,entry.domain,...entry.reasons,getRecord(data,entry.id).note,...assignedTags(data,entry).map(id=>data.tags.find(t=>t.id===id)?.name)].join(' ').toLowerCase().includes(needle));
-  },[data,query,level,unclassified,selected]);
+    return entries.filter(entry=>(level==='all'||getRecord(data,entry.id).level===Number(level))&&matchesTagFilters(data,entry,selected)&&[entry.name,entry.domain,...entry.reasons,getRecord(data,entry.id).note,...assignedTags(data,entry).map(id=>data.tags.find(t=>t.id===id)?.name)].join(' ').toLowerCase().includes(needle));
+  },[data,query,level,selected]);
   const pages=Math.max(1,Math.ceil(filtered.length/pageSize));const currentPage=Math.min(page,pages);
   const resetPage=()=>{setPage(1);setMessage('');};
-  const toggleFilter=(id:string)=>{setSelected(old=>old.includes(id)?old.filter(x=>x!==id):[...old,id]);resetPage();};
+  const toggleFilter=(id:string)=>{setSelected(old=>old.includes(id)?[]:[id]);resetPage();};
   const updateRecord=(id:string,patch:Partial<{level:number;note:string;seen:number}>)=>setData(old=>({...old,records:{...old.records,[id]:{...getRecord(old,id),...patch}}}));
   const setFamiliarity=(id:string,value:number)=>{updateRecord(id,{level:value,seen:Date.now()});setMessage('熟悉度已记录。');};
-  const clearFilters=()=>{setQuery('');setLevel('all');setSelected([]);setUnclassified(false);resetPage();};
+  const clearFilters=()=>{setQuery('');setLevel('all');setSelected([]);resetPage();};
   const startReview=()=>{
     const queue=buildReviewQueue(data,filtered);
     if(!queue.length){setMessage('当前筛选下没有外链，请放宽筛选。');return;}
-    setReview({queue,index:0,revealed:false,answers:{},thoughts:{},done:false,scope:selected.map(id=>data.tags.find(t=>t.id===id)?.name).concat(query?['搜索：'+query]:[],level!=='all'?['熟悉度：'+(level==='-1'?'还没看':levelNames[Number(level)])]:[],unclassified?['待分类']:[]).join(' · ')||'全部外链'});setMessage('');
+    setReview({queue,index:0,revealed:false,answers:{},thoughts:{},done:false,scope:selected.map(id=>data.tags.find(t=>t.id===id)?.name).concat(query?['搜索：'+query]:[],level!=='all'?['熟悉度：'+(level==='-1'?'还没看':levelNames[Number(level)])]:[]).join(' · ')||'全部外链'});setMessage('');
   };
-  const uniqueName=(name:string,exclude?:string)=>!data.tags.some(t=>t.id!==exclude&&t.name.toLowerCase()===name.toLowerCase());
-  const createTag=(name:string,group:Tag['group'],entry?:Entry):string|null=>{
-    if(!name||name.length>24||!uniqueName(name))return '请输入 1～24 个字符，标签名称不能重复。';
-    if(data.tags.length>=200)return '最多保留 200 个标签，请先整理已有标签。';
-    const tag:Tag={id:'tag-'+crypto.randomUUID(),group,name};
-    setData(old=>({...old,tags:[...old.tags,tag],assignments:entry?{...old.assignments,[entry.id]:[...assignedTags(old,entry),tag.id]}:old.assignments}));
-    setManagedTag(tag.id);setRename(name);setMessage(entry?`已为 ${entry.name} 创建并应用「${name}」。`:'标签已创建，可在卡片里勾选。');
+  const addTag=(name:string,entry?:Entry):string|null=>{
+    if(!name||name.length>24)return '请输入 1～24 个字符的标签名称。';
+    const existing=data.tags.find(t=>t.name.toLowerCase()===name.toLowerCase());
+    if(existing&&!entry)return '这个标签已存在。';
+    if(!existing&&data.tags.length>=200)return '最多保留 200 个标签。';
+    const tag=existing??{id:'tag-'+crypto.randomUUID(),name};
+    setData(old=>({...old,tags:existing?old.tags:[...old.tags,tag],assignments:entry?{...old.assignments,[entry.id]:[...new Set([...assignedTags(old,entry),tag.id])]}:old.assignments}));
     return null;
   };
-  const renameTag=(event:FormEvent)=>{
-    event.preventDefault();const name=rename.trim();
-    if(!name||name.length>24||!uniqueName(name,managedTag)){setMessage('请输入 1～24 个字符，标签名称不能重复。');return;}
-    setData({...data,tags:data.tags.map(t=>t.id===managedTag?{...t,name}:t)});setMessage('所有外链上的标签名称已同步更新。');
+  const deleteTag=(id:string)=>{
+    setData(old=>({...old,tags:old.tags.filter(t=>t.id!==id),assignments:Object.fromEntries(Object.entries(old.assignments).map(([entryId,tags])=>[entryId,tags.filter(tagId=>tagId!==id)]))}));
+    setSelected(old=>old.filter(tagId=>tagId!==id));setMessage('标签已删除。');
   };
-  const deleteTag=()=>{
-    const tag=data.tags.find(t=>t.id===managedTag);if(!tag)return;
-    const affected=entries.filter(e=>tagsFor(e).includes(managedTag));
-    setDeleted({tag,links:affected.map(e=>e.id)});setData({...data,tags:data.tags.filter(t=>t.id!==managedTag),assignments:{...data.assignments,...Object.fromEntries(affected.map(e=>[e.id,tagsFor(e).filter(id=>id!==managedTag)]))}});
-    setSelected(selected.filter(id=>id!==managedTag));setManagedTag('');setRename('');setMessage('标签已删除，外链仍然保留。可以撤销。');
-  };
-  const toggleAssignment=(entry:Entry,id:string)=>{
-    const assigned=tagsFor(entry);setData({...data,assignments:{...data.assignments,[entry.id]:assigned.includes(id)?assigned.filter(x=>x!==id):[...assigned,id]}});setMessage('标签已更新。');
-  };
-  const undoDelete=()=>{
-    if(!deleted)return;
-    if(data.tags.some(t=>t.id===deleted.tag.id||t.name.toLowerCase()===deleted.tag.name.toLowerCase())){setMessage('已有同名标签，请先改名后再撤销。');return;}
-    const assignments={...data.assignments};
-    for(const id of deleted.links){const entry=entries.find(e=>e.id===id);if(entry)assignments[id]=[...new Set([...tagsFor(entry),deleted.tag.id])];}
-    setData({...data,tags:[...data.tags,deleted.tag],assignments});setDeleted(null);setMessage('标签和分类已恢复。');
+  const removeAssignment=(entry:Entry,id:string)=>{
+    setData(old=>({...old,assignments:{...old.assignments,[entry.id]:assignedTags(old,entry).filter(tagId=>tagId!==id)}}));
+    setMessage('已移除此外链上的标签。');
   };
   const exportBackup=()=>{
     const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出熟悉度、笔记和标签备份。');
@@ -109,7 +97,7 @@ export default function LinkLibrary(){
       if(file.size>5_000_000)throw new Error('备份文件过大。');
       const imported=validateBackup(JSON.parse(await file.text()),entries);
       if(!window.confirm('导入会替换本浏览器中的熟悉度、笔记和标签。建议先导出当前备份。继续导入？'))return;
-      setData(imported);setSelected([]);setReview(null);setPage(1);setDeleted(null);setManagedTag('');setRename('');setMessage('备份已导入。');
+      setData(imported);setSelected([]);setReview(null);setPage(1);setMessage('备份已导入。');
     }catch(error){setMessage(error instanceof Error?error.message:'无法读取备份文件。');}
   };
   const ratings=(entry:Entry,value:number,onChoose:(level:number)=>void,recall=false)=><div className="ll-ratings" role="group" aria-label={recall?'回忆结果':'熟悉度'}>{levelNames.map((name,i)=><button key={i} type="button" aria-pressed={value===i} onClick={()=>onChoose(i)}>{recall?['没想起','有点印象','想起来了'][i]:name}</button>)}</div>;
@@ -117,7 +105,6 @@ export default function LinkLibrary(){
   const details=(entry:Entry)=><div className="ll-details">
     <div><span className="ll-label">我的一句话理解</span><label><span className="ll-sr">{entry.name} 的笔记</span><textarea maxLength={2000} value={getRecord(data,entry.id).note} onChange={e=>updateRecord(entry.id,{note:e.target.value})} placeholder="它能做什么？我会在什么时候用到它？" /></label></div>
     <div><span className="ll-label">现在对它有多熟悉？</span>{ratings(entry,getRecord(data,entry.id).level,value=>setFamiliarity(entry.id,value))}</div>
-    <details><summary>原帖推荐理由 · 已保存 {entry.reasons.length} 条{entry.votes!==null?` · ${entry.votes} 票推荐`:""}</summary><p className="ll-small">原帖经验可能有时效性；费用、DR 和收录效果以平台当前情况为准。{entry.recommendationTotal>entry.reasons.length?`原帖显示 ${entry.recommendationTotal} 条推荐理由，存档保存了其中 ${entry.reasons.length} 条理由。`:''}</p><ul className="ll-reasons">{entry.reasons.map((reason,i)=><li key={i}>{reason}</li>)}</ul></details>
   </div>;
 
   return <section className="ll" aria-label="外链手册">
@@ -135,23 +122,21 @@ export default function LinkLibrary(){
             {thought&&<p className="ll-thought">刚才的回忆：{thought}</p>}
             <div className="ll-answer"><span className="ll-label">原帖中的说明</span><p>{entry.reasons[0]||'存档没有提供说明，可以先访问网站了解。'}</p>{getRecord(data,entry.id).note&&<p><span className="ll-label">我的笔记</span>{getRecord(data,entry.id).note}</p>}<div className="ll-tags">{tagsFor(entry).map(id=><span className="ll-tag" key={id}>{data.tags.find(t=>t.id===id)?.name}</span>)}</div></div>
             {visit(entry)}<span className="ll-label">刚才想起来了吗？</span>{ratings(entry,answer,value=>{setFamiliarity(entry.id,value);setReview({...review,answers:{...review.answers,[entry.id]:value}});},true)}
-            <details className="ll-review-details"><summary>更多理由与我的笔记</summary>{details(entry)}</details>
+            <details className="ll-review-details"><summary>更多评论与我的笔记</summary><Comments entry={entry} />{details(entry)}</details>
           </>}
         </article><div className="ll-review-bottom"><button disabled={review.index===0} onClick={()=>setReview({...review,index:review.index-1,revealed:true})}>上一个</button><button className="ll-primary" disabled={answer===undefined} onClick={()=>setReview(review.index===review.queue.length-1?{...review,done:true}:{...review,index:review.index+1,revealed:false})}>{review.index===review.queue.length-1?'完成这轮':'下一个'}</button></div>
       </div>;
     })() : <>
       <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索外链</span><input type="search" value={query} onChange={e=>{setQuery(e.target.value);resetPage();}} placeholder="搜索名称、标签、笔记或推荐理由" /></label><select aria-label="按熟悉度筛选" value={level} onChange={e=>{setLevel(e.target.value);resetPage();}}><option value="all">全部熟悉度</option><option value="-1">还没看</option>{levelNames.map((name,i)=><option value={i} key={i}>{name}</option>)}</select></div>
-      <div className="ll-filter-heading"><span className="ll-small">按标签找外链 · 可以多选</span><div className="ll-actions">{(selected.length>0||unclassified)&&<button className="ll-quiet" onClick={()=>{setSelected([]);setUnclassified(false);resetPage();}}>清空标签筛选</button>}<button className="ll-quiet" aria-expanded={manager} onClick={()=>{setManager(!manager);setRename(data.tags.find(t=>t.id===managedTag)?.name||'');}}>管理标签</button></div></div>
-      <div className="ll-filter-groups">{groups.map(group=><div className="ll-tag-row" key={group.id}><span>{group.name}</span><div className="ll-tags" role="group" aria-label={group.name+'筛选'}>{data.tags.filter(t=>t.group===group.id).map(tag=><button key={tag.id} className="ll-tag" aria-pressed={selected.includes(tag.id)} onClick={()=>toggleFilter(tag.id)}>{tag.name} <span>{entries.filter(entry=>tagsFor(entry).includes(tag.id)).length}</span></button>)}{group.id==='type'&&<button className="ll-tag" aria-pressed={unclassified} onClick={()=>{setUnclassified(!unclassified);resetPage();}}>待分类 {entries.filter(entry=>!hasType(entry)).length}</button>}</div></div>)}</div>
-      <p className="ll-small ll-filter-tip">同组任选其一，跨组同时满足。初始标签按名称和原帖整理，可自行调整。</p>
-      {manager&&<section className="ll-manager" aria-label="管理标签"><CreateTagForm onCreate={(name,group)=>createTag(name,group)} />
-        <form onSubmit={renameTag}><h2>整理已有标签</h2><label><span className="ll-label">选择标签</span><select value={managedTag} onChange={e=>{setManagedTag(e.target.value);setRename(data.tags.find(t=>t.id===e.target.value)?.name||'');}}><option value="">请选择</option>{data.tags.map(t=><option key={t.id} value={t.id}>{t.name}</option>)}</select></label><label><span className="ll-label">修改名称</span><input maxLength={24} required value={rename} onChange={e=>setRename(e.target.value)} /></label><div className="ll-actions"><button type="submit" disabled={!managedTag}>保存名称</button><button type="button" disabled={!managedTag} onClick={deleteTag}>删除标签</button></div><p className="ll-small">删除会从关联外链上移除标签，保留所有外链。</p></form>{deleted&&<button onClick={undoDelete}>撤销刚才的删除</button>}</section>}
+      <div className="ll-filter-heading"><span className="ll-small">我的标签 · 点击查看同类外链</span></div>
+      <div className="ll-tags ll-user-tags" role="group" aria-label="按标签查看外链"><button className="ll-tag" aria-pressed={!selected.length} onClick={()=>{setSelected([]);resetPage();}}>全部</button>{data.tags.map(tag=><span className="ll-tag-pair" key={tag.id}><button className="ll-tag" aria-pressed={selected.includes(tag.id)} onClick={()=>toggleFilter(tag.id)}>{tag.name} <span>{entries.filter(entry=>tagsFor(entry).includes(tag.id)).length}</span></button><button className="ll-remove-tag" aria-label={`删除标签 ${tag.name}`} onClick={()=>deleteTag(tag.id)}>×</button></span>)}</div>
+      <AddTagForm onAdd={name=>addTag(name)} tags={data.tags} />
       <div className="ll-overview" aria-live="polite"><span>{filtered.length} 个外链 / 共 {entries.length} 个</span><span>{entries.filter(e=>getRecord(data,e.id).level===2).length} 个熟悉了</span></div>
       <div className="ll-list">{filtered.slice((currentPage-1)*pageSize,currentPage*pageSize).map(entry=><article key={entry.id} className="ll-card"><div className="ll-card-top"><div><h2>{entry.name}</h2><span className="ll-domain">{entry.domain}</span></div><span className={'ll-status '+(getRecord(data,entry.id).level===2?'ll-known':'')}>{getRecord(data,entry.id).level===-1?'还没看':levelNames[getRecord(data,entry.id).level]}</span></div>
-        <div className="ll-tags ll-card-tags">{tagsFor(entry).map(id=><button key={id} className="ll-tag" aria-pressed={selected.includes(id)} onClick={()=>toggleFilter(id)}>{data.tags.find(t=>t.id===id)?.name}</button>)}{!hasType(entry)&&<span className="ll-small">待分类</span>}</div>
-        <div className="ll-card-actions"><button className="ll-quiet" aria-expanded={editing===entry.id} onClick={()=>setEditing(editing===entry.id?null:entry.id)}>编辑标签</button><div className="ll-actions">{visit(entry)}<button aria-expanded={expanded===entry.id} onClick={()=>setExpanded(expanded===entry.id?null:entry.id)}>{expanded===entry.id?'收起':'了解一下'}</button></div></div>
-        {editing===entry.id&&<div className="ll-tag-editor"><p className="ll-small">勾选已有标签，或创建新标签并直接应用到此外链。</p>{groups.map(group=><div className="ll-tag-row" key={group.id}><span>{group.name}</span><div className="ll-tags" role="group" aria-label={'编辑'+group.name}>{data.tags.filter(t=>t.group===group.id).map(tag=><button key={tag.id} className="ll-tag" aria-pressed={tagsFor(entry).includes(tag.id)} onClick={()=>toggleAssignment(entry,tag.id)}>{tagsFor(entry).includes(tag.id)?'✓ ':''}{tag.name}</button>)}</div></div>)}<CreateTagForm onCreate={(name,group)=>createTag(name,group,entry)} apply /><button onClick={()=>setEditing(null)}>完成</button></div>}
-        {expanded===entry.id&&details(entry)}
+        <div className="ll-tags ll-card-tags">{tagsFor(entry).map(id=><span className="ll-tag-pair" key={id}><button className="ll-tag" aria-pressed={selected.includes(id)} onClick={()=>toggleFilter(id)}>{data.tags.find(t=>t.id===id)?.name}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除标签 ${data.tags.find(t=>t.id===id)?.name}`} onClick={()=>removeAssignment(entry,id)}>×</button></span>)}</div>
+        <div className="ll-card-actions"><AddTagForm onAdd={name=>addTag(name,entry)} tags={data.tags} entryName={entry.name} />{visit(entry)}</div>
+        <Comments entry={entry} />
+        <details className="ll-note-details"><summary>笔记与熟悉度</summary>{details(entry)}</details>
       </article>)}</div>
       {!filtered.length&&<div className="ll-empty"><p>没有匹配的外链，放宽筛选再试试。</p><button onClick={clearFilters}>清空全部筛选</button></div>}
       {filtered.length>pageSize&&<nav className="ll-pagination" aria-label="外链列表分页"><button disabled={currentPage===1} onClick={()=>setPage(currentPage-1)}>上一页</button><span>{currentPage} / {pages}</span><button disabled={currentPage===pages} onClick={()=>setPage(currentPage+1)}>下一页</button></nav>}

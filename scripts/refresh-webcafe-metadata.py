@@ -1,4 +1,4 @@
-"""Refresh source counts from a saved Web.Cafe page, keeping manual tags by URL.
+"""Refresh source counts from a saved Web.Cafe page, keeping saved comments by URL.
 
 Usage: python3 scripts/refresh-webcafe-metadata.py /absolute/path/to/saved-page.html
 """
@@ -80,4 +80,4 @@ for anchor in walk(tree.root):
 if len(found) != len(records):
     raise ValueError(f'Archive only matches {len(found)} of {len(records)} records; no file written.')
 target.write_text(json.dumps(records, ensure_ascii=False, indent=2) + '\n')
-print(f'Refreshed {len(records)} records; preserved all reasons and tags.')
+print(f'Refreshed {len(records)} records; preserved all saved comments.')

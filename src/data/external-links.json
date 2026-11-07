@@ -29,12 +29,6 @@
       "💬 Nitor：【Product Hunt — https://www.producthunt.com/】适合正式上线的软件和 AI 产品，能建立长期产品页面并带来早期用户、评论和品牌曝光。基础发布免费，但个人账号通常需要注册满一周才能发布",
       "💬 一成：【www.producthunt.com】免费的目录站，爬虫来的频繁"
     ],
-    "tags": [
-      "launch",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": 78
   },
   {
@@ -66,12 +60,6 @@
       "💬 Canen：【TAAFT】付费外链里投产比最高的1条了，有真实的用户",
       "💬 Serdes：这是很多大佬赚到第一桶金的地方",
       "💬 嘉禾：如果这个平台的流量有你的用户，可以是付费提交，验证一下产品需求是否准确"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": 61
   },
@@ -105,12 +93,6 @@
       "💬 日出东方：AI站点提交 99刀",
       "💬 Shixy：【Toolify】适合 AI 工具展示，可获得 AI 目录流量"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": 46
   },
   {
@@ -142,11 +124,6 @@
       "💬 Geektao：【SaaSHub】创业项目、技术产品适合",
       "💬 Shixy：【SaaSHub】有软件分类、竞品和替代品页面，适合做长尾曝光",
       "💬 Jeremy：免费，收录挺快的"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": 32
   },
@@ -180,10 +157,6 @@
       "💬 大学牲：【GitHub Awesome 官方列表矩阵】免费，找到相关 Awesome 仓库后按贡献规范提交 PR。",
       "💬 甜果果🍎🍊：免费，简单"
     ],
-    "tags": [
-      "code",
-      "showcase"
-    ],
     "recommenders": 32
   },
   {
@@ -216,12 +189,6 @@
       "💬 MaynorAI(tryallapi.com)：权重高",
       "💬 甜果果🍎🍊：收录快，每次上站后 第一个外链就是它"
     ],
-    "tags": [
-      "community",
-      "research",
-      "writing",
-      "ai"
-    ],
     "recommenders": 28
   },
   {
@@ -250,11 +217,6 @@
       "💬 星辰千里：【https://news.ycombinator.com/submit】DR91 流量1425万",
       "💬 大学牲：【https://news.ycombinator.com/】免费，适合有实质创新的产品发布 Show HN。"
     ],
-    "tags": [
-      "community",
-      "research",
-      "writing"
-    ],
     "recommenders": null
   },
   {
@@ -276,11 +238,6 @@
       "💬 Shixy：【reddit】公认好用的免费推广平台，适合品牌和真实用户流量",
       "💬 大学牲：免费，只适合真实讨论和经验分享，避免直接发广告链接。",
       "💬 麦塔：【https://www.reddit.com】对垂直领域的网站非常友好，能够拿到很靠前的排名"
-    ],
-    "tags": [
-      "community",
-      "research",
-      "writing"
     ],
     "recommenders": null
   },
@@ -304,11 +261,6 @@
       "💬 日出东方：目录提交 免费",
       "💬 blank：流量和 DR 还不错"
     ],
-    "tags": [
-      "launch",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -327,11 +279,6 @@
       "💬 Tyler：【dev.to】可以发布与网站业务相关的技术文章、教程或案例，并在文章中合理引用官网，获得长期内容曝光和外链。",
       "💬 Link：【Dev.to】开发者工具",
       "💬 日出东方：高权重 免费"
-    ],
-    "tags": [
-      "content",
-      "writing",
-      "ai"
     ],
     "recommenders": null
   },
@@ -353,11 +300,6 @@
       "💬 Shixy：【Medium】收录快，链接多为 nofollow",
       "💬 Canen：【medium】长尾流量多，免费，高DR"
     ],
-    "tags": [
-      "content",
-      "writing",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -376,12 +318,6 @@
       "💬 日出东方：【https://dang.ai/】AI目录 免费/付费加速",
       "💬 frank：【Dang】免费提交、审核严（有反链验证门槛），通过即代表站方认可，dofollow 已索引，含 logo/截图/完整描述，品牌展示最完整",
       "💬 夏天夏：审核快"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -406,11 +342,6 @@
       "💬 Shixy：【AlternativeTo】用户主动寻找竞品替代品，适合软件、SaaS 获取精准流量",
       "💬 辰亮：这个有免费的，但审核很慢，但有5美金一次的加速，值得买吗？"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -426,12 +357,6 @@
       "💬 江城子：首选的付费导航站之一，价格优惠，而且DR事",
       "💬 JsonChao：【creati.ai】能带来付费用户的导航站，有付费用户，性价比较高",
       "💬 王马扎：性价比很高"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -453,7 +378,6 @@
       "💬 Lyman：无需审核，免费提交，dofollow",
       "💬 swimming：免费提交，但需要给别人投票，攒5积分才能发"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -473,11 +397,6 @@
       "💬 日出东方：【https://www.indiehackers.com/】社区类 免费",
       "💬 Shixy：【Indie Hackers】相关性和精准流量较好",
       "💬 Shixy：【indiehackers.com】免费社区，高质量外链"
-    ],
-    "tags": [
-      "community",
-      "research",
-      "writing"
     ],
     "recommenders": null
   },
@@ -499,11 +418,6 @@
       "💬 日出东方：【https://peerlist.io】技术类 免费",
       "💬 Shixy：【Peerlist】适合技术人才、项目和创业产品展示"
     ],
-    "tags": [
-      "launch",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -522,10 +436,6 @@
       "💬 Geektao：【Crunchbase】创业项目、技术产品适合",
       "💬 Shixy：【Crunchbase / Wellfound】品牌信号和引荐流量"
     ],
-    "tags": [
-      "profile",
-      "showcase"
-    ],
     "recommenders": null
   },
   {
@@ -543,10 +453,6 @@
       "💬 Jimmy：【blogger.com】免费，无审核。实测 44 篇复查有 38 篇 dofollow 存活（86%），是所有第三方平台里存活率最高的一个，正文锚文本真给 dofollow 而不是 ugc/nofollow。注意 blogger.com 和 blogspot.com 是同一个博客的两个入口，别当两条外链算。",
       "💬 欧文AI出海：【https://blogger.com/】Google 自家平台"
     ],
-    "tags": [
-      "content",
-      "writing"
-    ],
     "recommenders": null
   },
   {
@@ -563,11 +469,6 @@
       "💬 一成：【topai.tools】高质量导航站",
       "💬 日出东方：AI目录 免费",
       "💬 Serdes：【https://topai.tools/】几乎很多高流量网站都能看到这个外链"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -588,10 +489,6 @@
       "💬 欧文AI出海：【substack.com】SEO 良好，文章可排名",
       "💬 没人关注正好安心练剑：可以发guest blog"
     ],
-    "tags": [
-      "content",
-      "writing"
-    ],
     "recommenders": null
   },
   {
@@ -611,11 +508,6 @@
       "💬 Geektao：【G2（DA98）】SaaS和B2B产品必投，流量很准",
       "💬 Shixy：【G2】企业软件采购用户多，产品资料和评价有助于建立信任"
     ],
-    "tags": [
-      "reviews",
-      "showcase",
-      "research"
-    ],
     "recommenders": null
   },
   {
@@ -634,12 +526,6 @@
       "💬 Geektao：【BetaList】创业项目、技术产品适合",
       "💬 Shixy：【BetaList】适合新网站、AI 工具和初创产品早期曝光"
     ],
-    "tags": [
-      "launch",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -657,12 +543,6 @@
       "💬 Zephyrion（即刻同名）：高DR高流量，免费提交",
       "💬 Geektao：【https://startupfa.me/submit】免费档即给 Dofollow，首页挂个 verification badge 等 7 天审核即可。",
       "💬 V.：高dr有流量，免费+付费，19美金"
-    ],
-    "tags": [
-      "launch",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -683,7 +563,6 @@
       "💬 羊羊羊：【https://www.sideprojectors.com/submit/type】已验证过，semrush能抓到，免费提交，SideProjectors 是一个专门针对开发者、创客和独立创业者（Indie Hackers）的副业项目交易与展示社区",
       "💬 枫：目录提交 3天审核"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -701,11 +580,6 @@
       "💬 日出东方：免费目录提交 要排队",
       "💬 Shixy：【Uneed】适合新产品发布和早期用户获取",
       "💬 blank：流量和 DR 还不错"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -725,10 +599,6 @@
       "💬 日出东方：高权重 免费",
       "💬 Shixy：【SourceForge】适合软件、开源项目和开发工具，可获得项目与下载流量"
     ],
-    "tags": [
-      "code",
-      "showcase"
-    ],
     "recommenders": null
   },
   {
@@ -746,11 +616,6 @@
       "💬 谈小罗🌟：收录快，现在是验证了反链就给收录",
       "💬 V.：高dr有流量，免费+付费，25美金",
       "💬 哞咦：工具导航站，免费，DR高"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -770,9 +635,6 @@
       "💬 日出东方：创业社区 免费",
       "💬 没人关注正好安心练剑：创业者比较好用的免费平台"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -790,11 +652,6 @@
       "💬 马兄弟：【x.com】常用社交网站",
       "💬 日出东方：【https://x.com】高权重 免费"
     ],
-    "tags": [
-      "social",
-      "research",
-      "showcase"
-    ],
     "recommenders": null
   },
   {
@@ -811,11 +668,6 @@
       "💬 日出东方：目录提交 免费",
       "💬 Shixy：【GetApp】与 Capterra 类似，可获得软件分类页和买家流量"
     ],
-    "tags": [
-      "reviews",
-      "showcase",
-      "research"
-    ],
     "recommenders": null
   },
   {
@@ -830,12 +682,6 @@
       "💬 日出东方：【https://www.futurepedia.io/】AI目录 免费+付费",
       "💬 Shixy：【Futurepedia】AI 产品目录和工具推荐场景，适合 AI 网站"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -848,12 +694,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 kingluo：AI 工具可通过标准通道免费提交并接受人工审核，也可付费加速；收录后可获得垂直用户曝光和独立工具介绍页。"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -871,11 +711,6 @@
       "💬 Angler：80k 流量，免费提交，需要排队。",
       "💬 日出东方：【https://tinylaunch.com/】目录提交 免费"
     ],
-    "tags": [
-      "launch",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -890,12 +725,6 @@
       "💬 Zephyrion（即刻同名）：高DR高流量，免费提交",
       "💬 V.：高dr，免费+付费，99美金",
       "💬 日出东方：AI目录 免费"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -912,11 +741,6 @@
       "💬 Shixy：【Quora】适合精准引流，不能硬广",
       "💬 欧文AI出海：【quora.com】收录极快",
       "💬 大学牲：免费，回答应先解决问题并披露利益关系。"
-    ],
-    "tags": [
-      "community",
-      "research",
-      "writing"
     ],
     "recommenders": null
   },
@@ -935,11 +759,6 @@
       "💬 唐先生：油管主页",
       "💬 日出东方：高权重 免费"
     ],
-    "tags": [
-      "social",
-      "research",
-      "showcase"
-    ],
     "recommenders": null
   },
   {
@@ -957,10 +776,6 @@
       "💬 Shixy：【LinkedIn】品牌曝光和引荐流量",
       "💬 欧文AI出海：【linkedin.com】文章收录快"
     ],
-    "tags": [
-      "profile",
-      "showcase"
-    ],
     "recommenders": null
   },
   {
@@ -976,11 +791,6 @@
       "💬 日出东方：【https://www.trustpilot.com/】目录提交 免费",
       "💬 Shixy：【Trustpilot】主要提升品牌信任和转化，也有助于品牌词搜索曝光"
     ],
-    "tags": [
-      "reviews",
-      "showcase",
-      "research"
-    ],
     "recommenders": null
   },
   {
@@ -992,11 +802,6 @@
     "votes": 5,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -1012,11 +817,6 @@
       "💬 日出东方：【https://www.zhihu.com】中文高权重 免费",
       "💬 欧文AI出海：【zhihu.com】SEO 强，收录快"
     ],
-    "tags": [
-      "community",
-      "research",
-      "writing"
-    ],
     "recommenders": null
   },
   {
@@ -1030,11 +830,6 @@
     "reasons": [
       "💬 得鹿梦鱼：流量/DR尚可，涨价了",
       "💬 安徒生：$15.9, 也可免费提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -1052,12 +847,6 @@
       "💬 召唤兽：免费提交需挂徽章",
       "💬 Zephyrion（即刻同名）：高DR高流量，免费提交"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -1072,7 +861,6 @@
       "💬 山沟沟的孩子：【mossai.org】免费",
       "💬 Flicker：免费，权重高"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1086,11 +874,6 @@
     "reasons": [
       "💬 程普：DR 高，价格实惠 ⚠️ 免费收录要等7天",
       "💬 Kaiun：【https://dofollow.tools/】DR73，外链质量高"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -1107,7 +890,6 @@
       "💬 Geektao：【https://stackshare.io/submit】开发者技术栈目录，免费 Dofollow。",
       "💬 Geektao：【StackShare】创业项目、技术产品适合"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1122,10 +904,6 @@
       "💬 日出东方：【https://hashnode.com】免费发表文章",
       "💬 欧文AI出海：【hashnode.com】技术内容权重高"
     ],
-    "tags": [
-      "content",
-      "writing"
-    ],
     "recommenders": null
   },
   {
@@ -1139,11 +917,6 @@
     "reasons": [
       "💬 JsonChao：【aixploria.com】能带来付费用户的导航站，有付费用户，性价比尚可",
       "💬 日出东方：AI目录 免费"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -1160,11 +933,6 @@
       "💬 清仔：【https://pinterest.com/】适合图片相关站点,AI可以自动化发布",
       "💬 日出东方：高权重 免费"
     ],
-    "tags": [
-      "design",
-      "inspiration",
-      "showcase"
-    ],
     "recommenders": null
   },
   {
@@ -1180,11 +948,6 @@
       "💬 Shixy：【Microlaunch】适合独立开发者和小型 SaaS 产品推广",
       "💬 blank：流量和 DR 还不错"
     ],
-    "tags": [
-      "launch",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -1198,7 +961,6 @@
     "reasons": [
       "💬 洪江：价格19.9不贵(同时获取aitoolhub.net)的24条外链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1211,11 +973,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 安徒生：$9.9"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -1230,9 +987,6 @@
     "reasons": [
       "💬 zzl：收录快，权重高"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -1246,7 +1000,6 @@
     "reasons": [
       "💬 安徒生：$9.9, 也可免费提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1261,11 +1014,6 @@
       "💬 Terence‮‮‮脚一你了踹并‭：【https://www.behance.net/】DR 92，权重较高，效果好",
       "💬 日出东方：【https://www.behance.net】高权重 免费"
     ],
-    "tags": [
-      "design",
-      "inspiration",
-      "showcase"
-    ],
     "recommenders": null
   },
   {
@@ -1278,11 +1026,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 日出东方：目录提交 免费"
-    ],
-    "tags": [
-      "launch",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -1297,7 +1040,6 @@
     "reasons": [
       "💬 Zephyrion（即刻同名）：中等DR/流量，免费提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1312,7 +1054,6 @@
       "💬 Zephyrion（即刻同名）：中等DR/流量，免费提交",
       "💬 嵩皓：【Launchtory】免费，邮箱注册后提交，人工审核。亲测：8月12日提交，8月16日确认上线——但两个锚文本都是 rel=\"nofollow\""
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1326,11 +1067,6 @@
     "reasons": [
       "💬 Zephyrion（即刻同名）：中等DR/流量，免费提交",
       "💬 日出东方：【https://turbo0.com】AI目录 免费"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -1347,11 +1083,6 @@
       "💬 日出东方：【https://aitools.fyi/】AI目录 免费",
       "💬 H an：aherf查了 这个居然是bestlink"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -1364,12 +1095,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 Angler：【https://saasaitools.com】40K 免费提交需要审核"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -1384,11 +1109,6 @@
     "reasons": [
       "💬 日出东方：目录提交 免费"
     ],
-    "tags": [
-      "reviews",
-      "showcase",
-      "research"
-    ],
     "recommenders": null
   },
   {
@@ -1401,11 +1121,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 日出东方：【https://startupstash.com】目录提交 免费"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -1422,11 +1137,6 @@
       "💬 Shixy：【Stack Overflow】技术问题回答可带来精准访问，但只有真正解决问题时才适合放链接",
       "💬 大学牲：免费，仅在真正解决问题时引用产品，禁止广告式回答。"
     ],
-    "tags": [
-      "community",
-      "research",
-      "writing"
-    ],
     "recommenders": null
   },
   {
@@ -1442,7 +1152,6 @@
       "💬 唐先生：谷歌网站制作",
       "💬 日出东方：【https://sites.google.com】免费发表文章"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1457,10 +1166,6 @@
       "💬 日出东方：【https://www.slideshare.net】文档类 免费",
       "💬 Shixy：【SlideShare】可上传白皮书、行业报告和演示文稿，适合 B2B 网站"
     ],
-    "tags": [
-      "content",
-      "writing"
-    ],
     "recommenders": null
   },
   {
@@ -1473,9 +1178,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 李胜：便宜/性价比高/效果超预期"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -1491,12 +1193,6 @@
       "💬 轻舟：免费提交，是否收录看审核。多一个 AI 工具目录曝光和外链。",
       "💬 Zephyrion（即刻同名）：免费提交，do follow"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -1511,7 +1207,6 @@
       "💬 轻舟：基础申请免费，推广另算。适合 B2B 软件，多一个评测入口和外链。",
       "💬 Geektao：【FinancesOnline】偏企业软件和SaaS，B2B方向重点投"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1526,11 +1221,6 @@
       "💬 轻舟：基础收录免费，推广收费。适合展示案例、评价和公司实力。",
       "💬 Shixy：【GoodFirms】有公司资料、案例和评价页面，适合 B2B 服务商"
     ],
-    "tags": [
-      "reviews",
-      "showcase",
-      "research"
-    ],
     "recommenders": null
   },
   {
@@ -1543,12 +1233,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 安徒生：$19.9"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -1564,11 +1248,6 @@
       "💬 Zephyrion（即刻同名）：免费提交",
       "💬 hyhor：免费提交，权重高。付费立刻发布，价格不贵。"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -1581,11 +1260,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 Shixy：【Clutch】适合开发、设计、营销、外包等服务型公司获取询盘"
-    ],
-    "tags": [
-      "reviews",
-      "showcase",
-      "research"
     ],
     "recommenders": null
   },
@@ -1600,10 +1274,6 @@
     "reasons": [
       "💬 日出东方：【https://about.me】免费 二级域名博客"
     ],
-    "tags": [
-      "profile",
-      "showcase"
-    ],
     "recommenders": null
   },
   {
@@ -1617,7 +1287,6 @@
     "reasons": [
       "💬 Zephyrion（即刻同名）：免费提交，高流量，高DR"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1631,10 +1300,6 @@
     "reasons": [
       "💬 江城子：注册就可以提交",
       "💬 黄楚标：【https://cal.com/】制作一个帖子互联后可直接查看"
-    ],
-    "tags": [
-      "profile",
-      "showcase"
     ],
     "recommenders": null
   },
@@ -1650,7 +1315,6 @@
       "💬 Terence‮‮‮脚一你了踹并‭：DR 62，权重较高，效果好",
       "💬 日出东方：目录提交 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1664,11 +1328,6 @@
     "reasons": [
       "💬 Zephyrion（即刻同名）：高DR高流量，免费提交",
       "💬 嵩皓：【AIToolboard】完全免费，提交本身不用注册（只有查看自己的提交记录才需要账号）。有 $75/$99 付费位，但免费档真实可用。亲测：7月30日提交，约 2 周过审上线，落地页给了 4 个 dofollow 锚文本"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -1684,10 +1343,6 @@
       "💬 日出东方：【https://juejin.cn】中文开发者 免费",
       "💬 longPc：写篇文章，介绍下自己的网站"
     ],
-    "tags": [
-      "content",
-      "writing"
-    ],
     "recommenders": null
   },
   {
@@ -1700,11 +1355,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 日出东方：【https://www.crozdesk.com/】目录提交 免费"
-    ],
-    "tags": [
-      "reviews",
-      "showcase",
-      "research"
     ],
     "recommenders": null
   },
@@ -1719,7 +1369,6 @@
     "reasons": [
       "💬 Zephyrion（即刻同名）：【https://eu-startups.com/】免费提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1732,11 +1381,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 Angler：35K 免费提交需要审核"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -1751,11 +1395,6 @@
     "reasons": [
       "💬 Kent：有真实流量的导航站，69刀"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -1769,9 +1408,6 @@
     "reasons": [
       "💬 AwesomeYang：单次付费 19$，月付 29$ 无限提交 ，dofollow，接收 AI 工具提交，审核快，一般当天审核上线，快的话几小时上线，Google 收录快。"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -1783,12 +1419,6 @@
     "votes": 3,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -1803,7 +1433,6 @@
       "💬 V.：高dr，免费+付费",
       "💬 鹏之大一锅炖不下：【https://viesearch.com/submit】可以免费提交，流量还挺高的每个月有67K"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1819,7 +1448,6 @@
       "💬 唐先生：谷歌Chrome 应用商店",
       "💬 大学牲：需提交真实插件，开发者注册或增值服务可能收费。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1835,11 +1463,6 @@
       "💬 黄楚标：互联后可直接查看",
       "💬 日出东方：【https://www.gitbook.com/】高权重 免费"
     ],
-    "tags": [
-      "content",
-      "writing",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -1853,11 +1476,6 @@
     "reasons": [
       "💬 Kent：有真实流量的导航站，39刀",
       "💬 Jimmy：【PeerPush】成功率高"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -1873,10 +1491,6 @@
       "💬 Geektao：【Gravatar】高DR，提交简单，可给权重",
       "💬 日出东方：【https://gravatar.com】高权重 免费"
     ],
-    "tags": [
-      "profile",
-      "showcase"
-    ],
     "recommenders": null
   },
   {
@@ -1890,11 +1504,6 @@
     "reasons": [
       "💬 日出东方：高权重 免费"
     ],
-    "tags": [
-      "social",
-      "research",
-      "showcase"
-    ],
     "recommenders": null
   },
   {
@@ -1907,11 +1516,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 日出东方：【https://www.instagram.com/】高权重 免费"
-    ],
-    "tags": [
-      "social",
-      "research",
-      "showcase"
     ],
     "recommenders": null
   },
@@ -1927,10 +1531,6 @@
       "💬 日出东方：【https://wordpress.org/plugins/】高权重,免费",
       "💬 日出东方：免费发表文章"
     ],
-    "tags": [
-      "content",
-      "writing"
-    ],
     "recommenders": null
   },
   {
@@ -1945,7 +1545,6 @@
       "💬 日出东方：免费发表文章",
       "💬 欧文AI出海：【tumblr.com】收录快，外链可带"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1960,7 +1559,6 @@
       "💬 Geektao：【https://wellfound.com/startups/new】免费 Dofollow，品牌搜索可见度极强。",
       "💬 日出东方：公司页 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -1974,9 +1572,6 @@
     "reasons": [
       "💬 日出东方：技术类 免费",
       "💬 Shixy：【Hugging Face】AI 用户集中，模型、Spaces、数据集页面相关性很高"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -1993,7 +1588,6 @@
       "💬 日出东方：目录提交 免费",
       "💬 大学牲：可免费提交，付费加速或推广为可选项。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2007,7 +1601,6 @@
     "reasons": [
       "💬 日出东方：【https://www.notion.so】免费发表文章"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2022,7 +1615,6 @@
       "💬 小羊：类v2ex的社区，审核制",
       "💬 MaynorAI(tryallapi.com)：权重高"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2035,9 +1627,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 安徒生：性价比高，只需要$19"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -2052,12 +1641,6 @@
     "reasons": [
       "💬 安徒生：免费，需要换链"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -2070,11 +1653,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 安徒生：19"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -2089,11 +1667,6 @@
     "reasons": [
       "💬 安徒生：$49"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -2107,7 +1680,6 @@
     "reasons": [
       "💬 安徒生：免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2122,7 +1694,6 @@
       "💬 安徒生：可免费，要换链",
       "💬 张成：几乎每周审核，可以周五提交。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2135,11 +1706,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 山南见曦：高dr的导航站收录速度快,可以免费提交需添加徽章，付费免徽章"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -2154,7 +1720,6 @@
     "reasons": [
       "💬 日出东方：免费目录提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2166,7 +1731,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2178,7 +1742,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2190,11 +1753,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -2208,7 +1766,6 @@
     "reasons": [
       "💬 张成：互换链接，审核很快"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2221,11 +1778,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 hyhor：免费提交，权重高。付费价格也不贵。"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -2240,7 +1792,6 @@
     "reasons": [
       "💬 hyhor：免费提交，权重高。付费价格也不贵。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2252,7 +1803,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2264,7 +1814,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2278,7 +1827,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2291,9 +1839,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 日出东方：【https://www.kaggle.com】技术类 免费"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -2308,7 +1853,6 @@
     "reasons": [
       "💬 Terence‮‮‮脚一你了踹并‭：DR 60，权重较高，效果好"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2323,7 +1867,6 @@
       "💬 Zephyrion（即刻同名）：免费提交",
       "💬 日出东方：【https://www.startupbuffer.com/】目录提交 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2337,7 +1880,6 @@
     "reasons": [
       "💬 Zephyrion（即刻同名）：免费提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2349,7 +1891,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2363,11 +1904,6 @@
     "reasons": [
       "💬 日出东方：【https://aitoolhunt.com/】AI目录 免费"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -2379,7 +1915,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2391,11 +1926,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -2407,9 +1937,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -2422,12 +1949,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 Zephyrion（即刻同名）：【https://aitools.inc/submit】高DR高流量，免费提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -2442,7 +1963,6 @@
     "reasons": [
       "💬 黄楚标：【https://ctrlalt.cc】可免费发布"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2456,7 +1976,6 @@
     "reasons": [
       "💬 Zephyrion（即刻同名）：【https://geekwire.com/】免费提交，高流量，高DR"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2470,7 +1989,6 @@
     "reasons": [
       "💬 山沟沟的孩子：【huntscreens.com】免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2484,11 +2002,6 @@
     "reasons": [
       "💬 Kaiun：【https://toolrain.com/】DR57，目前少数不用等排期的免费外链AI目录站"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -2500,12 +2013,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -2517,7 +2024,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2529,11 +2035,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -2547,7 +2048,6 @@
     "reasons": [
       "💬 日出东方：文档类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2561,7 +2061,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2575,7 +2074,6 @@
     "reasons": [
       "💬 蓝星空：【https://qiita.com/】【免费】一个日语社区，可以发文章加外链，值得好好运营，能带来真实的付费用户。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2589,7 +2087,6 @@
     "reasons": [
       "💬 日出东方：书籍类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2602,10 +2099,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 Terence‮‮‮脚一你了踹并‭：【https://linktr.ee/】DR 93，权重较高，效果好"
-    ],
-    "tags": [
-      "profile",
-      "showcase"
     ],
     "recommenders": null
   },
@@ -2621,7 +2114,6 @@
       "💬 蓝星空：【免费】只有用户 Profile 页面能加一条外链，插件详情页是没有外链的，所以建议一个网站注册一个用户。",
       "💬 日出东方：高权重,免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2635,7 +2127,6 @@
     "reasons": [
       "💬 accessiblefish：免费提交llm.txt获取外链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2648,12 +2139,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 陈陈chen：免费提交的导航站，月访问 500 多 k"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -2668,7 +2153,6 @@
     "reasons": [
       "💬 黄楚标：游戏发布必发"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2683,7 +2167,6 @@
       "💬 黄楚标：注册推送视频等待收录",
       "💬 日出东方：高权重 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2695,9 +2178,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -2710,11 +2190,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 Geektao：收费，47 美刀，高价值"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -2730,7 +2205,6 @@
       "💬 钟耀：免费",
       "💬 日出东方：【https://www.cnblogs.com】中文技术博客 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2744,7 +2218,6 @@
     "reasons": [
       "💬 日出东方：【https://chrome.google.com/】高权重,5刀开通权限即可"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2756,7 +2229,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2770,7 +2242,6 @@
     "reasons": [
       "💬 日出东方：【https://blog.csdn.net】中文高权重 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2784,7 +2255,6 @@
     "reasons": [
       "💬 日出东方：【https://start.me】书籍类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2797,9 +2267,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 小羽：【https://thataicollection.com】dr传播高 ⚠️ 收费"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -2814,7 +2281,6 @@
     "reasons": [
       "💬 日出东方：【https://www.weebly.com】免费发表文章"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2829,7 +2295,6 @@
       "💬 小羽：dr传播高 ⚠️ 收费",
       "💬 Lone Ranger：上面可以输入网址后得到对应的竞争对手分析页面，可以免费获取外链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2842,11 +2307,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 日出东方：高权重 免费"
-    ],
-    "tags": [
-      "design",
-      "inspiration",
-      "showcase"
     ],
     "recommenders": null
   },
@@ -2862,7 +2322,6 @@
       "💬 日出东方：中文社区 需养号",
       "💬 MaynorAI(tryallapi.com)：收录快"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2876,7 +2335,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2890,7 +2348,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2904,7 +2361,6 @@
     "reasons": [
       "💬 日出东方：目录提交 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2918,7 +2374,6 @@
     "reasons": [
       "💬 日出东方：技术类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2932,7 +2387,6 @@
     "reasons": [
       "💬 日出东方：技术类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2946,7 +2400,6 @@
     "reasons": [
       "💬 日出东方：技术类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2960,7 +2413,6 @@
     "reasons": [
       "💬 日出东方：技术类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2974,7 +2426,6 @@
     "reasons": [
       "💬 日出东方：技术类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -2988,7 +2439,6 @@
     "reasons": [
       "💬 日出东方：免费发表文章"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3003,10 +2453,6 @@
       "💬 日出东方：免费发表文章",
       "💬 Jimmy：【Telegra.ph】免费，连注册都不用，一分钟发一篇。实测 31 篇复查 22 篇存活（71%）。关键：正文里的链接是 nofollow，唯一 dofollow 的是作者署名那个链接（author_url），所以要把目标 URL 填在 author_url 里、并且指向内页而不是首页——不知道这点的话发一百篇也是 0 dofollow。"
     ],
-    "tags": [
-      "content",
-      "writing"
-    ],
     "recommenders": null
   },
   {
@@ -3020,7 +2466,6 @@
     "reasons": [
       "💬 日出东方：目录提交 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3032,9 +2477,6 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3049,7 +2491,6 @@
       "💬 Maverick：linktr.ee同类网站, gsc收录, 免费, DR 83",
       "💬 一根木：【https://solo.to/】solo.to：免费自助提交，DR83，做个人/产品主页外链，收录即时生效"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3061,11 +2502,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -3077,9 +2513,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3091,7 +2524,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3103,7 +2535,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3115,12 +2546,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3132,7 +2557,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3144,7 +2568,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3156,7 +2579,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3168,9 +2590,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3184,7 +2603,6 @@
     "reasons": [
       "💬 洪江：免费提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3198,7 +2616,6 @@
     "reasons": [
       "💬 zry：免费且收录快，适合快速上"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3212,7 +2629,6 @@
     "reasons": [
       "💬 zry：免费且收录快"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3226,7 +2642,6 @@
     "reasons": [
       "💬 阿迪ζ：产品对比"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3240,9 +2655,6 @@
     "reasons": [
       "💬 转角喻到 AI：免费工具站，有一定权重，挂徽章后就通过"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3254,9 +2666,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3269,11 +2678,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 李胜：免费/收录快/效果不错"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -3288,7 +2692,6 @@
     "reasons": [
       "💬 cherry：游戏领域高权重网站，发文推荐自己的网站，谷歌爬虫特别快，收录也会很快。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3302,7 +2705,6 @@
     "reasons": [
       "💬 安徒生：$9.9，自助操作，不需要审核"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3316,7 +2718,6 @@
     "reasons": [
       "💬 召唤兽：免费提交需挂徽章"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3330,7 +2731,6 @@
     "reasons": [
       "💬 安徒生：$29"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3344,7 +2744,6 @@
     "reasons": [
       "💬 zzl：收录快"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3358,7 +2757,6 @@
     "reasons": [
       "💬 安徒生：$9.9"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3371,9 +2769,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 安徒生：$28,中文站"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -3388,7 +2783,6 @@
     "reasons": [
       "💬 安徒生：可免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3401,12 +2795,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 安徒生：$9.9"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -3421,7 +2809,6 @@
     "reasons": [
       "💬 安徒生：免费，中文站"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3435,9 +2822,6 @@
     "reasons": [
       "💬 安徒生：免费"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3449,7 +2833,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3462,11 +2845,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 山南见曦：高dr的导航站收录速度快,可以免费提交需添加徽章，付费免徽章"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -3481,11 +2859,6 @@
     "reasons": [
       "💬 山南见曦：高dr的导航站收录速度快，选择发布日免费提交发布"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -3497,7 +2870,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3509,9 +2881,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3523,7 +2892,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3535,7 +2903,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3547,7 +2914,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3559,7 +2925,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3571,12 +2936,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3588,7 +2947,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3600,7 +2958,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3612,11 +2969,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -3628,7 +2980,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3640,7 +2991,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3652,7 +3002,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3664,7 +3013,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3676,7 +3024,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3688,7 +3035,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3700,7 +3046,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3712,7 +3057,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3724,7 +3068,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3736,7 +3079,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3748,11 +3090,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -3764,7 +3101,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3778,7 +3114,6 @@
     "reasons": [
       "💬 Zephyrion（即刻同名）：中等DR/流量，免费提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3790,9 +3125,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3804,7 +3136,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3816,7 +3147,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3828,11 +3158,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -3844,7 +3169,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3856,7 +3180,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3868,7 +3191,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3880,7 +3202,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3892,7 +3213,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3904,12 +3224,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3921,7 +3235,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3933,7 +3246,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3945,9 +3257,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -3959,7 +3268,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3971,7 +3279,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3983,7 +3290,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -3995,7 +3301,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4007,7 +3312,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4019,7 +3323,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4031,7 +3334,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4043,7 +3345,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4055,7 +3356,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4067,11 +3367,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -4083,9 +3378,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4097,7 +3389,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4109,9 +3400,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4123,11 +3411,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -4139,7 +3422,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4151,11 +3433,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -4167,12 +3444,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4184,7 +3455,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4196,7 +3466,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4208,9 +3477,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4222,7 +3488,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4234,7 +3499,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4246,7 +3510,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4258,7 +3521,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4270,7 +3532,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4282,7 +3543,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4294,11 +3554,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -4312,7 +3567,6 @@
     "reasons": [
       "💬 行知：付 15 美元可以获得包括SaaSGrow.app 以及StartupTrusted 在内的三个高dr 外链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4324,12 +3578,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4341,11 +3589,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -4357,7 +3600,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4369,7 +3611,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4381,9 +3622,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4395,9 +3633,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4409,9 +3644,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4423,7 +3655,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4435,7 +3666,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4447,7 +3677,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4459,7 +3688,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4471,9 +3699,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4487,7 +3712,6 @@
     "reasons": [
       "💬 Zephyrion（即刻同名）：免费提交，高流量，高DR"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4501,7 +3725,6 @@
     "reasons": [
       "💬 Zephyrion（即刻同名）：免费提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4513,11 +3736,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -4529,7 +3747,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4541,7 +3758,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4553,7 +3769,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4565,7 +3780,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4577,7 +3791,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4589,7 +3802,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4601,7 +3813,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4613,7 +3824,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4627,7 +3837,6 @@
     "reasons": [
       "💬 杨feng：yandex 搜索助力，免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4639,9 +3848,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4653,12 +3859,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4670,9 +3870,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4684,9 +3881,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4698,9 +3892,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4712,9 +3903,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4726,11 +3914,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -4742,7 +3925,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4754,12 +3936,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4771,7 +3947,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4783,7 +3958,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4795,7 +3969,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4807,7 +3980,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4819,7 +3991,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4833,7 +4004,6 @@
     "reasons": [
       "💬 Geektao：Dofollow + Free + Easy"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4847,7 +4017,6 @@
     "reasons": [
       "💬 山沟沟的孩子：免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4859,7 +4028,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4871,7 +4039,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4883,7 +4050,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4895,7 +4061,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4907,9 +4072,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -4923,7 +4085,6 @@
     "reasons": [
       "💬 v：发现的一个接受提交的科技媒体、目录、newsletter 按域名权重（DR）排成一张大表，每个都标了提交入口、读者量和联系方式"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4937,7 +4098,6 @@
     "reasons": [
       "💬 Kerwin：评论有审核，避免垃圾评论，但不是绝对过不了；网站比较综合，搜到相关题材再发。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4951,7 +4111,6 @@
     "reasons": [
       "💬 Kerwin：棒子版小红书，做韩语必须经营。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4965,7 +4124,6 @@
     "reasons": [
       "💬 Kerwin：博客站，DR 很高 92。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4977,7 +4135,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -4989,12 +4146,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -5006,12 +4157,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -5024,12 +4169,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 kingluo：面向 AI 工具的付费目录，一次性约 69 美元，提供长期产品展示页，适合获取 AI 垂直用户曝光和长期外链。"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -5044,12 +4183,6 @@
     "reasons": [
       "💬 sunboy：我亲自维护的导航站 Dr 51 , 可以付费, 也可以免费提交, 有任何问题直接联系我"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -5063,7 +4196,6 @@
     "reasons": [
       "💬 钟耀：免费，dr 高"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5075,12 +4207,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -5092,7 +4218,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5104,7 +4229,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5116,7 +4240,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5129,11 +4252,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 JsonChao：最近3个月新崛起的品牌导航站，有付费用户，性价比尚可"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -5148,7 +4266,6 @@
     "reasons": [
       "💬 小占：免费博客评论外链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5162,7 +4279,6 @@
     "reasons": [
       "💬 小占：免费博客评论外链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5176,7 +4292,6 @@
     "reasons": [
       "💬 小占：免费博客评论外链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5190,7 +4305,6 @@
     "reasons": [
       "💬 黄楚标：shopify 论坛评论"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5204,7 +4318,6 @@
     "reasons": [
       "💬 醉春风：免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5217,12 +4330,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 低位：DR=63 可交换提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -5237,7 +4344,6 @@
     "reasons": [
       "💬 哞咦：博客评论站，免费，DR高"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5251,7 +4357,6 @@
     "reasons": [
       "💬 陈陈chen：免费提交的博客评论，可被 GSC 收录"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5265,7 +4370,6 @@
     "reasons": [
       "💬 陈陈chen：免费提交的博客评论，可被 GSC 收录"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5277,7 +4381,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5291,7 +4394,6 @@
     "reasons": [
       "💬 Andy：个人主页信息可以填，手机版可以填个人网站"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5305,7 +4407,6 @@
     "reasons": [
       "💬 阿林：Bing 的流量作为补充也不可忽视"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5319,7 +4420,6 @@
     "reasons": [
       "💬 BOYSO：生活类博客，DR50+，免费，可发锚文本反链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5333,7 +4433,6 @@
     "reasons": [
       "💬 BOYSO：动漫博客，DR45，免费，可发锚文本反链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5347,7 +4446,6 @@
     "reasons": [
       "💬 BOYSO：企业类，DR26，免费，Dofollow,可发锚文本反链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5360,12 +4458,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 BOYSO：AI导航站，DR65，付费49.9，Dofollow,优惠码 GEFEI 享9折"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -5380,7 +4472,6 @@
     "reasons": [
       "💬 唐先生：谷歌地图"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5392,7 +4483,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5404,7 +4494,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5416,7 +4505,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5428,7 +4516,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5440,7 +4527,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5452,7 +4538,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5464,7 +4549,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5476,7 +4560,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5488,7 +4571,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5500,7 +4582,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5512,7 +4593,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5524,7 +4604,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5536,7 +4615,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5548,7 +4626,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5560,7 +4637,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5572,7 +4648,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5584,7 +4659,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5596,7 +4670,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5608,7 +4681,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5620,7 +4692,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5632,7 +4703,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5644,7 +4714,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5656,7 +4725,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5668,7 +4736,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5680,7 +4747,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5692,7 +4758,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5704,9 +4769,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -5718,7 +4780,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5730,7 +4791,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5742,7 +4802,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5754,7 +4813,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5766,7 +4824,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5778,9 +4835,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -5792,7 +4846,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5806,7 +4859,6 @@
     "reasons": [
       "💬 日出东方：高权重,免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5819,11 +4871,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 日出东方：免费目录提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -5838,11 +4885,6 @@
     "reasons": [
       "💬 日出东方：10$ 目录提交"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -5854,7 +4896,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5868,7 +4909,6 @@
     "reasons": [
       "💬 日出东方：免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5882,7 +4922,6 @@
     "reasons": [
       "💬 日出东方：免费 二级域名博客"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5896,7 +4935,6 @@
     "reasons": [
       "💬 日出东方：免费 二级域名博客"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5910,7 +4948,6 @@
     "reasons": [
       "💬 日出东方：免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5924,7 +4961,6 @@
     "reasons": [
       "💬 日出东方：高权重 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5938,7 +4974,6 @@
     "reasons": [
       "💬 日出东方：免费 提交提案"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5952,7 +4987,6 @@
     "reasons": [
       "💬 日出东方：job类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5966,7 +5000,6 @@
     "reasons": [
       "💬 日出东方：job类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5980,7 +5013,6 @@
     "reasons": [
       "💬 日出东方：发表文章 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -5994,7 +5026,6 @@
     "reasons": [
       "💬 日出东方：job类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6008,7 +5039,6 @@
     "reasons": [
       "💬 日出东方：目录提交 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6020,7 +5050,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6032,9 +5061,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -6048,7 +5074,6 @@
     "reasons": [
       "💬 日出东方：高权重 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6062,7 +5087,6 @@
     "reasons": [
       "💬 日出东方：高权重 免费建wiki"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6076,7 +5100,6 @@
     "reasons": [
       "💬 日出东方：免费wiki"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6090,7 +5113,6 @@
     "reasons": [
       "💬 日出东方：论坛聚合 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6104,7 +5126,6 @@
     "reasons": [
       "💬 日出东方：占星论坛 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6118,7 +5139,6 @@
     "reasons": [
       "💬 日出东方：占星论坛 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6132,7 +5152,6 @@
     "reasons": [
       "💬 日出东方：占星论坛 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6146,7 +5165,6 @@
     "reasons": [
       "💬 日出东方：高权重 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6160,7 +5178,6 @@
     "reasons": [
       "💬 日出东方：中文技术 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6174,7 +5191,6 @@
     "reasons": [
       "💬 日出东方：中文高权重 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6188,7 +5204,6 @@
     "reasons": [
       "💬 日出东方：中文发文 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6202,7 +5217,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6216,7 +5230,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6230,7 +5243,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6244,7 +5256,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6258,7 +5269,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6272,7 +5282,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6286,7 +5295,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6300,7 +5308,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6314,7 +5321,6 @@
     "reasons": [
       "💬 日出东方：设计图片类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6328,7 +5334,6 @@
     "reasons": [
       "💬 日出东方：视频类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6342,7 +5347,6 @@
     "reasons": [
       "💬 日出东方：视频类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6356,7 +5360,6 @@
     "reasons": [
       "💬 日出东方：视频类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6370,7 +5373,6 @@
     "reasons": [
       "💬 日出东方：文档类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6384,7 +5386,6 @@
     "reasons": [
       "💬 日出东方：社区类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6398,7 +5399,6 @@
     "reasons": [
       "💬 日出东方：高权重 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6412,7 +5412,6 @@
     "reasons": [
       "💬 日出东方：高权重 视频 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6426,7 +5425,6 @@
     "reasons": [
       "💬 日出东方：高权重 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6440,7 +5438,6 @@
     "reasons": [
       "💬 日出东方：高权重 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6454,7 +5451,6 @@
     "reasons": [
       "💬 日出东方：职场 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6468,7 +5464,6 @@
     "reasons": [
       "💬 日出东方：社区类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6482,7 +5477,6 @@
     "reasons": [
       "💬 日出东方：文档类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6496,7 +5490,6 @@
     "reasons": [
       "💬 日出东方：书签 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6510,7 +5503,6 @@
     "reasons": [
       "💬 日出东方：书籍类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6523,9 +5515,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 日出东方：GPT类目录 免费"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -6540,7 +5529,6 @@
     "reasons": [
       "💬 日出东方：技术类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6554,7 +5542,6 @@
     "reasons": [
       "💬 日出东方：技术类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6568,7 +5555,6 @@
     "reasons": [
       "💬 日出东方：技术类 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6582,7 +5568,6 @@
     "reasons": [
       "💬 日出东方：免费发表文章"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6596,7 +5581,6 @@
     "reasons": [
       "💬 日出东方：免费发表文章"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6610,7 +5594,6 @@
     "reasons": [
       "💬 日出东方：免费发表文章"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6624,7 +5607,6 @@
     "reasons": [
       "💬 日出东方：免费发表文章"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6638,7 +5620,6 @@
     "reasons": [
       "💬 日出东方：免费发表文章"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6652,7 +5633,6 @@
     "reasons": [
       "💬 日出东方：高权重 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6666,7 +5646,6 @@
     "reasons": [
       "💬 日出东方：目录提交 免费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6678,7 +5657,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6690,9 +5668,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -6705,11 +5680,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 嵩皓：免费、无需注册、无验证码，全程可自动化。站点主题是\"无需登录即可用的工具\"，工具类站点非常契合。亲测：7月30日提交，约 20 天上线，dofollow（8月19日确认 live）。注意：listing 不进 sitemap，回查请直接访问 listing URL"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -6724,7 +5694,6 @@
     "reasons": [
       "💬 路漫漫：DR91，操作简单：需要上架一个商品，代码、模板等，在商品简介里加上自己的网站。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6738,7 +5707,6 @@
     "reasons": [
       "💬 路漫漫：DR92，同codecanyon.net，需要上架一个商品，在商品简介里加上自己的网站。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6752,7 +5720,6 @@
     "reasons": [
       "💬 路漫漫：DR93，其中的 bookmark 功能，可以添加书签，书签里可以加上自己多个网站的链接。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6765,12 +5732,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 鹏之大一锅炖不下：AI工具站类导航站可以免费提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -6785,7 +5746,6 @@
     "reasons": [
       "💬 鹏之大一锅炖不下：可以免费提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6798,12 +5758,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 鹏之大一锅炖不下：工具类导航站，可以免费提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -6818,11 +5772,6 @@
     "reasons": [
       "💬 鹏之大一锅炖不下：AI工具导航站，可以免费提交"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -6836,11 +5785,6 @@
     "reasons": [
       "💬 鹏之大一锅炖不下：工具导航站，可以免费提交"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -6852,7 +5796,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6864,7 +5807,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6878,7 +5820,6 @@
     "reasons": [
       "💬 Lyman：无需审核，免费提交，dofollow"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6892,7 +5833,6 @@
     "reasons": [
       "💬 Lyman：需要审核，免费提交，有中文的可以提交下，可以带来国内访问量"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6905,11 +5845,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 accessiblefish：免费提交llm.txt获取外链"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -6924,7 +5859,6 @@
     "reasons": [
       "💬 accessiblefish：个人主页可以填url"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6938,7 +5872,6 @@
     "reasons": [
       "💬 羊羊羊：已验证过，semrush能抓到，免费提交，一个新产品发布与展示平台（类似于 Product Hunt 的替代品或轻量版），专门供开发者、创客和团队提交、展示自己开发的新软件、工具或 SaaS 服务。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6952,12 +5885,6 @@
     "reasons": [
       "💬 羊羊羊：已验证过，semrush能抓到，免费提交，一个专门收录和分类 AI 应用的独立 AI 工具目录网站（AI Tools Directory/Catalog）"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -6969,7 +5896,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6981,7 +5907,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -6993,7 +5918,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7007,7 +5931,6 @@
     "reasons": [
       "💬 大学牲：免费建档，适合实体或本地业务，通常需要完成商家验证。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7021,7 +5944,6 @@
     "reasons": [
       "💬 大学牲：基础资料可能免费，BBB Accreditation 认证通常收费。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7033,7 +5955,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7045,7 +5966,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7057,7 +5977,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7069,7 +5988,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7081,7 +5999,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7093,11 +6010,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -7109,7 +6021,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7121,7 +6032,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7133,7 +6043,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7147,7 +6056,6 @@
     "reasons": [
       "💬 大学牲：可免费提交专家观点，高级订阅可能收费。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7159,7 +6067,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7171,7 +6078,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7183,7 +6089,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7195,7 +6100,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7207,7 +6111,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7219,7 +6122,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7231,7 +6133,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7243,7 +6144,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7255,7 +6155,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7267,7 +6166,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7279,7 +6177,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7291,7 +6188,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7303,9 +6199,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -7317,9 +6210,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -7331,7 +6221,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7343,7 +6232,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7355,7 +6243,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7367,7 +6254,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7381,7 +6267,6 @@
     "reasons": [
       "💬 Angler：日语地区博客平台，可以发布文章"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7393,7 +6278,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7405,9 +6289,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -7419,7 +6300,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7431,7 +6311,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7443,7 +6322,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7457,11 +6335,6 @@
     "reasons": [
       "💬 Gallifrey Peng：WithAI.Top AI导航站，我自己维护的导航站，可以免费提交 也可以付费提交"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -7473,7 +6346,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7487,7 +6359,6 @@
     "reasons": [
       "💬 Maverick：gsc收录, 免费, DR 80, 网站本身流量大"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7501,7 +6372,6 @@
     "reasons": [
       "💬 Maverick：免费, gsc收录, DR 69"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7513,7 +6383,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7527,11 +6396,6 @@
     "reasons": [
       "💬 新原：免费，45DR，通过快"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -7543,7 +6407,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7555,7 +6418,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7567,7 +6429,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7579,7 +6440,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7593,7 +6453,6 @@
     "reasons": [
       "💬 Alan：可以发布文章，嵌入Dofollow外链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7607,7 +6466,6 @@
     "reasons": [
       "💬 Alan：可以提交外链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7621,7 +6479,6 @@
     "reasons": [
       "💬 Alan：个人资料可以添加外链"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7633,7 +6490,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7645,9 +6501,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -7659,9 +6512,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -7673,12 +6523,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -7691,11 +6535,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 小羽：dr传播高 ⚠️ 收费"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -7710,11 +6549,6 @@
     "reasons": [
       "💬 小羽：dr传播高 ⚠️ 收费"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -7727,9 +6561,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 小羽：dr传播高 ⚠️ 收费"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -7744,7 +6575,6 @@
     "reasons": [
       "💬 小羽：dr传播高 ⚠️ 收费"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7757,11 +6587,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 小Ben：免费，不加徽章也是 dofollow ⚠️ 新网址流量一般"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -7776,7 +6601,6 @@
     "reasons": [
       "💬 algo：免费 ⚠️ 新网址流量一般"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7789,9 +6613,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 Zhou.：免费提交，ai 一键生成内容。获得高质量外链 dr66"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -7806,12 +6627,6 @@
     "reasons": [
       "💬 明智：DR 15 25年的站，$6.9 ⚠️ 主要流量是中文"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -7824,12 +6639,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 Nitor：适合独立开发者和 AI 产品团队免费提交自己的应用网站。通过人工审核后获得工具展示页，以中英文介绍产品功能、使用场景和价格，方便用户按分类发现你的产品。已有上线产品的开发者，欢迎直接提交。"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -7844,9 +6653,6 @@
     "reasons": [
       "💬 請給我一支蘭州：免费"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -7858,11 +6664,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -7874,7 +6675,6 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7888,7 +6688,6 @@
     "reasons": [
       "💬 hyhor：免费提交，权重高。付费价格也不贵。"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -7901,11 +6700,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 hyhor：权重中等，价格很便宜。"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -7920,9 +6714,6 @@
     "reasons": [
       "💬 一根木：AgentHunter：AI Agent 专属目录，DR60，免费收录 ⚠️ 外链多为 nofollow；审核偏慢（约 14 天）"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -7935,9 +6726,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：Appscribed：免费提交（人工审核），DR40，AI 工具对比平台"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -7952,11 +6740,6 @@
     "reasons": [
       "💬 一根木：aitoolsmarketer.com：DR37"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -7969,12 +6752,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：toolpotion.ai：免费提交（人工审核），DR35，审核约 1 天"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -7989,11 +6766,6 @@
     "reasons": [
       "💬 一根木：imagetovideoai.tools：免费提交（人工审核），DR22"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -8006,11 +6778,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：listyourtool.com：免费提交（人工审核），DR15"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -8025,7 +6792,6 @@
     "reasons": [
       "💬 一根木：bestaifor.com：免费提交（人工审核），DR6"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8038,11 +6804,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：findaitools.pro：免费提交（人工审核）"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -8057,9 +6818,6 @@
     "reasons": [
       "💬 一根木：Muzie — alternatives pages：免费自助提交"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -8073,7 +6831,6 @@
     "reasons": [
       "💬 一根木：GetLatka"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8087,7 +6844,6 @@
     "reasons": [
       "💬 一根木：hyzenpro.com：免费提交（人工审核）"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8100,9 +6856,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：The AI Navigator"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -8117,12 +6870,6 @@
     "reasons": [
       "💬 一根木：AI Tools List：免费自助提交"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -8135,9 +6882,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：AI导航 Dreamthere：免费自助提交"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -8152,11 +6896,6 @@
     "reasons": [
       "💬 一根木：kis.tools — kept it simple：免费自助提交"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -8169,9 +6908,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：ThatsMyAI：免费自助提交"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -8186,11 +6922,6 @@
     "reasons": [
       "💬 一根木：Landin Tools：免费自助提交"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -8204,7 +6935,6 @@
     "reasons": [
       "💬 一根木：Daily Zaps Hub：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8217,11 +6947,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：Once.tools：免费自助提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -8236,9 +6961,6 @@
     "reasons": [
       "💬 一根木：AI NavHub：免费自助提交"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -8252,7 +6974,6 @@
     "reasons": [
       "💬 一根木：Micro SaaS Examples：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8265,9 +6986,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：RightAI Directory：免费自助提交"
-    ],
-    "tags": [
-      "ai"
     ],
     "recommenders": null
   },
@@ -8282,7 +7000,6 @@
     "reasons": [
       "💬 一根木：AIPulse：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8295,12 +7012,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：AI Tools Saver：免费自助提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -8315,11 +7026,6 @@
     "reasons": [
       "💬 一根木：AIToolzDir：免费自助提交"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -8333,7 +7039,6 @@
     "reasons": [
       "💬 一根木：AITrendz：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8346,12 +7051,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：Free AI Tools Directory：免费自助提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -8366,9 +7065,6 @@
     "reasons": [
       "💬 一根木：Dynamite AI：免费自助提交"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -8382,7 +7078,6 @@
     "reasons": [
       "💬 一根木：Joinly：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8395,11 +7090,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：SimplifyAI Tools：免费自助提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -8414,11 +7104,6 @@
     "reasons": [
       "💬 一根木：aitoolsmagazine.com：免费自助提交"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
-    ],
     "recommenders": null
   },
   {
@@ -8432,7 +7117,6 @@
     "reasons": [
       "💬 一根木：alltopstartups.com：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8446,7 +7130,6 @@
     "reasons": [
       "💬 一根木：betapage.co：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8460,7 +7143,6 @@
     "reasons": [
       "💬 一根木：bufferapps.com：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8474,7 +7156,6 @@
     "reasons": [
       "💬 一根木：digitalcreatorai.com：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8487,11 +7168,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：flowtools.co：免费自助提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -8506,12 +7182,6 @@
     "reasons": [
       "💬 一根木：navtools.ai：免费自助提交"
     ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -8524,11 +7194,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：productivity.directory：免费自助提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -8543,7 +7208,6 @@
     "reasons": [
       "💬 一根木：starthub.zip：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8557,7 +7221,6 @@
     "reasons": [
       "💬 一根木：aidirs.best：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8570,11 +7233,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：aitoolswiki.com：免费自助提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -8589,7 +7247,6 @@
     "reasons": [
       "💬 一根木：Startup Collections：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8602,11 +7259,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：AIToolTrek：免费自助提交"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   },
@@ -8621,7 +7273,6 @@
     "reasons": [
       "💬 一根木：aiagentslive.com：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8634,12 +7285,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：BasedTools ⚠️ 需要注册账号"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -8654,9 +7299,6 @@
     "reasons": [
       "💬 一根木：The AI Warehouse"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -8669,12 +7311,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 一根木：toolfinder.com：AI 工具目录，可提交收录"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration",
-      "ai"
     ],
     "recommenders": null
   },
@@ -8689,9 +7325,6 @@
     "reasons": [
       "💬 一根木：AIHubs：免费自助提交"
     ],
-    "tags": [
-      "ai"
-    ],
     "recommenders": null
   },
   {
@@ -8705,7 +7338,6 @@
     "reasons": [
       "💬 一根木：Advanced Innovation：免费自助提交"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8719,7 +7351,6 @@
     "reasons": [
       "💬 Kzy：直接发布"
     ],
-    "tags": [],
     "recommenders": null
   },
   {
@@ -8732,11 +7363,6 @@
     "recommendationTotal": 1,
     "reasons": [
       "💬 dangkang：在similarweb DR=14"
-    ],
-    "tags": [
-      "directory",
-      "showcase",
-      "inspiration"
     ],
     "recommenders": null
   }
