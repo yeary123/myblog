@@ -1,0 +1,20 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "luna-links-sync",
+  "main": "index.ts",
+  "compatibility_date": "2026-11-07",
+  "workers_dev": false,
+  "routes": [{ "pattern": "links-sync.builtbyluna.cc", "custom_domain": true }],
+  "vars": { "SITE_ORIGIN": "https://builtbyluna.cc" },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "luna-links-personal",
+    "database_id": "92f376e1-5225-410e-8ecc-df5ff9bef5f8",
+    "migrations_dir": "migrations"
+  }],
+  "ratelimits": [{
+    "name": "LOGIN_RATE_LIMITER",
+    "namespace_id": "1681376601",
+    "simple": { "limit": 5, "period": 60 }
+  }]
+}

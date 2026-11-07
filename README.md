@@ -12,6 +12,7 @@
 
 个人标签、笔记和熟悉度保存在浏览器 localStorage，页面支持 JSON 导入与导出，
 完整来源列表保存在 `public/data/external-links.csv`。新设备需要手动导入备份。
+可选的个人云端同步使用 Cloudflare Workers + D1，无需自行维护服务器；配置后通过个人同步密钥在不同设备同步标签、笔记和熟悉度。未配置时仍使用原有本地存储。实现、冲突处理与部署步骤见 [个人外链同步](docs/personal-link-sync.md)。
 纯逻辑检查：`node --experimental-strip-types --test scripts/link-library.test.mjs`。
 部署沿用推送 main 后的 GitHub Pages workflow，正式地址为 https://builtbyluna.cc/links/ 。
 

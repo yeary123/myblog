@@ -30,6 +30,7 @@ jobs:
           # asset URLs point at /repo/_astro/… and CSS/JS 404 on builtbyluna.cc.
           ASTRO_BASE_PATH: /
           PUBLIC_SITE_URL: https://builtbyluna.cc
+          PUBLIC_LINK_SYNC_URL: ${{ vars.PUBLIC_LINK_SYNC_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

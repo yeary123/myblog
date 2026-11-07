@@ -1,6 +1,8 @@
 import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type ChangeEvent } from 'react';
 import allEntries from '../../data/external-links.json';
 import { assignedTags, buildReviewQueue, getRecord, levelNames, matchesTagFilters, newData, validateBackup, type Entry, type LibraryData, type Tag } from '../../lib/link-library';
+import PersonalSync from './PersonalSync';
+import { useLibrarySync } from './useLibrarySync';
 
 const entries: Entry[]=allEntries;
 const storageKey='luna-link-library-v1';
@@ -42,6 +44,7 @@ export default function LinkLibrary(){
   const fileInput=useRef<HTMLInputElement>(null);
   const reviewHeading=useRef<HTMLHeadingElement>(null);
   const lastSaved=useRef(data);
+  const sync=useLibrarySync(data,setData,ready);
 
   useEffect(()=>{
     try{const saved=localStorage.getItem(storageKey);if(saved)setData(validateBackup(JSON.parse(saved),entries));}
@@ -112,6 +115,7 @@ export default function LinkLibrary(){
       <div className="ll-nav"><button aria-pressed={!review} onClick={()=>setReview(null)}>外链库</button><button aria-pressed={!!review} onClick={()=>review?setReview(review):startReview()}>复习 {Math.min(3,filtered.length)} 个 ↗</button></div>
     </header>
     <div className="ll-personal"><span className="ll-small">个人记录保存在当前浏览器，可导出备份。</span><div className="ll-actions"><button onClick={exportBackup} disabled={!ready}>导出备份</button><button onClick={()=>fileInput.current?.click()} disabled={!ready}>导入备份</button><input className="ll-sr" ref={fileInput} type="file" accept=".json,application/json" onChange={importBackup} aria-label="选择备份文件" /></div></div>
+    <PersonalSync sync={sync} />
     {storageWarning&&<p role="alert" className="ll-warning">{storageWarning}</p>}
     <p className="ll-message" role="status" aria-live="polite">{message}</p>
     {review ? review.done ? <div className="ll-complete"><h2 ref={reviewHeading} tabIndex={-1}>又和它们熟悉了一点。</h2><p>复习了 {review.queue.length} 个，其中 {Object.values(review.answers).filter(v=>v===2).length} 个能自己想起用途。</p><ul>{review.queue.map(entry=><li key={entry.id}><span>{entry.name}</span><span>{['再熟悉一下','有点印象','想起来了'][review.answers[entry.id]]}</span></li>)}</ul><div className="ll-actions"><button onClick={()=>setReview(null)}>回外链库</button><button className="ll-primary" onClick={startReview}>再复习几个</button></div></div> : (()=>{

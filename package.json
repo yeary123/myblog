@@ -9,7 +9,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "node --experimental-strip-types --test scripts/*.test.mjs",
+    "check": "tsc --noEmit",
+    "sync:dev": "wrangler dev --config worker/wrangler.jsonc --var SITE_ORIGIN:http://localhost:4321",
+    "sync:deploy": "wrangler deploy --config worker/wrangler.jsonc",
+    "sync:migrate:local": "wrangler d1 migrations apply luna-links-personal --local --config worker/wrangler.jsonc",
+    "sync:migrate": "wrangler d1 migrations apply luna-links-personal --remote --config worker/wrangler.jsonc"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
@@ -24,5 +30,9 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "wrangler": "^4.158.0"
   }
 }
