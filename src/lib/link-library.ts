@@ -1,5 +1,13 @@
 export type Tag = { id: string; name: string };
-export type Entry = { id: string; order: number; name: string; domain: string; url: string; votes: number | null; recommendationTotal: number; reasons: string[] };
+export type Entry = { id: string; order: number; name: string; domain: string; url: string; votes: number | null; recommendationTotal: number; reasons: string[]; fees?: string[] };
+export const feeLabels = { free: '免费', paid: '收费' };
+export type Fee = keyof typeof feeLabels;
+export function entryFees(entry: Entry): Fee[] {
+  return (Object.keys(feeLabels) as Fee[]).filter(fee => entry.fees?.includes(fee));
+}
+export function matchesFeeFilter(entry: Entry, fee: Fee | null): boolean {
+  return fee === null || entryFees(entry).includes(fee);
+}
 export type RecordState = { level: number; note: string; seen: number };
 export type DeletedTag = { tag: Tag; entryIds: string[]; deletedAt: number; position: number };
 export type JournalEntry = { date: string; work: string; published: number; urls: string[]; next: string; updatedAt: number };

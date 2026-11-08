@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { archiveTag, assignedTags, buildReviewQueue, createCustomEntry, matchesTagFilters, normalizeLinkUrl, newData, permanentlyDeleteTag, restoreTag, validateBackup } from '../src/lib/link-library.ts';
+import { archiveTag, assignedTags, buildReviewQueue, createCustomEntry, entryFees, matchesFeeFilter, matchesTagFilters, normalizeLinkUrl, newData, permanentlyDeleteTag, restoreTag, validateBackup } from '../src/lib/link-library.ts';
 const make=(id,order)=>({id,order,name:id,url:'https://example.com',domain:'example.com',votes:null,recommendationTotal:0,reasons:[]});
 const entries=[make('first',1),make('second',2),make('third',3),make('fourth',4)];
 test('new libraries have no tags and never fall back to source classifications',()=>{
@@ -114,4 +114,15 @@ test('permanent deletion removes only the archived tag and its associations with
  assert.deepEqual(validateBackup(JSON.parse(JSON.stringify(deleted)),entries),deleted);
  assert.equal(restoreTag(deleted,'tag-delete'),deleted,'a permanently deleted tag cannot be restored');
  assert.equal(permanentlyDeleteTag(data,'tag-keep'),data,'active tags must first be archived');
+});
+
+test('fee tags filter free and paid options without inventing a tag for unknown fees',()=>{
+ const free={...entries[0],fees:['free']}, paid={...entries[1],fees:['paid']}, both={...entries[2],fees:['free','paid']}, unknown={...entries[3],reasons:['费用不明确']};
+ assert.deepEqual([free,paid,both,unknown].filter(entry=>matchesFeeFilter(entry,'free')).map(entry=>entry.id),['first','third']);
+ assert.deepEqual([free,paid,both,unknown].filter(entry=>matchesFeeFilter(entry,'paid')).map(entry=>entry.id),['second','third']);
+ assert.deepEqual(entryFees(unknown),[]);
+ assert.deepEqual(entryFees({...unknown,fees:['unknown']}),[]);
+ assert.equal(matchesFeeFilter(unknown,null),true);
+ const data=newData();data.tags=[{id:'tag-mine',name:'我的'}];data.assignments={third:['tag-mine']};
+ assert.deepEqual([free,paid,both,unknown].filter(entry=>matchesFeeFilter(entry,'free')&&matchesTagFilters(data,entry,['tag-mine'])).map(entry=>entry.id),['third']);
 });

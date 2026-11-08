@@ -1,4 +1,4 @@
-"""Refresh source counts from a saved Web.Cafe page, keeping saved comments by URL.
+"""Refresh source counts from a saved Web.Cafe page, keeping curated descriptions and fee tags by URL.
 
 Usage: python3 scripts/refresh-webcafe-metadata.py /absolute/path/to/saved-page.html
 """
@@ -74,10 +74,10 @@ for anchor in walk(tree.root):
     recommenders = re.search(r'(\d+)\s*人推荐', card.text())
     entry['id'] = 'link-' + hashlib.sha256(url.encode()).hexdigest()[:12]
     entry['votes'] = int(vote.group(1)) if vote else None
-    entry['recommendationTotal'] = int(expanded.group(1)) if expanded else len(entry['reasons'])
+    entry['recommendationTotal'] = int(expanded.group(1)) if expanded else entry.get('sourceReasonCount', len(entry['reasons']))
     entry['recommenders'] = int(recommenders.group(1)) if recommenders else None
     found.add(url)
 if len(found) != len(records):
     raise ValueError(f'Archive only matches {len(found)} of {len(records)} records; no file written.')
 target.write_text(json.dumps(records, ensure_ascii=False, indent=2) + '\n')
-print(f'Refreshed {len(records)} records; preserved all saved comments.')
+print(f'Refreshed {len(records)} records; preserved all curated descriptions and fee tags.')

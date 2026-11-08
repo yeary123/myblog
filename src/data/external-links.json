@@ -8,28 +8,13 @@
     "votes": 78,
     "recommendationTotal": 41,
     "reasons": [
-      "💬 XH：不费事儿获得一个外链 ⚠️ 选项太多",
-      "💬 哥飞：⚠️ 越来越难被编辑精选了，而且如果你不是准备了充足的票数资源，就不要去冲榜，直接提交完就走就行，拿到一个外链就行",
-      "💬 mhhya：免费，权重高，gsc收录",
-      "💬 GIGI：权威 上线快（nofollow）",
-      "💬 袁锐钦：外链权重顶级。发布当天冲排名是门技术活，提前准备图 + 介绍 + 找朋友顶",
-      "💬 一箭：【https://www.producthunt.com/】高权重免费外链",
-      "💬 阿迪ζ：【https://producthunt.com/】P站，最大产品发布平台，必发",
-      "💬 向左：【Product Hunt】免费，高权重产品页、品牌曝光、可直接放官网；还可能获得真实用户和二次转载",
-      "💬 轻舟：【https://www.producthunt.com/】免费提交。适合新品首发，能拿到早期用户和真实反馈。",
-      "💬 貮皮：【https://www.producthunt.com】DR 91，月访问量 3.6M",
-      "💬 Zephyrion（即刻同名）：【https://www.producthunt.com/】高DR高流量，免费提交",
-      "💬 星辰千里：【Producthunt.com】权重高，流量大，容易发，免费",
-      "💬 东君：【Product Hunt】免费提交，带来一定的曝光量",
-      "💬 Tyler：【Product Hunt】适合新网站/新产品上线时发布，可以获得产品曝光、用户访问和自然外链，也有机会获得早期用户反馈。",
-      "💬 shine_forever：【https://www.producthunt.com/】海外人群一个曝光机会",
-      "💬 峻菁：一个各种新的AI产品都会被投放的一个平台",
-      "💬 宁十七：免费",
-      "💬 低位：【https://www.producthunt.com】免费，高权重",
-      "💬 Nitor：【Product Hunt — https://www.producthunt.com/】适合正式上线的软件和 AI 产品，能建立长期产品页面并带来早期用户、评论和品牌曝光。基础发布免费，但个人账号通常需要注册满一周才能发布",
-      "💬 一成：【www.producthunt.com】免费的目录站，爬虫来的频繁"
+      "适合新产品上线，建立产品介绍页，获取早期用户、反馈和品牌曝光。若要冲榜，需要准备素材并正常参与社区；仅获取产品页链接则不必追求排名。原记录提示新账号可能有发布等待期。"
     ],
-    "recommenders": 78
+    "recommenders": 78,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 20
   },
   {
     "id": "link-0db2e89171e3",
@@ -40,28 +25,14 @@
     "votes": 61,
     "recommendationTotal": 32,
     "reasons": [
-      "💬 哥飞：最具性价比的 AI 导航网站，流量够大，且价格不贵，只需要 49 美金。",
-      "💬 袁锐钦：【theresanaiforthat.com】AI 目录里权重最高的一家。免费提交手动审核，通过就进库；",
-      "💬 轻舟：付费提交。AI 用户很集中，适合做精准曝光和外链。",
-      "💬 杨feng：AI 导航站龙头，付费",
-      "💬 江城子：首选的付费导航站之一，群友多次推荐认证",
-      "💬 kingluo：【https://theresanaiforthat.com】一次性 $49，官方承诺永久收录；适合 AI 产品获取高流量垂直目录曝光，新站必提交。",
-      "💬 Geektao：【TAAFT】收费，两个套餐，49 刀的和 349 刀的，哥飞工具评价值 429 美刀",
-      "💬 正林：【theresanaiforthat.com】访问、注册、付费的用户比提交到其他导航站的更多，性价比高",
-      "💬 shine_forever：性价比最高,人工审核严格,如果产品可以,会有一个月左右的持续流量!",
-      "💬 JsonChao：【theresanaiforthat.com】全球最大的导航站，有付费用户，性价比极高",
-      "💬 宁十七：【theresanaiforthat.com】价格适中，有真实流量，审核严格，还会帮你找一些网站存在的问题",
-      "💬 Andy：【https://theresanaiforthat.com】流量大， 可以带来一些点击",
-      "💬 阿林：SEO 友好，会带来大量真实 AI 用户",
-      "💬 犀利豆：性价比之王 49 刀",
-      "💬 清仔：全球最大的导航站平台，能真正的给页面带来用户",
-      "💬 日出东方：AI目录 免费排队/付费加速",
-      "💬 苏基…👏：仅49刀的价格就能提交，冷启动能带来较多精准流量",
-      "💬 Canen：【TAAFT】付费外链里投产比最高的1条了，有真实的用户",
-      "💬 Serdes：这是很多大佬赚到第一桶金的地方",
-      "💬 嘉禾：如果这个平台的流量有你的用户，可以是付费提交，验证一下产品需求是否准确"
+      "面向 AI 工具用户的垂直目录，可获得产品展示和目标用户访问。原记录多次提及约 49 美元，也有免费排队、付费加速的说法，提交前需确认；审核较严格，实际效果取决于产品与受众是否匹配。"
     ],
-    "recommenders": 61
+    "recommenders": 61,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 20
   },
   {
     "id": "link-7b123f33b0e3",
@@ -72,28 +43,14 @@
     "votes": 46,
     "recommendationTotal": 23,
     "reasons": [
-      "💬 哥飞：有真实流量，能够带来付费用户，价格 99 美元。",
-      "💬 tedy5735：【Toolify.ai】权重高，反馈快",
-      "💬 袁锐钦：【toolify.ai】提交表单直接填工具名 + URL + 描述，人工审核。可选付费推广位（$99），基础收录不用钱",
-      "💬 zry：【toolify.ai】性价比高，可以带来很多真实流量",
-      "💬 向左：【Toolify】收费，页面数量多，很多 AI 长尾词",
-      "💬 老菜：价格合理，自然流量",
-      "💬 轻舟：付费提交，约 99 美元。AI 工具目录流量大，适合做收录和外链。",
-      "💬 江城子：首选的付费导航站之一，收录速度快",
-      "💬 sunboy：【toolify.ai】付费, 99刀, 值得, 会被抓去toolify的网站抓取自动收录, 变相等于多买了些外链",
-      "💬 Geektao：【Toolify.ai】收费，99 美刀，哥飞工具评价值 250 美刀",
-      "💬 正林：【toolify.ai】流量不错",
-      "💬 shine_forever：有一定作用,但是现在自带流量有点少了",
-      "💬 JsonChao：【toolify.ai】全球第二大的导航站，有付费用户，性价比较高",
-      "💬 峻菁：【toolify.ai】AI的应用产品在这里可以看到很多排名，能弄到这里的外链权重会非常好。",
-      "💬 低位：【https://www.toolify.ai】99美金，权重高",
-      "💬 Andy：【https://www.toolify.ai】大家都知道的",
-      "💬 一成：【www.toolify.ai】高dr付费外链，会被其他爬虫爬取",
-      "💬 清仔：国内最大的AI导航站",
-      "💬 日出东方：AI站点提交 99刀",
-      "💬 Shixy：【Toolify】适合 AI 工具展示，可获得 AI 目录流量"
+      "AI 工具目录，提交工具名称、网址和介绍后由人工审核，可带来目录曝光。原记录常见报价约 99 美元，也有基础收录免费的说法；具体档位和流量效果需确认。"
     ],
-    "recommenders": 46
+    "recommenders": 46,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 20
   },
   {
     "id": "link-0b0d92c819fb",
@@ -104,28 +61,14 @@
     "votes": 32,
     "recommendationTotal": 21,
     "reasons": [
-      "💬 mhhya：免费，权重流量不错，gsc收录",
-      "💬 GIGI：免费 dofollow 但是需要有官方邮箱验证",
-      "💬 阿迪ζ：【https://saashub.com/】SaaS 目录站",
-      "💬 向左：【SaaSHub】免费基础版，付费推广",
-      "💬 安徒生：【www.saashub.com】免费",
-      "💬 zzl：收录快",
-      "💬 貮皮：【https://www.saashub.com】DR 80，月访问量 362.6k",
-      "💬 Zephyrion（即刻同名）：【https://saashub.com/】免费提交",
-      "💬 蓝星空：【https://www.saashub.com/】【免费】提交网站后可以获取多条外链，能获取到一些真实的用户流量 。",
-      "💬 Terence‮‮‮脚一你了踹并‭：【https://saashub.com】DR 79，权重较高，效果好",
-      "💬 kingluo：【https://www.saashub.com】基础产品提交免费，适合 SaaS、软件和在线工具；审核收录后可获得独立产品页、分类曝光和竞品替代方案页面展示。",
-      "💬 Nitor：【SaaSHub — https://www.saashub.com/】适合英文网站和已经上线的独立域名产品；需要经过审核。",
-      "💬 沐白：【https://saashub.com】免费、权重高",
-      "💬 清仔：【http://saashub.com/】DoFollow,免费导航站,适合SaaS 类",
-      "💬 Link：【SaaSHub】适合长期挂着，持续吃流量",
-      "💬 日出东方：【https://www.saashub.com/】SaaS目录 免费 dofollow",
-      "💬 亿豪：【SaaSHub — https://www.saashub.com/submit】当前入口可访问；本地记录标注免费基础收录，审核后生成公开产品页与官网链接。",
-      "💬 Geektao：【SaaSHub】创业项目、技术产品适合",
-      "💬 Shixy：【SaaSHub】有软件分类、竞品和替代品页面，适合做长尾曝光",
-      "💬 Jeremy：免费，收录挺快的"
+      "面向 SaaS、软件和在线工具，可建立产品页，并出现在分类和竞品替代方案页面。基础提交需审核，原记录提到官方邮箱验证；推广另有收费方案。"
     ],
-    "recommenders": 32
+    "recommenders": 32,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 20
   },
   {
     "id": "link-09a8b930c8b7",
@@ -136,28 +79,13 @@
     "votes": 32,
     "recommendationTotal": 21,
     "reasons": [
-      "💬 tedy5735：【github.com】建立readme做项目介绍和使用案例，能快速见效",
-      "💬 袁锐钦：【github.com】README 写清楚项目是干嘛的 + 官网链接",
-      "💬 向左：【GitHub】免费，官网、Profile README、开源项目 README 都可以形成稳定品牌引用",
-      "💬 轻舟：免费。适合开源或开发者产品，可以在仓库介绍里放官网链接。",
-      "💬 cherry：nofollow 但高权重很容易获得谷歌考前的排名，给自己的网站引流",
-      "💬 Lessur：【github.com】免费，找一些开源项目提 issue，权重会涨得很快",
-      "💬 蓝星空：【免费】Github 的页面在 Google 搜索的排名也是非常好的，Tag 可以多加一些已经被 Google 收录Tab列表页的，可以有效增加权重，并能带来实际的用户点击。",
-      "💬 江城子：github可以快速被其他的网站爬取，有利于扩展自己的网站",
-      "💬 Tyler：【GitHub】如果网站有开源项目、技术文档、API、Demo 或相关代码，可以在项目 README 中放官网链接。GitHub 页面权重和曝光度较高，也能给网站带来开发者用户。",
-      "💬 马兄弟：【github.com】简单、高权重",
-      "💬 犀利豆：【https://github.com】免费",
-      "💬 Lone Ranger：【https://github.com/1c7/chinese-independent-developer】收录中国独立开发者项目列表，免费，收录速度快",
-      "💬 清仔：免费",
-      "💬 日出东方：【https://github.com】高权重 免费",
-      "💬 Shixy：【GitHub】高相关性，适合技术站",
-      "💬 嘉禾：高权重的收入，很好的外链",
-      "💬 一箭：高权重免费外链",
-      "💬 欧文AI出海：【https://github.com】README 外链收录快",
-      "💬 大学牲：【GitHub Awesome 官方列表矩阵】免费，找到相关 Awesome 仓库后按贡献规范提交 PR。",
-      "💬 甜果果🍎🍊：免费，简单"
+      "适合有代码、文档或演示的技术产品，在仓库简介、README 或个人主页中介绍用途并放官网链接。也可按贡献规范向相关 Awesome 列表提交项目，获取开发者曝光。"
     ],
-    "recommenders": 32
+    "recommenders": 32,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 20
   },
   {
     "id": "link-69ca45207949",
@@ -168,28 +96,14 @@
     "votes": 28,
     "recommendationTotal": 22,
     "reasons": [
-      "💬 小龙：免费提交，但是账号怎么注册 ⚠️ 你们咋注册的账号？为什么说对新人友好？一个账号都注册不了，怎么就对新人友好了？",
-      "💬 tedy5735：新手友好，不会封号",
-      "💬 小羊：【v2ex.com】权重高，老牌技术社区，别人越骂你，权重越高",
-      "💬 小郑：【https://www.v2ex.com/】Google抓取速度较快，适合作为产品上线后的首批引流渠道，有助于加速Google收录。注册需要邀请码，可以通过crypto或者闲鱼购买邀请码注册",
-      "💬 大林子：【https://www.v2ex.com/】这个一次买，然后就是一条至少值199刀外链，发了收录很快",
-      "💬 阿迪ζ：【https://www.v2ex.com/】V站，权重高，提高谷歌收录速度",
-      "💬 老菜：【https://v2ex.com/】高权重，低封号风险",
-      "💬 召唤兽：【https://v2ex.com/】注册后免费发布，高价值高权重",
-      "💬 Lessur：【https://www.v2ex.com/】免费，很活跃的中文社区，并且 AI 引用率很高",
-      "💬 谈小罗🌟：【https://v2ex.com】提交 profile，是个 dofollow 的地址，且会给三个外链，分别是 global，egde，主站的",
-      "💬 江城子：【https://www.v2ex.com/】收录速度非常快，而且是免费的",
-      "💬 宁十七：【v2ex.com】收录快，免费，有账号就能发",
-      "💬 阿林：【https://www.v2ex.com/】Google 索引快",
-      "💬 日出东方：【https://v2ex.com/】论坛 免费或收费搞账号",
-      "💬 longPc：【https://www.v2ex.com】收录快，发布后会突然涌入很多用户",
-      "💬 苏基…👏：【v2ex】google爬虫访问v2ex的频率比较高，加快google收录",
-      "💬 嘉禾：【https://www.v2ex.com/】帮助自己的网站快速索引",
-      "💬 大学牲：【https://www.v2ex.com/】免费，适合在创造者或开源节点真实分享，避免硬广。",
-      "💬 MaynorAI(tryallapi.com)：权重高",
-      "💬 甜果果🍎🍊：收录快，每次上站后 第一个外链就是它"
+      "活跃的中文技术社区，可在相关节点分享产品、开发过程，也可填写个人主页链接。原记录多次提到搜索收录较快，但账号注册可能需要邀请码；避免硬广，先了解社区规则。"
     ],
-    "recommenders": 28
+    "recommenders": 28,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 20
   },
   {
     "id": "link-0f63a2a5a562",
@@ -200,24 +114,13 @@
     "votes": 24,
     "recommendationTotal": 16,
     "reasons": [
-      "💬 GIGI：权威 收录快（nofollow）",
-      "💬 一箭：【https://news.ycombinator.com/】高权重免费外链",
-      "💬 大林子：【https://news.ycombinator.com/】免费，但要养号，也是谷歌爬虫很喜欢的",
-      "💬 向左：【Hacker News】免费，技术产品非常值得做，一旦内容被认可能产生大量自然二次链接",
-      "💬 老菜：【https://news.ycombinator.com/】高权重，有可能爆量",
-      "💬 轻舟：【https://news.ycombinator.com/】免费。适合能直接体验的技术产品，容易拿到真实反馈和一波流量。",
-      "💬 Zephyrion（即刻同名）：【https://news.ycombinator.com/】超高DR，超高流量，免费提交",
-      "💬 蓝星空：【https://news.ycombinator.com/】【免费】Hacker Newsnew 网站的权重很高，提交的页面几乎 100% 会被 Google 收录（只要没有被删除）。需要注意的地方：需要提前一周时间先养号，新号发链接被封号的概率很高。",
-      "💬 东君：【Hacker News — Show HN】免费提交，技术和创业用户质量高",
-      "💬 Nitor：【Hacker News / Show HN — https://news.ycombinator.com/】免费且能直接提交产品网址，优秀项目可能获得大量技术用户和自然讨论。只适合已经可实际使用、由本人开发且有技术亮点的产品；不能拉票，新账号应先正常参与社区。",
-      "💬 日出东方：【https://news.ycombinator.com/】免费发表文章",
-      "💬 Geektao：【Hacker News】创业项目、技术产品适合",
-      "💬 (广秉)林之宝(大白如云)：【www.ycombinator.com】完全免费。优点：1. 流量巨大，月访问约 2000 万；2. 受众是工程师、技术创始人；3. 帖子会长期被谷歌收录；4. 爆帖带来海量访问。缺点：1. 规则严格，Show HN 要求产品可直接试用，纯落地页 / 软文不允许；2. 新账号容易被审核；3. 严禁拉人点赞，会域名影子封禁；4. 大部分帖子沉底没有流量",
-      "💬 Shixy：【Hacker News】技术行业影响力较强，但必须有真实技术内容，不能硬广",
-      "💬 星辰千里：【https://news.ycombinator.com/submit】DR91 流量1425万",
-      "💬 大学牲：【https://news.ycombinator.com/】免费，适合有实质创新的产品发布 Show HN。"
+      "适合可直接体验、具备技术亮点的产品，通过 Show HN 获取开发者反馈和讨论。需要真实内容和正常社区参与，不能拉票；新账号和纯推广内容容易被审核，流量并不保证。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 16
   },
   {
     "id": "link-97c89f9e5f1b",
@@ -228,18 +131,13 @@
     "votes": 17,
     "recommendationTotal": 10,
     "reasons": [
-      "💬 小郑：免费（新手友好），需要混评论区养号，个别子版块允许发比较硬的推广贴，对新手来说是一个权重高、成本低的渠道",
-      "💬 向左：【Reddit】免费，以社区内容为主，不能硬发广告",
-      "💬 Zephyrion（即刻同名）：超高DR，超高流量，免费提交",
-      "💬 蓝星空：【https://reddit.com/】【免费】Reddit 的页面在 Google 搜索的排名非常好，而且 GEO 的效果可能是所有网站里面最好的。也是需要先养号（换 IP 地区容易被封号，不过可以申请解封，如果大家有兴趣，我可以把我的解封经历整理一下发出来）",
-      "💬 Tyler：【Reddit】可以寻找与网站目标用户相关的 Subreddit，通过经验分享、产品介绍或回答问题的方式带来精准流量和品牌曝光。",
-      "💬 马兄弟：【www.reddit.com】个人的profile里面 简单、高权重",
-      "💬 日出东方：【https://www.reddit.com】高权重 免费",
-      "💬 Shixy：【reddit】公认好用的免费推广平台，适合品牌和真实用户流量",
-      "💬 大学牲：免费，只适合真实讨论和经验分享，避免直接发广告链接。",
-      "💬 麦塔：【https://www.reddit.com】对垂直领域的网站非常友好，能够拿到很靠前的排名"
+      "寻找与目标用户相关的子版块，通过回答问题、经验分享或产品讨论获得访问。先正常参与并遵守各版规则，避免直接投放广告；也可在个人资料中放网站链接。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 10
   },
   {
     "id": "link-b9d186a6d6a8",
@@ -250,18 +148,14 @@
     "votes": 16,
     "recommendationTotal": 10,
     "reasons": [
-      "💬 得鹿梦鱼：【fazier.com】收费/免费，流量/DR尚可，价格不贵",
-      "💬 召唤兽：免费提交需挂徽章",
-      "💬 安徒生：【fazier.com】$19",
-      "💬 Zephyrion（即刻同名）：高DR高流量，免费提交",
-      "💬 Kaiun：DR82，老牌AI目录站，缺点目前排期长",
-      "💬 sunboy：【http://fazier.com/】收录比较高,真人投票, 非常好的导航站, 免费和付费都有",
-      "💬 Angler：86K 免费提交 需要放徽章",
-      "💬 沐白：免费、权重高",
-      "💬 日出东方：目录提交 免费",
-      "💬 blank：流量和 DR 还不错"
+      "产品发布目录，提供展示、投票和早期曝光。原记录提到免费档需放置徽章且可能排队，付费档曾有约 19 美元的报价，具体条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 10
   },
   {
     "id": "link-28e74c8168d0",
@@ -272,15 +166,13 @@
     "votes": 16,
     "recommendationTotal": 7,
     "reasons": [
-      "💬 小郑：免费（新手友好）、高DR、也没有养号要求。唯一需要注意的是，不要批量发布 AI 生成的低质量内容，有封号风险。",
-      "💬 向左：【dev.to】免费，可以围绕产品技术方案写教程并自然引用自己的工具",
-      "💬 李胜：免费/效果可以",
-      "💬 蓝星空：【免费】一个英语的开发者社区，可以发文章加外链，文章被 Google 收录的比较快，不过最近管的比较严，容易被封号（可以邮件申请解封，大概需要2、3天时间）。",
-      "💬 Tyler：【dev.to】可以发布与网站业务相关的技术文章、教程或案例，并在文章中合理引用官网，获得长期内容曝光和外链。",
-      "💬 Link：【Dev.to】开发者工具",
-      "💬 日出东方：高权重 免费"
+      "英文开发者社区，适合发布教程、技术方案和案例，并自然引用产品链接。内容应有实际价值，批量发布低质量或纯推广文章有封号风险。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 7
   },
   {
     "id": "link-206cc24ad041",
@@ -291,16 +183,13 @@
     "votes": 16,
     "recommendationTotal": 8,
     "reasons": [
-      "💬 曾大发啦啦啦：【Medium】其实ai现在可以写的很好，你可以搜集一些文章给你的ai,然后你给清晰的用户画像和关键词，说不定还能吸引不少流量 ⚠️ 最好就是参考主题类似的高数据文章，不要太广告了，",
-      "💬 向左：【medium】免费，可以发布博客文章",
-      "💬 Geektao：【Medium】同步自己搭建网站的文章，可以带来高权重价值流量。",
-      "💬 峻菁：【medium.com】国外有一个类似博客的网站，很多人去看，所以曝光量会很大。被加上外链的话，就可以提高网站权重",
-      "💬 日出东方：【medium.com】高权重 免费",
-      "💬 (广秉)林之宝(大白如云)：【medium.com】免费发文。优点：1. 极高域名权重，谷歌收录极快；2. 适合长文科普、产品故事；3. 可以做内容分发，带来自然流量；4. 排版体验好。1. 全部外链 nofollow，拿不到直接权重；2. 大量 AI 水文会被降权；3. 平台算法波动，文章可能流量归零",
-      "💬 Shixy：【Medium】收录快，链接多为 nofollow",
-      "💬 Canen：【medium】长尾流量多，免费，高DR"
+      "适合发布产品故事、行业文章和长文教程，也可分发已有内容。原记录称链接多为 nofollow，主要价值在内容曝光和引荐访问；避免低质量批量发文。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 8
   },
   {
     "id": "link-9738b4153f4f",
@@ -311,15 +200,14 @@
     "votes": 16,
     "recommendationTotal": 7,
     "reasons": [
-      "💬 召唤兽：【https://dang.ai/】免费提交需挂徽章，DR 81",
-      "💬 Zephyrion（即刻同名）：【https://dang.ai/】免费提交，高流量，高DR",
-      "💬 V.：【https://dang.ai/】高dr有流量，免费+付费，50美金",
-      "💬 Angler：【https://dang.ai/】358K 免费提交需要放徽章排队",
-      "💬 日出东方：【https://dang.ai/】AI目录 免费/付费加速",
-      "💬 frank：【Dang】免费提交、审核严（有反链验证门槛），通过即代表站方认可，dofollow 已索引，含 logo/截图/完整描述，品牌展示最完整",
-      "💬 夏天夏：审核快"
+      "AI 工具目录，原记录提到免费排队需要徽章或反链验证，也有约 50 美元的付费加速。审核通过后可展示截图、标志和产品介绍，审核速度的反馈不一致。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 7
   },
   {
     "id": "link-278b79032b43",
@@ -330,19 +218,14 @@
     "votes": 16,
     "recommendationTotal": 11,
     "reasons": [
-      "💬 mingming：⚠️ 免费需要排队",
-      "💬 袁锐钦：核心玩法：把你的工具挂成「XX 的替代品」",
-      "💬 洪江：【https://alternativeto.net】免费提交",
-      "💬 貮皮：【https://alternativeto.net/】月访问量 2.2M，排队免费发布",
-      "💬 楓之随刃：【https://alternativeto.net/manage-item/】免费 工具替代品目录，\"xxx alternative\"精准长尾流量",
-      "💬 Zephyrion（即刻同名）：【https://alternativeto.net/】免费提交",
-      "💬 东君：【AlternativeTo】免费提交，用户带着“寻找替代工具”的明确需求访问",
-      "💬 Tyler：【AlternativeTo】如果网站属于工具、SaaS 或在线服务，可以提交产品信息，通过“某产品的替代方案”等页面获得长期曝光和外链，同时流量比较精准。",
-      "💬 日出东方：【https://alternativeto.net/】替代品目录 高权重 免费",
-      "💬 Shixy：【AlternativeTo】用户主动寻找竞品替代品，适合软件、SaaS 获取精准流量",
-      "💬 辰亮：这个有免费的，但审核很慢，但有5美金一次的加速，值得买吗？"
+      "把工具作为其他软件的替代方案提交，适合软件、SaaS 和在线服务，用户需求较明确。原记录多次提到审核排队较慢，也有付费加速的说法。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 11
   },
   {
     "id": "link-deba267fd3a1",
@@ -353,12 +236,13 @@
     "votes": 15,
     "recommendationTotal": 4,
     "reasons": [
-      "💬 哥飞：只要需求是真实的，且产品做得不错，就能够带来付费订单，价格 69 美元。",
-      "💬 江城子：首选的付费导航站之一，价格优惠，而且DR事",
-      "💬 JsonChao：【creati.ai】能带来付费用户的导航站，有付费用户，性价比较高",
-      "💬 王马扎：性价比很高"
+      "AI 产品目录，适合获取垂直用户曝光。原记录报价约 69 美元，部分经验提到能带来订单，但效果取决于产品需求和质量。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 4
   },
   {
     "id": "link-50b49ea4bccc",
@@ -369,16 +253,13 @@
     "votes": 15,
     "recommendationTotal": 8,
     "reasons": [
-      "💬 召唤兽：免费提交，可发博客，DR50",
-      "💬 Zephyrion（即刻同名）：【https://promoteproject.com/】中等DR/流量，免费提交",
-      "💬 沐白：免费，收录快",
-      "💬 哞咦：【https://www.promoteproject.com/submit-startup】免费，DR还不错",
-      "💬 日出东方：目录提交 免费",
-      "💬 嵩皓：【PromoteProject】免费，成本是先给 5 个别人的项目点赞换积分。Google 登录后提交，秒上线（instant publish），无审核队列。亲测：8月12日提交当分钟确认 live，2 个 dofollow 锚文本。全流程 10 分钟内完成",
-      "💬 Lyman：无需审核，免费提交，dofollow",
-      "💬 swimming：免费提交，但需要给别人投票，攒5积分才能发"
+      "支持产品展示和博客发布。原记录提到需先为其他项目投票攒 5 个积分，再提交项目；有即时发布和 dofollow 链接的使用经验。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 8
   },
   {
     "id": "link-a9737a6ef753",
@@ -389,16 +270,13 @@
     "votes": 14,
     "recommendationTotal": 8,
     "reasons": [
-      "💬 阿迪ζ：独立开发者社区",
-      "💬 向左：【Indie Hackers】免费, 不只是外链，可以获得真实 founder 流量、反馈、品牌搜索",
-      "💬 Tyler：【Indiehackers】适合分享独立产品、SaaS 或网站上线经历，可以通过产品介绍、开发过程和经验分享获得目标用户访问。",
-      "💬 钟耀：【indiehackers.com】强大",
-      "💬 Link：【Indie Hackers】独立开发者类的产品还是很有流量价值",
-      "💬 日出东方：【https://www.indiehackers.com/】社区类 免费",
-      "💬 Shixy：【Indie Hackers】相关性和精准流量较好",
-      "💬 Shixy：【indiehackers.com】免费社区，高质量外链"
+      "独立开发者社区，适合分享产品上线、开发过程和经营经验。能接触创业者、获得反馈和品牌曝光，围绕真实经历交流更有价值。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 8
   },
   {
     "id": "link-42c6b956dc01",
@@ -409,16 +287,13 @@
     "votes": 12,
     "recommendationTotal": 8,
     "reasons": [
-      "💬 一箭：高权重免费外链",
-      "💬 cherry：提交项目后可以发帖宣传自己的网站，通过给别人的帖子点赞对方一般也会给你的帖子点赞，你的帖子进入active disscussions 模块后会获得更多的流量，曾经有个网站给我持续带来了几千的用户；",
-      "💬 貮皮：【https://peerlist.io】月访问量 533.3k",
-      "💬 Zephyrion（即刻同名）：免费提交",
-      "💬 谈小罗🌟：【https://peerlist.io】社交化的 launch 平台，权重很高，有几个小词我搜索头名都不是我的站点，而是这个站我发布的",
-      "💬 Lone Ranger：【https://peerlist.io】类似领英，可以展示自己的作品, 也类似ProductHub，也是免费的",
-      "💬 日出东方：【https://peerlist.io】技术类 免费",
-      "💬 Shixy：【Peerlist】适合技术人才、项目和创业产品展示"
+      "面向技术人才和独立产品的作品展示、社交发布平台。可建立项目页并参与相关讨论，争取开发者访问和持续曝光。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 8
   },
   {
     "id": "link-4d15b181b9ad",
@@ -429,14 +304,13 @@
     "votes": 12,
     "recommendationTotal": 6,
     "reasons": [
-      "💬 轻舟：免费维护公司资料。方便别人查品牌信息，也能放上官网链接。",
-      "💬 Zephyrion（即刻同名）：【https://crunchbase.com/】免费提交，高流量，高DR",
-      "💬 Terence‮‮‮脚一你了踹并‭：DR 90，权重较高，效果好",
-      "💬 日出东方：高权重 免费基础档案",
-      "💬 Geektao：【Crunchbase】创业项目、技术产品适合",
-      "💬 Shixy：【Crunchbase / Wellfound】品牌信号和引荐流量"
+      "可维护公司或创业项目资料并填写官网链接，方便用户核实品牌信息。主要用于公司档案、品牌搜索和引荐访问。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 6
   },
   {
     "id": "link-6a5a9b3e8bb0",
@@ -447,13 +321,13 @@
     "votes": 11,
     "recommendationTotal": 5,
     "reasons": [
-      "💬 向左：【Blogger】免费，可以发布博客文章",
-      "💬 马兄弟：【blogger.com】高权重",
-      "💬 日出东方：【https://www.blogger.com/】高权重 免费",
-      "💬 Jimmy：【blogger.com】免费，无审核。实测 44 篇复查有 38 篇 dofollow 存活（86%），是所有第三方平台里存活率最高的一个，正文锚文本真给 dofollow 而不是 ugc/nofollow。注意 blogger.com 和 blogspot.com 是同一个博客的两个入口，别当两条外链算。",
-      "💬 欧文AI出海：【https://blogger.com/】Google 自家平台"
+      "可建立博客并在文章中引用网站。原记录有正文 dofollow 链接的经验；Blogger 与 Blogspot 可能是同一博客的不同入口，不宜重复计算。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 5
   },
   {
     "id": "link-62d618b3251f",
@@ -464,13 +338,11 @@
     "votes": 11,
     "recommendationTotal": 5,
     "reasons": [
-      "💬 安徒生：【topai.tools】$47",
-      "💬 JsonChao：【topai.tools】能带来付费用户的导航站，有付费用户，性价比较高",
-      "💬 一成：【topai.tools】高质量导航站",
-      "💬 日出东方：AI目录 免费",
-      "💬 Serdes：【https://topai.tools/】几乎很多高流量网站都能看到这个外链"
+      "AI 工具目录，原记录对提交费用的说法不一致，提交前需确认。可作为产品展示和目标用户曝光渠道。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 5
   },
   {
     "id": "link-a6f7d6026320",
@@ -481,15 +353,13 @@
     "votes": 11,
     "recommendationTotal": 7,
     "reasons": [
-      "💬 小郑：可以发博客 post ，可带上产品链接，免费的渠道多多益善，成本不够，努力来凑",
-      "💬 向左：【Substack】免费，Newsletter/深度文章",
-      "💬 杨feng：高DR，免费",
-      "💬 日出东方：高权重 免费",
-      "💬 Shixy：【Substack】适合发布英文行业文章和 Newsletter，便于长期内容引流",
-      "💬 欧文AI出海：【substack.com】SEO 良好，文章可排名",
-      "💬 没人关注正好安心练剑：可以发guest blog"
+      "适合发布深度文章和 Newsletter，在内容中自然引用产品。可通过持续更新积累订阅者、搜索曝光和长期访问。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 7
   },
   {
     "id": "link-935adda4d2c7",
@@ -500,15 +370,14 @@
     "votes": 11,
     "recommendationTotal": 7,
     "reasons": [
-      "💬 向左：【G2】免费，Google 很容易搜到 G2 产品页，对 SaaS 品牌可信度非常有帮助",
-      "💬 轻舟：基础收录免费，推广收费。适合积累评价，接触正在选软件的人。",
-      "💬 星辰千里：【G2.com】权重高，流量大，容易发，免费",
-      "💬 Nitor：【G2 — https://sell.g2.com/create-a-profile】权威的软件评价平台，产品页面适合长期积累评论、品牌可信度和购买意向流量。创建及认领基础产品资料免费，需要人工审核。",
-      "💬 日出东方：【https://www.g2.com】高权重 免费",
-      "💬 Geektao：【G2（DA98）】SaaS和B2B产品必投，流量很准",
-      "💬 Shixy：【G2】企业软件采购用户多，产品资料和评价有助于建立信任"
+      "软件评价平台，适合 SaaS 和 B2B 产品建立资料页、积累真实评价，接触正在选型的用户。创建或认领基础档案需人工审核，推广另行收费。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 7
   },
   {
     "id": "link-a4afecc254f3",
@@ -519,14 +388,14 @@
     "votes": 10,
     "recommendationTotal": 6,
     "reasons": [
-      "💬 小羽：【https://betalist.com/】dr传播高 ⚠️ 收费",
-      "💬 得鹿梦鱼：收费，流量/DR尚可，价格不贵",
-      "💬 阿迪ζ：【https://betalist.com/】早期产品收录，老牌目录",
-      "💬 日出东方：【https://www.betalist.com/】创业产品目录 免费排队/付费加速",
-      "💬 Geektao：【BetaList】创业项目、技术产品适合",
-      "💬 Shixy：【BetaList】适合新网站、AI 工具和初创产品早期曝光"
+      "面向早期产品和初创项目的发布目录，适合上线初期曝光。原记录对收费方式说法不同，有免费排队和付费加速的记录，需确认当前条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 6
   },
   {
     "id": "link-bdc53e1efbc5",
@@ -537,14 +406,14 @@
     "votes": 10,
     "recommendationTotal": 6,
     "reasons": [
-      "💬 转角喻到 AI：免费工具站，有一定权重，挂徽章后一周内通过",
-      "💬 安徒生：【startupfa.me】免费，自助操作，不需要审核",
-      "💬 召唤兽：免费提交需挂徽章",
-      "💬 Zephyrion（即刻同名）：高DR高流量，免费提交",
-      "💬 Geektao：【https://startupfa.me/submit】免费档即给 Dofollow，首页挂个 verification badge 等 7 天审核即可。",
-      "💬 V.：高dr有流量，免费+付费，19美金"
+      "创业产品展示目录，免费档通常要求挂验证徽章。原记录有约一周审核和自助发布的不同经验，也有约 19 美元的付费方案。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 6
   },
   {
     "id": "link-bee48c8f9798",
@@ -555,15 +424,14 @@
     "votes": 10,
     "recommendationTotal": 7,
     "reasons": [
-      "💬 安徒生：免费，可直接导入 produnthunt 的产品",
-      "💬 正林：【sideprojectors.com】免费，收录快，DR70，Dofollow",
-      "💬 杨feng：【sideprojectors.com】便宜，20$，AS 35，网站增长",
-      "💬 日出东方：【https://www.sideprojectors.com】目录提交 免费",
-      "💬 Shixy：【SideProjectors】适合独立项目、微型 SaaS 和副业产品曝光",
-      "💬 羊羊羊：【https://www.sideprojectors.com/submit/type】已验证过，semrush能抓到，免费提交，SideProjectors 是一个专门针对开发者、创客和独立创业者（Indie Hackers）的副业项目交易与展示社区",
-      "💬 枫：目录提交 3天审核"
+      "面向独立开发者的副业项目展示与交易社区，可提交微型 SaaS 和独立项目，部分资料可从 Product Hunt 导入。原记录以免费提交为主，也有约 20 美元的报价，审核条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 7
   },
   {
     "id": "link-61cd81158594",
@@ -574,14 +442,14 @@
     "votes": 10,
     "recommendationTotal": 6,
     "reasons": [
-      "💬 貮皮：月访问量 171.9k，排队免费发布",
-      "💬 V.：高dr有流量，免费+付费，15美金",
-      "💬 Kent：有真实流量的导航站，30刀",
-      "💬 日出东方：免费目录提交 要排队",
-      "💬 Shixy：【Uneed】适合新产品发布和早期用户获取",
-      "💬 blank：流量和 DR 还不错"
+      "适合新产品发布和早期用户获取。免费提交通常要排队，原记录的付费报价约 15～30 美元，需确认当前档位。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 6
   },
   {
     "id": "link-6421f31a904b",
@@ -592,14 +460,13 @@
     "votes": 8,
     "recommendationTotal": 6,
     "reasons": [
-      "💬 轻舟：免费，仅适合开源软件。能多一个项目页、下载入口和外链。",
-      "💬 楓之随刃：【https://sourceforge.net/p/add_project】登录 流量大，开源工具托管，DA 高",
-      "💬 Zephyrion（即刻同名）：高流量、高DR",
-      "💬 Geektao：【SourceForge（DA92）】开发者工具、开源项目友好，老牌站",
-      "💬 日出东方：高权重 免费",
-      "💬 Shixy：【SourceForge】适合软件、开源项目和开发工具，可获得项目与下载流量"
+      "适合开源软件和开发工具，可建立项目页、下载入口并填写官网链接。主要用于软件展示和开发者访问。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 6
   },
   {
     "id": "link-b58ee6c44a29",
@@ -610,14 +477,14 @@
     "votes": 8,
     "recommendationTotal": 6,
     "reasons": [
-      "💬 召唤兽：免费提交需挂徽章",
-      "💬 Lessur：免费，需要挂互联，网站权重很高",
-      "💬 Zephyrion（即刻同名）：高流量，高DR",
-      "💬 谈小罗🌟：收录快，现在是验证了反链就给收录",
-      "💬 V.：高dr有流量，免费+付费，25美金",
-      "💬 哞咦：工具导航站，免费，DR高"
+      "工具目录，免费档通常需挂徽章或互换链接，验证反链后收录。原记录也提到约 25 美元的付费方案，提交前确认条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 6
   },
   {
     "id": "link-9ad63d250838",
@@ -628,14 +495,13 @@
     "votes": 8,
     "recommendationTotal": 6,
     "reasons": [
-      "💬 楓之随刃：免费 创业产品免费发布，高 DA + 百万流量",
-      "💬 Zephyrion（即刻同名）：【https://f6s.com/】免费提交，高流量，高DR",
-      "💬 Geektao：【https://www.f6s.com/join】全球最大创业加速器平台，免费 Dofollow，SaaS/AI/Gaming 分类精准匹配。",
-      "💬 Terence‮‮‮脚一你了踹并‭：DR 82，权重较高，效果好",
-      "💬 日出东方：创业社区 免费",
-      "💬 没人关注正好安心练剑：创业者比较好用的免费平台"
+      "创业社区和加速器相关平台，适合展示创业项目及 SaaS、AI 等产品。可用于建立项目档案、触达相关受众。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 6
   },
   {
     "id": "link-326a64505027",
@@ -646,13 +512,13 @@
     "votes": 7,
     "recommendationTotal": 5,
     "reasons": [
-      "💬 大林子：免费，如果帖子写的好，还能带来流量",
-      "💬 Zephyrion（即刻同名）：【https://x.com/home】超高DR，超高流量，免费提交",
-      "💬 星辰千里：【X.com】权重高，流量大，容易发，来得快，免费",
-      "💬 马兄弟：【x.com】常用社交网站",
-      "💬 日出东方：【https://x.com】高权重 免费"
+      "通过产品动态、经验分享和有价值的帖子获取关注与网站访问。内容表现决定曝光，不应把平台整体流量视为自己的预期收益。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 5
   },
   {
     "id": "link-7daf024ab04d",
@@ -663,12 +529,14 @@
     "votes": 7,
     "recommendationTotal": 4,
     "reasons": [
-      "💬 轻舟：基础收录免费，推广收费。适合让正在比选软件的人发现你的产品。",
-      "💬 Zephyrion（即刻同名）：【https://getapp.com/】免费提交，高流量，高DR",
-      "💬 日出东方：目录提交 免费",
-      "💬 Shixy：【GetApp】与 Capterra 类似，可获得软件分类页和买家流量"
+      "软件选型目录，可建立产品资料，接触正在比较软件的用户。基础收录与付费推广分开，适合软件分类曝光。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 4
   },
   {
     "id": "link-a9dad9476ff5",
@@ -679,10 +547,13 @@
     "votes": 6,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 日出东方：【https://www.futurepedia.io/】AI目录 免费+付费",
-      "💬 Shixy：【Futurepedia】AI 产品目录和工具推荐场景，适合 AI 网站"
+      "面向 AI 产品的目录和工具推荐平台，原记录包含免费和付费方式。适合产品展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-fde273016ad6",
@@ -693,9 +564,14 @@
     "votes": 6,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 kingluo：AI 工具可通过标准通道免费提交并接受人工审核，也可付费加速；收录后可获得垂直用户曝光和独立工具介绍页。"
+      "AI 工具目录，标准通道需人工审核，另有付费加速。收录后可获得独立工具介绍页和垂直用户曝光。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d6f14e13307c",
@@ -706,12 +582,13 @@
     "votes": 6,
     "recommendationTotal": 4,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：高DR高流量，免费提交",
-      "💬 醉春风：免费",
-      "💬 Angler：80k 流量，免费提交，需要排队。",
-      "💬 日出东方：【https://tinylaunch.com/】目录提交 免费"
+      "产品发布目录，原记录提到免费提交需要排队。适合补充新产品展示渠道。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 4
   },
   {
     "id": "link-e098d72f51ba",
@@ -722,11 +599,14 @@
     "votes": 6,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：高DR高流量，免费提交",
-      "💬 V.：高dr，免费+付费，99美金",
-      "💬 日出东方：AI目录 免费"
+      "AI 工具目录，原记录包含免费提交及约 99 美元的付费档。具体收录和推广条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-d12f86461551",
@@ -737,12 +617,13 @@
     "votes": 6,
     "recommendationTotal": 4,
     "reasons": [
-      "💬 日出东方：【https://www.quora.com】免费发表文章",
-      "💬 Shixy：【Quora】适合精准引流，不能硬广",
-      "💬 欧文AI出海：【quora.com】收录极快",
-      "💬 大学牲：免费，回答应先解决问题并披露利益关系。"
+      "通过回答相关问题和发布有价值的内容获得目标用户访问。先解决问题，再适当引用产品并披露利益关系，避免广告式回答。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 4
   },
   {
     "id": "link-e1d5e2c7a98d",
@@ -753,13 +634,13 @@
     "votes": 6,
     "recommendationTotal": 5,
     "reasons": [
-      "💬 向左：【YouTube】免费，产品 Demo、教程、介绍页面都能持续带品牌流量",
-      "💬 Zephyrion（即刻同名）：超高DR，超高流量，免费提交",
-      "💬 杨feng：bing 搜索助力，免费",
-      "💬 唐先生：油管主页",
-      "💬 日出东方：高权重 免费"
+      "适合发布产品演示、教程和介绍视频，并在主页等位置关联网站。持续有用的内容可带来品牌曝光和访问。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 5
   },
   {
     "id": "link-5b2e94280602",
@@ -770,13 +651,13 @@
     "votes": 6,
     "recommendationTotal": 5,
     "reasons": [
-      "💬 向左：【LinkedIn Articles】免费，Founder/Product 内容",
-      "💬 日出东方：【https://www.linkedin.com/】高权重 免费",
-      "💬 日出东方：【https://www.linkedin.com/pulse】免费发表文章",
-      "💬 Shixy：【LinkedIn】品牌曝光和引荐流量",
-      "💬 欧文AI出海：【linkedin.com】文章收录快"
+      "适合创始人、产品和行业内容，可通过文章与个人或公司资料获得品牌曝光。原记录也提到文章搜索收录的价值。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 5
   },
   {
     "id": "link-df27c6503241",
@@ -787,11 +668,13 @@
     "votes": 5,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 mhhya：免费，权重高，gsc收录",
-      "💬 日出东方：【https://www.trustpilot.com/】目录提交 免费",
-      "💬 Shixy：【Trustpilot】主要提升品牌信任和转化，也有助于品牌词搜索曝光"
+      "主要用于积累真实评价、提升品牌信任和品牌词搜索曝光。原记录标注基础使用免费，具体功能条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-1636a4ca7093",
@@ -802,7 +685,9 @@
     "votes": 5,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c044150d9caa",
@@ -813,11 +698,13 @@
     "votes": 5,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：【https://www.zhihu.com/project-square/】高DR/流量，免费提交",
-      "💬 日出东方：【https://www.zhihu.com】中文高权重 免费",
-      "💬 欧文AI出海：【zhihu.com】SEO 强，收录快"
+      "中文内容社区，原记录提到项目广场等提交入口及搜索曝光。适合结合相关内容介绍项目，具体发布规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-aa289f667c14",
@@ -828,10 +715,14 @@
     "votes": 5,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 得鹿梦鱼：流量/DR尚可，涨价了",
-      "💬 安徒生：$15.9, 也可免费提交"
+      "AI 工具目录，原记录有免费提交和约 15.9 美元的报价，也提到涨价。提交前确认当前收费方式。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-23645988c464",
@@ -842,12 +733,13 @@
     "votes": 5,
     "recommendationTotal": 4,
     "reasons": [
-      "💬 转角喻到 AI：免费工具站，有一定权重，挂徽章后就通过",
-      "💬 安徒生：【findly.tools】操作简单，自助操作，不需要审核",
-      "💬 召唤兽：免费提交需挂徽章",
-      "💬 Zephyrion（即刻同名）：高DR高流量，免费提交"
+      "工具展示目录，免费档通常需在网站放置徽章。原记录提到自助操作、通过较快，具体条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 4
   },
   {
     "id": "link-167984fb880c",
@@ -858,10 +750,13 @@
     "votes": 5,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 山沟沟的孩子：【mossai.org】免费",
-      "💬 Flicker：免费，权重高"
+      "原记录标注可免费提交，并认为有一定外链价值，暂无更详细的提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-7d0dfd68e94f",
@@ -872,10 +767,14 @@
     "votes": 5,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 程普：DR 高，价格实惠 ⚠️ 免费收录要等7天",
-      "💬 Kaiun：【https://dofollow.tools/】DR73，外链质量高"
+      "工具目录，原记录认为外链质量较好。免费收录曾需等待约 7 天，也有付费方式的记录。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-b4e883b62345",
@@ -886,11 +785,13 @@
     "votes": 5,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：【https://stackshare.io/】免费提交",
-      "💬 Geektao：【https://stackshare.io/submit】开发者技术栈目录，免费 Dofollow。",
-      "💬 Geektao：【StackShare】创业项目、技术产品适合"
+      "开发者技术栈目录，适合创业项目和技术产品展示。原记录提到免费提交与 dofollow 链接。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-a3de915cfc62",
@@ -901,10 +802,13 @@
     "votes": 5,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 日出东方：【https://hashnode.com】免费发表文章",
-      "💬 欧文AI出海：【hashnode.com】技术内容权重高"
+      "技术博客平台，适合发布开发教程、技术文章并自然引用项目。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-6d7ef470426d",
@@ -915,10 +819,13 @@
     "votes": 5,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 JsonChao：【aixploria.com】能带来付费用户的导航站，有付费用户，性价比尚可",
-      "💬 日出东方：AI目录 免费"
+      "AI 工具目录，原记录提到免费提交及目标用户访问的价值，实际效果需结合产品评估。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-a8ff8f783a11",
@@ -929,11 +836,13 @@
     "votes": 5,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 唐先生：pinterest发图片带网址",
-      "💬 清仔：【https://pinterest.com/】适合图片相关站点,AI可以自动化发布",
-      "💬 日出东方：高权重 免费"
+      "通过图片内容关联网站，适合图片、设计相关产品获取访问。内容与落地页应相关。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-c4642cb7a699",
@@ -944,11 +853,13 @@
     "votes": 5,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 日出东方：目录提交 免费",
-      "💬 Shixy：【Microlaunch】适合独立开发者和小型 SaaS 产品推广",
-      "💬 blank：流量和 DR 还不错"
+      "面向独立开发者和小型 SaaS 的产品发布目录，可作为早期曝光渠道。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-0cd934be7735",
@@ -959,9 +870,13 @@
     "votes": 4,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 洪江：价格19.9不贵(同时获取aitoolhub.net)的24条外链"
+      "AI 工具目录，原记录报价约 19.9 美元，并提到同时覆盖 AIToolHub 等站点的多条链接；套餐范围需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3a8a31ee0b35",
@@ -972,9 +887,13 @@
     "votes": 4,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：$9.9"
+      "原记录报价约 9.9 美元，暂无详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-8c3a5a1f6b89",
@@ -985,9 +904,11 @@
     "votes": 4,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 zzl：收录快，权重高"
+      "原记录认为收录较快、具有一定外链价值，暂无详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-f0ea46da4280",
@@ -998,9 +919,14 @@
     "votes": 4,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：$9.9, 也可免费提交"
+      "AI 工具目录，原记录同时提到免费提交和约 9.9 美元的档位。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ef0167b68ca3",
@@ -1011,10 +937,13 @@
     "votes": 4,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 Terence‮‮‮脚一你了踹并‭：【https://www.behance.net/】DR 92，权重较高，效果好",
-      "💬 日出东方：【https://www.behance.net】高权重 免费"
+      "设计作品展示平台，原记录标注免费，并认为有较高曝光与外链价值。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-114c97a8a426",
@@ -1025,9 +954,13 @@
     "votes": 4,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：目录提交 免费"
+      "原记录标注可免费提交产品目录，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-f6cb2e5064f1",
@@ -1038,9 +971,13 @@
     "votes": 4,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：中等DR/流量，免费提交"
+      "原记录标注可免费提交，流量和外链价值评价中等。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-81592df0751d",
@@ -1051,10 +988,13 @@
     "votes": 4,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：中等DR/流量，免费提交",
-      "💬 嵩皓：【Launchtory】免费，邮箱注册后提交，人工审核。亲测：8月12日提交，8月16日确认上线——但两个锚文本都是 rel=\"nofollow\""
+      "邮箱注册后提交项目，需人工审核。原记录有约 4 天上线的经验，页面链接为 nofollow。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-c05314f1aaa6",
@@ -1065,10 +1005,13 @@
     "votes": 4,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：中等DR/流量，免费提交",
-      "💬 日出东方：【https://turbo0.com】AI目录 免费"
+      "AI 工具目录，原记录标注免费提交，流量和外链价值评价中等。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-0541d25316ab",
@@ -1079,11 +1022,11 @@
     "votes": 4,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 小羽：dr传播高 ⚠️ 收费",
-      "💬 日出东方：【https://aitools.fyi/】AI目录 免费",
-      "💬 H an：aherf查了 这个居然是bestlink"
+      "AI 工具目录，原记录对免费与收费的说法不一致。提交前确认档位和收录条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-46158b74cec2",
@@ -1094,9 +1037,13 @@
     "votes": 4,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Angler：【https://saasaitools.com】40K 免费提交需要审核"
+      "SaaS 与 AI 工具目录，原记录提到免费提交需审核。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-5dd35a4718ef",
@@ -1107,9 +1054,13 @@
     "votes": 4,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：目录提交 免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-dcb1bf4537aa",
@@ -1120,9 +1071,13 @@
     "votes": 4,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：【https://startupstash.com】目录提交 免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-180019774646",
@@ -1133,11 +1088,13 @@
     "votes": 4,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 日出东方：【https://stackoverflow.com】技术类 免费",
-      "💬 Shixy：【Stack Overflow】技术问题回答可带来精准访问，但只有真正解决问题时才适合放链接",
-      "💬 大学牲：免费，仅在真正解决问题时引用产品，禁止广告式回答。"
+      "技术问答社区，仅在答案确实解决问题时引用相关产品。广告式回答不适合，也可能被删除。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-d3f14494b553",
@@ -1148,11 +1105,13 @@
     "votes": 4,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 小羊：【site.google.com】顶级域名，不要白不要",
-      "💬 唐先生：谷歌网站制作",
-      "💬 日出东方：【https://sites.google.com】免费发表文章"
+      "可建立网站并发布内容，适合制作项目或产品介绍页。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-b3c71a18f8a5",
@@ -1163,10 +1122,13 @@
     "votes": 4,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 日出东方：【https://www.slideshare.net】文档类 免费",
-      "💬 Shixy：【SlideShare】可上传白皮书、行业报告和演示文稿，适合 B2B 网站"
+      "适合上传演示文稿、行业报告和白皮书，为 B2B 内容增加展示入口。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-713b53488684",
@@ -1177,9 +1139,11 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 李胜：便宜/性价比高/效果超预期"
+      "AI 工具目录，原记录认为价格较低、效果较好，但没有具体报价或提交流程。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-36e41806b3b8",
@@ -1190,10 +1154,13 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 轻舟：免费提交，是否收录看审核。多一个 AI 工具目录曝光和外链。",
-      "💬 Zephyrion（即刻同名）：免费提交，do follow"
+      "AI 工具目录，提交后需审核。原记录提到 dofollow 链接，是否收录取决于审核结果。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-176ea61c71e9",
@@ -1204,10 +1171,14 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 轻舟：基础申请免费，推广另算。适合 B2B 软件，多一个评测入口和外链。",
-      "💬 Geektao：【FinancesOnline】偏企业软件和SaaS，B2B方向重点投"
+      "面向企业软件与 SaaS 的评测目录，可申请基础产品资料，推广另行收费。适合作为 B2B 产品评测与展示入口。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-4abc3dfadcd4",
@@ -1218,10 +1189,14 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 轻舟：基础收录免费，推广收费。适合展示案例、评价和公司实力。",
-      "💬 Shixy：【GoodFirms】有公司资料、案例和评价页面，适合 B2B 服务商"
+      "适合 B2B 服务商展示公司资料、案例和真实评价。基础收录与付费推广分开。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-c5c8d50ab876",
@@ -1232,9 +1207,13 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：$19.9"
+      "原记录报价约 19.9 美元，暂无详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-bf33af93f2d3",
@@ -1245,10 +1224,14 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：免费提交",
-      "💬 hyhor：免费提交，权重高。付费立刻发布，价格不贵。"
+      "产品目录，提供免费提交和付费即时发布方式。原记录认为价格不高，具体档位需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-b26e3bd85465",
@@ -1259,9 +1242,11 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Shixy：【Clutch】适合开发、设计、营销、外包等服务型公司获取询盘"
+      "适合开发、设计、营销和外包等服务型公司展示能力并获取询盘。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-fa6761a89aa2",
@@ -1272,9 +1257,13 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：【https://about.me】免费 二级域名博客"
+      "原记录提到可免费创建个人介绍页，具体功能与限制需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-086c28913a41",
@@ -1285,9 +1274,13 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：免费提交，高流量，高DR"
+      "原记录标注可提交产品，并认为有较多用户流量；具体上架条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-cf27f8b946b4",
@@ -1298,10 +1291,11 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 江城子：注册就可以提交",
-      "💬 黄楚标：【https://cal.com/】制作一个帖子互联后可直接查看"
+      "注册后可填写个人资料并关联网站，原记录提到链接可直接查看。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-9587747fc6ec",
@@ -1312,10 +1306,13 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 Terence‮‮‮脚一你了踹并‭：DR 62，权重较高，效果好",
-      "💬 日出东方：目录提交 免费"
+      "创业项目目录，原记录标注可免费提交，暂无详细流程。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-7ed80ab39423",
@@ -1326,10 +1323,14 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：高DR高流量，免费提交",
-      "💬 嵩皓：【AIToolboard】完全免费，提交本身不用注册（只有查看自己的提交记录才需要账号）。有 $75/$99 付费位，但免费档真实可用。亲测：7月30日提交，约 2 周过审上线，落地页给了 4 个 dofollow 锚文本"
+      "AI 工具目录，原记录提到免费提交无需注册，查看提交记录才需要账号。曾有约两周过审并获得 dofollow 链接的经验，另有 75／99 美元的付费展示位。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-0d1a2cb1c644",
@@ -1340,10 +1341,13 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 日出东方：【https://juejin.cn】中文开发者 免费",
-      "💬 longPc：写篇文章，介绍下自己的网站"
+      "中文开发者社区，可通过技术文章、开发经历或产品案例自然介绍网站。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-3c08ee8f8941",
@@ -1354,9 +1358,13 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：【https://www.crozdesk.com/】目录提交 免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-c544c1b7cd86",
@@ -1367,9 +1375,13 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：【https://eu-startups.com/】免费提交"
+      "原记录标注可免费提交，并认为有较高曝光价值，具体条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-05dc47cdc496",
@@ -1380,9 +1392,13 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Angler：35K 免费提交需要审核"
+      "AI 工具目录，原记录提到免费提交需审核。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-f585cbc045d6",
@@ -1393,9 +1409,13 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Kent：有真实流量的导航站，69刀"
+      "AI 工具目录，原记录报价约 69 美元，并提到有真实用户访问。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4892591d02e5",
@@ -1406,9 +1426,13 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 AwesomeYang：单次付费 19$，月付 29$ 无限提交 ，dofollow，接收 AI 工具提交，审核快，一般当天审核上线，快的话几小时上线，Google 收录快。"
+      "AI 工具目录，原记录报价为单次约 19 美元，或月付约 29 美元不限次数。曾有当天审核上线、链接为 dofollow 的经验，当前条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-12752d23a5e6",
@@ -1419,7 +1443,9 @@
     "votes": 3,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-b266b52ddc15",
@@ -1430,10 +1456,13 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 V.：高dr，免费+付费",
-      "💬 鹏之大一锅炖不下：【https://viesearch.com/submit】可以免费提交，流量还挺高的每个月有67K"
+      "网站目录，原记录包含免费和付费方式，提到有一定用户流量。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-70346912f6ea",
@@ -1444,11 +1473,13 @@
     "votes": 3,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 蓝星空：【5美元】Chrome 应用商店发布一个插件后可以获取至少3个链接，如果设置了多语言还可以获取更多的链接（注册开发者账号需要5美元，最多可以发布大概20个插件）。另外，在 Chrome 应用商店发布插件后，还会被一些第三方插件市场采集，从而被动获得更多的外链。",
-      "💬 唐先生：谷歌Chrome 应用商店",
-      "💬 大学牲：需提交真实插件，开发者注册或增值服务可能收费。"
+      "需提交真实的 Chrome 扩展，插件页面可能被其他扩展目录收录。原记录提到开发者账号注册约 5 美元，当前费用和审核条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-df12cb95caa2",
@@ -1459,11 +1490,13 @@
     "votes": 3,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 向左：【GitBook】免费，Documentation/Knowledge Base",
-      "💬 黄楚标：互联后可直接查看",
-      "💬 日出东方：【https://www.gitbook.com/】高权重 免费"
+      "适合发布产品文档和知识库，可在内容中引用网站。原记录标注有免费方式。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-7565e567c409",
@@ -1474,10 +1507,13 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 Kent：有真实流量的导航站，39刀",
-      "💬 Jimmy：【PeerPush】成功率高"
+      "产品展示目录，原记录报价约 39 美元，部分经验认为提交成功率较高。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-608a09e917ab",
@@ -1488,10 +1524,13 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 Geektao：【Gravatar】高DR，提交简单，可给权重",
-      "💬 日出东方：【https://gravatar.com】高权重 免费"
+      "个人头像与资料服务，可完善个人介绍并关联网站，原记录认为操作较简单。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-773810347b00",
@@ -1502,9 +1541,13 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重 免费"
+      "原记录标注免费，暂无具体发布或链接位置说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-21c665ceae19",
@@ -1515,9 +1558,13 @@
     "votes": 3,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：【https://www.instagram.com/】高权重 免费"
+      "原记录标注免费，暂无具体发布或链接位置说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-85c980bfa0df",
@@ -1528,10 +1575,13 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 日出东方：【https://wordpress.org/plugins/】高权重,免费",
-      "💬 日出东方：免费发表文章"
+      "可通过博客文章介绍网站。原记录混有 WordPress.org 插件目录的经验，不能直接当作 WordPress.com 的提交方式。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-ed8654ebda17",
@@ -1542,10 +1592,13 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 日出东方：免费发表文章",
-      "💬 欧文AI出海：【tumblr.com】收录快，外链可带"
+      "可发布博客文章并带网站链接，原记录提到搜索收录较快。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-e495cbadefa4",
@@ -1556,10 +1609,13 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 Geektao：【https://wellfound.com/startups/new】免费 Dofollow，品牌搜索可见度极强。",
-      "💬 日出东方：公司页 免费"
+      "可建立创业公司资料页，原记录提到官网链接与品牌搜索曝光的价值。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-453cb49f45b2",
@@ -1570,10 +1626,13 @@
     "votes": 3,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 日出东方：技术类 免费",
-      "💬 Shixy：【Hugging Face】AI 用户集中，模型、Spaces、数据集页面相关性很高"
+      "面向 AI 开发者，可围绕模型、Spaces 或数据集展示相关项目。内容与项目有实际关联时更适合。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-b8fb9b243336",
@@ -1584,11 +1643,14 @@
     "votes": 3,
     "recommendationTotal": 3,
     "reasons": [
-      "💬 向左：【Launching Next】免费，可能有推广",
-      "💬 日出东方：目录提交 免费",
-      "💬 大学牲：可免费提交，付费加速或推广为可选项。"
+      "创业产品展示目录，原记录提到可免费提交，付费加速或推广为可选项。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 3
   },
   {
     "id": "link-20782d80e39a",
@@ -1599,9 +1661,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：【https://www.notion.so】免费发表文章"
+      "可发布公开内容并介绍产品，原记录标注有免费方式。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-7cb181c541a9",
@@ -1612,10 +1678,11 @@
     "votes": 2,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 小羊：类v2ex的社区，审核制",
-      "💬 MaynorAI(tryallapi.com)：权重高"
+      "类似 V2EX 的中文社区，原记录提到审核制及一定外链价值。先确认加入和发帖规则。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-86e9f725e60b",
@@ -1626,9 +1693,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：性价比高，只需要$19"
+      "原记录报价约 19 美元，暂无详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-a0717914a557",
@@ -1639,9 +1710,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：免费，需要换链"
+      "AI Agent 目录，原记录提到免费提交需交换链接。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-efa4bdd67c90",
@@ -1652,9 +1727,11 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：19"
+      "原记录仅写了“19”，币种和收费方式不明确。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3e49a203462f",
@@ -1665,9 +1742,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：$49"
+      "原记录报价约 49 美元，暂无详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-10e8af36fddc",
@@ -1678,9 +1759,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：免费"
+      "原记录标注免费，暂无详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-7867022876a6",
@@ -1691,10 +1776,13 @@
     "votes": 2,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 安徒生：可免费，要换链",
-      "💬 张成：几乎每周审核，可以周五提交。"
+      "可交换链接后提交，原记录提到通常每周审核，有周五提交的经验。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-d09acbc68dea",
@@ -1705,9 +1793,14 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 山南见曦：高dr的导航站收录速度快,可以免费提交需添加徽章，付费免徽章"
+      "产品目录，免费档需添加徽章，付费可免徽章。原记录认为收录较快，具体审核条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3c252c9c2116",
@@ -1718,9 +1811,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费目录提交"
+      "原记录标注可免费提交目录。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-268b809e38b6",
@@ -1731,7 +1828,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-1c39f487f7dc",
@@ -1742,7 +1841,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-0fcb968b9115",
@@ -1753,7 +1854,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-4e29b23bc3b1",
@@ -1764,9 +1867,11 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 张成：互换链接，审核很快"
+      "原记录提到需互换链接，审核较快，未提供具体费用信息。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-00c6ab21ca66",
@@ -1777,9 +1882,14 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 hyhor：免费提交，权重高。付费价格也不贵。"
+      "产品目录，提供免费提交和付费方案；原记录认为价格不高。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ad041c15eda4",
@@ -1790,9 +1900,14 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 hyhor：免费提交，权重高。付费价格也不贵。"
+      "SaaS 产品目录，提供免费提交和付费方案；原记录认为价格不高。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-f3bd5db359d9",
@@ -1803,7 +1918,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c4782b83519f",
@@ -1814,7 +1931,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-bc703e474c86",
@@ -1825,9 +1944,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "适合以图片展示项目，具体发布和链接位置需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-c36f25244c8b",
@@ -1838,9 +1961,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：【https://www.kaggle.com】技术类 免费"
+      "适合技术项目展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-2028ac35b899",
@@ -1851,9 +1978,11 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Terence‮‮‮脚一你了踹并‭：DR 60，权重较高，效果好"
+      "原记录认为有一定外链价值，暂无具体提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-5c3ee5ea57b7",
@@ -1864,10 +1993,13 @@
     "votes": 2,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：免费提交",
-      "💬 日出东方：【https://www.startupbuffer.com/】目录提交 免费"
+      "创业项目目录，原记录标注可免费提交。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-56a333beca6e",
@@ -1878,9 +2010,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：免费提交"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-92585c5e458d",
@@ -1891,7 +2027,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-6130c9b159be",
@@ -1902,9 +2040,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：【https://aitoolhunt.com/】AI目录 免费"
+      "AI 工具目录，可提交产品信息。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ec84517c4895",
@@ -1915,7 +2057,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-ceafa2f3ca08",
@@ -1926,7 +2070,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c394f9b98235",
@@ -1937,7 +2083,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-2cbc9b0e45e3",
@@ -1948,9 +2096,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：【https://aitools.inc/submit】高DR高流量，免费提交"
+      "AI 工具目录，原记录标注可免费提交。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-853cb3100a6c",
@@ -1961,9 +2113,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 黄楚标：【https://ctrlalt.cc】可免费发布"
+      "可发布项目，具体流程未说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d4dbaff603ee",
@@ -1974,9 +2130,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：【https://geekwire.com/】免费提交，高流量，高DR"
+      "原记录标注可免费提交，并认为有较高曝光价值，具体条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-af6feeb9269c",
@@ -1987,9 +2147,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 山沟沟的孩子：【huntscreens.com】免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-daabff2ae06e",
@@ -2000,9 +2164,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Kaiun：【https://toolrain.com/】DR57，目前少数不用等排期的免费外链AI目录站"
+      "AI 工具目录，原记录提到可免费提交且无需等待排期。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-6afa295aa4a2",
@@ -2013,7 +2181,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-73b794bb46e1",
@@ -2024,7 +2194,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c38bf0853284",
@@ -2035,7 +2207,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-5ef0b14e0cd3",
@@ -2046,9 +2220,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：文档类 免费"
+      "文档展示渠道，具体上传和链接展示条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-e6e3325ba25e",
@@ -2059,9 +2237,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "适合图片和作品展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d9a4cef52f78",
@@ -2072,9 +2254,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 蓝星空：【https://qiita.com/】【免费】一个日语社区，可以发文章加外链，值得好好运营，能带来真实的付费用户。"
+      "日语技术社区，可发布文章并自然引用网站。适合面向日语开发者的内容与产品。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-0f307d9610cb",
@@ -2085,9 +2271,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：书籍类 免费"
+      "与书籍相关的社区渠道，具体链接入口未说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ce70759af8f8",
@@ -2098,9 +2288,11 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Terence‮‮‮脚一你了踹并‭：【https://linktr.ee/】DR 93，权重较高，效果好"
+      "原记录认为有一定外链价值，暂无具体提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-e7dbbf343ab0",
@@ -2111,10 +2303,13 @@
     "votes": 2,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 蓝星空：【免费】只有用户 Profile 页面能加一条外链，插件详情页是没有外链的，所以建议一个网站注册一个用户。",
-      "💬 日出东方：高权重,免费"
+      "原记录提到可在用户 Profile 中填写网站链接，插件详情页是否展示外链需另行确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-3787e89a431c",
@@ -2125,9 +2320,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 accessiblefish：免费提交llm.txt获取外链"
+      "原记录提到可提交网站的 llms.txt，获取目录展示入口。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d5b404fe75c1",
@@ -2138,9 +2337,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 陈陈chen：免费提交的导航站，月访问 500 多 k"
+      "创业项目目录，原记录标注可免费提交，并提到有一定用户访问。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-2cb9a3a19d62",
@@ -2151,9 +2354,11 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 黄楚标：游戏发布必发"
+      "面向独立游戏的发布平台，适合游戏项目展示。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-7a44bb7c3a82",
@@ -2164,10 +2369,13 @@
     "votes": 2,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 黄楚标：注册推送视频等待收录",
-      "💬 日出东方：高权重 免费"
+      "可上传视频并等待搜索收录，原记录标注有免费方式。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-45d292d1f687",
@@ -2178,7 +2386,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-66cbe85ba5f8",
@@ -2189,9 +2399,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Geektao：收费，47 美刀，高价值"
+      "工具目录，原记录报价约 47 美元，暂无详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d8470ad15084",
@@ -2202,10 +2416,13 @@
     "votes": 2,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 钟耀：免费",
-      "💬 日出东方：【https://www.cnblogs.com】中文技术博客 免费"
+      "中文技术博客平台，可发布文章并自然介绍相关项目。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-db9a48beec81",
@@ -2216,9 +2433,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：【https://chrome.google.com/】高权重,5刀开通权限即可"
+      "原记录提到 Chrome 开发者权限约 5 美元；该链接与 Chrome Web Store 的关系需确认后再操作。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-75f127357839",
@@ -2229,7 +2450,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-67c005a20511",
@@ -2240,9 +2463,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：【https://blog.csdn.net】中文高权重 免费"
+      "中文技术博客渠道，具体发文与链接规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3b976b668fa5",
@@ -2253,9 +2480,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：【https://start.me】书籍类 免费"
+      "原记录标注免费，但“书籍类”的分类信息不清楚，具体用法需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ab02d026d985",
@@ -2266,9 +2497,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 小羽：【https://thataicollection.com】dr传播高 ⚠️ 收费"
+      "AI 工具目录，原记录标注收费，但未提供具体价格。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-16b74c6114bb",
@@ -2279,9 +2514,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：【https://www.weebly.com】免费发表文章"
+      "可通过文章介绍相关项目，具体发文条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-5ba8cc91ce75",
@@ -2292,10 +2531,14 @@
     "votes": 2,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 小羽：dr传播高 ⚠️ 收费",
-      "💬 Lone Ranger：上面可以输入网址后得到对应的竞争对手分析页面，可以免费获取外链"
+      "可输入网址生成竞品分析页，原记录提到这个页面可免费获得。也有收费服务的记录，需区分具体功能。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-ef930eed8bcf",
@@ -2306,9 +2549,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重 免费"
+      "设计作品展示渠道，原记录认为有一定外链价值。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-240be83916c6",
@@ -2319,10 +2566,11 @@
     "votes": 2,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 日出东方：中文社区 需养号",
-      "💬 MaynorAI(tryallapi.com)：收录快"
+      "中文技术社区，原记录提到需要正常参与、积累账号信誉，并认为搜索收录较快。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-5facb9ae65e7",
@@ -2333,9 +2581,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "设计作品展示渠道，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-44e58931a408",
@@ -2346,9 +2598,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "设计作品展示渠道，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d2a8171ba744",
@@ -2359,9 +2615,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：目录提交 免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-180f80d4379b",
@@ -2372,9 +2632,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：技术类 免费"
+      "技术项目相关渠道，具体展示方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-b8dc840fe342",
@@ -2385,9 +2649,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：技术类 免费"
+      "技术项目相关渠道，具体展示方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-03253b54c058",
@@ -2398,9 +2666,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：技术类 免费"
+      "适合技术项目，具体发布条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-cae67533738f",
@@ -2411,9 +2683,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：技术类 免费"
+      "适合技术项目，具体发布条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-1da86d99105b",
@@ -2424,9 +2700,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：技术类 免费"
+      "技术扩展相关渠道，具体上架条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d57720272b57",
@@ -2437,9 +2717,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费发表文章"
+      "可通过文章介绍相关项目，具体发文条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-6e6029121d33",
@@ -2450,10 +2734,13 @@
     "votes": 2,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 日出东方：免费发表文章",
-      "💬 Jimmy：【Telegra.ph】免费，连注册都不用，一分钟发一篇。实测 31 篇复查 22 篇存活（71%）。关键：正文里的链接是 nofollow，唯一 dofollow 的是作者署名那个链接（author_url），所以要把目标 URL 填在 author_url 里、并且指向内页而不是首页——不知道这点的话发一百篇也是 0 dofollow。"
+      "无需注册即可发布文章。原记录称正文链接为 nofollow，作者资料链接的属性不同；具体展示与链接属性需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-f7664ecdc893",
@@ -2464,9 +2751,13 @@
     "votes": 2,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：目录提交 免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4862f51a4c9b",
@@ -2477,7 +2768,9 @@
     "votes": 2,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-fbe7b57677f7",
@@ -2488,10 +2781,13 @@
     "votes": 2,
     "recommendationTotal": 2,
     "reasons": [
-      "💬 Maverick：linktr.ee同类网站, gsc收录, 免费, DR 83",
-      "💬 一根木：【https://solo.to/】solo.to：免费自助提交，DR83，做个人/产品主页外链，收录即时生效"
+      "个人或产品链接主页，可自助添加网站。原记录提到免费方式和较快的页面展示。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 2
   },
   {
     "id": "link-ff32344c52c5",
@@ -2502,7 +2798,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-db9284cb0ab4",
@@ -2513,7 +2811,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-93976dd97efa",
@@ -2524,7 +2824,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-be7bd3c8cdec",
@@ -2535,7 +2837,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-7744ca4dfa2c",
@@ -2546,7 +2850,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-a40ede4cecfd",
@@ -2557,7 +2863,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-9a147d75e6cb",
@@ -2568,7 +2876,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-a49e96b108a7",
@@ -2579,7 +2889,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-11cf769df33d",
@@ -2590,7 +2902,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-48b7e0b5639c",
@@ -2601,9 +2915,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 洪江：免费提交"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d3e5aee0cdde",
@@ -2614,9 +2932,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 zry：免费且收录快，适合快速上"
+      "原记录提到可免费提交，收录较快。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-1fdb6fb50674",
@@ -2627,9 +2949,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 zry：免费且收录快"
+      "原记录提到可免费提交，收录较快。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-f57dfa58c7e4",
@@ -2640,9 +2966,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 阿迪ζ：产品对比"
+      "用于产品对比，原记录未提供费用和具体提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-189f7e07780e",
@@ -2653,9 +2981,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 转角喻到 AI：免费工具站，有一定权重，挂徽章后就通过"
+      "工具目录，原记录提到免费提交需挂徽章，验证后较快通过。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ddb38adb9275",
@@ -2666,7 +2998,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-a67345823f57",
@@ -2677,9 +3011,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 李胜：免费/收录快/效果不错"
+      "原记录提到可免费提交，收录较快，实际效果需结合产品评估。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-bafe9d63110f",
@@ -2690,9 +3028,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 cherry：游戏领域高权重网站，发文推荐自己的网站，谷歌爬虫特别快，收录也会很快。"
+      "面向游戏的社区，可通过相关文章介绍游戏或项目。原记录认为搜索收录较快。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-92f177a0e4ef",
@@ -2703,9 +3043,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：$9.9，自助操作，不需要审核"
+      "原记录报价约 9.9 美元，可自助操作，无需审核。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-355bf676e098",
@@ -2716,9 +3060,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 召唤兽：免费提交需挂徽章"
+      "原记录提到免费提交需挂徽章。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-eb8b803d1e8d",
@@ -2729,9 +3077,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：$29"
+      "原记录报价约 29 美元，暂无详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ec00324e4e32",
@@ -2742,9 +3094,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 zzl：收录快"
+      "原记录认为收录较快，未提供费用和具体提交方式。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d14710f5a768",
@@ -2755,9 +3109,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：$9.9"
+      "原记录报价约 9.9 美元，暂无详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-0f3a6e86eba3",
@@ -2768,9 +3126,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：$28,中文站"
+      "中文站点，原记录报价约 28 美元，暂无详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-dc5b286aed43",
@@ -2781,9 +3143,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：可免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-454a2f4a1ec2",
@@ -2794,9 +3160,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：$9.9"
+      "原记录报价约 9.9 美元，暂无详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-563cd5248244",
@@ -2807,9 +3177,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：免费，中文站"
+      "中文站点，暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-0227254ee5c2",
@@ -2820,9 +3194,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 安徒生：免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-7ef869c68781",
@@ -2833,7 +3211,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-fff4ae4dfa7d",
@@ -2844,9 +3224,14 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 山南见曦：高dr的导航站收录速度快,可以免费提交需添加徽章，付费免徽章"
+      "目录站，免费档需添加徽章，付费可免徽章。原记录认为收录较快，具体审核条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-66187275f43a",
@@ -2857,9 +3242,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 山南见曦：高dr的导航站收录速度快，选择发布日免费提交发布"
+      "原记录提到可选择发布日期，免费提交产品。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-8437a3fb583e",
@@ -2870,7 +3259,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-6934ddbac811",
@@ -2881,7 +3272,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-618f8b7a0b84",
@@ -2892,7 +3285,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-4a2ee05b0c1d",
@@ -2903,7 +3298,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-00d8156dc68f",
@@ -2914,7 +3311,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-fabed00c903b",
@@ -2925,7 +3324,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-3e21bbc5ebd6",
@@ -2936,7 +3337,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-9016aaf9f27d",
@@ -2947,7 +3350,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-1567e2164302",
@@ -2958,7 +3363,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-4677e66ee3a4",
@@ -2969,7 +3376,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-2d1e3b6b3558",
@@ -2980,7 +3389,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-121b878619f2",
@@ -2991,7 +3402,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-2d5ccda2780b",
@@ -3002,7 +3415,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-028873aaf356",
@@ -3013,7 +3428,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-e31897fdc7ab",
@@ -3024,7 +3441,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-0712bb598dbb",
@@ -3035,7 +3454,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-49d8002ab9ea",
@@ -3046,7 +3467,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-cfd0eefff883",
@@ -3057,7 +3480,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-b508b9ef0aa4",
@@ -3068,7 +3493,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-0ceb287d0ec9",
@@ -3079,7 +3506,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-70e403d34195",
@@ -3090,7 +3519,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-b9fd71f9db04",
@@ -3101,7 +3532,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-d4d1a1feed43",
@@ -3112,9 +3545,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：中等DR/流量，免费提交"
+      "原记录对流量与外链价值评价中等，暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4e78c2536937",
@@ -3125,7 +3562,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-d13c3691cbaf",
@@ -3136,7 +3575,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-f9571e8f757c",
@@ -3147,7 +3588,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-4e950a0fd670",
@@ -3158,7 +3601,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-f9617e018909",
@@ -3169,7 +3614,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-b0beb38fcb9f",
@@ -3180,7 +3627,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-380982ea99bc",
@@ -3191,7 +3640,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-19b8dc1e0464",
@@ -3202,7 +3653,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-f465ca958f6a",
@@ -3213,7 +3666,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-1ce7ef101c55",
@@ -3224,7 +3679,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-85f857ea039b",
@@ -3235,7 +3692,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-1f0738f1728b",
@@ -3246,7 +3705,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-ac59f60acab9",
@@ -3257,7 +3718,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-a578a06e138e",
@@ -3268,7 +3731,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-296c488586e6",
@@ -3279,7 +3744,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-a8bfc5ade964",
@@ -3290,7 +3757,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c6f2da89621c",
@@ -3301,7 +3770,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-31aba72d0ec8",
@@ -3312,7 +3783,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-9d2b9ee7e50c",
@@ -3323,7 +3796,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-5f0957ae28df",
@@ -3334,7 +3809,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-4e0f20a13ef0",
@@ -3345,7 +3822,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-07ec04266cd8",
@@ -3356,7 +3835,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-2d3baa311921",
@@ -3367,7 +3848,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-5750dc628e83",
@@ -3378,7 +3861,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-78b3c339d37c",
@@ -3389,7 +3874,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-3227fdda75a0",
@@ -3400,7 +3887,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-78bed7c320c3",
@@ -3411,7 +3900,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-0679631fc316",
@@ -3422,7 +3913,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-b9565a5d0dcb",
@@ -3433,7 +3926,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-60b5db15b3a5",
@@ -3444,7 +3939,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-674acf23e4de",
@@ -3455,7 +3952,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c74f4804f040",
@@ -3466,7 +3965,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-2e716bf4f8f0",
@@ -3477,7 +3978,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-f69e55dbeca8",
@@ -3488,7 +3991,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-6afb2ad66028",
@@ -3499,7 +4004,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-92cc55705645",
@@ -3510,7 +4017,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-6d584ac97bfd",
@@ -3521,7 +4030,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-607e43ca40a1",
@@ -3532,7 +4043,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-6866cd773d01",
@@ -3543,7 +4056,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-bc46dd338d2d",
@@ -3554,7 +4069,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-867e3ce03b65",
@@ -3565,9 +4082,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 行知：付 15 美元可以获得包括SaaSGrow.app 以及StartupTrusted 在内的三个高dr 外链"
+      "原记录报价约 15 美元，包含 SaaSGrow.app、StartupTrusted 等三个站点的链接；套餐范围需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3ede40a7f8ef",
@@ -3578,7 +4099,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-d1398ad8d5d2",
@@ -3589,7 +4112,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-017851dc2741",
@@ -3600,7 +4125,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-d60b83ec72ad",
@@ -3611,7 +4138,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-d2414972c4fb",
@@ -3622,7 +4151,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-17adbc1cad44",
@@ -3633,7 +4164,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-e043c2e60609",
@@ -3644,7 +4177,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-e1b11484e5c1",
@@ -3655,7 +4190,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-de2daaf12750",
@@ -3666,7 +4203,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c26e4ed0fe74",
@@ -3677,7 +4216,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-10d58e939ea2",
@@ -3688,7 +4229,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-e863ed8fcf1d",
@@ -3699,7 +4242,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-8a7f9f941eff",
@@ -3710,9 +4255,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：免费提交，高流量，高DR"
+      "原记录认为有一定流量与外链价值，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ef445b278811",
@@ -3723,9 +4272,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Zephyrion（即刻同名）：免费提交"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-fc011f9b5913",
@@ -3736,7 +4289,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-aa0169f97330",
@@ -3747,7 +4302,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-f8dd2c78b18a",
@@ -3758,7 +4315,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-d3b7c8bfee71",
@@ -3769,7 +4328,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-ac300432aebb",
@@ -3780,7 +4341,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-304f03f7c5ab",
@@ -3791,7 +4354,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-124dde1f5181",
@@ -3802,7 +4367,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-ea0d949753b7",
@@ -3813,7 +4380,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-4187a29c4e06",
@@ -3824,7 +4393,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-6ba5d53fe610",
@@ -3835,9 +4406,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 杨feng：yandex 搜索助力，免费"
+      "面向俄语内容，原记录认为有助于获得 Yandex 相关访问。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-726eecf9b64f",
@@ -3848,7 +4423,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c710bd7d64bd",
@@ -3859,7 +4436,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-86692b4463f7",
@@ -3870,7 +4449,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-77c01b54bc06",
@@ -3881,7 +4462,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-6ccea5a39cb6",
@@ -3892,7 +4475,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-80f6ec8ca7be",
@@ -3903,7 +4488,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-e7ae2a36d560",
@@ -3914,7 +4501,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-3df4345654b7",
@@ -3925,7 +4514,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-28c032a25002",
@@ -3936,7 +4527,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-af2c63888125",
@@ -3947,7 +4540,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-0133d61c3b8e",
@@ -3958,7 +4553,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-960264593c9f",
@@ -3969,7 +4566,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-9ef16185e78f",
@@ -3980,7 +4579,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-bba39fac1357",
@@ -3991,7 +4592,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-6d6e18155455",
@@ -4002,9 +4605,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Geektao：Dofollow + Free + Easy"
+      "原记录提到容易参与，并可获得 dofollow 链接；具体论坛规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-9269470f527d",
@@ -4015,9 +4622,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 山沟沟的孩子：免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-fa5d62ca3ee5",
@@ -4028,7 +4639,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-11f2994304a7",
@@ -4039,7 +4652,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-95153da11412",
@@ -4050,7 +4665,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-cd61dc888ab3",
@@ -4061,7 +4678,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-1c421ac0f4ed",
@@ -4072,7 +4691,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-5c8575274f61",
@@ -4083,9 +4704,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 v：发现的一个接受提交的科技媒体、目录、newsletter 按域名权重（DR）排成一张大表，每个都标了提交入口、读者量和联系方式"
+      "科技媒体、产品目录和 Newsletter 的提交入口汇总，列出读者量、联系方式等信息，适合寻找相关渠道。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-8874f0bede82",
@@ -4096,9 +4719,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Kerwin：评论有审核，避免垃圾评论，但不是绝对过不了；网站比较综合，搜到相关题材再发。"
+      "可在相关主题下参与评论，但有人工审核。应围绕内容交流，避免垃圾评论和无关链接。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-b5b74c27978c",
@@ -4109,9 +4734,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Kerwin：棒子版小红书，做韩语必须经营。"
+      "面向韩语用户的内容平台，适合有韩语内容和目标受众的项目。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d2ffaa917401",
@@ -4122,9 +4749,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Kerwin：博客站，DR 很高 92。"
+      "博客平台，原记录认为有较高外链价值，未提供详细提交条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-36d828c87935",
@@ -4135,7 +4764,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-4a73657365c2",
@@ -4146,7 +4777,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-1644da65b214",
@@ -4157,7 +4790,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c99ec637ece3",
@@ -4168,9 +4803,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 kingluo：面向 AI 工具的付费目录，一次性约 69 美元，提供长期产品展示页，适合获取 AI 垂直用户曝光和长期外链。"
+      "面向 AI 工具的目录，原记录报价约 69 美元，可建立长期产品展示页并触达垂直用户。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-5e83427ebf95",
@@ -4181,9 +4820,14 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 sunboy：我亲自维护的导航站 Dr 51 , 可以付费, 也可以免费提交, 有任何问题直接联系我"
+      "AI 工具目录，原记录提到可免费或付费提交，暂无更详细的审核说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-5c6e4ab20ae4",
@@ -4194,9 +4838,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 钟耀：免费，dr 高"
+      "原记录认为有一定外链价值，具体链接入口未说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-947d0a57f93a",
@@ -4207,7 +4855,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-32287030507f",
@@ -4218,7 +4868,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-aa99bd8ccf1c",
@@ -4229,7 +4881,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-fc597394167e",
@@ -4240,7 +4894,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-0eb820daa7fb",
@@ -4251,9 +4907,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 JsonChao：最近3个月新崛起的品牌导航站，有付费用户，性价比尚可"
+      "产品目录，原记录提到付费用户转化的经验，但未说明具体提交费用。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-0e3e8e7b04a0",
@@ -4264,9 +4922,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 小占：免费博客评论外链"
+      "原记录提到可参与博客评论获取链接，未提供更详细的条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-502eb646b192",
@@ -4277,9 +4939,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 小占：免费博客评论外链"
+      "原记录提到可参与博客评论获取链接，未提供更详细的条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-587a3166ebb7",
@@ -4290,9 +4956,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 小占：免费博客评论外链"
+      "原记录提到可参与博客评论获取链接，未提供更详细的条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-1f1af5e57048",
@@ -4303,9 +4973,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 黄楚标：shopify 论坛评论"
+      "可在 Shopify 社区参与相关讨论，具体发帖与链接规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-7c866f94ccf5",
@@ -4316,9 +4988,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 醉春风：免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-b406379dae31",
@@ -4329,9 +5005,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 低位：DR=63 可交换提交"
+      "AI 工具目录，原记录提到可交换链接后提交。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-525ae4dee35e",
@@ -4342,9 +5020,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 哞咦：博客评论站，免费，DR高"
+      "可参与相关博客评论，原记录标注免费；具体审核与链接展示需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d5fdb3bf000f",
@@ -4355,9 +5037,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 陈陈chen：免费提交的博客评论，可被 GSC 收录"
+      "原记录提到可参与博客评论，并有搜索收录经验；具体审核与链接展示需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-8fe2180dd420",
@@ -4368,9 +5054,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 陈陈chen：免费提交的博客评论，可被 GSC 收录"
+      "原记录提到可参与博客评论，并有搜索收录经验；具体审核与链接展示需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-529459c78620",
@@ -4381,7 +5071,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-d47026a0314a",
@@ -4392,9 +5084,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Andy：个人主页信息可以填，手机版可以填个人网站"
+      "可在个人资料中填写网站，原记录提到手机端支持设置。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-59295d81476e",
@@ -4405,9 +5099,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 阿林：Bing 的流量作为补充也不可忽视"
+      "原记录认为 Bing 可作为补充流量来源，未提供具体发布方式。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ad361208eb07",
@@ -4418,9 +5114,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 BOYSO：生活类博客，DR50+，免费，可发锚文本反链"
+      "生活类博客，原记录提到可免费参与评论并使用锚文本链接，具体审核条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-50b8773299b8",
@@ -4431,9 +5131,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 BOYSO：动漫博客，DR45，免费，可发锚文本反链"
+      "动漫博客，原记录提到可免费参与评论并使用锚文本链接，具体审核条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-c9a94ca7ae2b",
@@ -4444,9 +5148,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 BOYSO：企业类，DR26，免费，Dofollow,可发锚文本反链"
+      "企业类网站，原记录提到锚文本和 dofollow 链接，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-e6267f47e1ab",
@@ -4457,9 +5165,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 BOYSO：AI导航站，DR65，付费49.9，Dofollow,优惠码 GEFEI 享9折"
+      "AI 工具目录，原记录报价约 49.9 美元，并提到 dofollow 链接；当前价格和链接属性需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-cc76d54415c8",
@@ -4470,9 +5180,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 唐先生：谷歌地图"
+      "原记录仅提到 Google 地图，未说明具体建档条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-724bd2ea6631",
@@ -4483,7 +5195,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-e0bfceba536b",
@@ -4494,7 +5208,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-9928612d29b4",
@@ -4505,7 +5221,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-75e3b927ee96",
@@ -4516,7 +5234,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-dd15046e628e",
@@ -4527,7 +5247,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-2de1001f1c38",
@@ -4538,7 +5260,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-f54f2d02115a",
@@ -4549,7 +5273,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-5b9cb09adba1",
@@ -4560,7 +5286,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-b0ee69f116b1",
@@ -4571,7 +5299,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-0e4c21c232c1",
@@ -4582,7 +5312,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-df52b18d9298",
@@ -4593,7 +5325,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-6f0883ba69ff",
@@ -4604,7 +5338,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-dc401c35363e",
@@ -4615,7 +5351,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c37684b9f867",
@@ -4626,7 +5364,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-9f6b124af21a",
@@ -4637,7 +5377,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-89db0c134bf6",
@@ -4648,7 +5390,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-48fb95bbce2b",
@@ -4659,7 +5403,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-6fa4299eca69",
@@ -4670,7 +5416,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-00510076e7e0",
@@ -4681,7 +5429,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-576ea41e02a1",
@@ -4692,7 +5442,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-175fb203d50a",
@@ -4703,7 +5455,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-d07e82d607cf",
@@ -4714,7 +5468,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-0edd443b1f21",
@@ -4725,7 +5481,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-40fe356f2a2c",
@@ -4736,7 +5494,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-950de6f1b9a3",
@@ -4747,7 +5507,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c8dc99559c8e",
@@ -4758,7 +5520,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c855734b004b",
@@ -4769,7 +5533,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-7a8102fe09ee",
@@ -4780,7 +5546,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-9550ffbb5cf6",
@@ -4791,7 +5559,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c476ae1a10d5",
@@ -4802,7 +5572,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-9fc53a9d68ec",
@@ -4813,7 +5585,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-e52f9599bf94",
@@ -4824,7 +5598,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-75d00f265abc",
@@ -4835,7 +5611,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-8cb470989c2b",
@@ -4846,7 +5624,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-0d066a8f724c",
@@ -4857,9 +5637,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重,免费"
+      "原记录认为有一定外链价值，具体提交方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-a04c680bcc5c",
@@ -4870,9 +5654,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费目录提交"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-e5436ec10e05",
@@ -4883,9 +5671,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：10$ 目录提交"
+      "目录提交渠道，原记录报价约 10 美元。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-e70e7a2fb4ba",
@@ -4896,7 +5688,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-bd2a9801e315",
@@ -4907,9 +5701,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ad316983b251",
@@ -4920,9 +5718,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费 二级域名博客"
+      "原记录提到可建立免费的二级域名页面，具体功能与限制需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-2c970b2ff1f9",
@@ -4933,9 +5735,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费 二级域名博客"
+      "原记录提到可建立免费的二级域名页面，具体功能与限制需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-98aacac2e7f5",
@@ -4946,9 +5752,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-980e933871e8",
@@ -4959,9 +5769,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重 免费"
+      "原记录认为有一定外链价值，具体提交方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4c113a0ebe02",
@@ -4972,9 +5786,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费 提交提案"
+      "原记录提到可提交提案，具体参与条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-1082701a4a10",
@@ -4985,9 +5803,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：job类 免费"
+      "原记录归为招聘相关渠道，具体提交方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-85a79f3d25b0",
@@ -4998,9 +5820,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：job类 免费"
+      "原记录的渠道分类不清楚，具体参与和链接规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-afc4679c5c91",
@@ -5011,9 +5837,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：发表文章 免费"
+      "原记录提到可发布文章，暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ea976d2c8fd4",
@@ -5024,9 +5854,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：job类 免费"
+      "原记录归为招聘相关渠道，具体提交方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-6d3cb359cf33",
@@ -5037,9 +5871,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：目录提交 免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-6612465a9ad5",
@@ -5050,7 +5888,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-0d094feec7fa",
@@ -5061,7 +5901,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-7e2f57d8dc36",
@@ -5072,9 +5914,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重 免费"
+      "原记录认为有一定外链价值，具体提交方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-7269abfe55c8",
@@ -5085,9 +5931,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重 免费建wiki"
+      "可建立 Wiki，具体内容规范和链接规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-5533abdca9ee",
@@ -5098,9 +5948,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费wiki"
+      "可建立 Wiki，具体内容规范和链接规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-54950b8abd68",
@@ -5111,9 +5965,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：论坛聚合 免费"
+      "论坛聚合平台，可按相关主题寻找参与入口。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4d7686702732",
@@ -5124,9 +5982,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：占星论坛 免费"
+      "占星主题论坛，适合相关话题交流，具体规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-e67e7d4a9283",
@@ -5137,9 +5999,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：占星论坛 免费"
+      "占星主题论坛，适合相关话题交流，具体规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-6da9db7ce75f",
@@ -5150,9 +6016,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：占星论坛 免费"
+      "占星主题论坛，适合相关话题交流，具体规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-be55beb4a9ff",
@@ -5163,9 +6033,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重 免费"
+      "原记录认为有一定外链价值，具体提交方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-78f814ec5199",
@@ -5176,9 +6050,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：中文技术 免费"
+      "中文技术社区，可围绕相关技术内容参与，具体链接规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-f4d9b7350c04",
@@ -5189,9 +6067,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：中文高权重 免费"
+      "中文社区，具体参与和链接展示规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-36e809ba0cdb",
@@ -5202,9 +6084,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：中文发文 免费"
+      "中文内容平台，可发布相关文章，具体规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-64d4c719409f",
@@ -5215,9 +6101,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "适合设计与图片展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-935cdb2492cc",
@@ -5228,9 +6118,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "适合设计与图片展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3c67dd384908",
@@ -5241,9 +6135,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "适合设计与图片展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-858d581ddf4c",
@@ -5254,9 +6152,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "适合设计与图片展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-c1273c278d20",
@@ -5267,9 +6169,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "适合设计与图片展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-95d9e6d9a535",
@@ -5280,9 +6186,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "适合设计与图片展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-e3d7c8e9c20a",
@@ -5293,9 +6203,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "适合设计与图片展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-8e473c14a9d8",
@@ -5306,9 +6220,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "适合设计与图片展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-9a02c7d26e6c",
@@ -5319,9 +6237,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：设计图片类 免费"
+      "适合设计与图片展示，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ebe7181be089",
@@ -5332,9 +6254,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：视频类 免费"
+      "可发布内容，具体功能与链接展示需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-f93baa11200c",
@@ -5345,9 +6271,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：视频类 免费"
+      "可发布内容，具体功能与链接展示需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3162fa5e82db",
@@ -5358,9 +6288,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：视频类 免费"
+      "可发布内容，具体功能与链接展示需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-87bde0a20664",
@@ -5371,9 +6305,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：文档类 免费"
+      "原记录归为文档渠道，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4ce13482e5b6",
@@ -5384,9 +6322,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：社区类 免费"
+      "社区渠道，具体参与和链接展示规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3827ae7ad9bc",
@@ -5397,9 +6339,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重 免费"
+      "原记录认为有一定外链价值，具体提交方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4a6c37369f71",
@@ -5410,9 +6356,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重 视频 免费"
+      "原记录归为视频渠道，具体发布方式和链接位置未说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-a0aca74e7c3f",
@@ -5423,9 +6373,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重 免费"
+      "原记录认为有一定外链价值，具体提交方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-b2f21cf828ae",
@@ -5436,9 +6390,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重 免费"
+      "原记录认为有一定外链价值，具体提交方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-275cb8191613",
@@ -5449,9 +6407,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：职场 免费"
+      "职场相关渠道，具体链接入口未说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-81e4a716d294",
@@ -5462,9 +6424,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：社区类 免费"
+      "社区渠道，具体参与和链接展示规则需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-911104619db0",
@@ -5475,9 +6441,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：文档类 免费"
+      "原记录的渠道分类不清楚，具体发布方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-656f9182d703",
@@ -5488,9 +6458,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：书签 免费"
+      "书签渠道，可围绕相关内容保存网站链接，具体条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-1331655aa66b",
@@ -5501,9 +6475,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：书籍类 免费"
+      "原记录的渠道分类不清楚，具体使用方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-55fac4e01caf",
@@ -5514,9 +6492,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：GPT类目录 免费"
+      "GPT 相关工具目录，具体提交条件未说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-39625eb27383",
@@ -5527,9 +6509,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：技术类 免费"
+      "适合技术项目，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-47eab744c738",
@@ -5540,9 +6526,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：技术类 免费"
+      "适合技术项目，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3bbee62df3ef",
@@ -5553,9 +6543,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：技术类 免费"
+      "适合技术项目，具体提交条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-f7f2a680f648",
@@ -5566,9 +6560,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费发表文章"
+      "可通过文章介绍相关项目，具体发文条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-c343e0431ffd",
@@ -5579,9 +6577,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费发表文章"
+      "可通过文章介绍相关项目，具体发文条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-436c72b16d1e",
@@ -5592,9 +6594,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费发表文章"
+      "可通过文章介绍相关项目，具体发文条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-e96aefa4ecb5",
@@ -5605,9 +6611,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费发表文章"
+      "可通过文章介绍相关项目，具体发文条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-f8934ed54d7b",
@@ -5618,9 +6628,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：免费发表文章"
+      "可通过文章介绍相关项目，具体发文条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-8f9bad4c9e72",
@@ -5631,9 +6645,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：高权重 免费"
+      "原记录认为有一定外链价值，具体提交方式需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-1572c0fb5b3e",
@@ -5644,9 +6662,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 日出东方：目录提交 免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-16d677801c63",
@@ -5657,7 +6679,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c942b320965b",
@@ -5668,7 +6692,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-fd4a6f3081fe",
@@ -5679,9 +6705,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 嵩皓：免费、无需注册、无验证码，全程可自动化。站点主题是\"无需登录即可用的工具\"，工具类站点非常契合。亲测：7月30日提交，约 20 天上线，dofollow（8月19日确认 live）。注意：listing 不进 sitemap，回查请直接访问 listing URL"
+      "收录无需登录即可使用的工具，原记录提到提交无需注册，有约 20 天过审及 dofollow 链接的经验。展示页可能不在 sitemap 中，回查时需访问具体页面。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-94e6efb9d7d7",
@@ -5692,9 +6722,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 路漫漫：DR91，操作简单：需要上架一个商品，代码、模板等，在商品简介里加上自己的网站。"
+      "适合有真实代码、模板等商品的项目，上架后可在商品介绍中关联网站。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-0dd593448cbc",
@@ -5705,9 +6737,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 路漫漫：DR92，同codecanyon.net，需要上架一个商品，在商品简介里加上自己的网站。"
+      "需上架实际商品，再在商品介绍中关联网站，适合已有数字产品的项目。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-01f99141161d",
@@ -5718,9 +6752,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 路漫漫：DR93，其中的 bookmark 功能，可以添加书签，书签里可以加上自己多个网站的链接。"
+      "原记录提到可通过书签功能保存网站链接，适合相关内容收藏。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-9d56c3c3a24d",
@@ -5731,9 +6767,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 鹏之大一锅炖不下：AI工具站类导航站可以免费提交"
+      "AI 工具目录，可提交产品信息。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-c5683aea3996",
@@ -5744,9 +6784,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 鹏之大一锅炖不下：可以免费提交"
+      "可提交产品信息，暂无详细流程。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-2692f1133c6e",
@@ -5757,9 +6801,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 鹏之大一锅炖不下：工具类导航站，可以免费提交"
+      "工具目录，可提交产品信息。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-90c34666677e",
@@ -5770,9 +6818,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 鹏之大一锅炖不下：AI工具导航站，可以免费提交"
+      "AI 工具目录，可提交产品信息。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-2bda1ae17210",
@@ -5783,9 +6835,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 鹏之大一锅炖不下：工具导航站，可以免费提交"
+      "工具目录，可提交产品信息。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-a39221ff4df3",
@@ -5796,7 +6852,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-1935755760cf",
@@ -5807,7 +6865,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-263d9b5744f5",
@@ -5818,9 +6878,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Lyman：无需审核，免费提交，dofollow"
+      "原记录提到提交无需审核，链接为 dofollow。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-2864a7d8ff03",
@@ -5831,9 +6895,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Lyman：需要审核，免费提交，有中文的可以提交下，可以带来国内访问量"
+      "面向中文产品的展示平台，原记录提到免费提交需审核，可带来国内用户访问。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-949f0ac7c701",
@@ -5844,9 +6912,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 accessiblefish：免费提交llm.txt获取外链"
+      "原记录提到可提交网站的 llms.txt，获取目录展示入口。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-86d57cdb2c4f",
@@ -5857,9 +6929,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 accessiblefish：个人主页可以填url"
+      "可在个人主页填写网站地址，未提供具体费用信息。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3c18feda2f51",
@@ -5870,9 +6944,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 羊羊羊：已验证过，semrush能抓到，免费提交，一个新产品发布与展示平台（类似于 Product Hunt 的替代品或轻量版），专门供开发者、创客和团队提交、展示自己开发的新软件、工具或 SaaS 服务。"
+      "面向开发者和团队的新产品展示平台，适合软件、工具和 SaaS。原记录提到可免费提交，并有第三方工具发现链接的经验。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-86e0855bc424",
@@ -5883,9 +6961,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 羊羊羊：已验证过，semrush能抓到，免费提交，一个专门收录和分类 AI 应用的独立 AI 工具目录网站（AI Tools Directory/Catalog）"
+      "按分类展示 AI 应用的工具目录。原记录提到可免费提交，并有第三方工具发现链接的经验。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-5e729053e993",
@@ -5896,7 +6978,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-227940593f32",
@@ -5907,7 +6991,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-a445314f46bd",
@@ -5918,7 +7004,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-c647676c1c15",
@@ -5929,9 +7017,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 大学牲：免费建档，适合实体或本地业务，通常需要完成商家验证。"
+      "适合实体或本地业务建立商家档案，通常需要完成商家验证。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3b0e1d0c9ec7",
@@ -5942,9 +7034,14 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 大学牲：基础资料可能免费，BBB Accreditation 认证通常收费。"
+      "基础公司资料可能免费，BBB Accreditation 认证通常收费；需区分建档和认证。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-29229f5c2299",
@@ -5955,7 +7052,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-9bbc06005ad0",
@@ -5966,7 +7065,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-0169066c7f34",
@@ -5977,7 +7078,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-e33aafe511a6",
@@ -5988,7 +7091,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-60fec91efb47",
@@ -5999,7 +7104,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-b38b5f61ee53",
@@ -6010,7 +7117,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-aed041861915",
@@ -6021,7 +7130,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-48462c0f1c88",
@@ -6032,7 +7143,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-4f1237a1747d",
@@ -6043,7 +7156,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-a2ced38b6688",
@@ -6054,9 +7169,14 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 大学牲：可免费提交专家观点，高级订阅可能收费。"
+      "可提交专家观点获取展示机会，高级订阅可能收费。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-1188fbf32581",
@@ -6067,7 +7187,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-f2934bc98243",
@@ -6078,7 +7200,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-864e71e55bb1",
@@ -6089,7 +7213,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-63b6c3827e0e",
@@ -6100,7 +7226,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-16d04e4ea56f",
@@ -6111,7 +7239,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-fc646e755422",
@@ -6122,7 +7252,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-10cef674a291",
@@ -6133,7 +7265,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-1383107083d7",
@@ -6144,7 +7278,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-7fcd6ca1dd23",
@@ -6155,7 +7291,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-a5f41cff80e2",
@@ -6166,7 +7304,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-712ec566ed5b",
@@ -6177,7 +7317,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-f7ae7e30c3c8",
@@ -6188,7 +7330,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-03980c865d9c",
@@ -6199,7 +7343,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-330dcb2acc90",
@@ -6210,7 +7356,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-cf0fde1d3471",
@@ -6221,7 +7369,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-75d746f08094",
@@ -6232,7 +7382,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-3549eba23c14",
@@ -6243,7 +7395,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-e64195cd2647",
@@ -6254,7 +7408,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-4bc9972d665f",
@@ -6265,9 +7421,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Angler：日语地区博客平台，可以发布文章"
+      "日语博客平台，可发布文章。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-f41ba816c4a7",
@@ -6278,7 +7436,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-5752e7915578",
@@ -6289,7 +7449,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-43a94b75cd64",
@@ -6300,7 +7462,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-daaed0e796b6",
@@ -6311,7 +7475,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-075c8e708e09",
@@ -6322,7 +7488,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-b8427b1350cc",
@@ -6333,9 +7501,14 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Gallifrey Peng：WithAI.Top AI导航站，我自己维护的导航站，可以免费提交 也可以付费提交"
+      "AI 工具目录，原记录包含免费和付费提交方式，具体条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-f7f6dc54049c",
@@ -6346,7 +7519,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-322e5aac8150",
@@ -6357,9 +7532,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Maverick：gsc收录, 免费, DR 80, 网站本身流量大"
+      "原记录标注免费，并有搜索收录经验，未说明具体链接入口。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-de83a1548bfd",
@@ -6370,9 +7549,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Maverick：免费, gsc收录, DR 69"
+      "原记录标注免费，并有搜索收录经验，未说明具体链接入口。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-46bfc19572ea",
@@ -6383,7 +7566,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-960a68187049",
@@ -6394,9 +7579,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 新原：免费，45DR，通过快"
+      "原记录提到免费提交，通过较快。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-9fcae1877adf",
@@ -6407,7 +7596,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-726c16aad462",
@@ -6418,7 +7609,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-af2c2e5439f4",
@@ -6429,7 +7622,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-9c1cff87e98e",
@@ -6440,7 +7635,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-d24b828f57aa",
@@ -6451,9 +7648,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Alan：可以发布文章，嵌入Dofollow外链"
+      "原记录提到可发布内容并嵌入 dofollow 链接，具体展示与审核条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4065f57fba28",
@@ -6464,9 +7663,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Alan：可以提交外链"
+      "可提交网站链接，暂无详细条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-68b40efc589b",
@@ -6477,9 +7678,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Alan：个人资料可以添加外链"
+      "可在个人资料中填写网站链接。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-67991f9f9104",
@@ -6490,7 +7693,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-b29628ee0d8d",
@@ -6501,7 +7706,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-433780cf0752",
@@ -6512,7 +7719,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-cf0381bc9961",
@@ -6523,7 +7732,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-edda3c7cf8f1",
@@ -6534,9 +7745,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 小羽：dr传播高 ⚠️ 收费"
+      "原记录标注收费，未提供具体价格和审核条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d0f8f96f0743",
@@ -6547,9 +7762,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 小羽：dr传播高 ⚠️ 收费"
+      "原记录标注收费，未提供具体价格和审核条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-968dcbe874b6",
@@ -6560,9 +7779,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 小羽：dr传播高 ⚠️ 收费"
+      "原记录标注收费，未提供具体价格和审核条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-16a98c9f051e",
@@ -6573,9 +7796,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 小羽：dr传播高 ⚠️ 收费"
+      "原记录标注收费，未提供具体价格和审核条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-03d3b4f7f5c9",
@@ -6586,9 +7813,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 小Ben：免费，不加徽章也是 dofollow ⚠️ 新网址流量一般"
+      "原记录提到免费提交，无需徽章也可获得 dofollow 链接；同时提示站点较新、流量一般。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-b9c935347b26",
@@ -6599,9 +7830,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 algo：免费 ⚠️ 新网址流量一般"
+      "原记录标注免费，同时提示站点较新、流量一般。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-5dfb7c56b204",
@@ -6612,9 +7847,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Zhou.：免费提交，ai 一键生成内容。获得高质量外链 dr66"
+      "原记录提到免费提交，并支持 AI 生成介绍内容；具体审核与展示条件需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d782619436c5",
@@ -6625,9 +7864,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 明智：DR 15 25年的站，$6.9 ⚠️ 主要流量是中文"
+      "原记录报价约 6.9 美元，站点较新，主要流量来自中文用户。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-532c2e0e5cf7",
@@ -6638,9 +7881,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Nitor：适合独立开发者和 AI 产品团队免费提交自己的应用网站。通过人工审核后获得工具展示页，以中英文介绍产品功能、使用场景和价格，方便用户按分类发现你的产品。已有上线产品的开发者，欢迎直接提交。"
+      "面向独立开发者和 AI 产品的工具目录，提交后由人工审核。展示页可用中英文介绍功能、使用场景与价格，便于按分类发现产品。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-bff0f31926b0",
@@ -6651,9 +7898,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 請給我一支蘭州：免费"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-466f63351f82",
@@ -6664,7 +7915,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-dbdb808c904f",
@@ -6675,7 +7928,9 @@
     "votes": 1,
     "recommendationTotal": 0,
     "reasons": [],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 0
   },
   {
     "id": "link-9a73b7f61e96",
@@ -6686,9 +7941,14 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 hyhor：免费提交，权重高。付费价格也不贵。"
+      "产品目录，原记录包含免费提交及付费方式，具体档位需确认。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free",
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-15dc225736bc",
@@ -6699,9 +7959,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 hyhor：权重中等，价格很便宜。"
+      "目录站，原记录认为价格较低，但未提供具体报价。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "paid"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4d1c9ced086c",
@@ -6712,9 +7976,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：AgentHunter：AI Agent 专属目录，DR60，免费收录 ⚠️ 外链多为 nofollow；审核偏慢（约 14 天）"
+      "AI Agent 专属目录，原记录提到免费收录，链接多为 nofollow，审核约需两周。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ab074023fa3d",
@@ -6725,9 +7993,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：Appscribed：免费提交（人工审核），DR40，AI 工具对比平台"
+      "AI 工具对比平台，原记录提到免费提交需人工审核。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-5facd9f9d7d4",
@@ -6738,9 +8010,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：aitoolsmarketer.com：DR37"
+      "原记录仅有域名权重数字，暂无提交方式和费用说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-7e63cfd275c8",
@@ -6751,9 +8025,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：toolpotion.ai：免费提交（人工审核），DR35，审核约 1 天"
+      "原记录提到免费提交需人工审核，曾有约一天过审的经验。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-1bb3d5a33920",
@@ -6764,9 +8042,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：imagetovideoai.tools：免费提交（人工审核），DR22"
+      "原记录提到免费提交需人工审核，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-70b2f42d3633",
@@ -6777,9 +8059,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：listyourtool.com：免费提交（人工审核），DR15"
+      "原记录提到免费提交需人工审核，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-0a5d1dddfe62",
@@ -6790,9 +8076,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：bestaifor.com：免费提交（人工审核），DR6"
+      "原记录提到免费提交需人工审核，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-a3c2fef83cba",
@@ -6803,9 +8093,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：findaitools.pro：免费提交（人工审核）"
+      "原记录提到免费提交需人工审核，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-7ee80a22dcb5",
@@ -6816,9 +8110,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：Muzie — alternatives pages：免费自助提交"
+      "可通过替代方案页面自助提交，原记录标注免费。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-6a8a895a8cc2",
@@ -6829,9 +8127,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：GetLatka"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-6d2ac1f30e22",
@@ -6842,9 +8142,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：hyzenpro.com：免费提交（人工审核）"
+      "原记录提到免费提交需人工审核。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4efe92b2250b",
@@ -6855,9 +8159,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：The AI Navigator"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-fac45574eaee",
@@ -6868,9 +8174,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：AI Tools List：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-84458c41bd6e",
@@ -6881,9 +8191,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：AI导航 Dreamthere：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-9b181fba87e1",
@@ -6894,9 +8208,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：kis.tools — kept it simple：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-85de457c2db0",
@@ -6907,9 +8225,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：ThatsMyAI：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-a8373e44e930",
@@ -6920,9 +8242,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：Landin Tools：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-dfc4caa2dcee",
@@ -6933,9 +8259,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：Daily Zaps Hub：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-5d3d8bb56332",
@@ -6946,9 +8276,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：Once.tools：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-bca0662324e7",
@@ -6959,9 +8293,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：AI NavHub：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d25d393ac0c5",
@@ -6972,9 +8310,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：Micro SaaS Examples：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-9510cebbd2d1",
@@ -6985,9 +8327,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：RightAI Directory：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-a99458e75981",
@@ -6998,9 +8344,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：AIPulse：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-713e8cd982ac",
@@ -7011,9 +8361,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：AI Tools Saver：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-774706aec7bf",
@@ -7024,9 +8378,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：AIToolzDir：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-2458be593e37",
@@ -7037,9 +8395,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：AITrendz：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-afb30862188e",
@@ -7050,9 +8412,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：Free AI Tools Directory：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-59cad25cbda9",
@@ -7063,9 +8429,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：Dynamite AI：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-8e6dc8606116",
@@ -7076,9 +8446,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：Joinly：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-843d672f1d78",
@@ -7089,9 +8463,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：SimplifyAI Tools：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4a342537400d",
@@ -7102,9 +8480,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：aitoolsmagazine.com：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-b936f4c8a834",
@@ -7115,9 +8497,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：alltopstartups.com：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-b7a2958ca01e",
@@ -7128,9 +8514,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：betapage.co：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-86bacda6a7c2",
@@ -7141,9 +8531,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：bufferapps.com：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-9f930c5320d2",
@@ -7154,9 +8548,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：digitalcreatorai.com：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ee25e773fa76",
@@ -7167,9 +8565,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：flowtools.co：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-03df9fd84ebb",
@@ -7180,9 +8582,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：navtools.ai：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4da38e6a860a",
@@ -7193,9 +8599,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：productivity.directory：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-628db13acb35",
@@ -7206,9 +8616,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：starthub.zip：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-4c857a3539e6",
@@ -7219,9 +8633,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：aidirs.best：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-47fa353a5ee2",
@@ -7232,9 +8650,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：aitoolswiki.com：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-d51138dafb08",
@@ -7245,9 +8667,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：Startup Collections：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-ddc3f7b2cfbe",
@@ -7258,9 +8684,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：AIToolTrek：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-fa2c9653f89c",
@@ -7271,9 +8701,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：aiagentslive.com：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-3ceaed46eaee",
@@ -7284,9 +8718,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：BasedTools ⚠️ 需要注册账号"
+      "原记录提示需要注册账号，未说明提交费用。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-574e0691c82e",
@@ -7297,9 +8733,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：The AI Warehouse"
+      "暂无详细提交说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-04f4d46186ca",
@@ -7310,9 +8748,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：toolfinder.com：AI 工具目录，可提交收录"
+      "AI 工具目录，可提交申请收录，费用与审核条件未说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-0ce92bd4dc5e",
@@ -7323,9 +8763,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：AIHubs：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-43aa05c63737",
@@ -7336,9 +8780,13 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 一根木：Advanced Innovation：免费自助提交"
+      "可自助提交，暂无更详细说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [
+      "free"
+    ],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-8f8c015414ad",
@@ -7349,9 +8797,11 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 Kzy：直接发布"
+      "原记录提到可直接发布，未说明费用和其他条件。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   },
   {
     "id": "link-832d38a97199",
@@ -7362,8 +8812,10 @@
     "votes": 1,
     "recommendationTotal": 1,
     "reasons": [
-      "💬 dangkang：在similarweb DR=14"
+      "原记录仅有域名权重数字，暂无提交方式和费用说明。"
     ],
-    "recommenders": null
+    "recommenders": null,
+    "fees": [],
+    "sourceReasonCount": 1
   }
 ]

@@ -25,3 +25,6 @@
 
 .ll-trash-actions{flex-shrink:0;justify-content:flex-end}.ll-trash-actions>button{font-size:12px}
 @media(max-width:520px){.ll-trash li{flex-wrap:wrap}.ll-trash-actions{width:100%}}
+
+.ll-description{border-top:1px solid #e5e5df;margin-top:16px;padding-top:14px;overflow-wrap:anywhere}.ll-description>p{white-space:pre-wrap;unicode-bidi:plaintext}
+.ll-fee-filters{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.ll-source-note{margin:10px 0 16px!important}.ll .ll-fee-tag{background:var(--ll-soft);color:var(--ll-green)}

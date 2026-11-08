@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type ChangeEvent } from 'react';
 import allEntries from '../../data/external-links.json';
-import { archiveTag, assignedTags, buildReviewQueue, createCustomEntry, getRecord, maxCustomEntries, levelNames, matchesTagFilters, newData, permanentlyDeleteTag, restoreTag, validateBackup, type Entry, type LibraryData, type Tag } from '../../lib/link-library';
+import { archiveTag, assignedTags, buildReviewQueue, createCustomEntry, entryFees, feeLabels, matchesFeeFilter, getRecord, maxCustomEntries, levelNames, matchesTagFilters, newData, permanentlyDeleteTag, restoreTag, validateBackup, type Entry, type Fee, type LibraryData, type Tag } from '../../lib/link-library';
 import PersonalSync from './PersonalSync';
 import LinkJournal from './LinkJournal';
 import { useLibrarySync } from './useLibrarySync';
@@ -43,17 +43,16 @@ function AddLinkForm({onAdd,onCancel}:{onAdd:(input:{name:string;url:string;desc
   </form>;
 }
 
-function Comments({entry}:{entry:Entry}){
-  return <details className="ll-comments" open><summary>{entry.id.startsWith('custom-')?'说明':'评论'} · {entry.reasons.length} 条</summary>
-    {entry.reasons.length?<ul className="ll-reasons">{entry.reasons.map((reason,i)=><li key={i}>{reason}</li>)}</ul>:<p className="ll-small">{entry.id.startsWith('custom-')?'暂无说明，可以在笔记中补充。':'暂无评论。'}</p>}
-    {entry.recommendationTotal>entry.reasons.length&&<p className="ll-small">原帖显示 {entry.recommendationTotal} 条，存档保存了其中 {entry.reasons.length} 条。</p>}
-  </details>;
+function EntryDescription({entry}:{entry:Entry}){
+  return <div className="ll-description"><span className="ll-label">平台说明</span>
+    <p>{entry.reasons.join(' ')||'暂无说明，可以先访问网站了解。'}</p>
+  </div>;
 }
 
 export default function LinkLibrary(){
   const [data,setData]=useState<LibraryData>(newData);
   const [ready,setReady]=useState(false);
-  const entries = useMemo(() => [...data.customEntries, ...allEntries], [data.customEntries]);
+  const entries = useMemo<Entry[]>(() => [...data.customEntries, ...allEntries], [data.customEntries]);
   const [addingLink,setAddingLink]=useState(false);
   const addLinkButton=useRef<HTMLButtonElement>(null);
   const [section,setSection]=useState<'library'|'journal'>('library');
@@ -69,6 +68,7 @@ export default function LinkLibrary(){
   const [undo,setUndo]=useState<{tag:Tag;entry?:Entry}|null>(null);
   const [query,setQuery]=useState('');const [level,setLevel]=useState('all');
   const [selected,setSelected]=useState<string[]>([]);
+  const [fee,setFee]=useState<Fee|null>(null);
   const [page,setPage]=useState(1);
   const [review,setReview]=useState<{queue:Entry[];index:number;revealed:boolean;answers:Record<string,number>;thoughts:Record<string,string>;done:boolean;scope:string}|null>(null);
   const fileInput=useRef<HTMLInputElement>(null);
@@ -91,18 +91,18 @@ export default function LinkLibrary(){
   const tagsFor=(entry:Entry)=>assignedTags(data,entry);
   const filtered=useMemo(()=>{
     const needle=query.trim().toLowerCase();
-    return entries.filter(entry=>(level==='all'||getRecord(data,entry.id).level===Number(level))&&matchesTagFilters(data,entry,selected)&&[entry.name,entry.domain,...entry.reasons,getRecord(data,entry.id).note,...assignedTags(data,entry).map(id=>data.tags.find(t=>t.id===id)?.name)].join(' ').toLowerCase().includes(needle));
-  },[data,entries,query,level,selected]);
+    return entries.filter(entry=>(level==='all'||getRecord(data,entry.id).level===Number(level))&&matchesTagFilters(data,entry,selected)&&matchesFeeFilter(entry,fee)&&[entry.name,entry.domain,...entry.reasons,...entryFees(entry).map(fee=>feeLabels[fee]),getRecord(data,entry.id).note,...assignedTags(data,entry).map(id=>data.tags.find(t=>t.id===id)?.name)].join(' ').toLowerCase().includes(needle));
+  },[data,entries,query,level,selected,fee]);
   const pages=Math.max(1,Math.ceil(filtered.length/pageSize));const currentPage=Math.min(page,pages);
   const resetPage=()=>{setPage(1);setMessage('');};
   const toggleFilter=(id:string)=>{setSelected(old=>old.includes(id)?[]:[id]);resetPage();};
   const updateRecord=(id:string,patch:Partial<{level:number;note:string;seen:number}>)=>setData(old=>({...old,records:{...old.records,[id]:{...getRecord(old,id),...patch}}}));
   const setFamiliarity=(id:string,value:number)=>{updateRecord(id,{level:value,seen:Date.now()});setMessage('熟悉度已记录。');};
-  const clearFilters=()=>{setQuery('');setLevel('all');setSelected([]);resetPage();};
+  const clearFilters=()=>{setQuery('');setLevel('all');setSelected([]);setFee(null);resetPage();};
   const startReview=()=>{
     const queue=buildReviewQueue(data,filtered);
     if(!queue.length){setMessage('当前筛选下没有外链，请放宽筛选。');return;}
-    setReview({queue,index:0,revealed:false,answers:{},thoughts:{},done:false,scope:selected.map(id=>data.tags.find(t=>t.id===id)?.name).concat(query?['搜索：'+query]:[],level!=='all'?['熟悉度：'+(level==='-1'?'还没看':levelNames[Number(level)])]:[]).join(' · ')||'全部外链'});setMessage('');
+    setReview({queue,index:0,revealed:false,answers:{},thoughts:{},done:false,scope:selected.map(id=>data.tags.find(t=>t.id===id)?.name).concat(fee?['费用：'+feeLabels[fee]]:[],query?['搜索：'+query]:[],level!=='all'?['熟悉度：'+(level==='-1'?'还没看':levelNames[Number(level)])]:[]).join(' · ')||'全部外链'});setMessage('');
   };
   const addLink=(input:{name:string;url:string;description:string}):string|null=>{
     try {
@@ -173,7 +173,7 @@ export default function LinkLibrary(){
       if(file.size>5_000_000)throw new Error('备份文件过大。');
       const imported=validateBackup(JSON.parse(await file.text()),allEntries);
       if(!window.confirm('导入会替换本浏览器中的自定义外链、熟悉度、笔记、标签和外链日志。建议先导出当前备份。继续导入？'))return;
-      setData(imported);setSelected([]);setReview(null);setAddingLink(false);setPage(1);setMessage('备份已导入。');
+      setData(imported);setFee(null);setSelected([]);setReview(null);setAddingLink(false);setPage(1);setMessage('备份已导入。');
     }catch(error){setMessage(error instanceof Error?error.message:'无法读取备份文件。');}
   };
   const ratings=(entry:Entry,value:number,onChoose:(level:number)=>void,recall=false)=><div className="ll-ratings" role="group" aria-label={recall?'回忆结果':'熟悉度'}>{levelNames.map((name,i)=><button key={i} type="button" aria-pressed={value===i} onClick={()=>onChoose(i)}>{recall?['没想起','有点印象','想起来了'][i]:name}</button>)}</div>;
@@ -200,25 +200,27 @@ export default function LinkLibrary(){
         <article className="ll-review-card"><span className="ll-small">{entry.domain}</span><h2 ref={reviewHeading} tabIndex={-1}>{entry.name}</h2><h3>什么情况下，你会想到它？</h3><p className="ll-sub">先在心里想一句，再展开看看。</p>
           {!review.revealed?<><label><span className="ll-label">我的回忆（选填）</span><textarea maxLength={2000} value={thought} onChange={e=>setReview({...review,thoughts:{...review.thoughts,[entry.id]:e.target.value}})} placeholder="我记得它好像可以……" /></label><button className="ll-primary" onClick={()=>setReview({...review,revealed:true})}>看看说明 ↓</button></>:<>
             {thought&&<p className="ll-thought">刚才的回忆：{thought}</p>}
-            <div className="ll-answer"><span className="ll-label">{entry.id.startsWith('custom-')?'我添加的说明':'原帖中的说明'}</span><p>{entry.reasons[0]||'暂时没有说明，可以先访问网站了解。'}</p>{getRecord(data,entry.id).note&&<p><span className="ll-label">我的笔记</span>{getRecord(data,entry.id).note}</p>}<div className="ll-tags">{tagsFor(entry).map(id=><span className="ll-tag" key={id}>{data.tags.find(t=>t.id===id)?.name}</span>)}</div></div>
+            <div className="ll-answer"><span className="ll-label">{entry.id.startsWith('custom-')?'我添加的说明':'平台说明'}</span><p>{entry.reasons[0]||'暂时没有说明，可以先访问网站了解。'}</p>{getRecord(data,entry.id).note&&<p><span className="ll-label">我的笔记</span>{getRecord(data,entry.id).note}</p>}<div className="ll-tags">{entryFees(entry).map(fee=><span className="ll-tag ll-fee-tag" key={fee}>{feeLabels[fee]}</span>)}{tagsFor(entry).map(id=><span className="ll-tag" key={id}>{data.tags.find(t=>t.id===id)?.name}</span>)}</div></div>
             {visit(entry)}<span className="ll-label">刚才想起来了吗？</span>{ratings(entry,answer,value=>{setFamiliarity(entry.id,value);setReview({...review,answers:{...review.answers,[entry.id]:value}});},true)}
-            <details className="ll-review-details"><summary>更多评论与我的笔记</summary><Comments entry={entry} />{details(entry)}</details>
+            <details className="ll-review-details"><summary>我的笔记与熟悉度</summary>{details(entry)}</details>
           </>}
         </article><div className="ll-review-bottom"><button disabled={review.index===0} onClick={()=>setReview({...review,index:review.index-1,revealed:true})}>上一个</button><button className="ll-primary" disabled={answer===undefined} onClick={()=>setReview(review.index===review.queue.length-1?{...review,done:true}:{...review,index:review.index+1,revealed:false})}>{review.index===review.queue.length-1?'完成这轮':'下一个'}</button></div>
       </div>;
     })() : <>
       <div className="ll-library-heading"><h2>我的外链库</h2><button ref={addLinkButton} className="ll-primary" disabled={!ready} aria-expanded={addingLink} aria-controls="ll-add-link" onClick={()=>setAddingLink(!addingLink)}>{addingLink?'收起表单':'＋ 添加外链'}</button></div>
       {addingLink&&<AddLinkForm onAdd={addLink} onCancel={()=>{setAddingLink(false);addLinkButton.current?.focus();}} />}
-      <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索外链</span><input type="search" value={query} onChange={e=>{setQuery(e.target.value);resetPage();}} placeholder="搜索名称、标签、笔记或推荐理由" /></label><select aria-label="按熟悉度筛选" value={level} onChange={e=>{setLevel(e.target.value);resetPage();}}><option value="all">全部熟悉度</option><option value="-1">还没看</option>{levelNames.map((name,i)=><option value={i} key={i}>{name}</option>)}</select></div>
+      <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索外链</span><input type="search" value={query} onChange={e=>{setQuery(e.target.value);resetPage();}} placeholder="搜索名称、标签、笔记或平台说明" /></label><select aria-label="按熟悉度筛选" value={level} onChange={e=>{setLevel(e.target.value);resetPage();}}><option value="all">全部熟悉度</option><option value="-1">还没看</option>{levelNames.map((name,i)=><option value={i} key={i}>{name}</option>)}</select></div>
+      <div className="ll-fee-filters"><span className="ll-small">费用标签</span><div className="ll-tags" role="group" aria-label="按费用标签筛选"><button className="ll-tag" aria-pressed={fee===null} onClick={()=>{setFee(null);resetPage();}}>全部</button>{(Object.keys(feeLabels) as Fee[]).map(value=><button className="ll-tag ll-fee-tag" key={value} aria-pressed={fee===value} onClick={()=>{setFee(fee===value?null:value);resetPage();}}>{feeLabels[value]}</button>)}</div></div>
+      <p className="ll-small ll-source-note">说明与费用标签根据历史推荐整理，价格、提交条件和实际效果以网站为准；费用不明的不标注。</p>
       <div className="ll-filter-heading"><span className="ll-small">我的标签 · 点击查看同类外链</span></div>
       <div className="ll-tags ll-user-tags" role="group" aria-label="按标签查看外链"><button className="ll-tag" aria-pressed={!selected.length} onClick={()=>{setSelected([]);resetPage();}}>全部</button>{data.tags.map(tag=><span className="ll-tag-pair" key={tag.id}><button className="ll-tag" aria-pressed={selected.includes(tag.id)} onClick={()=>toggleFilter(tag.id)}>{tag.name} <span>{entries.filter(entry=>tagsFor(entry).includes(tag.id)).length}</span></button><button className="ll-remove-tag" aria-label={`删除标签 ${tag.name}`} onClick={()=>setRemoval({tag})}>×</button></span>)}</div>
       <AddTagForm onAdd={name=>addTag(name)} tags={data.tags} />
       {data.deletedTags.length>0&&<details className="ll-trash"><summary>标签回收站 · {data.deletedTags.length} 个</summary><p className="ll-small">可恢复标签和原来的外链关联，也可彻底删除。彻底删除后无法撤销，外链、笔记和熟悉度会保留。连接云端后，回收站的操作会跨设备同步。</p><ul>{[...data.deletedTags].reverse().map(item=><li key={item.tag.id}><div><span>{item.tag.name}</span><p className="ll-small">原关联 {item.entryIds.length} 个外链 · {new Date(item.deletedAt).toLocaleString('zh-CN')}</p></div><div className="ll-actions ll-trash-actions"><button aria-label={`恢复标签 ${item.tag.name}`} onClick={()=>restoreArchivedTag(item.tag.id)}>恢复标签和关联</button><button className="ll-danger" aria-label={`彻底删除标签 ${item.tag.name}`} onClick={()=>setRemoval({tag:item.tag,permanent:true})}>彻底删除</button></div></li>)}</ul></details>}
       <div className="ll-overview" aria-live="polite"><span>{filtered.length} 个外链 / 共 {entries.length} 个</span><span>{entries.filter(e=>getRecord(data,e.id).level===2).length} 个熟悉了</span></div>
       <div className="ll-list">{filtered.slice((currentPage-1)*pageSize,currentPage*pageSize).map(entry=><article key={entry.id} className="ll-card"><div className="ll-card-top"><div><h2>{entry.name}</h2><span className="ll-domain">{entry.domain}{entry.id.startsWith('custom-')&&' · 我添加的'}</span></div><span className={'ll-status '+(getRecord(data,entry.id).level===2?'ll-known':'')}>{getRecord(data,entry.id).level===-1?'还没看':levelNames[getRecord(data,entry.id).level]}</span></div>
-        <div className="ll-tags ll-card-tags">{tagsFor(entry).map(id=><span className="ll-tag-pair" key={id}><button className="ll-tag" aria-pressed={selected.includes(id)} onClick={()=>toggleFilter(id)}>{data.tags.find(t=>t.id===id)?.name}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除标签 ${data.tags.find(t=>t.id===id)?.name}`} onClick={()=>{const tag=data.tags.find(t=>t.id===id);if(tag)setRemoval({tag,entry});}}>×</button></span>)}</div>
+        <div className="ll-tags ll-card-tags">{entryFees(entry).map(value=><button className="ll-tag ll-fee-tag" key={'fee-'+value} aria-label={`查看${feeLabels[value]}外链`} aria-pressed={fee===value} onClick={()=>{setFee(fee===value?null:value);resetPage();}}>{feeLabels[value]}</button>)}{tagsFor(entry).map(id=><span className="ll-tag-pair" key={id}><button className="ll-tag" aria-pressed={selected.includes(id)} onClick={()=>toggleFilter(id)}>{data.tags.find(t=>t.id===id)?.name}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除标签 ${data.tags.find(t=>t.id===id)?.name}`} onClick={()=>{const tag=data.tags.find(t=>t.id===id);if(tag)setRemoval({tag,entry});}}>×</button></span>)}</div>
         <div className="ll-card-actions"><AddTagForm onAdd={name=>addTag(name,entry)} tags={data.tags} entryName={entry.name} />{visit(entry)}</div>
-        <Comments entry={entry} />
+        <EntryDescription entry={entry} />
         <details className="ll-note-details"><summary>笔记与熟悉度</summary>{details(entry)}</details>
       </article>)}</div>
       {!filtered.length&&<div className="ll-empty"><p>没有匹配的外链，放宽筛选再试试。</p><button onClick={clearFilters}>清空全部筛选</button></div>}
