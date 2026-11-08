@@ -2,11 +2,13 @@ export type Tag = { id: string; name: string };
 export type Entry = { id: string; order: number; name: string; domain: string; url: string; votes: number | null; recommendationTotal: number; reasons: string[] };
 export type RecordState = { level: number; note: string; seen: number };
 export type DeletedTag = { tag: Tag; entryIds: string[]; deletedAt: number; position: number };
-export type LibraryData = { version: 3; tags: Tag[]; assignments: Record<string, string[]>; records: Record<string, RecordState>; deletedTags: DeletedTag[] };
+export type JournalEntry = { date: string; work: string; published: number; urls: string[]; next: string; updatedAt: number };
+export type LibraryData = { version: 4; tags: Tag[]; assignments: Record<string, string[]>; records: Record<string, RecordState>; deletedTags: DeletedTag[]; journal: JournalEntry[] };
+import { validateJournal } from './link-journal.ts';
 export const levelNames = ['没记住', '有印象', '熟悉了'];
 // Only used to remove the old built-in tags while migrating v1 browser data or backups.
 const legacyTagIds = new Set(['code','launch','content','community','directory','profile','design','reviews','social','showcase','writing','research','inspiration','ai']);
-export const newData = (): LibraryData => ({version:3,tags:[],assignments:{},records:{},deletedTags:[]});
+export const newData = (): LibraryData => ({version:4,tags:[],assignments:{},records:{},deletedTags:[],journal:[]});
 export const getRecord = (data: LibraryData, id: string): RecordState => data.records[id] ?? { level:-1,note:'',seen:0 };
 export const assignedTags = (data: LibraryData, entry: Entry): string[] => (data.assignments[entry.id] ?? []).filter(id=>data.tags.some(t=>t.id===id));
 export function matchesTagFilters(data: LibraryData, entry: Entry, selected: string[]) {
@@ -44,7 +46,7 @@ export function restoreTag(data: LibraryData, id: string): LibraryData {
 export function validateBackup(raw: unknown, entries: Entry[]): LibraryData {
   if(!raw||typeof raw!=='object')throw new Error('不是有效的备份文件。');
   const r=raw as Omit<LibraryData,'version'> & {version:number};
-  if(![1,2,3].includes(r.version)||!Array.isArray(r.tags)||r.tags.length>200||!r.records||typeof r.records!=='object'||Array.isArray(r.records)||!r.assignments||typeof r.assignments!=='object'||Array.isArray(r.assignments))throw new Error('备份格式或版本不支持。');
+  if(![1,2,3,4].includes(r.version)||!Array.isArray(r.tags)||r.tags.length>200||!r.records||typeof r.records!=='object'||Array.isArray(r.records)||!r.assignments||typeof r.assignments!=='object'||Array.isArray(r.assignments))throw new Error('备份格式或版本不支持。');
   const ids=new Set<string>();const names=new Set<string>();
   const tags:Tag[]=[];
   for(const t of r.tags){
@@ -56,8 +58,8 @@ export function validateBackup(raw: unknown, entries: Entry[]): LibraryData {
     names.add(name.toLowerCase());tags.push({id:t.id,name});
   }
   const keptIds=new Set(tags.map(t=>t.id));
-  const data: LibraryData={version:3,tags,assignments:{},records:{},deletedTags:[]};
-  if (r.version === 3) {
+  const data: LibraryData={version:4,tags,assignments:{},records:{},deletedTags:[],journal:r.version===4?validateJournal(r.journal):[]};
+  if (r.version >= 3) {
     if (!Array.isArray(r.deletedTags) || r.deletedTags.length > 200) throw new Error('标签回收站格式不正确。');
     const entryIds = new Set(entries.map(entry => entry.id));
     for (const item of r.deletedTags) {

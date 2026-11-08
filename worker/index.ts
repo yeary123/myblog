@@ -121,10 +121,11 @@ export default {
         if (previous && previous.revision !== body.revision) return reply({ error: '云端有新改动，请重新同步后选择保留的记录。' }, 409);
         if (previous) {
           const before = validateBackup(JSON.parse(previous.data_json), entries);
+          if (body.data.version < 4) data.journal = before.journal;
           const activeIds = new Set(data.tags.map(tag => tag.id));
           const archivedIds = new Set(data.deletedTags.map(item => item.tag.id));
           // Older open tabs must not permanently erase tags or an existing recycle bin.
-          if (body.data.version !== 3) for (const archived of before.deletedTags) {
+          if (body.data.version < 3) for (const archived of before.deletedTags) {
             if (!activeIds.has(archived.tag.id) && !archivedIds.has(archived.tag.id)) {
               data.deletedTags.push(archived);
               archivedIds.add(archived.tag.id);

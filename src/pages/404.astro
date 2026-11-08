@@ -2,10 +2,10 @@
 import Layout from '../components/Layout.astro';
 ---
 
-<Layout title="Page not found" description="The page you requested does not exist.">
+<Layout title="页面不存在 · 外链手册" description="该页面已下线或不存在，请返回外链列表。">
 	<h1 class="text-xl font-semibold text-zinc-900">404</h1>
 	<p class="mt-2 text-sm text-zinc-600">
-		This page does not exist.{' '}
-		<a href={import.meta.env.BASE_URL} class="text-zinc-900 underline underline-offset-4">Back home</a>
+		该页面已下线或不存在。
+		<a href={import.meta.env.BASE_URL} class="text-zinc-900 underline underline-offset-4">返回外链列表</a>
 	</p>
 </Layout>

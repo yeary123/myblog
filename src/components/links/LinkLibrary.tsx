@@ -2,6 +2,7 @@ import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type Chang
 import allEntries from '../../data/external-links.json';
 import { archiveTag, assignedTags, buildReviewQueue, getRecord, levelNames, matchesTagFilters, newData, restoreTag, validateBackup, type Entry, type LibraryData, type Tag } from '../../lib/link-library';
 import PersonalSync from './PersonalSync';
+import LinkJournal from './LinkJournal';
 import { useLibrarySync } from './useLibrarySync';
 import ConfirmTagRemoval from './ConfirmTagRemoval';
 
@@ -36,6 +37,13 @@ function Comments({entry}:{entry:Entry}){
 export default function LinkLibrary(){
   const [data,setData]=useState<LibraryData>(newData);
   const [ready,setReady]=useState(false);
+  const [section,setSection]=useState<'library'|'journal'>('library');
+  useEffect(()=>{
+    const readHash=()=>setSection(window.location.hash==='#journal'?'journal':'library');
+    readHash();window.addEventListener('hashchange',readHash);
+    return ()=>window.removeEventListener('hashchange',readHash);
+  },[]);
+  const openSection=(next:'library'|'journal')=>{setSection(next);window.location.hash=next==='journal'?'journal':'library';};
   const [storageWarning,setStorageWarning]=useState('');
   const [message,setMessage]=useState('');
   const [removal,setRemoval]=useState<{tag:Tag;entry?:Entry}|null>(null);
@@ -121,14 +129,14 @@ export default function LinkLibrary(){
     setUndo(null);
   };
   const exportBackup=()=>{
-    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出熟悉度、笔记和标签备份。');
+    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出熟悉度、笔记、标签和外链日志备份。');
   };
   const importBackup=async(event:ChangeEvent<HTMLInputElement>)=>{
     const file=event.target.files?.[0];event.target.value='';if(!file)return;
     try{
       if(file.size>5_000_000)throw new Error('备份文件过大。');
       const imported=validateBackup(JSON.parse(await file.text()),entries);
-      if(!window.confirm('导入会替换本浏览器中的熟悉度、笔记和标签。建议先导出当前备份。继续导入？'))return;
+      if(!window.confirm('导入会替换本浏览器中的熟悉度、笔记、标签和外链日志。建议先导出当前备份。继续导入？'))return;
       setData(imported);setSelected([]);setReview(null);setPage(1);setMessage('备份已导入。');
     }catch(error){setMessage(error instanceof Error?error.message:'无法读取备份文件。');}
   };
@@ -141,12 +149,13 @@ export default function LinkLibrary(){
 
   return <section className="ll" aria-label="外链手册">
     <header className="ll-header"><p className="ll-kicker">LUNA / PERSONAL COLLECTION</p><h1>外链手册</h1><p className="ll-sub">收下来，也慢慢记住它。</p>
-      <div className="ll-nav"><button aria-pressed={!review} onClick={()=>setReview(null)}>外链库</button><button aria-pressed={!!review} onClick={()=>review?setReview(review):startReview()}>复习 {Math.min(3,filtered.length)} 个 ↗</button></div>
+      <div className="ll-nav"><button aria-pressed={section==='library'&&!review} onClick={()=>{openSection('library');setReview(null);}}>外链库</button><button aria-pressed={section==='library'&&!!review} onClick={()=>{openSection('library');if(!review)startReview();}}>复习 {Math.min(3,filtered.length)} 个 ↗</button><button aria-pressed={section==='journal'} onClick={()=>openSection('journal')}>外链日志</button></div>
     </header>
     <div className="ll-personal"><span className="ll-small">个人记录保存在当前浏览器，可导出备份。</span><div className="ll-actions"><button onClick={exportBackup} disabled={!ready}>导出备份</button><button onClick={()=>fileInput.current?.click()} disabled={!ready}>导入备份</button><input className="ll-sr" ref={fileInput} type="file" accept=".json,application/json" onChange={importBackup} aria-label="选择备份文件" /></div></div>
     <PersonalSync sync={sync} />
     {storageWarning&&<p role="alert" className="ll-warning">{storageWarning}</p>}
     <p className="ll-message" role="status" aria-live="polite">{message}</p>
+    <div hidden={section!=='library'}>
     {undo&&(undo.entry||data.deletedTags.some(item=>item.tag.id===undo.tag.id))&&<div className="ll-undo" role="status"><span>刚移除的「{undo.tag.name}」可以恢复。</span><button onClick={undoRemoval}>撤销</button></div>}
     {removal&&<ConfirmTagRemoval name={removal.tag.name} entryName={removal.entry?.name} count={Object.values(data.assignments).filter(ids=>ids.includes(removal.tag.id)).length} onCancel={()=>setRemoval(null)} onConfirm={confirmRemoval} />}
     {review ? review.done ? <div className="ll-complete"><h2 ref={reviewHeading} tabIndex={-1}>又和它们熟悉了一点。</h2><p>复习了 {review.queue.length} 个，其中 {Object.values(review.answers).filter(v=>v===2).length} 个能自己想起用途。</p><ul>{review.queue.map(entry=><li key={entry.id}><span>{entry.name}</span><span>{['再熟悉一下','有点印象','想起来了'][review.answers[entry.id]]}</span></li>)}</ul><div className="ll-actions"><button onClick={()=>setReview(null)}>回外链库</button><button className="ll-primary" onClick={startReview}>再复习几个</button></div></div> : (()=>{
@@ -177,5 +186,7 @@ export default function LinkLibrary(){
       {!filtered.length&&<div className="ll-empty"><p>没有匹配的外链，放宽筛选再试试。</p><button onClick={clearFilters}>清空全部筛选</button></div>}
       {filtered.length>pageSize&&<nav className="ll-pagination" aria-label="外链列表分页"><button disabled={currentPage===1} onClick={()=>setPage(currentPage-1)}>上一页</button><span>{currentPage} / {pages}</span><button disabled={currentPage===pages} onClick={()=>setPage(currentPage+1)}>下一页</button></nav>}
     </>}
+    </div>
+    <div hidden={section!=='journal'}><LinkJournal data={data} setData={setData} ready={ready} /></div>
   </section>;
 }

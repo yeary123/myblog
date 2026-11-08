@@ -19,7 +19,7 @@ test('a user tag brings together its assigned links',()=>{
 test('v1 migration removes preset IDs, including renamed presets, and preserves user tags and records',()=>{
  const raw={version:1,tags:[{id:'community',group:'type',name:'改过名的预设'},{id:'ai',group:'topic',name:'AI'},{id:'tag-mine',group:'use',name:'我的收藏'},{id:'tag-ai',group:'topic',name:'AI'}],assignments:{first:['community','tag-mine','tag-ai'],second:['ai']},records:{first:{level:1,note:'保留笔记',seen:123}}};
  const migrated=validateBackup(raw,entries);
- assert.equal(migrated.version,3);
+ assert.equal(migrated.version,4);
  assert.deepEqual(migrated.tags,[{id:'tag-mine',name:'我的收藏'},{id:'tag-ai',name:'AI'}]);
  assert.deepEqual(migrated.assignments,{first:['tag-mine','tag-ai'],second:[]});
  assert.deepEqual(migrated.records,raw.records);

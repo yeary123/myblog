@@ -41,6 +41,21 @@ function harness(t) {
 }
 const dataWith = note => ({ ...newData(), records: { [entries[0].id]: { note, level: 1, seen: 123 } } });
 
+test('journals sync between sessions, survive legacy writes, and support intentional deletion', async t => {
+  const h = harness(t);
+  const a = await h.login(), b = await h.login();
+  const data = { ...newData(), journal: [{ date: '2026-11-08', work: '提交了外链', published: 1, urls: ['https://example.com/post'], next: '', updatedAt: 123 }] };
+  assert.equal((await h.call('/library', { method: 'PUT', cookie: a, body: { revision: 0, data } })).status, 200);
+  assert.deepEqual((await (await h.call('/library', { cookie: b })).json()).data, data);
+  const { journal, ...legacy } = data;
+  for (const version of [3, 2]) {
+    assert.equal((await h.call('/library', { method: 'PUT', cookie: b, body: { revision: version === 3 ? 1 : 2, data: { ...legacy, version } } })).status, 200);
+    assert.deepEqual((await (await h.call('/library', { cookie: a })).json()).data.journal, journal);
+  }
+  assert.equal((await h.call('/library', { method: 'PUT', cookie: a, body: { revision: 3, data: { ...data, journal: [] } } })).status, 200);
+  assert.deepEqual((await (await h.call('/library', { cookie: b })).json()).data.journal, []);
+});
+
 test('private data requires authentication and the exact website origin', async t => {
   const h = harness(t);
   assert.equal((await h.call('/library')).status, 401);

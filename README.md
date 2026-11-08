@@ -1,8 +1,6 @@
-# Astro Starter Kit: Minimal
+# 外链手册
 
-## 外链手册
-
-`/links/` 提供 575 个平台的搜索、自定义标签、笔记、熟悉度与三条一轮的回忆练习。
+首页 `/` 提供 575 个平台的搜索、自定义标签、笔记、熟悉度与三条一轮的回忆练习。
 数据位于 `src/data/external-links.json`，引用 Web.Cafe 网页存档里的 693 条可见推荐理由；
 原帖费用、权重和效果描述保留为收集者经验，并未逐条重新核实。
 标签只保留用户自行添加的内容，无预设标签或分组。卡片中输入名称即可添加标签，
@@ -13,48 +11,25 @@
 
 个人标签、笔记和熟悉度保存在浏览器 localStorage，页面支持 JSON 导入与导出，
 完整来源列表保存在 `public/data/external-links.csv`。新设备需要手动导入备份。
-可选的个人云端同步使用 Cloudflare Workers + D1，无需自行维护服务器；配置后通过个人同步口令在不同设备同步标签、笔记和熟悉度。未配置时仍使用原有本地存储。实现、冲突处理与部署步骤见 [个人外链同步](docs/personal-link-sync.md)。
+可选的个人云端同步使用 Cloudflare Workers + D1，无需自行维护服务器；配置后通过个人同步口令在不同设备同步标签、笔记、熟悉度和外链日志。未配置时仍使用原有本地存储。实现、冲突处理与部署步骤见 [个人外链同步](docs/personal-link-sync.md)。
 纯逻辑检查：`node --experimental-strip-types --test scripts/link-library.test.mjs`。
-部署沿用推送 main 后的 GitHub Pages workflow，正式地址为 https://builtbyluna.cc/links/ 。
+部署沿用推送 main 后的 GitHub Pages workflow，正式地址为 https://builtbyluna.cc/ ，原 `/links/` 地址继续可用，规范地址统一指向首页。
+
+
+站点发布外链手册与外链日志，博客文章页、分类页和博客导航已下线。原文章 Markdown 保留在 `src/content/blog/`，不会生成公开页面。
+
+## 开发与验证
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
+npm run check
+npm test
+npm run build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 外链日志
 
-## 🚀 Project Structure
+点击导航“外链日志”（`/#journal`），按天填写工作内容、成功发布的外链数和经验与下一步，点击“保存日志”。每个日期保留一篇，支持补记、编辑、按月筛选、搜索及删除后撤销。日志为空时不添加示例工作记录。
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+日志与标签、笔记共用本地保存、JSON 备份及个人云端同步。数据格式升级为 v4，兼容 v1/v2/v3；旧备份没有日志，导入会清空现有日志，导入前请导出备份。云端上线前先部署新版 Worker，再发布前端；无需数据库迁移。新版 Worker 会保留旧页面写入时未识别的日志，旧页面读取 v4 数据后需要刷新。

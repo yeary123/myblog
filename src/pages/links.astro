@@ -1,10 +1,5 @@
 ---
-import Layout from '../components/Layout.astro';
-import LinkLibrary from '../components/links/LinkLibrary';
-import '../styles/link-library.css';
+import ExternalLinksPage from '../components/ExternalLinksPage.astro';
 ---
 
-<Layout title="外链手册" description="575 个外链平台与收集者的推荐理由，按标签浏览、记录笔记，并通过回忆练习逐渐熟悉。" lang="zh-CN">
-  <LinkLibrary client:load />
-  <noscript>请启用 JavaScript，使用外链搜索、标签编辑和复习功能。</noscript>
-</Layout>
+<ExternalLinksPage />
