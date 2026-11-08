@@ -152,7 +152,7 @@ export default {
               entryIds: Object.entries(before.assignments).filter(([, ids]) => ids.includes(tag.id)).map(([entryId]) => entryId),
             });
           });
-          if (data.deletedTags.length > 200) throw new HttpError(400, '标签回收站已满，请先恢复部分标签。');
+          if (data.deletedTags.length > 200) throw new HttpError(400, '标签回收站已满，请先恢复或彻底删除部分标签。');
         }
         const serialized = JSON.stringify(data);
         if (encoder.encode(serialized).byteLength > 1_900_000) throw new HttpError(413, '个人记录超过当前云端容量，请先导出备份并精简笔记后重试。');

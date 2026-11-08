@@ -53,7 +53,7 @@ export function buildReviewQueue(data: LibraryData, entries: Entry[]) {
 export function archiveTag(data: LibraryData, id: string, deletedAt = Date.now()): LibraryData {
   const position = data.tags.findIndex(tag => tag.id === id);
   if (position < 0) return data;
-  if (data.deletedTags.length >= 200) throw new Error('标签回收站已满，请先恢复部分标签。');
+  if (data.deletedTags.length >= 200) throw new Error('标签回收站已满，请先恢复或彻底删除部分标签。');
   const archived: DeletedTag = {
     tag: { ...data.tags[position] }, position, deletedAt,
     entryIds: Object.entries(data.assignments).filter(([, tags]) => tags.includes(id)).map(([entryId]) => entryId),
@@ -62,6 +62,14 @@ export function archiveTag(data: LibraryData, id: string, deletedAt = Date.now()
     ...data, tags: data.tags.filter(tag => tag.id !== id),
     assignments: Object.fromEntries(Object.entries(data.assignments).map(([entryId, tags]) => [entryId, tags.filter(tagId => tagId !== id)])),
     deletedTags: [...data.deletedTags, archived],
+  };
+}
+export function permanentlyDeleteTag(data: LibraryData, id: string): LibraryData {
+  if (!data.deletedTags.some(item => item.tag.id === id)) return data;
+  return {
+    ...data,
+    deletedTags: data.deletedTags.filter(item => item.tag.id !== id),
+    assignments: Object.fromEntries(Object.entries(data.assignments).map(([entryId, tags]) => [entryId, tags.filter(tagId => tagId !== id)])),
   };
 }
 export function restoreTag(data: LibraryData, id: string): LibraryData {

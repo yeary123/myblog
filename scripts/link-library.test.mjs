@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { archiveTag, assignedTags, buildReviewQueue, createCustomEntry, matchesTagFilters, normalizeLinkUrl, newData, restoreTag, validateBackup } from '../src/lib/link-library.ts';
+import { archiveTag, assignedTags, buildReviewQueue, createCustomEntry, matchesTagFilters, normalizeLinkUrl, newData, permanentlyDeleteTag, restoreTag, validateBackup } from '../src/lib/link-library.ts';
 const make=(id,order)=>({id,order,name:id,url:'https://example.com',domain:'example.com',votes:null,recommendationTotal:0,reasons:[]});
 const entries=[make('first',1),make('second',2),make('third',3),make('fourth',4)];
 test('new libraries have no tags and never fall back to source classifications',()=>{
@@ -97,4 +97,21 @@ test('personal links and associated notes, tags and recycle bin survive backup a
  const {customEntries,...legacy}=data;
  assert.deepEqual(validateBackup({...legacy,version:4},entries).customEntries,[]);
  for(const customEntries of [[{...custom,url:'javascript:alert(1)'}],[custom,custom],[{...custom,id:'first'}],[{...custom,reasons:[123]}],undefined]) assert.throws(()=>validateBackup({...data,customEntries},entries));
+});
+
+test('permanent deletion removes only the archived tag and its associations without reverting personal records',()=>{
+ const data=newData();
+ data.tags=[{id:'tag-delete',name:'删除'},{id:'tag-keep',name:'保留'}];
+ data.assignments={first:['tag-delete','tag-keep'],second:['tag-delete']};
+ data.records.first={level:2,note:'保留笔记',seen:123};
+ const archived=archiveTag(data,'tag-delete',1000);
+ const deleted=permanentlyDeleteTag(archived,'tag-delete');
+ assert.equal(archived.deletedTags.length,1,'must not mutate the previous snapshot');
+ assert.deepEqual(deleted.deletedTags,[]);
+ assert.deepEqual(deleted.tags,[{id:'tag-keep',name:'保留'}]);
+ assert.deepEqual(deleted.assignments,{first:['tag-keep'],second:[]});
+ assert.deepEqual(deleted.records,data.records);
+ assert.deepEqual(validateBackup(JSON.parse(JSON.stringify(deleted)),entries),deleted);
+ assert.equal(restoreTag(deleted,'tag-delete'),deleted,'a permanently deleted tag cannot be restored');
+ assert.equal(permanentlyDeleteTag(data,'tag-keep'),data,'active tags must first be archived');
 });

@@ -4,7 +4,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFile } from 'node:fs/promises';
 import worker from '../worker/index.ts';
 import entries from '../src/data/external-links.json' with { type: 'json' };
-import { archiveTag, createCustomEntry, newData, restoreTag } from '../src/lib/link-library.ts';
+import { archiveTag, createCustomEntry, newData, permanentlyDeleteTag, restoreTag } from '../src/lib/link-library.ts';
 
 const schema = await readFile(new URL('../worker/migrations/0001_personal_library.sql', import.meta.url), 'utf8');
 const origin = 'https://builtbyluna.cc';
@@ -196,4 +196,20 @@ test('archiving a tag in an old page preserves its personal-link associations', 
   const saved=(await (await h.call('/library',{cookie})).json()).data;
   assert.deepEqual(saved.deletedTags[0].entryIds,[entry.id]);
   assert.deepEqual(restoreTag(saved,'tag-mine').assignments[entry.id],['tag-mine']);
+});
+
+test('permanent deletion syncs across devices and stale writes cannot resurrect the tag',async t=>{
+ const h=harness(t),a=await h.login(),b=await h.login();
+ const data=dataWith('保留我的笔记');
+ data.tags=[{id:'tag-delete',name:'删除'},{id:'tag-keep',name:'保留'}];
+ data.assignments={[entries[0].id]:['tag-delete','tag-keep']};
+ const archived=archiveTag(data,'tag-delete',1000);
+ await h.call('/library',{method:'PUT',cookie:a,body:{revision:0,data:archived}});
+ const deleted=permanentlyDeleteTag(archived,'tag-delete');
+ assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:1,data:deleted}})).status,200);
+ assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,deleted);
+ assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:1,data:archived}})).status,409);
+ const {deletedTags,...legacy}=deleted;
+ assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:2,data:{...legacy,version:2}}})).status,200);
+ assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data,deleted);
 });
