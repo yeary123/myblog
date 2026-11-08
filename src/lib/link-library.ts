@@ -2,21 +2,25 @@ export type Tag = { id: string; name: string };
 export type Entry = { id: string; order: number; name: string; domain: string; url: string; votes: number | null; recommendationTotal: number; reasons: string[]; fees?: string[] };
 export const feeLabels = { free: '免费', paid: '收费' };
 export type Fee = keyof typeof feeLabels;
-export function entryFees(entry: Entry): Fee[] {
-  return (Object.keys(feeLabels) as Fee[]).filter(fee => entry.fees?.includes(fee));
+export function entryFees(entry: Entry, data?: LibraryData): Fee[] {
+  const fees = data && Object.hasOwn(data.feeOverrides, entry.id) ? data.feeOverrides[entry.id] : entry.fees;
+  return (Object.keys(feeLabels) as Fee[]).filter(fee => fees?.includes(fee));
 }
-export function matchesFeeFilter(entry: Entry, fee: Fee | null): boolean {
-  return fee === null || entryFees(entry).includes(fee);
+export function setEntryFees(data: LibraryData, entry: Entry, fees: Fee[]): LibraryData {
+  return { ...data, feeOverrides: { ...data.feeOverrides, [entry.id]: (Object.keys(feeLabels) as Fee[]).filter(fee => fees.includes(fee)) } };
+}
+export function matchesFeeFilter(entry: Entry, fee: Fee | null, data?: LibraryData): boolean {
+  return fee === null || entryFees(entry, data).includes(fee);
 }
 // level and seen are retained only to round-trip older backups and sync data.
 export type RecordState = { level: number; note: string; seen: number };
 export type DeletedTag = { tag: Tag; entryIds: string[]; deletedAt: number; position: number };
 export type JournalEntry = { date: string; work: string; published: number; urls: string[]; next: string; updatedAt: number };
-export type LibraryData = { version: 5; customEntries: Entry[]; tags: Tag[]; assignments: Record<string, string[]>; records: Record<string, RecordState>; deletedTags: DeletedTag[]; journal: JournalEntry[] };
+export type LibraryData = { version: 6; feeOverrides: Record<string, Fee[]>; customEntries: Entry[]; tags: Tag[]; assignments: Record<string, string[]>; records: Record<string, RecordState>; deletedTags: DeletedTag[]; journal: JournalEntry[] };
 import { validateJournal } from './link-journal.ts';
 // Only used to remove the old built-in tags while migrating v1 browser data or backups.
 const legacyTagIds = new Set(['code','launch','content','community','directory','profile','design','reviews','social','showcase','writing','research','inspiration','ai']);
-export const newData = (): LibraryData => ({version:5,customEntries:[],tags:[],assignments:{},records:{},deletedTags:[],journal:[]});
+export const newData = (): LibraryData => ({version:6,feeOverrides:{},customEntries:[],tags:[],assignments:{},records:{},deletedTags:[],journal:[]});
 export const maxCustomEntries = 1000;
 export function normalizeLinkUrl(value: string): string {
   const input = value.trim();
@@ -92,7 +96,7 @@ export function restoreTag(data: LibraryData, id: string): LibraryData {
 export function validateBackup(raw: unknown, entries: Entry[]): LibraryData {
   if(!raw||typeof raw!=='object')throw new Error('不是有效的备份文件。');
   const r=raw as Omit<LibraryData,'version'> & {version:number};
-  if(![1,2,3,4,5].includes(r.version)||!Array.isArray(r.tags)||r.tags.length>200||!r.records||typeof r.records!=='object'||Array.isArray(r.records)||!r.assignments||typeof r.assignments!=='object'||Array.isArray(r.assignments))throw new Error('备份格式或版本不支持。');
+  if(![1,2,3,4,5,6].includes(r.version)||!Array.isArray(r.tags)||r.tags.length>200||!r.records||typeof r.records!=='object'||Array.isArray(r.records)||!r.assignments||typeof r.assignments!=='object'||Array.isArray(r.assignments))throw new Error('备份格式或版本不支持。');
   const customEntries = r.version >= 5 ? validateCustomEntries(r.customEntries, entries) : [];
   const libraryEntries = [...entries, ...customEntries];
   const ids=new Set<string>();const names=new Set<string>();
@@ -106,7 +110,16 @@ export function validateBackup(raw: unknown, entries: Entry[]): LibraryData {
     names.add(name.toLowerCase());tags.push({id:t.id,name});
   }
   const keptIds=new Set(tags.map(t=>t.id));
-  const data: LibraryData={version:5,customEntries,tags,assignments:{},records:{},deletedTags:[],journal:r.version>=4?validateJournal(r.journal):[]};
+  const data: LibraryData={version:6,feeOverrides:{},customEntries,tags,assignments:{},records:{},deletedTags:[],journal:r.version>=4?validateJournal(r.journal):[]};
+  if (r.version >= 6) {
+    if (!r.feeOverrides || typeof r.feeOverrides !== 'object' || Array.isArray(r.feeOverrides)) throw new Error('费用标签记录格式不正确。');
+    const entryIds = new Set(libraryEntries.map(entry => entry.id));
+    if (Object.keys(r.feeOverrides).length > entryIds.size) throw new Error('费用标签记录数量不正确。');
+    for (const [id, fees] of Object.entries(r.feeOverrides)) {
+      if (!entryIds.has(id) || !Array.isArray(fees) || fees.length > 2 || fees.some(fee => fee !== 'free' && fee !== 'paid') || new Set(fees).size !== fees.length) throw new Error('费用标签记录包含无效的外链或标签。');
+      data.feeOverrides[id] = (Object.keys(feeLabels) as Fee[]).filter(fee => fees.includes(fee));
+    }
+  }
   if (r.version >= 3) {
     if (!Array.isArray(r.deletedTags) || r.deletedTags.length > 200) throw new Error('标签回收站格式不正确。');
     const entryIds = new Set(libraryEntries.map(entry => entry.id));

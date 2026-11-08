@@ -213,3 +213,22 @@ test('permanent deletion syncs across devices and stale writes cannot resurrect 
  assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:2,data:{...legacy,version:2}}})).status,200);
  assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data,deleted);
 });
+
+test('fee edits sync between devices, preserve explicit removal and survive older clients',async t=>{
+ const h=harness(t),a=await h.login(),b=await h.login(),id=entries[0].id;
+ const data={...dataWith('保留笔记'),feeOverrides:{[id]:[]}};
+ assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:0,data}})).status,200);
+ assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,data);
+ const {feeOverrides,...legacy}=data;
+ for(const version of [5,4,3,2]){
+  const revision=6-version;
+  assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision,data:{...legacy,version}}})).status,200);
+  assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data.feeOverrides,{[id]:[]});
+ }
+ const changed={...data,feeOverrides:{[id]:['paid']}};
+ assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:5,data:changed}})).status,200);
+ assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,changed);
+ assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:5,data}})).status,409);
+ assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:6,data:{...data,feeOverrides:{[id]:['invalid']}}}})).status,400);
+ assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data,changed);
+});

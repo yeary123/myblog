@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type ChangeEvent } from 'react';
 import allEntries from '../../data/external-links.json';
-import { archiveTag, assignedTags, createCustomEntry, entryFees, feeLabels, matchesFeeFilter, getRecord, maxCustomEntries, matchesTagFilters, newData, permanentlyDeleteTag, restoreTag, validateBackup, type Entry, type Fee, type LibraryData, type Tag } from '../../lib/link-library';
+import { archiveTag, assignedTags, createCustomEntry, entryFees, feeLabels, matchesFeeFilter, getRecord, maxCustomEntries, matchesTagFilters, newData, setEntryFees, permanentlyDeleteTag, restoreTag, validateBackup, type Entry, type Fee, type LibraryData, type Tag } from '../../lib/link-library';
 import PersonalSync from './PersonalSync';
 import LinkJournal from './LinkJournal';
 import { useLibrarySync } from './useLibrarySync';
@@ -64,8 +64,8 @@ export default function LinkLibrary(){
   const openSection=(next:'library'|'journal')=>{setSection(next);window.location.hash=next==='journal'?'journal':'library';};
   const [storageWarning,setStorageWarning]=useState('');
   const [message,setMessage]=useState('');
-  const [removal,setRemoval]=useState<{tag:Tag;entry?:Entry;permanent?:boolean}|null>(null);
-  const [undo,setUndo]=useState<{tag:Tag;entry?:Entry}|null>(null);
+  const [removal,setRemoval]=useState<{tag:Tag;entry?:Entry;permanent?:boolean;fee?:Fee}|null>(null);
+  const [undo,setUndo]=useState<{tag:Tag;entry?:Entry;fee?:Fee}|null>(null);
   const [query,setQuery]=useState('');
   const [selected,setSelected]=useState<string[]>([]);
   const [fee,setFee]=useState<Fee|null>(null);
@@ -88,7 +88,7 @@ export default function LinkLibrary(){
   const tagsFor=(entry:Entry)=>assignedTags(data,entry);
   const filtered=useMemo(()=>{
     const needle=query.trim().toLowerCase();
-    return entries.filter(entry=>matchesTagFilters(data,entry,selected)&&matchesFeeFilter(entry,fee)&&[entry.name,entry.domain,...entry.reasons,...entryFees(entry).map(fee=>feeLabels[fee]),getRecord(data,entry.id).note,...assignedTags(data,entry).map(id=>data.tags.find(t=>t.id===id)?.name)].join(' ').toLowerCase().includes(needle));
+    return entries.filter(entry=>matchesTagFilters(data,entry,selected)&&matchesFeeFilter(entry,fee,data)&&[entry.name,entry.domain,...entry.reasons,...entryFees(entry,data).map(fee=>feeLabels[fee]),getRecord(data,entry.id).note,...assignedTags(data,entry).map(id=>data.tags.find(t=>t.id===id)?.name)].join(' ').toLowerCase().includes(needle));
   },[data,entries,query,selected,fee]);
   const pages=Math.max(1,Math.ceil(filtered.length/pageSize));const currentPage=Math.min(page,pages);
   const resetPage=()=>{setPage(1);setMessage('');};
@@ -114,10 +114,25 @@ export default function LinkLibrary(){
     setData(old=>({...old,tags:existing?old.tags:[...old.tags,tag],assignments:entry?{...old.assignments,[entry.id]:[...new Set([...assignedTags(old,entry),tag.id])]}:old.assignments}));
     return null;
   };
+  const toggleFee=(entry:Entry,value:Fee)=>{
+    if(entryFees(entry,data).includes(value)){
+      setRemoval({tag:{id:'fee-'+value,name:feeLabels[value]},entry,fee:value});
+      return;
+    }
+    setData(old=>setEntryFees(old,entry,[...entryFees(entry,old),value]));
+    setMessage(`已为「${entry.name}」添加「${feeLabels[value]}」费用标签。`);
+  };
   const confirmRemoval=()=>{
     if(!removal)return;
     const {tag,entry}=removal;
     try{
+      if(removal.fee&&entry){
+        const value=removal.fee;
+        setData(old=>setEntryFees(old,entry,entryFees(entry,old).filter(fee=>fee!==value)));
+        setMessage(`已从「${entry.name}」移除「${feeLabels[value]}」费用标签，可以撤销。`);
+        setUndo(removal);setRemoval(null);
+        return;
+      }
       if(removal.permanent){
         setData(old=>permanentlyDeleteTag(old,tag.id));
         setUndo(old=>old?.tag.id===tag.id?null:old);
@@ -148,6 +163,12 @@ export default function LinkLibrary(){
   };
   const undoRemoval=()=>{
     if(!undo)return;
+    if(undo.fee&&undo.entry){
+      const entry=undo.entry,value=undo.fee;
+      setData(old=>setEntryFees(old,entry,[...entryFees(entry,old),value]));
+      setMessage(`已恢复「${entry.name}」上的「${feeLabels[value]}」费用标签。`);
+      setUndo(null);return;
+    }
     if(!undo.entry){restoreArchivedTag(undo.tag.id);return;}
     const entry=undo.entry;
     if(!data.tags.some(tag=>tag.id===undo.tag.id)){setMessage('请先从回收站恢复这个标签。');return;}
@@ -156,15 +177,15 @@ export default function LinkLibrary(){
     setUndo(null);
   };
   const exportBackup=()=>{
-    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出自定义外链、笔记、标签和外链日志备份。');
+    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出自定义外链、费用标签、笔记、个人标签和外链日志备份。');
   };
   const importBackup=async(event:ChangeEvent<HTMLInputElement>)=>{
     const file=event.target.files?.[0];event.target.value='';if(!file)return;
     try{
       if(file.size>5_000_000)throw new Error('备份文件过大。');
       const imported=validateBackup(JSON.parse(await file.text()),allEntries);
-      if(!window.confirm('导入会替换本浏览器中的自定义外链、笔记、标签和外链日志。建议先导出当前备份。继续导入？'))return;
-      setData(imported);setFee(null);setSelected([]);setAddingLink(false);setPage(1);setMessage('备份已导入。');
+      if(!window.confirm('导入会替换本浏览器中的自定义外链、费用标签、笔记、个人标签和外链日志。建议先导出当前备份。继续导入？'))return;
+      setData(imported);setUndo(null);setRemoval(null);setFee(null);setSelected([]);setAddingLink(false);setPage(1);setMessage('备份已导入。');
     }catch(error){setMessage(error instanceof Error?error.message:'无法读取备份文件。');}
   };
   const visit=(entry:Entry)=><a className="ll-button ll-quiet" href={entry.url} target="_blank" rel="noopener noreferrer" aria-label={'在新标签页访问 '+entry.name}>访问 ↗</a>;
@@ -187,14 +208,15 @@ export default function LinkLibrary(){
       {addingLink&&<AddLinkForm onAdd={addLink} onCancel={()=>{setAddingLink(false);addLinkButton.current?.focus();}} />}
       <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索外链</span><input type="search" value={query} onChange={e=>{setQuery(e.target.value);resetPage();}} placeholder="搜索名称、标签、笔记或平台说明" /></label></div>
       <div className="ll-fee-filters"><span className="ll-small">费用标签</span><div className="ll-tags" role="group" aria-label="按费用标签筛选"><button className="ll-tag" aria-pressed={fee===null} onClick={()=>{setFee(null);resetPage();}}>全部</button>{(Object.keys(feeLabels) as Fee[]).map(value=><button className="ll-tag ll-fee-tag" key={value} aria-pressed={fee===value} onClick={()=>{setFee(fee===value?null:value);resetPage();}}>{feeLabels[value]}</button>)}</div></div>
-      <p className="ll-small ll-source-note">说明与费用标签根据历史推荐整理，价格、提交条件和实际效果以网站为准；费用不明的不标注。</p>
+      <p className="ll-small ll-source-note">说明与费用标签根据历史推荐整理，价格、提交条件和实际效果以网站为准；可在卡片中修改费用标签，费用不明可留空。</p>
       <div className="ll-filter-heading"><span className="ll-small">我的标签 · 点击查看同类外链</span></div>
       <div className="ll-tags ll-user-tags" role="group" aria-label="按标签查看外链"><button className="ll-tag" aria-pressed={!selected.length} onClick={()=>{setSelected([]);resetPage();}}>全部</button>{data.tags.map(tag=><span className="ll-tag-pair" key={tag.id}><button className="ll-tag" aria-pressed={selected.includes(tag.id)} onClick={()=>toggleFilter(tag.id)}>{tag.name} <span>{entries.filter(entry=>tagsFor(entry).includes(tag.id)).length}</span></button><button className="ll-remove-tag" aria-label={`删除标签 ${tag.name}`} onClick={()=>setRemoval({tag})}>×</button></span>)}</div>
       <AddTagForm onAdd={name=>addTag(name)} tags={data.tags} />
       {data.deletedTags.length>0&&<details className="ll-trash"><summary>标签回收站 · {data.deletedTags.length} 个</summary><p className="ll-small">可恢复标签和原来的外链关联，也可彻底删除。彻底删除后无法撤销，外链和笔记会保留。连接云端后，回收站的操作会跨设备同步。</p><ul>{[...data.deletedTags].reverse().map(item=><li key={item.tag.id}><div><span>{item.tag.name}</span><p className="ll-small">原关联 {item.entryIds.length} 个外链 · {new Date(item.deletedAt).toLocaleString('zh-CN')}</p></div><div className="ll-actions ll-trash-actions"><button aria-label={`恢复标签 ${item.tag.name}`} onClick={()=>restoreArchivedTag(item.tag.id)}>恢复标签和关联</button><button className="ll-danger" aria-label={`彻底删除标签 ${item.tag.name}`} onClick={()=>setRemoval({tag:item.tag,permanent:true})}>彻底删除</button></div></li>)}</ul></details>}
       <div className="ll-overview" aria-live="polite"><span>{filtered.length} 个外链 / 共 {entries.length} 个</span></div>
       <div className="ll-list">{filtered.slice((currentPage-1)*pageSize,currentPage*pageSize).map(entry=><article key={entry.id} className="ll-card"><div className="ll-card-top"><div><h2>{entry.name}</h2><span className="ll-domain">{entry.domain}{entry.id.startsWith('custom-')&&' · 我添加的'}</span></div></div>
-        <div className="ll-tags ll-card-tags">{entryFees(entry).map(value=><button className="ll-tag ll-fee-tag" key={'fee-'+value} aria-label={`查看${feeLabels[value]}外链`} aria-pressed={fee===value} onClick={()=>{setFee(fee===value?null:value);resetPage();}}>{feeLabels[value]}</button>)}{tagsFor(entry).map(id=><span className="ll-tag-pair" key={id}><button className="ll-tag" aria-pressed={selected.includes(id)} onClick={()=>toggleFilter(id)}>{data.tags.find(t=>t.id===id)?.name}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除标签 ${data.tags.find(t=>t.id===id)?.name}`} onClick={()=>{const tag=data.tags.find(t=>t.id===id);if(tag)setRemoval({tag,entry});}}>×</button></span>)}</div>
+        <div className="ll-tags ll-card-tags">{entryFees(entry,data).map(value=><span className="ll-tag-pair ll-fee-pair" key={'fee-'+value}><button className="ll-tag ll-fee-tag" aria-label={`查看${feeLabels[value]}外链`} aria-pressed={fee===value} onClick={()=>{setFee(fee===value?null:value);resetPage();}}>{feeLabels[value]}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除费用标签 ${feeLabels[value]}`} onClick={()=>toggleFee(entry,value)}>×</button></span>)}{tagsFor(entry).map(id=><span className="ll-tag-pair" key={id}><button className="ll-tag" aria-pressed={selected.includes(id)} onClick={()=>toggleFilter(id)}>{data.tags.find(t=>t.id===id)?.name}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除标签 ${data.tags.find(t=>t.id===id)?.name}`} onClick={()=>{const tag=data.tags.find(t=>t.id===id);if(tag)setRemoval({tag,entry});}}>×</button></span>)}</div>
+        <details className="ll-fee-editor"><summary>编辑费用标签</summary><div className="ll-actions" role="group" aria-label={`${entry.name} 的费用标签`}>{(Object.keys(feeLabels) as Fee[]).map(value=><button key={value} className="ll-tag ll-fee-tag" aria-pressed={entryFees(entry,data).includes(value)} onClick={()=>toggleFee(entry,value)}>{feeLabels[value]}</button>)}</div><p className="ll-small">点击添加或移除；都不选则不显示费用标签。</p></details>
         <div className="ll-card-actions"><AddTagForm onAdd={name=>addTag(name,entry)} tags={data.tags} entryName={entry.name} />{visit(entry)}</div>
         <EntryDescription entry={entry} />
         <details className="ll-note-details"><summary>我的笔记</summary>{details(entry)}</details>

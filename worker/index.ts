@@ -121,6 +121,7 @@ export default {
         if (previous && previous.revision !== body.revision) return reply({ error: '云端有新改动，请重新同步后选择保留的记录。' }, 409);
         if (previous) {
           const before = validateBackup(JSON.parse(previous.data_json), entries);
+          if (body.data.version < 6) data.feeOverrides = before.feeOverrides;
           if (body.data.version < 4) data.journal = before.journal;
           // Old clients cannot represent personal links or their associated records.
           if (body.data.version < 5) {

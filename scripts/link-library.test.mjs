@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { archiveTag, assignedTags, createCustomEntry, entryFees, matchesFeeFilter, matchesTagFilters, normalizeLinkUrl, newData, permanentlyDeleteTag, restoreTag, validateBackup } from '../src/lib/link-library.ts';
+import { archiveTag, assignedTags, createCustomEntry, entryFees, matchesFeeFilter, matchesTagFilters, normalizeLinkUrl, newData, setEntryFees, permanentlyDeleteTag, restoreTag, validateBackup } from '../src/lib/link-library.ts';
 const make=(id,order)=>({id,order,name:id,url:'https://example.com',domain:'example.com',votes:null,recommendationTotal:0,reasons:[]});
 const entries=[make('first',1),make('second',2),make('third',3),make('fourth',4)];
 test('new libraries have no tags and never fall back to source classifications',()=>{
@@ -19,7 +19,7 @@ test('a user tag brings together its assigned links',()=>{
 test('v1 migration removes preset IDs, including renamed presets, and preserves user tags and records',()=>{
  const raw={version:1,tags:[{id:'community',group:'type',name:'改过名的预设'},{id:'ai',group:'topic',name:'AI'},{id:'tag-mine',group:'use',name:'我的收藏'},{id:'tag-ai',group:'topic',name:'AI'}],assignments:{first:['community','tag-mine','tag-ai'],second:['ai']},records:{first:{level:1,note:'保留笔记',seen:123}}};
  const migrated=validateBackup(raw,entries);
- assert.equal(migrated.version,5);
+ assert.equal(migrated.version,6);
  assert.deepEqual(migrated.tags,[{id:'tag-mine',name:'我的收藏'},{id:'tag-ai',name:'AI'}]);
  assert.deepEqual(migrated.assignments,{first:['tag-mine','tag-ai'],second:[]});
  assert.deepEqual(migrated.records,raw.records);
@@ -119,4 +119,34 @@ test('fee tags filter free and paid options without inventing a tag for unknown 
  assert.equal(matchesFeeFilter(unknown,null),true);
  const data=newData();data.tags=[{id:'tag-mine',name:'我的'}];data.assignments={third:['tag-mine']};
  assert.deepEqual([free,paid,both,unknown].filter(entry=>matchesFeeFilter(entry,'free')&&matchesTagFilters(data,entry,['tag-mine'])).map(entry=>entry.id),['third']);
+});
+
+test('personal fee edits override defaults, preserve empty choices and drive filtering',()=>{
+ const entry={...entries[0],fees:['free']},data=newData();
+ const removed=setEntryFees(data,entry,[]);
+ assert.deepEqual(entryFees(entry,removed),[]);
+ assert.equal(matchesFeeFilter(entry,'free',removed),false);
+ assert.deepEqual(entryFees(entry,data),['free'],'source tags must remain unchanged');
+ const changed=setEntryFees(removed,entry,['paid']);
+ assert.deepEqual(entryFees(entry,changed),['paid']);
+ assert.equal(matchesFeeFilter(entry,'paid',changed),true);
+ assert.equal(matchesFeeFilter(entry,'free',changed),false);
+ assert.deepEqual(setEntryFees(changed,entry,['paid','free','free']).feeOverrides[entry.id],['free','paid']);
+ assert.deepEqual(validateBackup(JSON.parse(JSON.stringify(removed)),entries),removed,'empty means explicitly untagged');
+ assert.deepEqual(validateBackup(JSON.parse(JSON.stringify(changed)),entries),changed);
+});
+test('fee edits support personal links and old backups migrate without losing notes or tags',()=>{
+ const custom=createCustomEntry({name:'我的外链',url:'example.org/fees',description:''},entries,'custom-fees');
+ const data={...newData(),customEntries:[custom],tags:[{id:'tag-mine',name:'我的'}],assignments:{[custom.id]:['tag-mine']},records:{[custom.id]:{note:'保留笔记',level:1,seen:123}}};
+ const edited=setEntryFees(data,custom,['paid']);
+ assert.deepEqual(validateBackup(JSON.parse(JSON.stringify(edited)),entries),edited);
+ const {feeOverrides,...old}=edited;
+ const migrated=validateBackup({...old,version:5},entries);
+ assert.deepEqual(migrated.feeOverrides,{});
+ assert.deepEqual(migrated.records,data.records);
+ assert.deepEqual(migrated.assignments,data.assignments);
+ assert.deepEqual(entryFees(custom,migrated),[]);
+});
+test('fee override validation rejects missing fields, unknown links and malformed fee values',()=>{
+ for(const feeOverrides of [undefined,null,[],{unknown:['free']},{first:['unknown']},{first:['free','free']},{first:'paid'},{first:['free','paid','free']}]) assert.throws(()=>validateBackup({...newData(),feeOverrides},entries));
 });
