@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { archiveTag, assignedTags, buildReviewQueue, matchesTagFilters, newData, restoreTag, validateBackup } from '../src/lib/link-library.ts';
+import { archiveTag, assignedTags, buildReviewQueue, createCustomEntry, matchesTagFilters, normalizeLinkUrl, newData, restoreTag, validateBackup } from '../src/lib/link-library.ts';
 const make=(id,order)=>({id,order,name:id,url:'https://example.com',domain:'example.com',votes:null,recommendationTotal:0,reasons:[]});
 const entries=[make('first',1),make('second',2),make('third',3),make('fourth',4)];
 test('new libraries have no tags and never fall back to source classifications',()=>{
@@ -19,7 +19,7 @@ test('a user tag brings together its assigned links',()=>{
 test('v1 migration removes preset IDs, including renamed presets, and preserves user tags and records',()=>{
  const raw={version:1,tags:[{id:'community',group:'type',name:'改过名的预设'},{id:'ai',group:'topic',name:'AI'},{id:'tag-mine',group:'use',name:'我的收藏'},{id:'tag-ai',group:'topic',name:'AI'}],assignments:{first:['community','tag-mine','tag-ai'],second:['ai']},records:{first:{level:1,note:'保留笔记',seen:123}}};
  const migrated=validateBackup(raw,entries);
- assert.equal(migrated.version,4);
+ assert.equal(migrated.version,5);
  assert.deepEqual(migrated.tags,[{id:'tag-mine',name:'我的收藏'},{id:'tag-ai',name:'AI'}]);
  assert.deepEqual(migrated.assignments,{first:['tag-mine','tag-ai'],second:[]});
  assert.deepEqual(migrated.records,raw.records);
@@ -73,4 +73,28 @@ test('backup round trip retains custom tags, notes and empty assignments and rej
  assert.throws(()=>validateBackup({...data,records:{first:{level:9,note:'',seen:1}}},entries));
  assert.throws(()=>validateBackup({...data,assignments:{first:['unknown-tag']}},entries));
  assert.throws(()=>validateBackup({...data,tags:[...data.tags,{id:'tag-other',name:'我的收藏'}]},entries));
+});
+
+test('personal links accept bare domains and reject unsafe or duplicate URLs',()=>{
+ const custom=createCustomEntry({name:' 我的平台 ',url:'EXAMPLE.org/new',description:' 发布教程 '},entries,'custom-test');
+ assert.equal(custom.url,'https://example.org/new');
+ assert.equal(custom.domain,'example.org');
+ assert.equal(custom.name,'我的平台');
+ assert.deepEqual(custom.reasons,['发布教程']);
+ for(const url of ['javascript:alert(1)','data:text/html,test','https://user:secret@example.org','https://','']) assert.throws(()=>normalizeLinkUrl(url));
+ assert.throws(()=>createCustomEntry({name:'重复',url:'https://EXAMPLE.com/#section',description:''},entries,'custom-duplicate'));
+ assert.throws(()=>createCustomEntry({name:'   ',url:'example.org',description:''},entries,'custom-empty'));
+});
+test('personal links and associated notes, tags and recycle bin survive backup and migration',()=>{
+ const custom=createCustomEntry({name:'新外链',url:'example.org/new',description:'用途'},entries,'custom-test');
+ const data={...newData(),customEntries:[custom],tags:[{id:'tag-mine',name:'我的'}],assignments:{[custom.id]:['tag-mine']},records:{[custom.id]:{level:2,note:'个人笔记',seen:123}}};
+ assert.deepEqual(validateBackup(JSON.parse(JSON.stringify(data)),entries),data);
+ assert.deepEqual(assignedTags(data,custom),['tag-mine']);
+ assert.equal(matchesTagFilters(data,custom,['tag-mine']),true);
+ assert.equal(buildReviewQueue(data,[custom])[0].id,custom.id);
+ const archived=archiveTag(data,'tag-mine',1000);
+ assert.deepEqual(validateBackup(JSON.parse(JSON.stringify(archived)),entries),archived);
+ const {customEntries,...legacy}=data;
+ assert.deepEqual(validateBackup({...legacy,version:4},entries).customEntries,[]);
+ for(const customEntries of [[{...custom,url:'javascript:alert(1)'}],[custom,custom],[{...custom,id:'first'}],[{...custom,reasons:[123]}],undefined]) assert.throws(()=>validateBackup({...data,customEntries},entries));
 });

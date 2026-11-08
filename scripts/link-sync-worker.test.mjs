@@ -4,7 +4,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFile } from 'node:fs/promises';
 import worker from '../worker/index.ts';
 import entries from '../src/data/external-links.json' with { type: 'json' };
-import { archiveTag, newData, restoreTag } from '../src/lib/link-library.ts';
+import { archiveTag, createCustomEntry, newData, restoreTag } from '../src/lib/link-library.ts';
 
 const schema = await readFile(new URL('../worker/migrations/0001_personal_library.sql', import.meta.url), 'utf8');
 const origin = 'https://builtbyluna.cc';
@@ -165,4 +165,35 @@ test('legacy clients cannot permanently delete tags or wipe an existing recycle 
   assert.deepEqual(archived.data.deletedTags[0].entryIds, [entries[0].id]);
   assert.equal((await h.call('/library', { method: 'PUT', cookie, body: { revision: 2, data: legacy } })).status, 200);
   assert.deepEqual((await (await h.call('/library', { cookie })).json()).data.deletedTags, archived.data.deletedTags);
+});
+
+test('personal links sync between devices and legacy writes retain their notes and tag associations', async t => {
+  const h=harness(t), a=await h.login(), b=await h.login();
+  const entry=createCustomEntry({name:'我的平台',url:'example.org/new',description:'发布教程'},entries,'custom-new');
+  const data={...newData(),customEntries:[entry],tags:[{id:'tag-mine',name:'我的'}],assignments:{[entry.id]:['tag-mine']},records:{[entry.id]:{level:1,note:'下次继续',seen:123}}};
+  assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:0,data}})).status,200);
+  assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,data);
+  const {customEntries,...legacy}=data;
+  const old={...legacy,version:4,records:{},assignments:{}};
+  assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:1,data:old}})).status,200);
+  assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data,data);
+  const archived=archiveTag(data,'tag-mine',1000);
+  assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:2,data:archived}})).status,200);
+  const {customEntries:ignored,...oldArchived}=archived;
+  assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:3,data:{...oldArchived,version:4,records:{},assignments:{}}}})).status,200);
+  assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data,archived);
+  const malformed={...data,customEntries:[{...entry,url:'javascript:alert(1)'}]};
+  assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:4,data:malformed}})).status,400);
+});
+
+test('archiving a tag in an old page preserves its personal-link associations', async t => {
+  const h=harness(t), cookie=await h.login();
+  const entry=createCustomEntry({name:'我的平台',url:'example.org/legacy',description:''},entries,'custom-legacy');
+  const data={...newData(),customEntries:[entry],tags:[{id:'tag-mine',name:'我的'}],assignments:{[entry.id]:['tag-mine']}};
+  await h.call('/library',{method:'PUT',cookie,body:{revision:0,data}});
+  const legacy={...newData(),version:4,deletedTags:[{tag:data.tags[0],position:0,deletedAt:1000,entryIds:[]}]};
+  assert.equal((await h.call('/library',{method:'PUT',cookie,body:{revision:1,data:legacy}})).status,200);
+  const saved=(await (await h.call('/library',{cookie})).json()).data;
+  assert.deepEqual(saved.deletedTags[0].entryIds,[entry.id]);
+  assert.deepEqual(restoreTag(saved,'tag-mine').assignments[entry.id],['tag-mine']);
 });

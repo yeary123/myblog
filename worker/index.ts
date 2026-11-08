@@ -122,6 +122,21 @@ export default {
         if (previous) {
           const before = validateBackup(JSON.parse(previous.data_json), entries);
           if (body.data.version < 4) data.journal = before.journal;
+          // Old clients cannot represent personal links or their associated records.
+          if (body.data.version < 5) {
+            data.customEntries = before.customEntries;
+            const activeTags = new Set(data.tags.map(tag => tag.id));
+            for (const entry of before.customEntries) {
+              if (before.records[entry.id]) data.records[entry.id] = before.records[entry.id];
+              if (before.assignments[entry.id]) data.assignments[entry.id] = before.assignments[entry.id].filter(id => activeTags.has(id));
+            }
+            const customIds = new Set(before.customEntries.map(entry => entry.id));
+            for (const archived of data.deletedTags) {
+              const previousTag = before.deletedTags.find(item => item.tag.id === archived.tag.id);
+              const associatedIds = Object.entries(before.assignments).filter(([id, tags]) => customIds.has(id) && tags.includes(archived.tag.id)).map(([id]) => id);
+              archived.entryIds = [...new Set([...archived.entryIds, ...(previousTag?.entryIds.filter(id => customIds.has(id)) ?? []), ...associatedIds])];
+            }
+          }
           const activeIds = new Set(data.tags.map(tag => tag.id));
           const archivedIds = new Set(data.deletedTags.map(item => item.tag.id));
           // Older open tabs must not permanently erase tags or an existing recycle bin.

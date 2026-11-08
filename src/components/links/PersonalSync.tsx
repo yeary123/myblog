@@ -25,7 +25,7 @@ export default function PersonalSync({ sync }: { sync: ReturnType<typeof useLibr
     {!sync.connected && showForm && <form className="ll-sync-form" onSubmit={submit}>
       <label><span className="ll-label">个人同步口令</span><input type="password" autoComplete="off" required maxLength={256} value={key} onChange={event => setKey(event.target.value)} placeholder="输入你的同步口令" /></label>
       <button type="submit" disabled={sync.busy}>连接</button>
-      <p className="ll-small">仅供你本人使用。在其他设备输入相同口令即可同步标签、笔记、熟悉度和外链日志；本机记录会继续保留。</p>
+      <p className="ll-small">仅供你本人使用。在其他设备输入相同口令即可同步自定义外链、标签、笔记、熟悉度和外链日志；本机记录会继续保留。</p>
     </form>}
     {sync.detail && <p className={sync.status === 'error' || sync.conflict ? 'll-warning' : 'll-small'} role={sync.status === 'error' ? 'alert' : 'status'}>{sync.detail}</p>}
     {sync.conflict && <div className="ll-sync-conflict">

@@ -1,12 +1,11 @@
 import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type ChangeEvent } from 'react';
 import allEntries from '../../data/external-links.json';
-import { archiveTag, assignedTags, buildReviewQueue, getRecord, levelNames, matchesTagFilters, newData, restoreTag, validateBackup, type Entry, type LibraryData, type Tag } from '../../lib/link-library';
+import { archiveTag, assignedTags, buildReviewQueue, createCustomEntry, getRecord, maxCustomEntries, levelNames, matchesTagFilters, newData, restoreTag, validateBackup, type Entry, type LibraryData, type Tag } from '../../lib/link-library';
 import PersonalSync from './PersonalSync';
 import LinkJournal from './LinkJournal';
 import { useLibrarySync } from './useLibrarySync';
 import ConfirmTagRemoval from './ConfirmTagRemoval';
 
-const entries: Entry[]=allEntries;
 const storageKey='luna-link-library-v1';
 const pageSize=20;
 
@@ -27,9 +26,26 @@ function AddTagForm({onAdd,tags,entryName}:{onAdd:(name:string)=>string|null;tag
   </form>;
 }
 
+function AddLinkForm({onAdd,onCancel}:{onAdd:(input:{name:string;url:string;description:string})=>string|null;onCancel:()=>void}){
+  const [name,setName]=useState(''),[url,setUrl]=useState(''),[description,setDescription]=useState(''),[error,setError]=useState('');
+  const nameInput=useRef<HTMLInputElement>(null);
+  const errorId=useId();
+  useEffect(()=>{nameInput.current?.focus();},[]);
+  return <form id="ll-add-link" className="ll-add-link ll-card" aria-label="添加外链" onSubmit={event=>{event.preventDefault();setError(onAdd({name,url,description})||'');}}>
+    <div className="ll-form-row">
+      <label><span className="ll-label">外链名称</span><input ref={nameInput} required maxLength={120} value={name} onChange={event=>setName(event.target.value)} placeholder="例如：我的新平台" /></label>
+      <label><span className="ll-label">网址</span><input required type="text" inputMode="url" autoCapitalize="none" autoCorrect="off" spellCheck={false} maxLength={2048} value={url} onChange={event=>setUrl(event.target.value)} placeholder="https://example.com" aria-describedby={error?errorId:undefined} /></label>
+    </div>
+    <label><span className="ll-label">说明（选填）</span><textarea maxLength={2000} value={description} onChange={event=>setDescription(event.target.value)} placeholder="这个平台有什么用途？可以怎样发布外链？" /></label>
+    <p className="ll-small">添加后可继续设置标签、笔记和熟悉度。</p>
+    {error&&<p id={errorId} className="ll-warning" role="alert">{error}</p>}
+    <div className="ll-actions"><button type="submit" className="ll-primary">保存外链</button><button type="button" onClick={onCancel}>取消</button></div>
+  </form>;
+}
+
 function Comments({entry}:{entry:Entry}){
-  return <details className="ll-comments" open><summary>评论 · {entry.reasons.length} 条</summary>
-    {entry.reasons.length?<ul className="ll-reasons">{entry.reasons.map((reason,i)=><li key={i}>{reason}</li>)}</ul>:<p className="ll-small">暂无评论。</p>}
+  return <details className="ll-comments" open><summary>{entry.id.startsWith('custom-')?'说明':'评论'} · {entry.reasons.length} 条</summary>
+    {entry.reasons.length?<ul className="ll-reasons">{entry.reasons.map((reason,i)=><li key={i}>{reason}</li>)}</ul>:<p className="ll-small">{entry.id.startsWith('custom-')?'暂无说明，可以在笔记中补充。':'暂无评论。'}</p>}
     {entry.recommendationTotal>entry.reasons.length&&<p className="ll-small">原帖显示 {entry.recommendationTotal} 条，存档保存了其中 {entry.reasons.length} 条。</p>}
   </details>;
 }
@@ -37,6 +53,9 @@ function Comments({entry}:{entry:Entry}){
 export default function LinkLibrary(){
   const [data,setData]=useState<LibraryData>(newData);
   const [ready,setReady]=useState(false);
+  const entries = useMemo(() => [...data.customEntries, ...allEntries], [data.customEntries]);
+  const [addingLink,setAddingLink]=useState(false);
+  const addLinkButton=useRef<HTMLButtonElement>(null);
   const [section,setSection]=useState<'library'|'journal'>('library');
   useEffect(()=>{
     const readHash=()=>setSection(window.location.hash==='#journal'?'journal':'library');
@@ -58,7 +77,7 @@ export default function LinkLibrary(){
   const sync=useLibrarySync(data,setData,ready);
 
   useEffect(()=>{
-    try{const saved=localStorage.getItem(storageKey);if(saved)setData(validateBackup(JSON.parse(saved),entries));}
+    try{const saved=localStorage.getItem(storageKey);if(saved)setData(validateBackup(JSON.parse(saved),allEntries));}
     catch{setStorageWarning('本地记录暂时无法读取或格式不兼容。请先导出备份；本次编辑会尝试重新保存。');}
     setReady(true);
   },[]);
@@ -73,7 +92,7 @@ export default function LinkLibrary(){
   const filtered=useMemo(()=>{
     const needle=query.trim().toLowerCase();
     return entries.filter(entry=>(level==='all'||getRecord(data,entry.id).level===Number(level))&&matchesTagFilters(data,entry,selected)&&[entry.name,entry.domain,...entry.reasons,getRecord(data,entry.id).note,...assignedTags(data,entry).map(id=>data.tags.find(t=>t.id===id)?.name)].join(' ').toLowerCase().includes(needle));
-  },[data,query,level,selected]);
+  },[data,entries,query,level,selected]);
   const pages=Math.max(1,Math.ceil(filtered.length/pageSize));const currentPage=Math.min(page,pages);
   const resetPage=()=>{setPage(1);setMessage('');};
   const toggleFilter=(id:string)=>{setSelected(old=>old.includes(id)?[]:[id]);resetPage();};
@@ -84,6 +103,16 @@ export default function LinkLibrary(){
     const queue=buildReviewQueue(data,filtered);
     if(!queue.length){setMessage('当前筛选下没有外链，请放宽筛选。');return;}
     setReview({queue,index:0,revealed:false,answers:{},thoughts:{},done:false,scope:selected.map(id=>data.tags.find(t=>t.id===id)?.name).concat(query?['搜索：'+query]:[],level!=='all'?['熟悉度：'+(level==='-1'?'还没看':levelNames[Number(level)])]:[]).join(' · ')||'全部外链'});setMessage('');
+  };
+  const addLink=(input:{name:string;url:string;description:string}):string|null=>{
+    try {
+      if(data.customEntries.length>=maxCustomEntries)return '最多添加 1000 个自定义外链。';
+      const entry=createCustomEntry(input,entries,'custom-'+crypto.randomUUID());
+      setData(old=>({...old,customEntries:[entry,...old.customEntries]}));
+      clearFilters();setAddingLink(false);setMessage(`已添加「${entry.name}」。`);
+      addLinkButton.current?.focus();
+      return null;
+    } catch(error) {return error instanceof Error?error.message:'暂时无法添加外链。';}
   };
   const addTag=(name:string,entry?:Entry):string|null=>{
     if(!name||name.length>24)return '请输入 1～24 个字符的标签名称。';
@@ -129,15 +158,15 @@ export default function LinkLibrary(){
     setUndo(null);
   };
   const exportBackup=()=>{
-    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出熟悉度、笔记、标签和外链日志备份。');
+    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出自定义外链、熟悉度、笔记、标签和外链日志备份。');
   };
   const importBackup=async(event:ChangeEvent<HTMLInputElement>)=>{
     const file=event.target.files?.[0];event.target.value='';if(!file)return;
     try{
       if(file.size>5_000_000)throw new Error('备份文件过大。');
-      const imported=validateBackup(JSON.parse(await file.text()),entries);
-      if(!window.confirm('导入会替换本浏览器中的熟悉度、笔记、标签和外链日志。建议先导出当前备份。继续导入？'))return;
-      setData(imported);setSelected([]);setReview(null);setPage(1);setMessage('备份已导入。');
+      const imported=validateBackup(JSON.parse(await file.text()),allEntries);
+      if(!window.confirm('导入会替换本浏览器中的自定义外链、熟悉度、笔记、标签和外链日志。建议先导出当前备份。继续导入？'))return;
+      setData(imported);setSelected([]);setReview(null);setAddingLink(false);setPage(1);setMessage('备份已导入。');
     }catch(error){setMessage(error instanceof Error?error.message:'无法读取备份文件。');}
   };
   const ratings=(entry:Entry,value:number,onChoose:(level:number)=>void,recall=false)=><div className="ll-ratings" role="group" aria-label={recall?'回忆结果':'熟悉度'}>{levelNames.map((name,i)=><button key={i} type="button" aria-pressed={value===i} onClick={()=>onChoose(i)}>{recall?['没想起','有点印象','想起来了'][i]:name}</button>)}</div>;
@@ -164,20 +193,22 @@ export default function LinkLibrary(){
         <article className="ll-review-card"><span className="ll-small">{entry.domain}</span><h2 ref={reviewHeading} tabIndex={-1}>{entry.name}</h2><h3>什么情况下，你会想到它？</h3><p className="ll-sub">先在心里想一句，再展开看看。</p>
           {!review.revealed?<><label><span className="ll-label">我的回忆（选填）</span><textarea maxLength={2000} value={thought} onChange={e=>setReview({...review,thoughts:{...review.thoughts,[entry.id]:e.target.value}})} placeholder="我记得它好像可以……" /></label><button className="ll-primary" onClick={()=>setReview({...review,revealed:true})}>看看说明 ↓</button></>:<>
             {thought&&<p className="ll-thought">刚才的回忆：{thought}</p>}
-            <div className="ll-answer"><span className="ll-label">原帖中的说明</span><p>{entry.reasons[0]||'存档没有提供说明，可以先访问网站了解。'}</p>{getRecord(data,entry.id).note&&<p><span className="ll-label">我的笔记</span>{getRecord(data,entry.id).note}</p>}<div className="ll-tags">{tagsFor(entry).map(id=><span className="ll-tag" key={id}>{data.tags.find(t=>t.id===id)?.name}</span>)}</div></div>
+            <div className="ll-answer"><span className="ll-label">{entry.id.startsWith('custom-')?'我添加的说明':'原帖中的说明'}</span><p>{entry.reasons[0]||'暂时没有说明，可以先访问网站了解。'}</p>{getRecord(data,entry.id).note&&<p><span className="ll-label">我的笔记</span>{getRecord(data,entry.id).note}</p>}<div className="ll-tags">{tagsFor(entry).map(id=><span className="ll-tag" key={id}>{data.tags.find(t=>t.id===id)?.name}</span>)}</div></div>
             {visit(entry)}<span className="ll-label">刚才想起来了吗？</span>{ratings(entry,answer,value=>{setFamiliarity(entry.id,value);setReview({...review,answers:{...review.answers,[entry.id]:value}});},true)}
             <details className="ll-review-details"><summary>更多评论与我的笔记</summary><Comments entry={entry} />{details(entry)}</details>
           </>}
         </article><div className="ll-review-bottom"><button disabled={review.index===0} onClick={()=>setReview({...review,index:review.index-1,revealed:true})}>上一个</button><button className="ll-primary" disabled={answer===undefined} onClick={()=>setReview(review.index===review.queue.length-1?{...review,done:true}:{...review,index:review.index+1,revealed:false})}>{review.index===review.queue.length-1?'完成这轮':'下一个'}</button></div>
       </div>;
     })() : <>
+      <div className="ll-library-heading"><h2>我的外链库</h2><button ref={addLinkButton} className="ll-primary" disabled={!ready} aria-expanded={addingLink} aria-controls="ll-add-link" onClick={()=>setAddingLink(!addingLink)}>{addingLink?'收起表单':'＋ 添加外链'}</button></div>
+      {addingLink&&<AddLinkForm onAdd={addLink} onCancel={()=>{setAddingLink(false);addLinkButton.current?.focus();}} />}
       <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索外链</span><input type="search" value={query} onChange={e=>{setQuery(e.target.value);resetPage();}} placeholder="搜索名称、标签、笔记或推荐理由" /></label><select aria-label="按熟悉度筛选" value={level} onChange={e=>{setLevel(e.target.value);resetPage();}}><option value="all">全部熟悉度</option><option value="-1">还没看</option>{levelNames.map((name,i)=><option value={i} key={i}>{name}</option>)}</select></div>
       <div className="ll-filter-heading"><span className="ll-small">我的标签 · 点击查看同类外链</span></div>
       <div className="ll-tags ll-user-tags" role="group" aria-label="按标签查看外链"><button className="ll-tag" aria-pressed={!selected.length} onClick={()=>{setSelected([]);resetPage();}}>全部</button>{data.tags.map(tag=><span className="ll-tag-pair" key={tag.id}><button className="ll-tag" aria-pressed={selected.includes(tag.id)} onClick={()=>toggleFilter(tag.id)}>{tag.name} <span>{entries.filter(entry=>tagsFor(entry).includes(tag.id)).length}</span></button><button className="ll-remove-tag" aria-label={`删除标签 ${tag.name}`} onClick={()=>setRemoval({tag})}>×</button></span>)}</div>
       <AddTagForm onAdd={name=>addTag(name)} tags={data.tags} />
       {data.deletedTags.length>0&&<details className="ll-trash"><summary>标签回收站 · {data.deletedTags.length} 个</summary><p className="ll-small">标签和原来的外链关联会一起保留，可随时恢复。连接云端后，回收站也会跨设备同步。</p><ul>{[...data.deletedTags].reverse().map(item=><li key={item.tag.id}><div><span>{item.tag.name}</span><p className="ll-small">原关联 {item.entryIds.length} 个外链 · {new Date(item.deletedAt).toLocaleString('zh-CN')}</p></div><button aria-label={`恢复标签 ${item.tag.name}`} onClick={()=>restoreArchivedTag(item.tag.id)}>恢复标签和关联</button></li>)}</ul></details>}
       <div className="ll-overview" aria-live="polite"><span>{filtered.length} 个外链 / 共 {entries.length} 个</span><span>{entries.filter(e=>getRecord(data,e.id).level===2).length} 个熟悉了</span></div>
-      <div className="ll-list">{filtered.slice((currentPage-1)*pageSize,currentPage*pageSize).map(entry=><article key={entry.id} className="ll-card"><div className="ll-card-top"><div><h2>{entry.name}</h2><span className="ll-domain">{entry.domain}</span></div><span className={'ll-status '+(getRecord(data,entry.id).level===2?'ll-known':'')}>{getRecord(data,entry.id).level===-1?'还没看':levelNames[getRecord(data,entry.id).level]}</span></div>
+      <div className="ll-list">{filtered.slice((currentPage-1)*pageSize,currentPage*pageSize).map(entry=><article key={entry.id} className="ll-card"><div className="ll-card-top"><div><h2>{entry.name}</h2><span className="ll-domain">{entry.domain}{entry.id.startsWith('custom-')&&' · 我添加的'}</span></div><span className={'ll-status '+(getRecord(data,entry.id).level===2?'ll-known':'')}>{getRecord(data,entry.id).level===-1?'还没看':levelNames[getRecord(data,entry.id).level]}</span></div>
         <div className="ll-tags ll-card-tags">{tagsFor(entry).map(id=><span className="ll-tag-pair" key={id}><button className="ll-tag" aria-pressed={selected.includes(id)} onClick={()=>toggleFilter(id)}>{data.tags.find(t=>t.id===id)?.name}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除标签 ${data.tags.find(t=>t.id===id)?.name}`} onClick={()=>{const tag=data.tags.find(t=>t.id===id);if(tag)setRemoval({tag,entry});}}>×</button></span>)}</div>
         <div className="ll-card-actions"><AddTagForm onAdd={name=>addTag(name,entry)} tags={data.tags} entryName={entry.name} />{visit(entry)}</div>
         <Comments entry={entry} />

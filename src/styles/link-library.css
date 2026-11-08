@@ -19,3 +19,6 @@
 .ll-journal-badge{flex-shrink:0;padding:3px 9px;border-radius:6px;background:var(--ll-soft);color:var(--ll-green);font-size:12px}
 .ll-journal-next{padding:14px;background:#fafaf8;border-radius:8px}.ll-journal-entry .ll-card-actions{margin-top:0}
 @media(max-width:520px){.ll-journal-stats{gap:8px}.ll-journal-stats>div{padding:12px 10px}.ll-journal-stats strong{font-size:22px}}
+
+.ll-library-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.ll-add-link{display:grid;gap:14px;margin-bottom:18px;background:#f8faf8}.ll-add-link>label{display:block}

@@ -21,10 +21,17 @@ test('a common baseline distinguishes local changes, cloud changes, and offline 
 });
 test('comparison ignores object key insertion order without discarding edits or tags', () => {
   const data = noted('笔记');
-  const reordered = { records: { first: { seen: 1, level: 1, note: '笔记' } }, tags: [], version: 4, assignments: {}, deletedTags: [], journal: [] };
+  const reordered = { records: { first: { seen: 1, level: 1, note: '笔记' } }, tags: [], version: 5, customEntries: [], assignments: {}, deletedTags: [], journal: [] };
   assert.equal(sameLibrary(data, reordered), true);
   assert.equal(planSync(data, cloud(reordered), null), 'equal');
   assert.equal(emptyLibrary(data), false);
   assert.equal(emptyLibrary({ ...newData(), tags: [{ id: 'tag-a', name: '收藏' }] }), false);
   assert.equal(emptyLibrary({ ...newData(), deletedTags: [{ tag: { id: 'tag-old', name: 'uke' }, entryIds: [], position: 0, deletedAt: 1 }] }), false, 'a recycle bin is personal data that must sync');
+});
+
+test('personal links alone upload and conflict rather than being treated as an empty library', () => {
+  const data = {...newData(), customEntries: [{id:'custom-new',name:'新外链',url:'https://example.org',domain:'example.org',order:0,votes:null,recommendationTotal:0,reasons:[]}]};
+  assert.equal(emptyLibrary(data),false);
+  assert.equal(planSync(data,cloud(null,0),null),'push');
+  assert.equal(planSync(newData(),cloud(data),null),'pull');
 });
