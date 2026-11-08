@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { archiveTag, assignedTags, buildReviewQueue, createCustomEntry, entryFees, matchesFeeFilter, matchesTagFilters, normalizeLinkUrl, newData, permanentlyDeleteTag, restoreTag, validateBackup } from '../src/lib/link-library.ts';
+import { archiveTag, assignedTags, createCustomEntry, entryFees, matchesFeeFilter, matchesTagFilters, normalizeLinkUrl, newData, permanentlyDeleteTag, restoreTag, validateBackup } from '../src/lib/link-library.ts';
 const make=(id,order)=>({id,order,name:id,url:'https://example.com',domain:'example.com',votes:null,recommendationTotal:0,reasons:[]});
 const entries=[make('first',1),make('second',2),make('third',3),make('fourth',4)];
 test('new libraries have no tags and never fall back to source classifications',()=>{
@@ -62,11 +62,6 @@ test('restoring a deleted tag merges a newer tag with the same name without losi
  assert.deepEqual(restored.assignments,{first:['tag-new'],second:['tag-new']});
  assert.deepEqual(restored.deletedTags,[]);
 });
-test('review prioritizes unseen entries, then weaker and older memories without mutating source order',()=>{
- const data=newData();data.records={first:{level:2,note:'',seen:10},second:{level:0,note:'',seen:20},third:{level:0,note:'',seen:5}};
- assert.deepEqual(buildReviewQueue(data,entries).map(e=>e.id),['fourth','third','second']);
- assert.equal(entries[0].id,'first');
-});
 test('backup round trip retains custom tags, notes and empty assignments and rejects broken data',()=>{
  const data=newData();data.tags=[{id:'tag-mine',name:'我的收藏'}];data.records.first={level:1,note:'下次做产品时看',seen:123};data.assignments={first:['tag-mine'],second:[]};
  assert.deepEqual(validateBackup(JSON.parse(JSON.stringify(data)),entries),data);
@@ -91,7 +86,6 @@ test('personal links and associated notes, tags and recycle bin survive backup a
  assert.deepEqual(validateBackup(JSON.parse(JSON.stringify(data)),entries),data);
  assert.deepEqual(assignedTags(data,custom),['tag-mine']);
  assert.equal(matchesTagFilters(data,custom,['tag-mine']),true);
- assert.equal(buildReviewQueue(data,[custom])[0].id,custom.id);
  const archived=archiveTag(data,'tag-mine',1000);
  assert.deepEqual(validateBackup(JSON.parse(JSON.stringify(archived)),entries),archived);
  const {customEntries,...legacy}=data;

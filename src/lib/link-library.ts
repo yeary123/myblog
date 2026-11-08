@@ -8,12 +8,12 @@ export function entryFees(entry: Entry): Fee[] {
 export function matchesFeeFilter(entry: Entry, fee: Fee | null): boolean {
   return fee === null || entryFees(entry).includes(fee);
 }
+// level and seen are retained only to round-trip older backups and sync data.
 export type RecordState = { level: number; note: string; seen: number };
 export type DeletedTag = { tag: Tag; entryIds: string[]; deletedAt: number; position: number };
 export type JournalEntry = { date: string; work: string; published: number; urls: string[]; next: string; updatedAt: number };
 export type LibraryData = { version: 5; customEntries: Entry[]; tags: Tag[]; assignments: Record<string, string[]>; records: Record<string, RecordState>; deletedTags: DeletedTag[]; journal: JournalEntry[] };
 import { validateJournal } from './link-journal.ts';
-export const levelNames = ['没记住', '有印象', '熟悉了'];
 // Only used to remove the old built-in tags while migrating v1 browser data or backups.
 const legacyTagIds = new Set(['code','launch','content','community','directory','profile','design','reviews','social','showcase','writing','research','inspiration','ai']);
 export const newData = (): LibraryData => ({version:5,customEntries:[],tags:[],assignments:{},records:{},deletedTags:[],journal:[]});
@@ -54,9 +54,6 @@ export const getRecord = (data: LibraryData, id: string): RecordState => data.re
 export const assignedTags = (data: LibraryData, entry: Entry): string[] => (data.assignments[entry.id] ?? []).filter(id=>data.tags.some(t=>t.id===id));
 export function matchesTagFilters(data: LibraryData, entry: Entry, selected: string[]) {
   return !selected.length || assignedTags(data,entry).some(id=>selected.includes(id));
-}
-export function buildReviewQueue(data: LibraryData, entries: Entry[]) {
-  return [...entries].sort((a,b)=>getRecord(data,a.id).level-getRecord(data,b.id).level || getRecord(data,a.id).seen-getRecord(data,b.id).seen || a.order-b.order).slice(0,3);
 }
 export function archiveTag(data: LibraryData, id: string, deletedAt = Date.now()): LibraryData {
   const position = data.tags.findIndex(tag => tag.id === id);
@@ -123,7 +120,7 @@ export function validateBackup(raw: unknown, entries: Entry[]): LibraryData {
   for(const entry of libraryEntries){
     const record=r.records[entry.id];
     if(record){
-      if(![-1,0,1,2].includes(record.level)||typeof record.note!=='string'||record.note.length>2000||typeof record.seen!=='number'||!Number.isFinite(record.seen)||record.seen<0)throw new Error('备份包含无效的熟悉度或笔记。');
+      if(![-1,0,1,2].includes(record.level)||typeof record.note!=='string'||record.note.length>2000||typeof record.seen!=='number'||!Number.isFinite(record.seen)||record.seen<0)throw new Error('备份包含无效的笔记或旧版记录。');
       data.records[entry.id]={level:record.level,note:record.note,seen:record.seen};
     }
     const assigned=r.assignments[entry.id];
