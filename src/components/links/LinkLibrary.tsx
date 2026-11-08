@@ -219,7 +219,7 @@ export default function LinkLibrary(){
         <details className="ll-fee-editor"><summary>编辑费用标签</summary><div className="ll-actions" role="group" aria-label={`${entry.name} 的费用标签`}>{(Object.keys(feeLabels) as Fee[]).map(value=><button key={value} className="ll-tag ll-fee-tag" aria-pressed={entryFees(entry,data).includes(value)} onClick={()=>toggleFee(entry,value)}>{feeLabels[value]}</button>)}</div><p className="ll-small">点击添加或移除；都不选则不显示费用标签。</p></details>
         <div className="ll-card-actions"><AddTagForm onAdd={name=>addTag(name,entry)} tags={data.tags} entryName={entry.name} />{visit(entry)}</div>
         <EntryDescription entry={entry} />
-        <details className="ll-note-details"><summary>我的笔记</summary>{details(entry)}</details>
+        <details className="ll-note-details" open><summary>我的笔记</summary>{details(entry)}</details>
       </article>)}</div>
       {!filtered.length&&<div className="ll-empty"><p>没有匹配的外链，放宽筛选再试试。</p><button onClick={clearFilters}>清空全部筛选</button></div>}
       {filtered.length>pageSize&&<nav className="ll-pagination" aria-label="外链列表分页"><button disabled={currentPage===1} onClick={()=>setPage(currentPage-1)}>上一页</button><span>{currentPage} / {pages}</span><button disabled={currentPage===pages} onClick={()=>setPage(currentPage+1)}>下一页</button></nav>}
