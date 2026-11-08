@@ -6,9 +6,10 @@ interface Props {
 	description: string;
 	lang?: string;
 	canonicalPath?: string;
+	wide?: boolean;
 }
 
-const { title, description, lang = 'zh-CN', canonicalPath = Astro.url.pathname } = Astro.props;
+const { title, description, lang = 'zh-CN', canonicalPath = Astro.url.pathname, wide = false } = Astro.props;
 const documentTitle = title;
 const canonicalURL = new URL(canonicalPath, Astro.site);
 ---
@@ -61,7 +62,7 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
 		</script>
 	</head>
 	<body class="min-h-screen bg-zinc-50 text-zinc-900 antialiased">
-		<main class="mx-auto w-full max-w-3xl px-4 pb-16 pt-8 sm:px-6">
+		<main class:list={['mx-auto w-full px-4 pb-16 pt-8 sm:px-6', wide ? 'max-w-6xl' : 'max-w-3xl']}>
 			<slot />
 		</main>
 	</body>

@@ -2,9 +2,20 @@
 import Layout from './Layout.astro';
 import LinkLibrary from './links/LinkLibrary';
 import '../styles/link-library.css';
+import { handbooks } from '../data/handbooks';
+
+interface Props {
+  initialSection?: 'library' | 'journal' | 'handbooks' | 'handbook';
+  handbookId?: string;
+}
+const { initialSection = 'library', handbookId } = Astro.props;
+const handbook = handbooks.find(item => item.id === handbookId);
+const title = handbook ? `${handbook.title} · 外链手册` : initialSection === 'handbooks' ? '主题手册 · 外链手册' : '外链手册';
+const description = handbook?.description ?? '575 个外链平台的简明说明，按主题手册、免费、收费和个人标签浏览，共用个人笔记与外链日志。';
+const canonicalPath = initialSection === 'handbook' || initialSection === 'handbooks' ? Astro.url.pathname : import.meta.env.BASE_URL;
 ---
 
-<Layout title="外链手册" description="575 个外链平台的简明说明，按免费、收费和个人标签浏览、记录笔记，并按天记录发布外链的工作与成果。" lang="zh-CN" canonicalPath={import.meta.env.BASE_URL}>
-  <LinkLibrary client:load />
-  <noscript>请启用 JavaScript，使用外链搜索、标签编辑和外链日志功能。</noscript>
+<Layout title={title} description={description} lang="zh-CN" canonicalPath={canonicalPath} wide={initialSection === 'handbook'}>
+  <LinkLibrary initialSection={initialSection} handbookId={handbookId} client:load />
+  <noscript>请启用 JavaScript，使用外链搜索、个人标签与笔记编辑、手册章节切换和外链日志功能。</noscript>
 </Layout>

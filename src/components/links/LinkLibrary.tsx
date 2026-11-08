@@ -1,30 +1,18 @@
-import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type ChangeEvent } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type ChangeEvent } from 'react';
 import allEntries from '../../data/external-links.json';
 import { archiveTag, assignedTags, createCustomEntry, entryFees, feeLabels, matchesFeeFilter, getRecord, maxCustomEntries, matchesTagFilters, newData, setEntryFees, permanentlyDeleteTag, restoreTag, validateBackup, type Entry, type Fee, type LibraryData, type Tag } from '../../lib/link-library';
 import PersonalSync from './PersonalSync';
 import LinkJournal from './LinkJournal';
 import { useLibrarySync } from './useLibrarySync';
 import ConfirmTagRemoval from './ConfirmTagRemoval';
+import AddTagForm from './AddTagForm';
+import LinkCard from './LinkCard';
+import { HandbookIndex, HandbookView } from './Handbooks';
+import { handbooks, handbookEntries } from '../../data/handbooks';
+import { handbookMentions } from '../../lib/handbooks';
 
 const storageKey='luna-link-library-v1';
 const pageSize=20;
-
-function AddTagForm({onAdd,tags,entryName}:{onAdd:(name:string)=>string|null;tags:Tag[];entryName?:string}){
-  const [name,setName]=useState('');
-  const [feedback,setFeedback]=useState('');
-  const listId=useId();
-  const submit=(event:FormEvent)=>{
-    event.preventDefault();
-    const error=onAdd(name.trim());
-    setFeedback(error||`已添加「${name.trim()}」。`);
-    if(!error)setName('');
-  };
-  return <form className="ll-add-tag" onSubmit={submit} aria-label={entryName?`为 ${entryName} 添加标签`:'添加标签'}>
-    <div className="ll-actions"><label><span className="ll-sr">{entryName?`${entryName} 的标签名称`:'新标签名称'}</span><input list={entryName?listId:undefined} maxLength={24} required value={name} onChange={e=>setName(e.target.value)} placeholder={entryName?'输入或选择标签':'新标签名称'} /></label><button type="submit">添加标签</button></div>
-    {entryName&&<datalist id={listId}>{tags.map(tag=><option key={tag.id} value={tag.name} />)}</datalist>}
-    {feedback&&<p className="ll-small" role="status">{feedback}</p>}
-  </form>;
-}
 
 function AddLinkForm({onAdd,onCancel}:{onAdd:(input:{name:string;url:string;description:string})=>string|null;onCancel:()=>void}){
   const [name,setName]=useState(''),[url,setUrl]=useState(''),[description,setDescription]=useState(''),[error,setError]=useState('');
@@ -43,25 +31,22 @@ function AddLinkForm({onAdd,onCancel}:{onAdd:(input:{name:string;url:string;desc
   </form>;
 }
 
-function EntryDescription({entry}:{entry:Entry}){
-  return <div className="ll-description"><span className="ll-label">平台说明</span>
-    <p>{entry.reasons.join(' ')||'暂无说明，可以先访问网站了解。'}</p>
-  </div>;
-}
+type LibrarySection = 'library' | 'journal' | 'handbooks' | 'handbook';
 
-export default function LinkLibrary(){
+export default function LinkLibrary({ initialSection = 'library', handbookId }: { initialSection?: LibrarySection; handbookId?: string }){
   const [data,setData]=useState<LibraryData>(newData);
   const [ready,setReady]=useState(false);
   const entries = useMemo<Entry[]>(() => [...data.customEntries, ...allEntries], [data.customEntries]);
   const [addingLink,setAddingLink]=useState(false);
   const addLinkButton=useRef<HTMLButtonElement>(null);
-  const [section,setSection]=useState<'library'|'journal'>('library');
+  const [section,setSection]=useState<LibrarySection>(initialSection);
+  const currentHandbook = handbooks.find(handbook => handbook.id === handbookId);
   useEffect(()=>{
+    if(initialSection==='handbook'||initialSection==='handbooks')return;
     const readHash=()=>setSection(window.location.hash==='#journal'?'journal':'library');
     readHash();window.addEventListener('hashchange',readHash);
     return ()=>window.removeEventListener('hashchange',readHash);
-  },[]);
-  const openSection=(next:'library'|'journal')=>{setSection(next);window.location.hash=next==='journal'?'journal':'library';};
+  },[initialSection]);
   const [storageWarning,setStorageWarning]=useState('');
   const [message,setMessage]=useState('');
   const [removal,setRemoval]=useState<{tag:Tag;entry?:Entry;permanent?:boolean;fee?:Fee}|null>(null);
@@ -88,7 +73,7 @@ export default function LinkLibrary(){
   const tagsFor=(entry:Entry)=>assignedTags(data,entry);
   const filtered=useMemo(()=>{
     const needle=query.trim().toLowerCase();
-    return entries.filter(entry=>matchesTagFilters(data,entry,selected)&&matchesFeeFilter(entry,fee,data)&&[entry.name,entry.domain,...entry.reasons,...entryFees(entry,data).map(fee=>feeLabels[fee]),getRecord(data,entry.id).note,...assignedTags(data,entry).map(id=>data.tags.find(t=>t.id===id)?.name)].join(' ').toLowerCase().includes(needle));
+    return entries.filter(entry=>matchesTagFilters(data,entry,selected)&&matchesFeeFilter(entry,fee,data)&&[entry.name,entry.domain,...entry.reasons,...entryFees(entry,data).map(fee=>feeLabels[fee]),getRecord(data,entry.id).note,...assignedTags(data,entry).map(id=>data.tags.find(t=>t.id===id)?.name),...handbookMentions(entry.id,handbooks,handbookEntries).flatMap(mention=>[mention.title,mention.description])].join(' ').toLowerCase().includes(needle));
   },[data,entries,query,selected,fee]);
   const pages=Math.max(1,Math.ceil(filtered.length/pageSize));const currentPage=Math.min(page,pages);
   const resetPage=()=>{setPage(1);setMessage('');};
@@ -188,25 +173,25 @@ export default function LinkLibrary(){
       setData(imported);setUndo(null);setRemoval(null);setFee(null);setSelected([]);setAddingLink(false);setPage(1);setMessage('备份已导入。');
     }catch(error){setMessage(error instanceof Error?error.message:'无法读取备份文件。');}
   };
-  const visit=(entry:Entry)=><a className="ll-button ll-quiet" href={entry.url} target="_blank" rel="noopener noreferrer" aria-label={'在新标签页访问 '+entry.name}>访问 ↗</a>;
-  const details=(entry:Entry)=><div className="ll-details">
-    <div><span className="ll-label">我的一句话理解</span><label><span className="ll-sr">{entry.name} 的笔记</span><textarea maxLength={2000} value={getRecord(data,entry.id).note} onChange={e=>updateNote(entry.id,e.target.value)} placeholder="它能做什么？我会在什么时候用到它？" /></label></div>
-  </div>;
+  const renderCard=(entry:Entry,anchor=false)=><LinkCard key={entry.id} entry={entry} data={data} mentions={handbookMentions(entry.id,handbooks,handbookEntries)} anchor={anchor}
+    selectedTags={selected} selectedFee={fee} onFilterTag={toggleFilter}
+    onFilterFee={value=>{setFee(fee===value?null:value);resetPage();}} onToggleFee={toggleFee}
+    onRemoveTag={(entry,tag)=>setRemoval({tag,entry})} onAddTag={addTag} onUpdateNote={updateNote} />;
 
   return <section className="ll" aria-label="外链手册">
     <header className="ll-header"><p className="ll-kicker">LUNA / PERSONAL COLLECTION</p><h1>外链手册</h1><p className="ll-sub">用标签整理，随时找到需要的平台。</p>
-      <div className="ll-nav"><button aria-pressed={section==='library'} onClick={()=>openSection('library')}>外链库</button><button aria-pressed={section==='journal'} onClick={()=>openSection('journal')}>外链日志</button></div>
+      <div className="ll-nav"><a href={import.meta.env.BASE_URL} aria-current={section==='library'?'page':undefined}>外链库</a><a href={`${import.meta.env.BASE_URL}handbooks/`} aria-current={section==='handbooks'||section==='handbook'?'page':undefined}>主题手册</a><a href={`${import.meta.env.BASE_URL}#journal`} aria-current={section==='journal'?'page':undefined}>外链日志</a></div>
     </header>
     <div className="ll-personal"><span className="ll-small">个人记录保存在当前浏览器，可导出备份。</span><div className="ll-actions"><button onClick={exportBackup} disabled={!ready}>导出备份</button><button onClick={()=>fileInput.current?.click()} disabled={!ready}>导入备份</button><input className="ll-sr" ref={fileInput} type="file" accept=".json,application/json" onChange={importBackup} aria-label="选择备份文件" /></div></div>
     <PersonalSync sync={sync} />
     {storageWarning&&<p role="alert" className="ll-warning">{storageWarning}</p>}
     <p className="ll-message" role="status" aria-live="polite">{message}</p>
-    <div hidden={section!=='library'}>
     {undo&&(undo.entry||data.deletedTags.some(item=>item.tag.id===undo.tag.id))&&<div className="ll-undo" role="status"><span>刚移除的「{undo.tag.name}」可以恢复。</span><button onClick={undoRemoval}>撤销</button></div>}
     {removal&&<ConfirmTagRemoval name={removal.tag.name} entryName={removal.entry?.name} permanent={removal.permanent} count={removal.permanent?(data.deletedTags.find(item=>item.tag.id===removal.tag.id)?.entryIds.length??0):Object.values(data.assignments).filter(ids=>ids.includes(removal.tag.id)).length} onCancel={()=>setRemoval(null)} onConfirm={confirmRemoval} />}
+    <div hidden={section!=='library'}>
       <div className="ll-library-heading"><h2>我的外链库</h2><button ref={addLinkButton} className="ll-primary" disabled={!ready} aria-expanded={addingLink} aria-controls="ll-add-link" onClick={()=>setAddingLink(!addingLink)}>{addingLink?'收起表单':'＋ 添加外链'}</button></div>
       {addingLink&&<AddLinkForm onAdd={addLink} onCancel={()=>{setAddingLink(false);addLinkButton.current?.focus();}} />}
-      <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索外链</span><input type="search" value={query} onChange={e=>{setQuery(e.target.value);resetPage();}} placeholder="搜索名称、标签、笔记或平台说明" /></label></div>
+      <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索外链</span><input type="search" value={query} onChange={e=>{setQuery(e.target.value);resetPage();}} placeholder="搜索名称、标签、笔记、平台说明或手册说明" /></label></div>
       <div className="ll-fee-filters"><span className="ll-small">费用标签</span><div className="ll-tags" role="group" aria-label="按费用标签筛选"><button className="ll-tag" aria-pressed={fee===null} onClick={()=>{setFee(null);resetPage();}}>全部</button>{(Object.keys(feeLabels) as Fee[]).map(value=><button className="ll-tag ll-fee-tag" key={value} aria-pressed={fee===value} onClick={()=>{setFee(fee===value?null:value);resetPage();}}>{feeLabels[value]}</button>)}</div></div>
       <p className="ll-small ll-source-note">说明与费用标签根据历史推荐整理，价格、提交条件和实际效果以网站为准；可在卡片中修改费用标签，费用不明可留空。</p>
       <div className="ll-filter-heading"><span className="ll-small">我的标签 · 点击查看同类外链</span></div>
@@ -214,16 +199,12 @@ export default function LinkLibrary(){
       <AddTagForm onAdd={name=>addTag(name)} tags={data.tags} />
       {data.deletedTags.length>0&&<details className="ll-trash"><summary>标签回收站 · {data.deletedTags.length} 个</summary><p className="ll-small">可恢复标签和原来的外链关联，也可彻底删除。彻底删除后无法撤销，外链和笔记会保留。连接云端后，回收站的操作会跨设备同步。</p><ul>{[...data.deletedTags].reverse().map(item=><li key={item.tag.id}><div><span>{item.tag.name}</span><p className="ll-small">原关联 {item.entryIds.length} 个外链 · {new Date(item.deletedAt).toLocaleString('zh-CN')}</p></div><div className="ll-actions ll-trash-actions"><button aria-label={`恢复标签 ${item.tag.name}`} onClick={()=>restoreArchivedTag(item.tag.id)}>恢复标签和关联</button><button className="ll-danger" aria-label={`彻底删除标签 ${item.tag.name}`} onClick={()=>setRemoval({tag:item.tag,permanent:true})}>彻底删除</button></div></li>)}</ul></details>}
       <div className="ll-overview" aria-live="polite"><span>{filtered.length} 个外链 / 共 {entries.length} 个</span></div>
-      <div className="ll-list">{filtered.slice((currentPage-1)*pageSize,currentPage*pageSize).map(entry=><article key={entry.id} className="ll-card"><div className="ll-card-top"><div><h2>{entry.name}</h2><span className="ll-domain">{entry.domain}{entry.id.startsWith('custom-')&&' · 我添加的'}</span></div></div>
-        <div className="ll-tags ll-card-tags">{entryFees(entry,data).map(value=><span className="ll-tag-pair ll-fee-pair" key={'fee-'+value}><button className="ll-tag ll-fee-tag" aria-label={`查看${feeLabels[value]}外链`} aria-pressed={fee===value} onClick={()=>{setFee(fee===value?null:value);resetPage();}}>{feeLabels[value]}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除费用标签 ${feeLabels[value]}`} onClick={()=>toggleFee(entry,value)}>×</button></span>)}{tagsFor(entry).map(id=><span className="ll-tag-pair" key={id}><button className="ll-tag" aria-pressed={selected.includes(id)} onClick={()=>toggleFilter(id)}>{data.tags.find(t=>t.id===id)?.name}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除标签 ${data.tags.find(t=>t.id===id)?.name}`} onClick={()=>{const tag=data.tags.find(t=>t.id===id);if(tag)setRemoval({tag,entry});}}>×</button></span>)}</div>
-        <details className="ll-fee-editor"><summary>编辑费用标签</summary><div className="ll-actions" role="group" aria-label={`${entry.name} 的费用标签`}>{(Object.keys(feeLabels) as Fee[]).map(value=><button key={value} className="ll-tag ll-fee-tag" aria-pressed={entryFees(entry,data).includes(value)} onClick={()=>toggleFee(entry,value)}>{feeLabels[value]}</button>)}</div><p className="ll-small">点击添加或移除；都不选则不显示费用标签。</p></details>
-        <div className="ll-card-actions"><AddTagForm onAdd={name=>addTag(name,entry)} tags={data.tags} entryName={entry.name} />{visit(entry)}</div>
-        <EntryDescription entry={entry} />
-        <details className="ll-note-details" open><summary>我的笔记</summary>{details(entry)}</details>
-      </article>)}</div>
+      <div className="ll-list">{filtered.slice((currentPage-1)*pageSize,currentPage*pageSize).map(entry=>renderCard(entry))}</div>
       {!filtered.length&&<div className="ll-empty"><p>没有匹配的外链，放宽筛选再试试。</p><button onClick={clearFilters}>清空全部筛选</button></div>}
       {filtered.length>pageSize&&<nav className="ll-pagination" aria-label="外链列表分页"><button disabled={currentPage===1} onClick={()=>setPage(currentPage-1)}>上一页</button><span>{currentPage} / {pages}</span><button disabled={currentPage===pages} onClick={()=>setPage(currentPage+1)}>下一页</button></nav>}
     </div>
     <div hidden={section!=='journal'}><LinkJournal data={data} setData={setData} ready={ready} /></div>
+    {section==='handbooks'&&<HandbookIndex handbooks={handbooks} />}
+    {section==='handbook'&&currentHandbook&&<HandbookView handbook={currentHandbook} links={handbookEntries} entries={filtered} ready={ready} hasFilters={!!(selected.length||fee||query.trim())} onClearFilters={clearFilters} renderCard={entry=>renderCard(entry,true)} />}
   </section>;
 }

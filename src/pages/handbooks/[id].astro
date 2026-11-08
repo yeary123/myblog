@@ -1,0 +1,10 @@
+---
+import ExternalLinksPage from '../../components/ExternalLinksPage.astro';
+import { handbooks } from '../../data/handbooks';
+
+export function getStaticPaths() {
+  return handbooks.map(handbook => ({ params: { id: handbook.id } }));
+}
+---
+
+<ExternalLinksPage initialSection="handbook" handbookId={Astro.params.id} />
