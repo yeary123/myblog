@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import ThemePicker from './ThemePicker.astro';
 
 interface Props {
 	title: string;
@@ -19,6 +20,39 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light dark" />
+		<script is:inline>
+			(() => {
+				const key = 'luna-site-theme';
+				const root = document.documentElement;
+				const system = window.matchMedia('(prefers-color-scheme: dark)');
+				const validPreference = value => ['light', 'dark', 'system'].includes(value) ? value : 'system';
+				let preference = 'system';
+				try { preference = validPreference(localStorage.getItem(key)); } catch {}
+				const apply = () => {
+					root.dataset.theme = preference === 'system' ? (system.matches ? 'dark' : 'light') : preference;
+					root.dataset.themePreference = preference;
+					const picker = document.getElementById('site-theme');
+					if (picker) picker.value = preference;
+				};
+				apply();
+				system.addEventListener('change', apply);
+				window.addEventListener('storage', event => {
+					if (event.key === key || event.key === null) {
+						preference = validPreference(event.newValue);
+						apply();
+					}
+				});
+				document.addEventListener('DOMContentLoaded', () => {
+					apply();
+					document.getElementById('site-theme')?.addEventListener('change', event => {
+						preference = validPreference(event.target.value);
+						try { localStorage.setItem(key, preference); } catch {}
+						apply();
+					});
+				});
+			})();
+		</script>
 		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
 		<meta name="generator" content={Astro.generator} />
 
@@ -61,8 +95,9 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
 			})(window, document, 'clarity', 'script', 'w6g1662ehd');
 		</script>
 	</head>
-	<body class="min-h-screen bg-zinc-50 text-zinc-900 antialiased">
+	<body class="min-h-screen antialiased">
 		<main class:list={['mx-auto w-full px-4 pb-16 pt-8 sm:px-6', wide ? 'max-w-6xl' : 'max-w-3xl']}>
+			<div class="site-appearance"><ThemePicker /></div>
 			<slot />
 		</main>
 	</body>
