@@ -232,3 +232,15 @@ test('fee edits sync between devices, preserve explicit removal and survive olde
  assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:6,data:{...data,feeOverrides:{[id]:['invalid']}}}})).status,400);
  assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data,changed);
 });
+
+test('automatic activity syncs across sessions and version 6 writes cannot erase history', async t => {
+  const h = harness(t);
+  const a = await h.login(), b = await h.login();
+  const item = { id: 'act-history', date: '2026-11-13', entryId: entries[0].id, entryName: entries[0].name, entryUrl: entries[0].url, kind: 'tag-added', summary: '添加标签', after: 'SEO' };
+  const data = { ...newData(), activityLog: [item] };
+  assert.equal((await h.call('/library', { method: 'PUT', cookie: a, body: { revision: 0, data } })).status, 200);
+  assert.deepEqual((await (await h.call('/library', { cookie: b })).json()).data.activityLog, [item]);
+  const { activityLog, ...legacy } = data;
+  assert.equal((await h.call('/library', { method: 'PUT', cookie: b, body: { revision: 1, data: { ...legacy, version: 6 } } })).status, 200);
+  assert.deepEqual((await (await h.call('/library', { cookie: a })).json()).data.activityLog, [item]);
+});

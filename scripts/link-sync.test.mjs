@@ -21,7 +21,7 @@ test('a common baseline distinguishes local changes, cloud changes, and offline 
 });
 test('comparison ignores object key insertion order without discarding edits or tags', () => {
   const data = noted('笔记');
-  const reordered = { records: { first: { seen: 1, level: 1, note: '笔记' } }, tags: [], version: 6, feeOverrides: {}, customEntries: [], assignments: {}, deletedTags: [], journal: [] };
+  const reordered = { records: { first: { seen: 1, level: 1, note: '笔记' } }, tags: [], version: newData().version, feeOverrides: {}, customEntries: [], assignments: {}, deletedTags: [], journal: [], activityLog: [] };
   assert.equal(sameLibrary(data, reordered), true);
   assert.equal(planSync(data, cloud(reordered), null), 'equal');
   assert.equal(emptyLibrary(data), false);

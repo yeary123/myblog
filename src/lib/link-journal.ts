@@ -1,4 +1,4 @@
-import type { JournalEntry, LinkActivity } from './link-library.ts';
+import type { Entry, JournalEntry, LibraryData, LinkActivity } from './link-library.ts';
 
 export function localDate(now = new Date()) {
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
@@ -27,11 +27,30 @@ export function validateJournal(raw: unknown): JournalEntry[] {
 
 const activityKinds = new Set<LinkActivity['kind']>(['link-added','link-edited','link-deleted','tag-added','tag-removed','note-updated']);
 export function validateActivityLog(raw: unknown): LinkActivity[] {
-  if (!Array.isArray(raw) || raw.length > 20000) throw new Error('操作记录格式不正确，最多保留 20000 条。');
+  if (!Array.isArray(raw)) throw new Error('操作记录格式不正确。');
   const ids = new Set<string>();
   return raw.map(item => {
     if (!item || typeof item.id !== 'string' || !/^[a-z0-9-]{1,100}$/.test(item.id) || ids.has(item.id) || typeof item.date !== 'string' || !validJournalDate(item.date) || typeof item.entryId !== 'string' || !item.entryId || item.entryId.length > 100 || typeof item.entryName !== 'string' || !item.entryName.trim() || item.entryName.length > 120 || !activityKinds.has(item.kind) || typeof item.summary !== 'string' || !item.summary.trim() || item.summary.length > 500 || (item.before !== undefined && (typeof item.before !== 'string' || item.before.length > 5000)) || (item.after !== undefined && (typeof item.after !== 'string' || item.after.length > 5000))) throw new Error('操作记录包含无效或不完整的内容。');
+    let entryUrl: string | undefined;
+    if (item.entryUrl !== undefined) {
+      if (typeof item.entryUrl !== 'string' || item.entryUrl.length > 2048) throw new Error('操作记录的外链网址不正确。');
+      let url: URL;
+      try { url = new URL(item.entryUrl); } catch { throw new Error('操作记录的外链网址不正确。'); }
+      if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) throw new Error('操作记录的外链网址不正确。');
+      entryUrl = url.href;
+    }
     ids.add(item.id);
-    return { id: item.id, date: item.date, entryId: item.entryId, entryName: item.entryName.trim(), kind: item.kind, summary: item.summary.trim(), ...(typeof item.before === 'string' ? { before: item.before } : {}), ...(typeof item.after === 'string' ? { after: item.after } : {}) };
+    return { id: item.id, date: item.date, entryId: item.entryId, entryName: item.entryName.trim(), ...(entryUrl ? { entryUrl } : {}), kind: item.kind, summary: item.summary.trim(), ...(typeof item.before === 'string' ? { before: item.before } : {}), ...(typeof item.after === 'string' ? { after: item.after } : {}) };
   }).sort((a,b) => b.date.localeCompare(a.date));
+}
+
+// Keep all history; storage and API limits report errors instead of deleting older records.
+export const appendActivities = (current: LinkActivity[], added: LinkActivity[]) => [...added, ...current];
+
+// Each explicit save appends one event, leaving previous saved changes intact.
+export function updateNoteActivity(data: LibraryData, entry: Pick<Entry, 'id' | 'name' | 'url'>, note: string, id: string, date: string): LibraryData {
+  const current = data.records[entry.id] ?? { level: -1, note: '', seen: 0 };
+  if (current.note === note) return data;
+  const activity: LinkActivity = { id, date, entryId: entry.id, entryName: entry.name, entryUrl: entry.url, kind: 'note-updated', summary: !current.note ? '新增笔记' : !note ? '删除笔记' : '修改笔记', before: current.note, after: note };
+  return { ...data, records: { ...data.records, [entry.id]: { ...current, note } }, activityLog: appendActivities(data.activityLog, [activity]) };
 }

@@ -16,10 +16,9 @@ export function matchesFeeFilter(entry: Entry, fee: Fee | null, data?: LibraryDa
 export type RecordState = { level: number; note: string; seen: number };
 export type DeletedTag = { tag: Tag; entryIds: string[]; deletedAt: number; position: number };
 export type JournalEntry = { date: string; work: string; published: number; urls: string[]; next: string; updatedAt: number };
-export type LinkActivity = { id: string; date: string; entryId: string; entryName: string; kind: 'link-added' | 'link-edited' | 'link-deleted' | 'tag-added' | 'tag-removed' | 'note-updated'; summary: string; before?: string; after?: string };
+export type LinkActivity = { id: string; date: string; entryId: string; entryName: string; entryUrl?: string; kind: 'link-added' | 'link-edited' | 'link-deleted' | 'tag-added' | 'tag-removed' | 'note-updated'; summary: string; before?: string; after?: string };
 export type LibraryData = { version: 7; feeOverrides: Record<string, Fee[]>; customEntries: Entry[]; tags: Tag[]; assignments: Record<string, string[]>; records: Record<string, RecordState>; deletedTags: DeletedTag[]; journal: JournalEntry[]; activityLog: LinkActivity[] };
-import { validateJournal } from './link-journal.ts';
-import { validateActivityLog } from './link-journal.ts';
+import { validateActivityLog, validateJournal } from './link-journal.ts';
 // Only used to remove the old built-in tags while migrating v1 browser data or backups.
 const legacyTagIds = new Set(['code','launch','content','community','directory','profile','design','reviews','social','showcase','writing','research','inspiration','ai']);
 export const newData = (): LibraryData => ({version:7,feeOverrides:{},customEntries:[],tags:[],assignments:{},records:{},deletedTags:[],journal:[],activityLog:[]});

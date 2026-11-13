@@ -36,3 +36,39 @@ test('journal-only records upload, pull and detect concurrent edits', () => {
   assert.equal(planSync(edited, remote, { data, revision: 1 }), 'conflict');
   assert.equal(planSync(newData(), cloud, { data, revision: 1 }), 'push');
 });
+
+test('explicit note saves preserve previous changes and ignore unchanged content', async () => {
+  const { updateNoteActivity } = await import('../src/lib/link-journal.ts');
+  const link = { id: 'first', name: '同名外链', url: 'https://example.org/' };
+  const start = { ...newData(), records: { first: { level: 2, seen: 123, note: '旧笔记' } } };
+  const saved = updateNoteActivity(start, link, '新笔记', 'act-first', '2026-11-13');
+  assert.deepEqual(saved.records.first, { level: 2, seen: 123, note: '新笔记' });
+  assert.equal(saved.activityLog.length, 1);
+  assert.equal(saved.activityLog[0].before, '旧笔记');
+  assert.equal(saved.activityLog[0].after, '新笔记');
+  assert.equal(saved.activityLog[0].entryUrl, link.url);
+  assert.equal(updateNoteActivity(saved, link, '新笔记', 'act-noop', '2026-11-13'), saved);
+  assert.deepEqual(validateBackup(JSON.parse(JSON.stringify(saved)), [link]), saved);
+  const reverted = updateNoteActivity(saved, link, '旧笔记', 'act-revert', '2026-11-13');
+  assert.equal(reverted.activityLog.length, 2, 'saving an earlier value must preserve both saved changes');
+  const removed = updateNoteActivity(saved, link, '', 'act-second', '2026-11-13');
+  assert.equal(removed.activityLog.length, 2);
+  assert.equal(removed.activityLog[0].summary, '删除笔记');
+  assert.equal(removed.activityLog[0].before, '新笔记');
+});
+
+test('activity history never silently truncates and validates deleted-link snapshots', async () => {
+  const { appendActivities, validateActivityLog } = await import('../src/lib/link-journal.ts');
+  const item = { id: 'act-old', date: '2026-11-13', entryId: 'custom-deleted', entryName: '已删除外链', entryUrl: 'https://example.org/', kind: 'link-deleted', summary: '删除外链', before: 'https://example.org/' };
+  const history = Array.from({ length: 20000 }, (_, i) => ({ ...item, id: `act-${i}` }));
+  const result = appendActivities(history, [item]);
+  assert.equal(result.length, 20001);
+  assert.equal(result.at(-1).id, 'act-19999');
+  assert.equal(validateActivityLog(result).length, 20001);
+  assert.deepEqual(validateBackup({ ...newData(), activityLog: [item] }, []).activityLog, [item]);
+  assert.throws(() => validateActivityLog([item, item]));
+  assert.throws(() => validateActivityLog([{ ...item, entryUrl: 'javascript:alert(1)' }]));
+  assert.throws(() => validateActivityLog([{ ...item, date: '2026-02-30' }]));
+  const { activityLog, ...v6 } = newData();
+  assert.deepEqual(validateBackup({ ...v6, version: 6 }, []).activityLog, []);
+});

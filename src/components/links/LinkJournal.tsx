@@ -5,7 +5,7 @@ import { localDate, validateJournal } from '../../lib/link-journal';
 type Draft = { work: string; published: string; next: string; base: string };
 const fingerprint = (entry?: JournalEntry) => JSON.stringify(entry ?? null);
 const fields = (entry?: JournalEntry): Draft => ({ work: entry?.work ?? '', published: String(entry?.published ?? 0), next: entry?.next ?? '', base: fingerprint(entry) });
-const activityLabels: Record<LinkActivity['kind'], string> = { 'link-added':'新增外链', 'link-edited':'修改外链', 'link-deleted':'删除外链', 'tag-added':'添加标签', 'tag-removed':'移除标签', 'note-updated':'更新笔记' };
+const activityLabels: Record<LinkActivity['kind'], string> = { 'link-added':'新增外链', 'link-edited':'修改外链', 'link-deleted':'删除外链', 'tag-added':'添加标签', 'tag-removed':'移除标签', 'note-updated':'笔记变更' };
 
 export default function LinkJournal({ data, setData, ready }: { data: LibraryData; setData: Dispatch<SetStateAction<LibraryData>>; ready: boolean }) {
   const [date, setDate] = useState('');
@@ -61,7 +61,7 @@ export default function LinkJournal({ data, setData, ready }: { data: LibraryDat
   const dates = [...new Set([...data.journal.map(entry => entry.date), ...data.activityLog.map(item => item.date)])].sort().reverse();
   const journalMatches = (entry?: JournalEntry) => !!entry && [entry.date, entry.work, entry.next].join(' ').toLowerCase().includes(needle);
   const activitiesFor = (date: string) => data.activityLog.filter(item => item.date === date);
-  const activityMatches = (item: LinkActivity) => [item.date, item.entryName, item.summary, item.before, item.after].filter(Boolean).join(' ').toLowerCase().includes(needle);
+  const activityMatches = (item: LinkActivity) => [item.date, item.entryName, item.entryUrl, item.summary, item.before, item.after].filter(Boolean).join(' ').toLowerCase().includes(needle);
   const filtered = dates.filter(date => {
     if (month && !date.startsWith(month)) return false;
     const entry = data.journal.find(item => item.date === date);
@@ -95,7 +95,7 @@ export default function LinkJournal({ data, setData, ready }: { data: LibraryDat
       return <article className="ll-card ll-journal-entry" key={date}>
         <div className="ll-card-top"><h3><time dateTime={date}>{date}</time></h3><div className="ll-actions">{entry&&showJournal&&<span className="ll-journal-badge">发布 {entry.published} 条</span>}{items.length>0&&<span className="ll-journal-badge">自动操作 {items.length} 条</span>}</div></div>
         {entry&&showJournal&&<><p className="ll-journal-text">{entry.work}</p>{entry.next&&<div className="ll-journal-next"><span className="ll-label">经验与下一步</span><p className="ll-journal-text">{entry.next}</p></div>}<div className="ll-card-actions"><span className="ll-small">更新于 {new Date(entry.updatedAt).toLocaleString('zh-CN')}</span><div className="ll-actions"><button onClick={() => { selectDate(date); editor.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>编辑</button><button className="ll-quiet" onClick={() => remove(entry)}>删除</button></div></div></>}
-        {items.length>0&&<ul className="ll-activity-list">{items.map(item=><li key={item.id}><div className="ll-activity-heading"><span className="ll-journal-badge">{activityLabels[item.kind]}</span><strong>{item.entryName}</strong></div><p>{item.summary}</p>{item.before!==undefined&&<div className="ll-activity-change"><span className="ll-label">变更前</span><p>{item.before||'（空）'}</p></div>}{item.after!==undefined&&<div className="ll-activity-change"><span className="ll-label">变更后</span><p>{item.after||'（空）'}</p></div>}</li>)}</ul>}
+        {items.length>0&&<ul className="ll-activity-list">{items.map(item=><li key={item.id}><div className="ll-activity-heading"><span className="ll-journal-badge">{activityLabels[item.kind]}</span><strong>{item.entryName}</strong>{item.entryUrl&&<a href={item.entryUrl} target="_blank" rel="noopener noreferrer" className="ll-small">{item.entryUrl}</a>}</div><p>{item.summary}</p>{item.before!==undefined&&<div className="ll-activity-change"><span className="ll-label">变更前</span><p>{item.before||'（空）'}</p></div>}{item.after!==undefined&&<div className="ll-activity-change"><span className="ll-label">变更后</span><p>{item.after||'（空）'}</p></div>}</li>)}</ul>}
       </article>;
     })}</div>}
   </section>;

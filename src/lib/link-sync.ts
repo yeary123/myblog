@@ -10,13 +10,7 @@ function ordered(value: unknown): unknown {
   return value;
 }
 export function sameLibrary(a: LibraryData, b: LibraryData) {
-  const canonical = (value: unknown) => {
-    if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
-    const record = value as Record<string, unknown>;
-    if (typeof record.version === 'number' && record.version < 7 && Array.isArray(record.tags) && record.records && record.assignments) return { ...record, version: 7, activityLog: record.activityLog ?? [] };
-    return value;
-  };
-  return JSON.stringify(ordered(canonical(a))) === JSON.stringify(ordered(canonical(b)));
+  return JSON.stringify(ordered(a)) === JSON.stringify(ordered(b));
 }
 export function emptyLibrary(data: LibraryData) {
   return !Object.keys(data.feeOverrides).length && !data.customEntries.length && !data.journal.length && !data.activityLog.length && !data.tags.length && !data.deletedTags.length && !Object.values(data.assignments).some(tags => tags.length) &&

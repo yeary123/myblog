@@ -10,11 +10,10 @@ import LinkCard from './LinkCard';
 import { HandbookIndex, HandbookView } from './Handbooks';
 import { handbooks, handbookEntries } from '../../data/handbooks';
 import { handbookMentions } from '../../lib/handbooks';
-import { localDate } from '../../lib/link-journal';
+import { appendActivities, localDate, updateNoteActivity } from '../../lib/link-journal';
 
 const storageKey='luna-link-library-v1';
 const pageSize=20;
-const appendActivities=(current:LinkActivity[], added:LinkActivity[])=>[...added,...current].slice(0,20000);
 
 function AddLinkForm({onSave,onCancel,initial}:{onSave:(input:{name:string;url:string;description:string})=>string|null;onCancel:()=>void;initial?:Entry}){
   const [name,setName]=useState(initial?.name??''),[url,setUrl]=useState(initial?.url??''),[description,setDescription]=useState(initial?.reasons.join(' ')??''),[error,setError]=useState('');
@@ -38,6 +37,15 @@ type LibrarySection = 'library' | 'journal' | 'handbooks' | 'handbook';
 export default function LinkLibrary({ initialSection = 'library', handbookId }: { initialSection?: LibrarySection; handbookId?: string }){
   const [data,setData]=useState<LibraryData>(newData);
   const [ready,setReady]=useState(false);
+  const [noteDrafts,setNoteDrafts]=useState<Record<string,{text:string;base:string}>>({});
+  const hasUnsavedNotes=Object.values(noteDrafts).some(draft=>draft.text!==draft.base);
+  useEffect(()=>{
+    if(!hasUnsavedNotes)return;
+    const warn=(event:BeforeUnloadEvent)=>{event.preventDefault();event.returnValue='';};
+    window.addEventListener('beforeunload',warn);
+    return ()=>window.removeEventListener('beforeunload',warn);
+  },[hasUnsavedNotes]);
+  const draftNote=(id:string,draft:{text:string;base:string}|null)=>setNoteDrafts(old=>{const next={...old};if(draft)next[id]=draft;else delete next[id];return next;});
   const entries = useMemo<Entry[]>(() => [...data.customEntries, ...allEntries], [data.customEntries]);
   const [addingLink,setAddingLink]=useState(false);
   const [editingLink,setEditingLink]=useState<Entry|null>(null);
@@ -81,12 +89,14 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
   const pages=Math.max(1,Math.ceil(filtered.length/pageSize));const currentPage=Math.min(page,pages);
   const resetPage=()=>{setPage(1);setMessage('');};
   const toggleFilter=(id:string)=>{setSelected(old=>old.includes(id)?[]:[id]);resetPage();};
-  const makeActivity=(entry:Pick<Entry,'id'|'name'>,kind:LinkActivity['kind'],summary:string,before?:string,after?:string):LinkActivity=>({id:`act-${crypto.randomUUID()}`,date:localDate(),entryId:entry.id,entryName:entry.name,kind,summary,...(before!==undefined?{before}:{}),...(after!==undefined?{after}:{})});
-  const updateNote=(id:string,note:string)=>{
-    const entry=entries.find(item=>item.id===id);const previous=getRecord(data,id).note;
-    if(!entry||previous===note)return;
-    const activity=makeActivity(entry,'note-updated','更新笔记',previous,note);
-    setData(old=>old.records[id]?.note===note?old:{...old,records:{...old.records,[id]:{...getRecord(old,id),note}},activityLog:appendActivities(old.activityLog,[activity])});
+  const makeActivity=(entry:Pick<Entry,'id'|'name'|'url'>,kind:LinkActivity['kind'],summary:string,before?:string,after?:string):LinkActivity=>({id:`act-${crypto.randomUUID()}`,date:localDate(),entryId:entry.id,entryName:entry.name,entryUrl:entry.url,kind,summary,...(before!==undefined?{before}:{}),...(after!==undefined?{after}:{})});
+  const updateNote=(id:string,note:string,base:string):string|null=>{
+    const entry=entries.find(item=>item.id===id);
+    if(!entry)return '这条外链已不存在，笔记尚未保存。';
+    if(getRecord(data,id).note!==base)return '笔记已在其他地方更新，请先保留草稿，再重新载入。';
+    const date=localDate(),activityId=`act-${crypto.randomUUID()}`;
+    setData(old=>updateNoteActivity(old,entry,note,activityId,date));
+    return null;
   };
   const clearFilters=()=>{setQuery('');setSelected([]);setFee(null);resetPage();};
   const addLink=(input:{name:string;url:string;description:string}):string|null=>{
@@ -103,6 +113,8 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
   const editLink=(original:Entry,input:{name:string;url:string;description:string}):string|null=>{
     try{
       if(!original.id.startsWith('custom-'))return '内置外链暂不支持修改。';
+      const current=data.customEntries.find(entry=>entry.id===original.id);
+      if(!current||current.name!==original.name||current.url!==original.url||JSON.stringify(current.reasons)!==JSON.stringify(original.reasons))return '这条外链已被更新或删除，请关闭表单后重新打开。';
       const updated=createCustomEntry(input,entries.filter(entry=>entry.id!==original.id),original.id);
       const before=`${original.name}\n${original.url}${original.reasons[0]?`\n${original.reasons[0]}`:''}`;
       const after=`${updated.name}\n${updated.url}${updated.reasons[0]?`\n${updated.reasons[0]}`:''}`;
@@ -118,6 +130,9 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     const before=`${entry.name}\n${entry.url}${entry.reasons[0]?`\n${entry.reasons[0]}`:''}`;
     const activity=makeActivity(entry,'link-deleted','删除外链',before);
     setData(old=>{const { [entry.id]:_record,...records}=old.records;const { [entry.id]:_assignment,...assignments}=old.assignments;const { [entry.id]:_fee,...feeOverrides}=old.feeOverrides;return {...old,customEntries:old.customEntries.filter(item=>item.id!==entry.id),records,assignments,feeOverrides,activityLog:appendActivities(old.activityLog,[activity])};});
+    if(editingLink?.id===entry.id)setEditingLink(null);
+    setUndo(null);
+    draftNote(entry.id,null);
     setMessage(`已删除「${entry.name}」，操作记录已保留。`);
   };
   const addTag=(name:string,entry?:Entry):string|null=>{
@@ -166,7 +181,8 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
       }else{
         const affected=Object.entries(data.assignments).filter(([,ids])=>ids.includes(tag.id)).map(([id])=>entries.find(item=>item.id===id)).filter((item):item is Entry=>!!item);
         const activities=affected.map(item=>makeActivity(item,'tag-removed','移除标签',tag.name));
-        setData(old=>({...archiveTag(old,tag.id),activityLog:appendActivities(old.activityLog,activities)}));
+        const archived=archiveTag(data,tag.id);
+        setData({...archived,activityLog:appendActivities(archived.activityLog,activities)});
         setSelected(old=>old.filter(tagId=>tagId!==tag.id));
         setMessage(`「${tag.name}」已移入回收站，原来的外链关联也已保留。`);
       }
@@ -180,7 +196,8 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     try{
       const affected=archived.entryIds.map(entryId=>entries.find(item=>item.id===entryId)).filter((item):item is Entry=>!!item);
       const activities=affected.map(item=>makeActivity(item,'tag-added','恢复标签',undefined,archived.tag.name));
-      setData(old=>({...restoreTag(old,id),activityLog:appendActivities(old.activityLog,activities)}));
+      const restored=restoreTag(data,id);
+      setData({...restored,activityLog:appendActivities(restored.activityLog,activities)});
       setUndo(null);
       setMessage(`已恢复「${archived.tag.name}」及原来的 ${archived.entryIds.length} 个外链关联。`);
     }catch(error){setMessage(error instanceof Error?error.message:'暂时无法恢复标签。');}
@@ -211,13 +228,13 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
       if(file.size>5_000_000)throw new Error('备份文件过大。');
       const imported=validateBackup(JSON.parse(await file.text()),allEntries);
       if(!window.confirm('导入会替换本浏览器中的自定义外链、费用标签、笔记、个人标签、手动日志和操作记录。建议先导出当前备份。继续导入？'))return;
-      setData(imported);setUndo(null);setRemoval(null);setFee(null);setSelected([]);setAddingLink(false);setPage(1);setMessage('备份已导入。');
+      setData(imported);setUndo(null);setRemoval(null);setFee(null);setSelected([]);setAddingLink(false);setEditingLink(null);setPage(1);setMessage('备份已导入。');
     }catch(error){setMessage(error instanceof Error?error.message:'无法读取备份文件。');}
   };
   const renderCard=(entry:Entry,anchor=false)=><LinkCard key={entry.id} entry={entry} data={data} mentions={handbookMentions(entry.id,handbooks,handbookEntries)} anchor={anchor}
     selectedTags={selected} selectedFee={fee} onFilterTag={toggleFilter}
     onFilterFee={value=>{setFee(fee===value?null:value);resetPage();}} onToggleFee={toggleFee}
-    onRemoveTag={(entry,tag)=>setRemoval({tag,entry})} onAddTag={addTag} onUpdateNote={updateNote} onEditLink={entry=>{setAddingLink(false);setEditingLink(entry);}} onDeleteLink={deleteLink} />;
+    onRemoveTag={(entry,tag)=>setRemoval({tag,entry})} onAddTag={addTag} onUpdateNote={updateNote} noteDraft={noteDrafts[entry.id]} onDraftNote={draftNote} onEditLink={entry=>{setSection('library');setAddingLink(false);setEditingLink(entry);}} onDeleteLink={deleteLink} />;
 
   return <section className="ll" aria-label="外链手册">
     <header className="ll-header"><p className="ll-kicker">LUNA / PERSONAL COLLECTION</p><h1>外链手册</h1><p className="ll-sub">用标签整理，随时找到需要的平台。</p>
@@ -230,7 +247,7 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     {undo&&(undo.entry||data.deletedTags.some(item=>item.tag.id===undo.tag.id))&&<div className="ll-undo" role="status"><span>刚移除的「{undo.tag.name}」可以恢复。</span><button onClick={undoRemoval}>撤销</button></div>}
     {removal&&<ConfirmTagRemoval name={removal.tag.name} entryName={removal.entry?.name} permanent={removal.permanent} count={removal.permanent?(data.deletedTags.find(item=>item.tag.id===removal.tag.id)?.entryIds.length??0):Object.values(data.assignments).filter(ids=>ids.includes(removal.tag.id)).length} onCancel={()=>setRemoval(null)} onConfirm={confirmRemoval} />}
     <div hidden={section!=='library'}>
-      <div className="ll-library-heading"><h2>我的外链库</h2><button ref={addLinkButton} className="ll-primary" disabled={!ready} aria-expanded={addingLink} aria-controls="ll-add-link" onClick={()=>setAddingLink(!addingLink)}>{addingLink?'收起表单':'＋ 添加外链'}</button></div>
+      <div className="ll-library-heading"><h2>我的外链库</h2><button ref={addLinkButton} className="ll-primary" disabled={!ready} aria-expanded={addingLink} aria-controls="ll-add-link" onClick={()=>{setEditingLink(null);setAddingLink(!addingLink);}}>{addingLink?'收起表单':'＋ 添加外链'}</button></div>
       {addingLink&&<AddLinkForm onSave={addLink} onCancel={()=>{setAddingLink(false);addLinkButton.current?.focus();}} />}
       {editingLink&&<AddLinkForm key={editingLink.id} initial={editingLink} onSave={input=>editLink(editingLink,input)} onCancel={()=>setEditingLink(null)} />}
       <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索外链</span><input type="search" value={query} onChange={e=>{setQuery(e.target.value);resetPage();}} placeholder="搜索名称、标签、笔记、平台说明或手册说明" /></label></div>
