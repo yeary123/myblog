@@ -18,6 +18,7 @@
 .ll-journal-entry h3{font-size:18px;font-weight:600}.ll-journal-text{white-space:pre-wrap;unicode-bidi:plaintext;overflow-wrap:anywhere}
 .ll-journal-badge{flex-shrink:0;padding:3px 9px;border-radius:6px;background:var(--ll-soft);color:var(--ll-green);font-size:12px}
 .ll-journal-next{padding:14px;background:var(--site-subtle);border-radius:8px}.ll-journal-entry .ll-card-actions{margin-top:0}
+.ll-activity-list{display:grid;gap:12px;list-style:none;padding:0;margin:0}.ll-activity-list>li{display:grid;gap:8px;padding:14px;background:var(--site-subtle);border-radius:8px}.ll-activity-heading{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.ll-activity-heading strong{font-weight:600}.ll-activity-change{display:grid;gap:3px;padding-left:12px;border-left:2px solid var(--site-divider)}.ll-activity-change p{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;font-size:13px;color:var(--site-muted)}
 @media(max-width:520px){.ll-journal-stats{gap:8px}.ll-journal-stats>div{padding:12px 10px}.ll-journal-stats strong{font-size:22px}}
 
 .ll-library-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap}

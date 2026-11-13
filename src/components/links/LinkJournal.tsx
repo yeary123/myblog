@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, type Dispatch, type FormEvent, type SetStateAction } from 'react';
-import type { JournalEntry, LibraryData } from '../../lib/link-library';
+import type { JournalEntry, LibraryData, LinkActivity } from '../../lib/link-library';
 import { localDate, validateJournal } from '../../lib/link-journal';
 
 type Draft = { work: string; published: string; next: string; base: string };
 const fingerprint = (entry?: JournalEntry) => JSON.stringify(entry ?? null);
 const fields = (entry?: JournalEntry): Draft => ({ work: entry?.work ?? '', published: String(entry?.published ?? 0), next: entry?.next ?? '', base: fingerprint(entry) });
+const activityLabels: Record<LinkActivity['kind'], string> = { 'link-added':'新增外链', 'link-edited':'修改外链', 'link-deleted':'删除外链', 'tag-added':'添加标签', 'tag-removed':'移除标签', 'note-updated':'更新笔记' };
 
 export default function LinkJournal({ data, setData, ready }: { data: LibraryData; setData: Dispatch<SetStateAction<LibraryData>>; ready: boolean }) {
   const [date, setDate] = useState('');
@@ -57,12 +58,21 @@ export default function LinkJournal({ data, setData, ready }: { data: LibraryDat
     setUndo(null); setMessage('日志已恢复。'); setError('');
   };
   const needle = query.trim().toLowerCase();
-  const filtered = data.journal.filter(entry => (!month || entry.date.startsWith(month)) && [entry.date, entry.work, entry.next].join(' ').toLowerCase().includes(needle));
-  const months = [...new Set(data.journal.map(entry => entry.date.slice(0,7)))].sort().reverse();
+  const dates = [...new Set([...data.journal.map(entry => entry.date), ...data.activityLog.map(item => item.date)])].sort().reverse();
+  const journalMatches = (entry?: JournalEntry) => !!entry && [entry.date, entry.work, entry.next].join(' ').toLowerCase().includes(needle);
+  const activitiesFor = (date: string) => data.activityLog.filter(item => item.date === date);
+  const activityMatches = (item: LinkActivity) => [item.date, item.entryName, item.summary, item.before, item.after].filter(Boolean).join(' ').toLowerCase().includes(needle);
+  const filtered = dates.filter(date => {
+    if (month && !date.startsWith(month)) return false;
+    const entry = data.journal.find(item => item.date === date);
+    return !needle || journalMatches(entry) || activitiesFor(date).some(activityMatches);
+  });
+  const months = [...new Set(dates.map(date => date.slice(0,7)))].sort().reverse();
+  const activityCount = data.activityLog.length;
 
   return <section className="ll-journal" aria-label="外链日志">
-    <div className="ll-journal-heading"><div><h2>外链日志</h2><p className="ll-sub">每天记一笔，让发过的外链和积累的经验有迹可循。</p></div><button disabled={!ready} onClick={() => selectDate(localDate())}>写今天的日志</button></div>
-    <div className="ll-journal-stats" aria-label="日志统计"><div><strong>{data.journal.length}</strong><span>记录天数</span></div><div><strong>{data.journal.reduce((sum, entry) => sum + entry.published, 0)}</strong><span>累计发布外链</span></div><div><strong>{data.journal.filter(entry => entry.date.startsWith(localDate().slice(0,7))).reduce((sum, entry) => sum + entry.published, 0)}</strong><span>本月发布外链</span></div></div>
+    <div className="ll-journal-heading"><div><h2>外链日志</h2><p className="ll-sub">自动记录标签、笔记和外链变更，也可以手动补充每天的工作。</p></div><button disabled={!ready} onClick={() => selectDate(localDate())}>写今天的日志</button></div>
+    <div className="ll-journal-stats" aria-label="日志统计"><div><strong>{dates.length}</strong><span>记录天数</span></div><div><strong>{activityCount}</strong><span>自动操作</span></div><div><strong>{data.journal.reduce((sum, entry) => sum + entry.published, 0)}</strong><span>累计发布外链</span></div></div>
     <form className="ll-journal-editor ll-card" onSubmit={save}>
       <div className="ll-journal-heading"><h3 ref={editor} tabIndex={-1}>{saved ? '编辑当天日志' : '记录一天的工作'}</h3><span className="ll-small">{draft ? '有修改待保存' : saved ? '已保存，可继续补充' : '每个日期一篇，可随时补记'}</span></div>
       <fieldset disabled={!ready || !date}>
@@ -76,13 +86,17 @@ export default function LinkJournal({ data, setData, ready }: { data: LibraryDat
     {error && <p className="ll-warning" role="alert">{error}</p>}
     <p className="ll-message" role="status">{message}</p>
     {undo && <div className="ll-undo"><span>已删除 {undo.date} 的日志。</span><button onClick={restore}>撤销删除</button></div>}
-    <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索日志</span><input type="search" placeholder="搜索工作内容或经验" value={query} onChange={event => setQuery(event.target.value)} /></label><select aria-label="按月份筛选日志" value={month} onChange={event => setMonth(event.target.value)}><option value="">全部月份</option>{months.map(item => <option key={item} value={item}>{item.replace('-', ' 年 ')} 月</option>)}</select></div>
+    <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索日志</span><input type="search" placeholder="搜索日志内容、外链或变更" value={query} onChange={event => setQuery(event.target.value)} /></label><select aria-label="按月份筛选日志" value={month} onChange={event => setMonth(event.target.value)}><option value="">全部月份</option>{months.map(item => <option key={item} value={item}>{item.replace('-', ' 年 ')} 月</option>)}</select></div>
     <p className="ll-small ll-journal-count">共 {filtered.length} 天 · 按日期从新到旧</p>
-    {!filtered.length ? <div className="ll-empty"><h2>{data.journal.length ? '没有找到匹配的日志' : '从今天的第一条记录开始'}</h2><p className="ll-sub">{data.journal.length ? '试试其他关键词或月份。' : '发出了几条、做了哪些尝试，都可以记在这里。'}</p></div> : <div className="ll-list">{filtered.map(entry => <article className="ll-card ll-journal-entry" key={entry.date}>
-      <div className="ll-card-top"><h3><time dateTime={entry.date}>{entry.date}</time></h3><span className="ll-journal-badge">发布 {entry.published} 条</span></div>
-      <p className="ll-journal-text">{entry.work}</p>
-      {entry.next && <div className="ll-journal-next"><span className="ll-label">经验与下一步</span><p className="ll-journal-text">{entry.next}</p></div>}
-      <div className="ll-card-actions"><span className="ll-small">更新于 {new Date(entry.updatedAt).toLocaleString('zh-CN')}</span><div className="ll-actions"><button onClick={() => { selectDate(entry.date); editor.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>编辑</button><button className="ll-quiet" onClick={() => remove(entry)}>删除</button></div></div>
-    </article>)}</div>}
+    {!filtered.length ? <div className="ll-empty"><h2>{dates.length ? '没有找到匹配的日志' : '从今天的第一条记录开始'}</h2><p className="ll-sub">{dates.length ? '试试其他关键词或月份。' : '修改标签、笔记或外链后，系统会自动记下变化；也可以手动写日志。'}</p></div> : <div className="ll-list">{filtered.map(date => {
+      const entry = data.journal.find(item => item.date === date);
+      const showJournal = !needle || journalMatches(entry);
+      const items = activitiesFor(date).filter(item => !needle || activityMatches(item));
+      return <article className="ll-card ll-journal-entry" key={date}>
+        <div className="ll-card-top"><h3><time dateTime={date}>{date}</time></h3><div className="ll-actions">{entry&&showJournal&&<span className="ll-journal-badge">发布 {entry.published} 条</span>}{items.length>0&&<span className="ll-journal-badge">自动操作 {items.length} 条</span>}</div></div>
+        {entry&&showJournal&&<><p className="ll-journal-text">{entry.work}</p>{entry.next&&<div className="ll-journal-next"><span className="ll-label">经验与下一步</span><p className="ll-journal-text">{entry.next}</p></div>}<div className="ll-card-actions"><span className="ll-small">更新于 {new Date(entry.updatedAt).toLocaleString('zh-CN')}</span><div className="ll-actions"><button onClick={() => { selectDate(date); editor.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>编辑</button><button className="ll-quiet" onClick={() => remove(entry)}>删除</button></div></div></>}
+        {items.length>0&&<ul className="ll-activity-list">{items.map(item=><li key={item.id}><div className="ll-activity-heading"><span className="ll-journal-badge">{activityLabels[item.kind]}</span><strong>{item.entryName}</strong></div><p>{item.summary}</p>{item.before!==undefined&&<div className="ll-activity-change"><span className="ll-label">变更前</span><p>{item.before||'（空）'}</p></div>}{item.after!==undefined&&<div className="ll-activity-change"><span className="ll-label">变更后</span><p>{item.after||'（空）'}</p></div>}</li>)}</ul>}
+      </article>;
+    })}</div>}
   </section>;
 }

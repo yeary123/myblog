@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { assignedTags, entryFees, feeLabels, getRecord, type Entry, type Fee, type LibraryData, type Tag } from '../../lib/link-library';
 import { handbookEntryPath, type HandbookMention } from '../../lib/handbooks';
 import AddTagForm from './AddTagForm';
@@ -10,11 +11,15 @@ type Props = {
   onRemoveTag: (entry: Entry, tag: Tag) => void;
   onAddTag: (name: string, entry: Entry) => string | null;
   onUpdateNote: (id: string, note: string) => void;
+  onEditLink: (entry: Entry) => void; onDeleteLink: (entry: Entry) => void;
 };
 
-export default function LinkCard({ entry, data, mentions, anchor, selectedTags, selectedFee, onFilterTag, onFilterFee, onToggleFee, onRemoveTag, onAddTag, onUpdateNote }: Props) {
+export default function LinkCard({ entry, data, mentions, anchor, selectedTags, selectedFee, onFilterTag, onFilterFee, onToggleFee, onRemoveTag, onAddTag, onUpdateNote, onEditLink, onDeleteLink }: Props) {
+  const savedNote = getRecord(data, entry.id).note;
+  const [note, setNote] = useState(savedNote);
+  useEffect(() => setNote(savedNote), [entry.id, savedNote]);
   return <article className="ll-card" id={anchor ? `entry-${entry.id}` : undefined} data-entry-id={entry.id}>
-    <div className="ll-card-top"><div><h2>{entry.name}</h2><span className="ll-domain">{entry.domain}{entry.id.startsWith('custom-') && ' · 我添加的'}</span></div></div>
+    <div className="ll-card-top"><div><h2>{entry.name}</h2><span className="ll-domain">{entry.domain}{entry.id.startsWith('custom-') && ' · 我添加的'}</span></div>{entry.id.startsWith('custom-')&&<div className="ll-actions"><button onClick={()=>onEditLink(entry)}>编辑</button><button className="ll-quiet" onClick={()=>onDeleteLink(entry)}>删除</button></div>}</div>
     <div className="ll-tags ll-card-tags">
       {entryFees(entry, data).map(value => <span className="ll-tag-pair ll-fee-pair" key={'fee-' + value}><button className="ll-tag ll-fee-tag" aria-label={`查看${feeLabels[value]}外链`} aria-pressed={selectedFee === value} onClick={() => onFilterFee(value)}>{feeLabels[value]}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除费用标签 ${feeLabels[value]}`} onClick={() => onToggleFee(entry, value)}>×</button></span>)}
       {assignedTags(data, entry).map(id => {
@@ -28,6 +33,6 @@ export default function LinkCard({ entry, data, mentions, anchor, selectedTags, 
     {mentions.length > 0 && <div className="ll-handbook-descriptions"><span className="ll-label">手册说明</span>{mentions.map(mention => <div className="ll-handbook-mention" key={mention.handbookId}>
       <a href={handbookEntryPath(mention, import.meta.env.BASE_URL)}>{mention.title} →</a><p>{mention.description}</p>
     </div>)}</div>}
-    <details className="ll-note-details" open><summary>我的笔记</summary><div className="ll-details"><div><span className="ll-label">我的一句话理解</span><label><span className="ll-sr">{entry.name} 的笔记</span><textarea maxLength={2000} value={getRecord(data, entry.id).note} onChange={event => onUpdateNote(entry.id, event.target.value)} placeholder="它能做什么？我会在什么时候用到它？" /></label></div></div></details>
+    <details className="ll-note-details" open><summary>我的笔记</summary><div className="ll-details"><div><span className="ll-label">我的一句话理解</span><label><span className="ll-sr">{entry.name} 的笔记</span><textarea maxLength={2000} value={note} onChange={event => setNote(event.target.value)} onBlur={()=>{if(note!==savedNote)onUpdateNote(entry.id,note);}} placeholder="它能做什么？我会在什么时候用到它？" /></label></div></div></details>
   </article>;
 }

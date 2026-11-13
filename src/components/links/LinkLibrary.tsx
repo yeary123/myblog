@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState, type ChangeEvent } from 'react';
 import allEntries from '../../data/external-links.json';
-import { archiveTag, assignedTags, createCustomEntry, entryFees, feeLabels, matchesFeeFilter, getRecord, maxCustomEntries, matchesTagFilters, newData, setEntryFees, permanentlyDeleteTag, restoreTag, validateBackup, type Entry, type Fee, type LibraryData, type Tag } from '../../lib/link-library';
+import { archiveTag, assignedTags, createCustomEntry, entryFees, feeLabels, matchesFeeFilter, getRecord, maxCustomEntries, matchesTagFilters, newData, setEntryFees, permanentlyDeleteTag, restoreTag, validateBackup, type Entry, type Fee, type LibraryData, type Tag, type LinkActivity } from '../../lib/link-library';
 import PersonalSync from './PersonalSync';
 import LinkJournal from './LinkJournal';
 import { useLibrarySync } from './useLibrarySync';
@@ -10,24 +10,26 @@ import LinkCard from './LinkCard';
 import { HandbookIndex, HandbookView } from './Handbooks';
 import { handbooks, handbookEntries } from '../../data/handbooks';
 import { handbookMentions } from '../../lib/handbooks';
+import { localDate } from '../../lib/link-journal';
 
 const storageKey='luna-link-library-v1';
 const pageSize=20;
+const appendActivities=(current:LinkActivity[], added:LinkActivity[])=>[...added,...current].slice(0,20000);
 
-function AddLinkForm({onAdd,onCancel}:{onAdd:(input:{name:string;url:string;description:string})=>string|null;onCancel:()=>void}){
-  const [name,setName]=useState(''),[url,setUrl]=useState(''),[description,setDescription]=useState(''),[error,setError]=useState('');
+function AddLinkForm({onSave,onCancel,initial}:{onSave:(input:{name:string;url:string;description:string})=>string|null;onCancel:()=>void;initial?:Entry}){
+  const [name,setName]=useState(initial?.name??''),[url,setUrl]=useState(initial?.url??''),[description,setDescription]=useState(initial?.reasons.join(' ')??''),[error,setError]=useState('');
   const nameInput=useRef<HTMLInputElement>(null);
   const errorId=useId();
   useEffect(()=>{nameInput.current?.focus();},[]);
-  return <form id="ll-add-link" className="ll-add-link ll-card" aria-label="添加外链" onSubmit={event=>{event.preventDefault();setError(onAdd({name,url,description})||'');}}>
+  return <form id="ll-add-link" className="ll-add-link ll-card" aria-label={initial?'编辑外链':'添加外链'} onSubmit={event=>{event.preventDefault();setError(onSave({name,url,description})||'');}}>
     <div className="ll-form-row">
       <label><span className="ll-label">外链名称</span><input ref={nameInput} required maxLength={120} value={name} onChange={event=>setName(event.target.value)} placeholder="例如：我的新平台" /></label>
       <label><span className="ll-label">网址</span><input required type="text" inputMode="url" autoCapitalize="none" autoCorrect="off" spellCheck={false} maxLength={2048} value={url} onChange={event=>setUrl(event.target.value)} placeholder="https://example.com" aria-describedby={error?errorId:undefined} /></label>
     </div>
     <label><span className="ll-label">说明（选填）</span><textarea maxLength={2000} value={description} onChange={event=>setDescription(event.target.value)} placeholder="这个平台有什么用途？可以怎样发布外链？" /></label>
-    <p className="ll-small">添加后可继续设置标签和笔记。</p>
+    <p className="ll-small">{initial?'保存后会记录本次修改。':'添加后可继续设置标签和笔记。'}</p>
     {error&&<p id={errorId} className="ll-warning" role="alert">{error}</p>}
-    <div className="ll-actions"><button type="submit" className="ll-primary">保存外链</button><button type="button" onClick={onCancel}>取消</button></div>
+    <div className="ll-actions"><button type="submit" className="ll-primary">{initial?'保存修改':'保存外链'}</button><button type="button" onClick={onCancel}>取消</button></div>
   </form>;
 }
 
@@ -38,6 +40,7 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
   const [ready,setReady]=useState(false);
   const entries = useMemo<Entry[]>(() => [...data.customEntries, ...allEntries], [data.customEntries]);
   const [addingLink,setAddingLink]=useState(false);
+  const [editingLink,setEditingLink]=useState<Entry|null>(null);
   const addLinkButton=useRef<HTMLButtonElement>(null);
   const [section,setSection]=useState<LibrarySection>(initialSection);
   const currentHandbook = handbooks.find(handbook => handbook.id === handbookId);
@@ -78,17 +81,44 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
   const pages=Math.max(1,Math.ceil(filtered.length/pageSize));const currentPage=Math.min(page,pages);
   const resetPage=()=>{setPage(1);setMessage('');};
   const toggleFilter=(id:string)=>{setSelected(old=>old.includes(id)?[]:[id]);resetPage();};
-  const updateNote=(id:string,note:string)=>setData(old=>({...old,records:{...old.records,[id]:{...getRecord(old,id),note}}}));
+  const makeActivity=(entry:Pick<Entry,'id'|'name'>,kind:LinkActivity['kind'],summary:string,before?:string,after?:string):LinkActivity=>({id:`act-${crypto.randomUUID()}`,date:localDate(),entryId:entry.id,entryName:entry.name,kind,summary,...(before!==undefined?{before}:{}),...(after!==undefined?{after}:{})});
+  const updateNote=(id:string,note:string)=>{
+    const entry=entries.find(item=>item.id===id);const previous=getRecord(data,id).note;
+    if(!entry||previous===note)return;
+    const activity=makeActivity(entry,'note-updated','更新笔记',previous,note);
+    setData(old=>old.records[id]?.note===note?old:{...old,records:{...old.records,[id]:{...getRecord(old,id),note}},activityLog:appendActivities(old.activityLog,[activity])});
+  };
   const clearFilters=()=>{setQuery('');setSelected([]);setFee(null);resetPage();};
   const addLink=(input:{name:string;url:string;description:string}):string|null=>{
     try {
       if(data.customEntries.length>=maxCustomEntries)return '最多添加 1000 个自定义外链。';
       const entry=createCustomEntry(input,entries,'custom-'+crypto.randomUUID());
-      setData(old=>({...old,customEntries:[entry,...old.customEntries]}));
+      const activity=makeActivity(entry,'link-added','添加外链',undefined,`${entry.name}\n${entry.url}${entry.reasons[0]?`\n${entry.reasons[0]}`:''}`);
+      setData(old=>({...old,customEntries:[entry,...old.customEntries],activityLog:appendActivities(old.activityLog,[activity])}));
       clearFilters();setAddingLink(false);setMessage(`已添加「${entry.name}」。`);
       addLinkButton.current?.focus();
       return null;
     } catch(error) {return error instanceof Error?error.message:'暂时无法添加外链。';}
+  };
+  const editLink=(original:Entry,input:{name:string;url:string;description:string}):string|null=>{
+    try{
+      if(!original.id.startsWith('custom-'))return '内置外链暂不支持修改。';
+      const updated=createCustomEntry(input,entries.filter(entry=>entry.id!==original.id),original.id);
+      const before=`${original.name}\n${original.url}${original.reasons[0]?`\n${original.reasons[0]}`:''}`;
+      const after=`${updated.name}\n${updated.url}${updated.reasons[0]?`\n${updated.reasons[0]}`:''}`;
+      if(before===after){setEditingLink(null);return null;}
+      const activity=makeActivity(updated,'link-edited','修改外链',before,after);
+      setData(old=>({...old,customEntries:old.customEntries.map(entry=>entry.id===original.id?updated:entry),activityLog:appendActivities(old.activityLog,[activity])}));
+      setEditingLink(null);setMessage(`已更新「${updated.name}」。`);return null;
+    }catch(error){return error instanceof Error?error.message:'暂时无法修改外链。';}
+  };
+  const deleteLink=(entry:Entry)=>{
+    if(!entry.id.startsWith('custom-'))return;
+    if(!window.confirm(`删除「${entry.name}」？外链会从列表移除，操作记录会保留。`))return;
+    const before=`${entry.name}\n${entry.url}${entry.reasons[0]?`\n${entry.reasons[0]}`:''}`;
+    const activity=makeActivity(entry,'link-deleted','删除外链',before);
+    setData(old=>{const { [entry.id]:_record,...records}=old.records;const { [entry.id]:_assignment,...assignments}=old.assignments;const { [entry.id]:_fee,...feeOverrides}=old.feeOverrides;return {...old,customEntries:old.customEntries.filter(item=>item.id!==entry.id),records,assignments,feeOverrides,activityLog:appendActivities(old.activityLog,[activity])};});
+    setMessage(`已删除「${entry.name}」，操作记录已保留。`);
   };
   const addTag=(name:string,entry?:Entry):string|null=>{
     if(!name||name.length>24)return '请输入 1～24 个字符的标签名称。';
@@ -96,7 +126,9 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     if(existing&&!entry)return '这个标签已存在。';
     if(!existing&&data.tags.length>=200)return '最多保留 200 个标签。';
     const tag=existing??{id:'tag-'+crypto.randomUUID(),name};
-    setData(old=>({...old,tags:existing?old.tags:[...old.tags,tag],assignments:entry?{...old.assignments,[entry.id]:[...new Set([...assignedTags(old,entry),tag.id])]}:old.assignments}));
+    const already=entry?assignedTags(data,entry).includes(tag.id):false;
+    const activity=entry&&!already?makeActivity(entry,'tag-added','添加标签',undefined,tag.name):null;
+    setData(old=>({...old,tags:existing?old.tags:[...old.tags,tag],assignments:entry?{...old.assignments,[entry.id]:[...new Set([...assignedTags(old,entry),tag.id])]}:old.assignments,activityLog:activity?appendActivities(old.activityLog,[activity]):old.activityLog}));
     return null;
   };
   const toggleFee=(entry:Entry,value:Fee)=>{
@@ -104,7 +136,8 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
       setRemoval({tag:{id:'fee-'+value,name:feeLabels[value]},entry,fee:value});
       return;
     }
-    setData(old=>setEntryFees(old,entry,[...entryFees(entry,old),value]));
+    const activity=makeActivity(entry,'tag-added','添加费用标签',undefined,feeLabels[value]);
+    setData(old=>({...setEntryFees(old,entry,[...entryFees(entry,old),value]),activityLog:appendActivities(old.activityLog,[activity])}));
     setMessage(`已为「${entry.name}」添加「${feeLabels[value]}」费用标签。`);
   };
   const confirmRemoval=()=>{
@@ -113,7 +146,8 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     try{
       if(removal.fee&&entry){
         const value=removal.fee;
-        setData(old=>setEntryFees(old,entry,entryFees(entry,old).filter(fee=>fee!==value)));
+        const activity=makeActivity(entry,'tag-removed','移除费用标签',feeLabels[value]);
+        setData(old=>({...setEntryFees(old,entry,entryFees(entry,old).filter(fee=>fee!==value)),activityLog:appendActivities(old.activityLog,[activity])}));
         setMessage(`已从「${entry.name}」移除「${feeLabels[value]}」费用标签，可以撤销。`);
         setUndo(removal);setRemoval(null);
         return;
@@ -126,10 +160,13 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
         return;
       }
       if(entry){
-        setData(old=>({...old,assignments:{...old.assignments,[entry.id]:assignedTags(old,entry).filter(tagId=>tagId!==tag.id)}}));
+        const activity=makeActivity(entry,'tag-removed','移除标签',tag.name);
+        setData(old=>({...old,assignments:{...old.assignments,[entry.id]:assignedTags(old,entry).filter(tagId=>tagId!==tag.id)},activityLog:appendActivities(old.activityLog,[activity])}));
         setMessage(`已从「${entry.name}」移除「${tag.name}」，可以撤销。`);
       }else{
-        setData(archiveTag(data,tag.id));
+        const affected=Object.entries(data.assignments).filter(([,ids])=>ids.includes(tag.id)).map(([id])=>entries.find(item=>item.id===id)).filter((item):item is Entry=>!!item);
+        const activities=affected.map(item=>makeActivity(item,'tag-removed','移除标签',tag.name));
+        setData(old=>({...archiveTag(old,tag.id),activityLog:appendActivities(old.activityLog,activities)}));
         setSelected(old=>old.filter(tagId=>tagId!==tag.id));
         setMessage(`「${tag.name}」已移入回收站，原来的外链关联也已保留。`);
       }
@@ -141,7 +178,9 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     const archived=data.deletedTags.find(item=>item.tag.id===id);
     if(!archived)return;
     try{
-      setData(restoreTag(data,id));
+      const affected=archived.entryIds.map(entryId=>entries.find(item=>item.id===entryId)).filter((item):item is Entry=>!!item);
+      const activities=affected.map(item=>makeActivity(item,'tag-added','恢复标签',undefined,archived.tag.name));
+      setData(old=>({...restoreTag(old,id),activityLog:appendActivities(old.activityLog,activities)}));
       setUndo(null);
       setMessage(`已恢复「${archived.tag.name}」及原来的 ${archived.entryIds.length} 个外链关联。`);
     }catch(error){setMessage(error instanceof Error?error.message:'暂时无法恢复标签。');}
@@ -150,33 +189,35 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     if(!undo)return;
     if(undo.fee&&undo.entry){
       const entry=undo.entry,value=undo.fee;
-      setData(old=>setEntryFees(old,entry,[...entryFees(entry,old),value]));
+      const activity=makeActivity(entry,'tag-added','恢复费用标签',undefined,feeLabels[value]);
+      setData(old=>({...setEntryFees(old,entry,[...entryFees(entry,old),value]),activityLog:appendActivities(old.activityLog,[activity])}));
       setMessage(`已恢复「${entry.name}」上的「${feeLabels[value]}」费用标签。`);
       setUndo(null);return;
     }
     if(!undo.entry){restoreArchivedTag(undo.tag.id);return;}
     const entry=undo.entry;
     if(!data.tags.some(tag=>tag.id===undo.tag.id)){setMessage('请先从回收站恢复这个标签。');return;}
-    setData(old=>({...old,assignments:{...old.assignments,[entry.id]:[...new Set([...assignedTags(old,entry),undo.tag.id])]}}));
+    const activity=makeActivity(entry,'tag-added','恢复标签',undefined,undo.tag.name);
+    setData(old=>({...old,assignments:{...old.assignments,[entry.id]:[...new Set([...assignedTags(old,entry),undo.tag.id])]},activityLog:appendActivities(old.activityLog,[activity])}));
     setMessage(`已恢复「${entry.name}」上的「${undo.tag.name}」。`);
     setUndo(null);
   };
   const exportBackup=()=>{
-    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出自定义外链、费用标签、笔记、个人标签和外链日志备份。');
+    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出自定义外链、费用标签、笔记、个人标签、手动日志和操作记录备份。');
   };
   const importBackup=async(event:ChangeEvent<HTMLInputElement>)=>{
     const file=event.target.files?.[0];event.target.value='';if(!file)return;
     try{
       if(file.size>5_000_000)throw new Error('备份文件过大。');
       const imported=validateBackup(JSON.parse(await file.text()),allEntries);
-      if(!window.confirm('导入会替换本浏览器中的自定义外链、费用标签、笔记、个人标签和外链日志。建议先导出当前备份。继续导入？'))return;
+      if(!window.confirm('导入会替换本浏览器中的自定义外链、费用标签、笔记、个人标签、手动日志和操作记录。建议先导出当前备份。继续导入？'))return;
       setData(imported);setUndo(null);setRemoval(null);setFee(null);setSelected([]);setAddingLink(false);setPage(1);setMessage('备份已导入。');
     }catch(error){setMessage(error instanceof Error?error.message:'无法读取备份文件。');}
   };
   const renderCard=(entry:Entry,anchor=false)=><LinkCard key={entry.id} entry={entry} data={data} mentions={handbookMentions(entry.id,handbooks,handbookEntries)} anchor={anchor}
     selectedTags={selected} selectedFee={fee} onFilterTag={toggleFilter}
     onFilterFee={value=>{setFee(fee===value?null:value);resetPage();}} onToggleFee={toggleFee}
-    onRemoveTag={(entry,tag)=>setRemoval({tag,entry})} onAddTag={addTag} onUpdateNote={updateNote} />;
+    onRemoveTag={(entry,tag)=>setRemoval({tag,entry})} onAddTag={addTag} onUpdateNote={updateNote} onEditLink={entry=>{setAddingLink(false);setEditingLink(entry);}} onDeleteLink={deleteLink} />;
 
   return <section className="ll" aria-label="外链手册">
     <header className="ll-header"><p className="ll-kicker">LUNA / PERSONAL COLLECTION</p><h1>外链手册</h1><p className="ll-sub">用标签整理，随时找到需要的平台。</p>
@@ -190,7 +231,8 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     {removal&&<ConfirmTagRemoval name={removal.tag.name} entryName={removal.entry?.name} permanent={removal.permanent} count={removal.permanent?(data.deletedTags.find(item=>item.tag.id===removal.tag.id)?.entryIds.length??0):Object.values(data.assignments).filter(ids=>ids.includes(removal.tag.id)).length} onCancel={()=>setRemoval(null)} onConfirm={confirmRemoval} />}
     <div hidden={section!=='library'}>
       <div className="ll-library-heading"><h2>我的外链库</h2><button ref={addLinkButton} className="ll-primary" disabled={!ready} aria-expanded={addingLink} aria-controls="ll-add-link" onClick={()=>setAddingLink(!addingLink)}>{addingLink?'收起表单':'＋ 添加外链'}</button></div>
-      {addingLink&&<AddLinkForm onAdd={addLink} onCancel={()=>{setAddingLink(false);addLinkButton.current?.focus();}} />}
+      {addingLink&&<AddLinkForm onSave={addLink} onCancel={()=>{setAddingLink(false);addLinkButton.current?.focus();}} />}
+      {editingLink&&<AddLinkForm key={editingLink.id} initial={editingLink} onSave={input=>editLink(editingLink,input)} onCancel={()=>setEditingLink(null)} />}
       <div className="ll-toolbar"><label className="ll-search"><span className="ll-sr">搜索外链</span><input type="search" value={query} onChange={e=>{setQuery(e.target.value);resetPage();}} placeholder="搜索名称、标签、笔记、平台说明或手册说明" /></label></div>
       <div className="ll-fee-filters"><span className="ll-small">费用标签</span><div className="ll-tags" role="group" aria-label="按费用标签筛选"><button className="ll-tag" aria-pressed={fee===null} onClick={()=>{setFee(null);resetPage();}}>全部</button>{(Object.keys(feeLabels) as Fee[]).map(value=><button className="ll-tag ll-fee-tag" key={value} aria-pressed={fee===value} onClick={()=>{setFee(fee===value?null:value);resetPage();}}>{feeLabels[value]}</button>)}</div></div>
       <p className="ll-small ll-source-note">说明与费用标签根据历史推荐整理，价格、提交条件和实际效果以网站为准；可在卡片中修改费用标签，费用不明可留空。</p>

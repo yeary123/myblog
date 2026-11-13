@@ -123,6 +123,7 @@ export default {
           const before = validateBackup(JSON.parse(previous.data_json), entries);
           if (body.data.version < 6) data.feeOverrides = before.feeOverrides;
           if (body.data.version < 4) data.journal = before.journal;
+          if (body.data.version < 7) data.activityLog = before.activityLog;
           // Old clients cannot represent personal links or their associated records.
           if (body.data.version < 5) {
             data.customEntries = before.customEntries;
