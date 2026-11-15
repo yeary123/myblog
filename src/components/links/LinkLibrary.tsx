@@ -4,6 +4,8 @@ import { archiveTag, assignedTags, deleteLibraryEntry, createLibraryEntry, editL
 import PersonalSync from './PersonalSync';
 import LinkJournal from './LinkJournal';
 import { useLibrarySync } from './useLibrarySync';
+import { useReadingPosition } from './useReadingPosition';
+import { readingPage } from '../../lib/reading-position';
 import ConfirmTagRemoval from './ConfirmTagRemoval';
 import AddTagForm from './AddTagForm';
 import LinkCard from './LinkCard';
@@ -52,6 +54,9 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
   const addLinkButton=useRef<HTMLButtonElement>(null);
   const [section,setSection]=useState<LibrarySection>(initialSection);
   const currentHandbook = handbooks.find(handbook => handbook.id === handbookId);
+  const [handbookSection,setHandbookSection]=useState(currentHandbook?.sections[0]?.id??'');
+  const readingRoot=useRef<HTMLElement>(null);
+  const libraryList=useRef<HTMLDivElement>(null);
   useEffect(()=>{
     if(initialSection==='handbook'||initialSection==='handbooks')return;
     const readHash=()=>setSection(window.location.hash==='#journal'?'journal':'library');
@@ -82,11 +87,27 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     catch{setStorageWarning('浏览器未能保存这些改动，离开前请导出备份。');}
   },[data,ready]);
   const tagsFor=(entry:Entry)=>assignedTags(data,entry);
-  const filtered=useMemo(()=>{
+  const filterEntries=(query:string,selected:string[],fee:Fee|null)=>{
     const needle=query.trim().toLowerCase();
     return entries.filter(entry=>matchesTagFilters(data,entry,selected)&&matchesFeeFilter(entry,fee,data)&&[entry.name,entry.domain,...entry.reasons,...entryFees(entry,data).map(fee=>feeLabels[fee]),getRecord(data,entry.id).note,...assignedTags(data,entry).map(id=>data.tags.find(t=>t.id===id)?.name),...handbookMentions(entry.id,handbooks,handbookEntries).flatMap(mention=>[mention.title,mention.description])].join(' ').toLowerCase().includes(needle));
-  },[data,entries,query,selected,fee]);
+  };
+  const filtered=useMemo(()=>filterEntries(query,selected,fee),[data,entries,query,selected,fee]);
   const pages=Math.max(1,Math.ceil(filtered.length/pageSize));const currentPage=Math.min(page,pages);
+  const reading=useReadingPosition({
+    viewKey:currentHandbook?`handbook:${currentHandbook.id}`:'library',ready,
+    active:section==='library'||section==='handbook',root:readingRoot,
+    view:{page:currentPage,query,tagIds:selected,fee,sectionId:handbookSection},
+    onRestore:position=>{
+      const tagIds=position.tagIds.filter(id=>data.tags.some(tag=>tag.id===id));
+      setQuery(position.query);setSelected(tagIds);setFee(position.fee);
+      setPage(readingPage(position,filterEntries(position.query,tagIds,position.fee).map(entry=>entry.id),pageSize));
+      if(currentHandbook)setHandbookSection(currentHandbook.sections.find(item=>item.id===position.sectionId)?.id??currentHandbook.sections[0].id);
+    },
+  });
+  const goToPage=(next:number)=>{
+    setPage(next);
+    requestAnimationFrame(()=>libraryList.current?.scrollIntoView({block:'start',behavior:'instant'}));
+  };
   const resetPage=()=>{setPage(1);setMessage('');};
   const toggleFilter=(id:string)=>{setSelected(old=>old.includes(id)?[]:[id]);resetPage();};
   const makeActivity=(entry:Pick<Entry,'id'|'name'|'url'>,kind:LinkActivity['kind'],summary:string,before?:string,after?:string):LinkActivity=>({id:`act-${crypto.randomUUID()}`,date:localDate(),entryId:entry.id,entryName:entry.name,entryUrl:entry.url,kind,summary,...(before!==undefined?{before}:{}),...(after!==undefined?{after}:{})});
@@ -234,13 +255,14 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     onFilterFee={value=>{setFee(fee===value?null:value);resetPage();}} onToggleFee={toggleFee}
     onRemoveTag={(entry,tag)=>setRemoval({tag,entry})} onAddTag={addTag} onUpdateNote={updateNote} noteDraft={noteDrafts[entry.id]} onDraftNote={draftNote} onEditLink={entry=>{setSection('library');setAddingLink(false);setEditingLink(entry);}} onDeleteLink={deleteLink} />;
 
-  return <section className="ll" aria-label="外链手册">
+  return <section ref={readingRoot} className="ll" aria-label="外链手册" data-reading-active={section==='library'||section==='handbook'}>
     <header className="ll-header"><p className="ll-kicker">LUNA / PERSONAL COLLECTION</p><h1>外链手册</h1><p className="ll-sub">用标签整理，随时找到需要的平台。</p>
       <div className="ll-nav"><a href={import.meta.env.BASE_URL} aria-current={section==='library'?'page':undefined}>外链库</a><a href={`${import.meta.env.BASE_URL}handbooks/`} aria-current={section==='handbooks'||section==='handbook'?'page':undefined}>主题手册</a><a href={`${import.meta.env.BASE_URL}#journal`} aria-current={section==='journal'?'page':undefined}>外链日志</a></div>
     </header>
     <div className="ll-personal"><span className="ll-small">个人记录保存在当前浏览器，可导出备份。</span><div className="ll-actions"><button onClick={exportBackup} disabled={!ready}>导出备份</button><button onClick={()=>fileInput.current?.click()} disabled={!ready}>导入备份</button><input className="ll-sr" ref={fileInput} type="file" accept=".json,application/json" onChange={importBackup} aria-label="选择备份文件" /></div></div>
     <PersonalSync sync={sync} />
     {storageWarning&&<p role="alert" className="ll-warning">{storageWarning}</p>}
+    {reading.warning&&<p role="alert" className="ll-warning">{reading.warning}</p>}
     <p className="ll-message" role="status" aria-live="polite">{message}</p>
     {undo&&(undo.entry||data.deletedTags.some(item=>item.tag.id===undo.tag.id))&&<div className="ll-undo" role="status"><span>刚移除的「{undo.tag.name}」可以恢复。</span><button onClick={undoRemoval}>撤销</button></div>}
     {removal&&<ConfirmTagRemoval name={removal.tag.name} entryName={removal.entry?.name} permanent={removal.permanent} count={removal.permanent?(data.deletedTags.find(item=>item.tag.id===removal.tag.id)?.entryIds.length??0):Object.values(data.assignments).filter(ids=>ids.includes(removal.tag.id)).length} onCancel={()=>setRemoval(null)} onConfirm={confirmRemoval} />}
@@ -255,13 +277,14 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
       <div className="ll-tags ll-user-tags" role="group" aria-label="按标签查看外链"><button className="ll-tag" aria-pressed={!selected.length} onClick={()=>{setSelected([]);resetPage();}}>全部</button>{data.tags.map(tag=><span className="ll-tag-pair" key={tag.id}><button className="ll-tag" aria-pressed={selected.includes(tag.id)} onClick={()=>toggleFilter(tag.id)}>{tag.name} <span>{entries.filter(entry=>tagsFor(entry).includes(tag.id)).length}</span></button><button className="ll-remove-tag" aria-label={`删除标签 ${tag.name}`} onClick={()=>setRemoval({tag})}>×</button></span>)}</div>
       <AddTagForm onAdd={name=>addTag(name)} tags={data.tags} />
       {data.deletedTags.length>0&&<details className="ll-trash"><summary>标签回收站 · {data.deletedTags.length} 个</summary><p className="ll-small">可恢复标签和原来的外链关联，也可彻底删除。彻底删除后无法撤销，外链和笔记会保留。连接云端后，回收站的操作会跨设备同步。</p><ul>{[...data.deletedTags].reverse().map(item=><li key={item.tag.id}><div><span>{item.tag.name}</span><p className="ll-small">原关联 {item.entryIds.length} 个外链 · {new Date(item.deletedAt).toLocaleString('zh-CN')}</p></div><div className="ll-actions ll-trash-actions"><button aria-label={`恢复标签 ${item.tag.name}`} onClick={()=>restoreArchivedTag(item.tag.id)}>恢复标签和关联</button><button className="ll-danger" aria-label={`彻底删除标签 ${item.tag.name}`} onClick={()=>setRemoval({tag:item.tag,permanent:true})}>彻底删除</button></div></li>)}</ul></details>}
+      <div className="ll-reading-status"><span>{reading.restored?'已恢复上次浏览位置':'自动记住浏览位置'} · 第 {currentPage} / {pages} 页 · 仅当前浏览器</span>{currentPage>1&&<button type="button" onClick={()=>goToPage(1)}>回到第一页</button>}</div>
       <div className="ll-overview" aria-live="polite"><span>{filtered.length} 个外链 / 共 {entries.length} 个</span></div>
-      <div className="ll-list">{filtered.slice((currentPage-1)*pageSize,currentPage*pageSize).map(entry=>renderCard(entry))}</div>
+      <div ref={libraryList} className="ll-list">{filtered.slice((currentPage-1)*pageSize,currentPage*pageSize).map(entry=>renderCard(entry))}</div>
       {!filtered.length&&<div className="ll-empty"><p>没有匹配的外链，放宽筛选再试试。</p><button onClick={clearFilters}>清空全部筛选</button></div>}
-      {filtered.length>pageSize&&<nav className="ll-pagination" aria-label="外链列表分页"><button disabled={currentPage===1} onClick={()=>setPage(currentPage-1)}>上一页</button><span>{currentPage} / {pages}</span><button disabled={currentPage===pages} onClick={()=>setPage(currentPage+1)}>下一页</button></nav>}
+      {filtered.length>pageSize&&<nav className="ll-pagination" aria-label="外链列表分页"><button disabled={currentPage===1} onClick={()=>goToPage(currentPage-1)}>上一页</button><span>{currentPage} / {pages}</span><button disabled={currentPage===pages} onClick={()=>goToPage(currentPage+1)}>下一页</button></nav>}
     </div>
     <div hidden={section!=='journal'}><LinkJournal data={data} setData={setData} ready={ready} /></div>
     {section==='handbooks'&&<HandbookIndex handbooks={handbooks} />}
-    {section==='handbook'&&currentHandbook&&<HandbookView handbook={currentHandbook} links={handbookEntries} entries={filtered} ready={ready} hasFilters={!!(selected.length||fee||query.trim())} onClearFilters={clearFilters} renderCard={entry=>renderCard(entry,true)} />}
+    {section==='handbook'&&currentHandbook&&<HandbookView sectionId={handbookSection} onSectionChange={setHandbookSection} restored={reading.restored} handbook={currentHandbook} links={handbookEntries} entries={filtered} ready={ready} hasFilters={!!(selected.length||fee||query.trim())} onClearFilters={clearFilters} renderCard={entry=>renderCard(entry,true)} />}
   </section>;
 }

@@ -11,11 +11,11 @@ export function HandbookIndex({ handbooks }: { handbooks: Handbook[] }) {
   </section>;
 }
 
-export function HandbookView({ handbook, links, entries, ready, hasFilters, onClearFilters, renderCard }: {
+export function HandbookView({ handbook, links, entries, ready, hasFilters, onClearFilters, renderCard, sectionId, onSectionChange, restored }: {
   handbook: Handbook; links: HandbookEntry[]; entries: Entry[]; ready: boolean; hasFilters: boolean;
   onClearFilters: () => void; renderCard: (entry: Entry) => ReactNode;
+  sectionId: string; onSectionChange: (id: string) => void; restored: boolean;
 }) {
-  const [sectionId, setSectionId] = useState(handbook.sections[0].id);
   const [hash, setHash] = useState('');
   useEffect(() => {
     const readHash = () => {
@@ -23,12 +23,12 @@ export function HandbookView({ handbook, links, entries, ready, hasFilters, onCl
       setHash(value);
       const section = handbook.sections.find(section => value === `#section-${section.id}`);
       const entry = links.find(link => link.handbookId === handbook.id && value === `#entry-${link.entryId}`);
-      if (section || entry) setSectionId(section?.id ?? entry!.sectionId);
+      if (section || entry) onSectionChange(section?.id ?? entry!.sectionId);
     };
     readHash();
     window.addEventListener('hashchange', readHash);
     return () => window.removeEventListener('hashchange', readHash);
-  }, [handbook, links]);
+  }, [handbook, links, onSectionChange]);
   useEffect(() => {
     if (!ready || !hash) return;
     const frame = requestAnimationFrame(() => document.getElementById(hash.slice(1))?.scrollIntoView({ block: 'start' }));
@@ -45,6 +45,7 @@ export function HandbookView({ handbook, links, entries, ready, hasFilters, onCl
     <section className="ll-handbook-content" aria-label={handbook.title}>
       <p className="ll-small"><a href={indexPath}>全部手册</a> / {handbook.title}</p><h2>{handbook.title}</h2>
       <div className="ll-handbook-overview"><span className="ll-label">手册说明</span><p>{handbook.description}</p></div>
+      <p className="ll-small ll-reading-status">{restored?'已恢复上次浏览位置':'自动记住浏览位置'} · {section.title} · 仅当前浏览器</p>
       <h3 id={`section-${section.id}`}>{section.title}</h3>
       {hasFilters && <div className="ll-handbook-filters"><span className="ll-small">已按所选标签筛选外链。</span><button onClick={onClearFilters}>清空筛选</button></div>}
       {section.paragraphs?.map(paragraph => <p className="ll-handbook-paragraph" key={paragraph}>{paragraph}</p>)}

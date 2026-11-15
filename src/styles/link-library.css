@@ -53,3 +53,5 @@
 .ll-card[id],.ll-handbook-content>h3[id]{scroll-margin-top:24px}
 @media(max-width:700px){.ll-handbook-layout{grid-template-columns:1fr;gap:22px}.ll-handbook-toc{flex-direction:row;flex-wrap:wrap;gap:6px}.ll-handbook-toc>span{flex-basis:100%;padding-left:0}.ll .ll-handbook-toc>a{padding:8px}.ll-handbook-content>h2{font-size:22px}}
 @media(pointer:coarse){.ll .ll-nav a,.ll .ll-handbook-toc>a{min-height:44px}.ll-handbook-mention>a{display:inline-flex;align-items:center;min-height:44px}}
+
+.ll-reading-status{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:14px 0!important;padding:10px 12px;border-radius:8px;background:var(--site-subtle);color:var(--site-muted);font-size:12px}.ll .ll-reading-status button{font-size:12px;padding:4px 8px}
