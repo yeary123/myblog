@@ -1,4 +1,4 @@
-export type Tag = { id: string; name: string };
+export type Tag = { id: string; name: string; website?: boolean };
 export type Entry = { id: string; order: number; name: string; domain: string; url: string; votes: number | null; recommendationTotal: number; reasons: string[]; fees?: string[] };
 export const feeLabels = { free: '免费', paid: '收费' };
 export type Fee = keyof typeof feeLabels;
@@ -16,13 +16,13 @@ export function matchesFeeFilter(entry: Entry, fee: Fee | null, data?: LibraryDa
 export type RecordState = { level: number; note: string; seen: number };
 export type DeletedTag = { tag: Tag; entryIds: string[]; deletedAt: number; position: number };
 export type JournalEntry = { date: string; work: string; published: number; urls: string[]; next: string; updatedAt: number };
-export type LinkActivity = { id: string; date: string; entryId: string; entryName: string; entryUrl?: string; kind: 'link-added' | 'link-edited' | 'link-deleted' | 'tag-added' | 'tag-removed' | 'note-updated'; summary: string; before?: string; after?: string };
-export type LibraryData = { version: 8; entries: Entry[]; tags: Tag[]; assignments: Record<string, string[]>; records: Record<string, RecordState>; deletedTags: DeletedTag[]; journal: JournalEntry[]; activityLog: LinkActivity[] };
+export type LinkActivity = { id: string; date: string; entryId: string; entryName: string; entryUrl?: string; kind: 'link-added' | 'link-edited' | 'link-deleted' | 'tag-added' | 'tag-removed' | 'tag-type-changed' | 'note-updated'; summary: string; before?: string; after?: string };
+export type LibraryData = { version: 9; entries: Entry[]; tags: Tag[]; assignments: Record<string, string[]>; records: Record<string, RecordState>; deletedTags: DeletedTag[]; journal: JournalEntry[]; activityLog: LinkActivity[] };
 import { validateActivityLog, validateJournal } from './link-journal.ts';
 // Only used to remove the old built-in tags while migrating v1 browser data or backups.
 const legacyTagIds = new Set(['code','launch','content','community','directory','profile','design','reviews','social','showcase','writing','research','inspiration','ai']);
 // The product catalog is a seed, copied once into each personal library.
-export const newData = (entries: Entry[] = []): LibraryData => ({version:8,entries:validateEntries(entries),tags:[],assignments:{},records:{},deletedTags:[],journal:[],activityLog:[]});
+export const newData = (entries: Entry[] = []): LibraryData => ({version:9,entries:validateEntries(entries),tags:[],assignments:{},records:{},deletedTags:[],journal:[],activityLog:[]});
 export const maxEntries = 2000;
 export function deleteLibraryEntry(data: LibraryData, entry: Entry): LibraryData {
   const { [entry.id]: _record, ...records } = data.records;
@@ -74,6 +74,25 @@ export const assignedTags = (data: LibraryData, entry: Entry): string[] => (data
 export function matchesTagFilters(data: LibraryData, entry: Entry, selected: string[]) {
   return !selected.length || assignedTags(data,entry).some(id=>selected.includes(id));
 }
+export function setTagWebsite(data: LibraryData, id: string, website: boolean): LibraryData {
+  return { ...data, tags: data.tags.map(tag => {
+    if (tag.id !== id) return tag;
+    const { website: _website, ...plain } = tag;
+    return website ? { ...plain, website: true } : plain;
+  }) };
+}
+// One website tag on one existing platform is one publication, regardless of log history.
+export function publicationStats(data: LibraryData) {
+  const websites = data.tags.filter(tag => tag.website).map(tag => ({ tag, count: 0 }));
+  const byId = new Map(websites.map(item => [item.tag.id, item]));
+  for (const entry of data.entries) {
+    for (const id of new Set(data.assignments[entry.id] ?? [])) {
+      const website = byId.get(id);
+      if (website) website.count++;
+    }
+  }
+  return { websites, total: websites.reduce((sum, website) => sum + website.count, 0) };
+}
 export function archiveTag(data: LibraryData, id: string, deletedAt = Date.now()): LibraryData {
   const position = data.tags.findIndex(tag => tag.id === id);
   if (position < 0) return data;
@@ -101,8 +120,8 @@ export function restoreTag(data: LibraryData, id: string): LibraryData {
   if (!archived) return data;
   const existing = data.tags.find(tag => tag.id === id || tag.name.toLowerCase() === archived.tag.name.toLowerCase());
   if (!existing && data.tags.length >= 200) throw new Error('最多保留 200 个标签，请先移出一个标签后再恢复。');
-  const tag = existing ?? archived.tag;
-  const tags = [...data.tags];
+  const tag = existing ? { ...existing, ...(archived.tag.website ? { website: true } : {}) } : archived.tag;
+  const tags = data.tags.map(item => item.id === existing?.id ? tag : item);
   if (!existing) tags.splice(Math.min(archived.position, tags.length), 0, tag);
   const assignments = { ...data.assignments };
   for (const entryId of archived.entryIds) assignments[entryId] = [...new Set([...(assignments[entryId] ?? []), tag.id])];
@@ -111,20 +130,20 @@ export function restoreTag(data: LibraryData, id: string): LibraryData {
 export function validateBackup(raw: unknown, entries: Entry[]): LibraryData {
   if(!raw||typeof raw!=='object')throw new Error('不是有效的备份文件。');
   const r=raw as Omit<LibraryData,'version'> & {version:number;customEntries?:unknown;feeOverrides?:Record<string, unknown>};
-  if(![1,2,3,4,5,6,7,8].includes(r.version)||!Array.isArray(r.tags)||r.tags.length>200||!r.records||typeof r.records!=='object'||Array.isArray(r.records)||!r.assignments||typeof r.assignments!=='object'||Array.isArray(r.assignments))throw new Error('备份格式或版本不支持。');
+  if(![1,2,3,4,5,6,7,8,9].includes(r.version)||!Array.isArray(r.tags)||r.tags.length>200||!r.records||typeof r.records!=='object'||Array.isArray(r.records)||!r.assignments||typeof r.assignments!=='object'||Array.isArray(r.assignments))throw new Error('备份格式或版本不支持。');
   const libraryEntries = r.version >= 8 ? validateEntries(r.entries) : [...(r.version >= 5 ? validateEntries(r.customEntries, true, entries) : []), ...validateEntries(entries)];
   const ids=new Set<string>();const names=new Set<string>();
   const tags:Tag[]=[];
   for(const t of r.tags){
-    if(!t||typeof t.id!=='string'||!/^[a-z0-9-]{1,80}$/.test(t.id)||typeof t.name!=='string'||!t.name.trim()||t.name.trim().length>24||ids.has(t.id))throw new Error('备份包含无效或重复的标签。');
+    if(!t||typeof t.id!=='string'||!/^[a-z0-9-]{1,80}$/.test(t.id)||typeof t.name!=='string'||!t.name.trim()||t.name.trim().length>24||ids.has(t.id)||(t.website!==undefined&&typeof t.website!=='boolean'))throw new Error('备份包含无效或重复的标签。');
     ids.add(t.id);
     if(r.version===1&&legacyTagIds.has(t.id))continue;
     const name=t.name.trim();
     if(names.has(name.toLowerCase()))throw new Error('备份包含无效或重复的标签。');
-    names.add(name.toLowerCase());tags.push({id:t.id,name});
+    names.add(name.toLowerCase());tags.push({id:t.id,name,...(t.website?{website:true}:{})});
   }
   const keptIds=new Set(tags.map(t=>t.id));
-  const data: LibraryData={version:8,entries:libraryEntries,tags,assignments:{},records:{},deletedTags:[],journal:r.version>=4?validateJournal(r.journal):[],activityLog:r.version>=7?validateActivityLog(r.activityLog):[]};
+  const data: LibraryData={version:9,entries:libraryEntries,tags,assignments:{},records:{},deletedTags:[],journal:r.version>=4?validateJournal(r.journal):[],activityLog:r.version>=7?validateActivityLog(r.activityLog):[]};
   if (r.version >= 6 && r.version < 8) {
     if (!r.feeOverrides || typeof r.feeOverrides !== 'object' || Array.isArray(r.feeOverrides)) throw new Error('费用标签记录格式不正确。');
     const entryIds = new Set(libraryEntries.map(entry => entry.id));
@@ -139,9 +158,9 @@ export function validateBackup(raw: unknown, entries: Entry[]): LibraryData {
     const entryIds = new Set(libraryEntries.map(entry => entry.id));
     for (const item of r.deletedTags) {
       const tag = item?.tag;
-      if (!tag || typeof tag.id !== 'string' || !/^[a-z0-9-]{1,80}$/.test(tag.id) || ids.has(tag.id) || typeof tag.name !== 'string' || !tag.name.trim() || tag.name.trim().length > 24 || !Array.isArray(item.entryIds) || item.entryIds.some(id => typeof id !== 'string') || !Number.isSafeInteger(item.deletedAt) || item.deletedAt < 0 || item.deletedAt > 8_640_000_000_000_000 || !Number.isInteger(item.position) || item.position < 0 || item.position > 200) throw new Error('标签回收站包含无效记录。');
+      if (!tag || typeof tag.id !== 'string' || !/^[a-z0-9-]{1,80}$/.test(tag.id) || ids.has(tag.id) || typeof tag.name !== 'string' || !tag.name.trim() || tag.name.trim().length > 24 || (tag.website !== undefined && typeof tag.website !== 'boolean') || !Array.isArray(item.entryIds) || item.entryIds.some(id => typeof id !== 'string') || !Number.isSafeInteger(item.deletedAt) || item.deletedAt < 0 || item.deletedAt > 8_640_000_000_000_000 || !Number.isInteger(item.position) || item.position < 0 || item.position > 200) throw new Error('标签回收站包含无效记录。');
       ids.add(tag.id);
-      data.deletedTags.push({ tag: { id: tag.id, name: tag.name.trim() }, entryIds: [...new Set(item.entryIds.filter(id => entryIds.has(id)))], deletedAt: item.deletedAt, position: item.position });
+      data.deletedTags.push({ tag: { id: tag.id, name: tag.name.trim(), ...(tag.website ? { website: true } : {}) }, entryIds: [...new Set(item.entryIds.filter(id => entryIds.has(id)))], deletedAt: item.deletedAt, position: item.position });
     }
   }
   for(const entry of libraryEntries){

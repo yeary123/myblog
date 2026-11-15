@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState, type ChangeEvent } from 'react';
 import allEntries from '../../data/external-links.json';
-import { archiveTag, assignedTags, deleteLibraryEntry, createLibraryEntry, editLibraryEntry, entryFees, feeLabels, matchesFeeFilter, getRecord, maxEntries, matchesTagFilters, newData, setEntryFees, permanentlyDeleteTag, restoreTag, validateBackup, type Entry, type Fee, type LibraryData, type Tag, type LinkActivity } from '../../lib/link-library';
+import { archiveTag, assignedTags, deleteLibraryEntry, createLibraryEntry, editLibraryEntry, entryFees, feeLabels, matchesFeeFilter, getRecord, maxEntries, matchesTagFilters, newData, setEntryFees, permanentlyDeleteTag, restoreTag, setTagWebsite, validateBackup, type Entry, type Fee, type LibraryData, type Tag, type LinkActivity } from '../../lib/link-library';
 import PersonalSync from './PersonalSync';
 import LinkJournal from './LinkJournal';
 import { useLibrarySync } from './useLibrarySync';
@@ -8,6 +8,7 @@ import { useReadingPosition } from './useReadingPosition';
 import { readingPage } from '../../lib/reading-position';
 import ConfirmTagRemoval from './ConfirmTagRemoval';
 import AddTagForm from './AddTagForm';
+import TagSettings from './TagSettings';
 import LinkCard from './LinkCard';
 import { HandbookIndex, HandbookView } from './Handbooks';
 import { handbooks, handbookEntries } from '../../data/handbooks';
@@ -154,16 +155,22 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     draftNote(entry.id,null);
     setMessage(`已删除「${entry.name}」，操作记录已保留。`);
   };
-  const addTag=(name:string,entry?:Entry):string|null=>{
+  const addTag=(name:string,entry?:Entry,website=false):string|null=>{
     if(!name||name.length>24)return '请输入 1～24 个字符的标签名称。';
     const existing=data.tags.find(t=>t.name.toLowerCase()===name.toLowerCase());
     if(existing&&!entry)return '这个标签已存在。';
     if(!existing&&data.tags.length>=200)return '最多保留 200 个标签。';
-    const tag=existing??{id:'tag-'+crypto.randomUUID(),name};
+    const tag=existing??{id:'tag-'+crypto.randomUUID(),name,...(website?{website:true}:{})};
     const already=entry?assignedTags(data,entry).includes(tag.id):false;
-    const activity=entry&&!already?makeActivity(entry,'tag-added','添加标签',undefined,tag.name):null;
+    const activity=entry&&!already?makeActivity(entry,'tag-added',tag.website?'记录成功发布':'添加标签',undefined,tag.name):null;
     setData(old=>({...old,tags:existing?old.tags:[...old.tags,tag],assignments:entry?{...old.assignments,[entry.id]:[...new Set([...assignedTags(old,entry),tag.id])]}:old.assignments,activityLog:activity?appendActivities(old.activityLog,[activity]):old.activityLog}));
     return null;
+  };
+  const changeTagWebsite=(tag:Tag,website:boolean)=>{
+    const affected=entries.filter(entry=>assignedTags(data,entry).includes(tag.id));
+    const activities=affected.map(entry=>makeActivity(entry,'tag-type-changed',website?'设为网站标签（计入已有发布记录）':'取消网站标签（不再计入发布）',`${tag.name} · ${tag.website?'网站标签':'普通标签'}`,`${tag.name} · ${website?'网站标签':'普通标签'}`));
+    setData(old=>({...setTagWebsite(old,tag.id,website),activityLog:appendActivities(old.activityLog,activities)}));
+    setMessage(website?`「${tag.name}」已设为网站标签，已有 ${affected.length} 个外链关联计入发布统计。`:`「${tag.name}」已恢复为普通标签，保留原来的外链关联。`);
   };
   const toggleFee=(entry:Entry,value:Fee)=>{
     if(entryFees(entry,data).includes(value)){
@@ -194,12 +201,12 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
         return;
       }
       if(entry){
-        const activity=makeActivity(entry,'tag-removed','移除标签',tag.name);
+        const activity=makeActivity(entry,'tag-removed',tag.website?'移除发布记录':'移除标签',tag.name);
         setData(old=>({...old,assignments:{...old.assignments,[entry.id]:assignedTags(old,entry).filter(tagId=>tagId!==tag.id)},activityLog:appendActivities(old.activityLog,[activity])}));
         setMessage(`已从「${entry.name}」移除「${tag.name}」，可以撤销。`);
       }else{
         const affected=Object.entries(data.assignments).filter(([,ids])=>ids.includes(tag.id)).map(([id])=>entries.find(item=>item.id===id)).filter((item):item is Entry=>!!item);
-        const activities=affected.map(item=>makeActivity(item,'tag-removed','移除标签',tag.name));
+        const activities=affected.map(item=>makeActivity(item,'tag-removed',tag.website?'移除发布记录':'移除标签',tag.name));
         const archived=archiveTag(data,tag.id);
         setData({...archived,activityLog:appendActivities(archived.activityLog,activities)});
         setSelected(old=>old.filter(tagId=>tagId!==tag.id));
@@ -214,7 +221,7 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     if(!archived)return;
     try{
       const affected=archived.entryIds.map(entryId=>entries.find(item=>item.id===entryId)).filter((item):item is Entry=>!!item);
-      const activities=affected.map(item=>makeActivity(item,'tag-added','恢复标签',undefined,archived.tag.name));
+      const activities=affected.map(item=>makeActivity(item,'tag-added',archived.tag.website?'恢复发布记录':'恢复标签',undefined,archived.tag.name));
       const restored=restoreTag(data,id);
       setData({...restored,activityLog:appendActivities(restored.activityLog,activities)});
       setUndo(null);
@@ -233,7 +240,7 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     if(!undo.entry){restoreArchivedTag(undo.tag.id);return;}
     const entry=undo.entry;
     if(!data.tags.some(tag=>tag.id===undo.tag.id)){setMessage('请先从回收站恢复这个标签。');return;}
-    const activity=makeActivity(entry,'tag-added','恢复标签',undefined,undo.tag.name);
+    const activity=makeActivity(entry,'tag-added',data.tags.find(tag=>tag.id===undo.tag.id)?.website?'恢复发布记录':'恢复标签',undefined,undo.tag.name);
     setData(old=>({...old,assignments:{...old.assignments,[entry.id]:[...new Set([...assignedTags(old,entry),undo.tag.id])]},activityLog:appendActivities(old.activityLog,[activity])}));
     setMessage(`已恢复「${entry.name}」上的「${undo.tag.name}」。`);
     setUndo(null);
@@ -274,9 +281,10 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
       <div className="ll-fee-filters"><span className="ll-small">费用标签</span><div className="ll-tags" role="group" aria-label="按费用标签筛选"><button className="ll-tag" aria-pressed={fee===null} onClick={()=>{setFee(null);resetPage();}}>全部</button>{(Object.keys(feeLabels) as Fee[]).map(value=><button className="ll-tag ll-fee-tag" key={value} aria-pressed={fee===value} onClick={()=>{setFee(fee===value?null:value);resetPage();}}>{feeLabels[value]}</button>)}</div></div>
       <p className="ll-small ll-source-note">说明与费用标签根据历史推荐整理，价格、提交条件和实际效果以网站为准；可在卡片中修改费用标签，费用不明可留空。</p>
       <div className="ll-filter-heading"><span className="ll-small">我的标签 · 点击查看同类外链</span></div>
-      <div className="ll-tags ll-user-tags" role="group" aria-label="按标签查看外链"><button className="ll-tag" aria-pressed={!selected.length} onClick={()=>{setSelected([]);resetPage();}}>全部</button>{data.tags.map(tag=><span className="ll-tag-pair" key={tag.id}><button className="ll-tag" aria-pressed={selected.includes(tag.id)} onClick={()=>toggleFilter(tag.id)}>{tag.name} <span>{entries.filter(entry=>tagsFor(entry).includes(tag.id)).length}</span></button><button className="ll-remove-tag" aria-label={`删除标签 ${tag.name}`} onClick={()=>setRemoval({tag})}>×</button></span>)}</div>
-      <AddTagForm onAdd={name=>addTag(name)} tags={data.tags} />
-      {data.deletedTags.length>0&&<details className="ll-trash"><summary>标签回收站 · {data.deletedTags.length} 个</summary><p className="ll-small">可恢复标签和原来的外链关联，也可彻底删除。彻底删除后无法撤销，外链和笔记会保留。连接云端后，回收站的操作会跨设备同步。</p><ul>{[...data.deletedTags].reverse().map(item=><li key={item.tag.id}><div><span>{item.tag.name}</span><p className="ll-small">原关联 {item.entryIds.length} 个外链 · {new Date(item.deletedAt).toLocaleString('zh-CN')}</p></div><div className="ll-actions ll-trash-actions"><button aria-label={`恢复标签 ${item.tag.name}`} onClick={()=>restoreArchivedTag(item.tag.id)}>恢复标签和关联</button><button className="ll-danger" aria-label={`彻底删除标签 ${item.tag.name}`} onClick={()=>setRemoval({tag:item.tag,permanent:true})}>彻底删除</button></div></li>)}</ul></details>}
+      <div className="ll-tags ll-user-tags" role="group" aria-label="按标签查看外链"><button className="ll-tag" aria-pressed={!selected.length} onClick={()=>{setSelected([]);resetPage();}}>全部</button>{data.tags.map(tag=><span className="ll-tag-pair" key={tag.id}><button className={`ll-tag${tag.website?' ll-website-tag':''}`} aria-pressed={selected.includes(tag.id)} onClick={()=>toggleFilter(tag.id)}>{tag.name}{tag.website&&<span className="ll-website-badge">网站</span>} <span>{entries.filter(entry=>tagsFor(entry).includes(tag.id)).length}</span></button><button className="ll-remove-tag" aria-label={`删除标签 ${tag.name}`} onClick={()=>setRemoval({tag})}>×</button></span>)}</div>
+      <AddTagForm onAdd={(name,website)=>addTag(name,undefined,website)} tags={data.tags} />
+      <TagSettings tags={data.tags} countFor={id=>entries.filter(entry=>tagsFor(entry).includes(id)).length} onWebsiteChange={changeTagWebsite} />
+      {data.deletedTags.length>0&&<details className="ll-trash"><summary>标签回收站 · {data.deletedTags.length} 个</summary><p className="ll-small">可恢复标签和原来的外链关联，也可彻底删除。彻底删除后无法撤销，外链和笔记会保留。连接云端后，回收站的操作会跨设备同步。</p><ul>{[...data.deletedTags].reverse().map(item=><li key={item.tag.id}><div><span>{item.tag.name}{item.tag.website&&<span className="ll-website-badge">网站</span>}</span><p className="ll-small">原关联 {item.entryIds.length} 个外链 · {new Date(item.deletedAt).toLocaleString('zh-CN')}</p></div><div className="ll-actions ll-trash-actions"><button aria-label={`恢复标签 ${item.tag.name}`} onClick={()=>restoreArchivedTag(item.tag.id)}>恢复标签和关联</button><button className="ll-danger" aria-label={`彻底删除标签 ${item.tag.name}`} onClick={()=>setRemoval({tag:item.tag,permanent:true})}>彻底删除</button></div></li>)}</ul></details>}
       <div className="ll-reading-status"><span>{reading.restored?'已恢复上次浏览位置':'自动记住浏览位置'} · 第 {currentPage} / {pages} 页 · 仅当前浏览器</span>{currentPage>1&&<button type="button" onClick={()=>goToPage(1)}>回到第一页</button>}</div>
       <div className="ll-overview" aria-live="polite"><span>{filtered.length} 个外链 / 共 {entries.length} 个</span></div>
       <div ref={libraryList} className="ll-list">{filtered.slice((currentPage-1)*pageSize,currentPage*pageSize).map(entry=>renderCard(entry))}</div>

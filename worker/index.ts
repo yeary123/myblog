@@ -114,7 +114,7 @@ export default {
       if (path === '/library' && request.method === 'PUT') {
         const body = await jsonBody(request, 5_000_000);
         if (!Number.isSafeInteger(body?.revision) || body.revision < 0) throw new HttpError(400, '同步版本不正确。');
-        if (body.data?.version !== 8) return reply({ error: '外链库已升级，请刷新页面后再同步；本机记录已保留。' }, 409);
+        if (body.data?.version !== 9) return reply({ error: '外链库已升级，请刷新页面后再同步；本机记录已保留。' }, 426);
         let data;
         try { data = validateBackup(body.data, entries); }
         catch (error) { throw new HttpError(400, error instanceof Error ? error.message : '记录格式不正确。'); }

@@ -25,7 +25,7 @@ export function validateJournal(raw: unknown): JournalEntry[] {
   }).sort((a,b) => b.date.localeCompare(a.date));
 }
 
-const activityKinds = new Set<LinkActivity['kind']>(['link-added','link-edited','link-deleted','tag-added','tag-removed','note-updated']);
+const activityKinds = new Set<LinkActivity['kind']>(['link-added','link-edited','link-deleted','tag-added','tag-removed','tag-type-changed','note-updated']);
 export function validateActivityLog(raw: unknown): LinkActivity[] {
   if (!Array.isArray(raw)) throw new Error('操作记录格式不正确。');
   const ids = new Set<string>();

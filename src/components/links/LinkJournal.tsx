@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState, type Dispatch, type FormEvent, type SetStateAction } from 'react';
 import type { JournalEntry, LibraryData, LinkActivity } from '../../lib/link-library';
+import { publicationStats } from '../../lib/link-library';
 import { localDate, validateJournal } from '../../lib/link-journal';
 
 type Draft = { work: string; published: string; next: string; base: string };
 const fingerprint = (entry?: JournalEntry) => JSON.stringify(entry ?? null);
 const fields = (entry?: JournalEntry): Draft => ({ work: entry?.work ?? '', published: String(entry?.published ?? 0), next: entry?.next ?? '', base: fingerprint(entry) });
-const activityLabels: Record<LinkActivity['kind'], string> = { 'link-added':'新增外链', 'link-edited':'修改外链', 'link-deleted':'删除外链', 'tag-added':'添加标签', 'tag-removed':'移除标签', 'note-updated':'笔记变更' };
+const activityLabels: Record<LinkActivity['kind'], string> = { 'link-added':'新增外链', 'link-edited':'修改外链', 'link-deleted':'删除外链', 'tag-added':'添加标签', 'tag-removed':'移除标签', 'tag-type-changed':'标签类型', 'note-updated':'笔记变更' };
 
 export default function LinkJournal({ data, setData, ready }: { data: LibraryData; setData: Dispatch<SetStateAction<LibraryData>>; ready: boolean }) {
   const [date, setDate] = useState('');
@@ -69,14 +70,18 @@ export default function LinkJournal({ data, setData, ready }: { data: LibraryDat
   });
   const months = [...new Set(dates.map(date => date.slice(0,7)))].sort().reverse();
   const activityCount = data.activityLog.length;
+  const publications = publicationStats(data);
+  const manualPublished = data.journal.reduce((sum,entry)=>sum+entry.published,0);
 
   return <section className="ll-journal" aria-label="外链日志">
     <div className="ll-journal-heading"><div><h2>外链日志</h2><p className="ll-sub">自动记录标签、笔记和外链变更，也可以手动补充每天的工作。</p></div><button disabled={!ready} onClick={() => selectDate(localDate())}>写今天的日志</button></div>
-    <div className="ll-journal-stats" aria-label="日志统计"><div><strong>{dates.length}</strong><span>记录天数</span></div><div><strong>{activityCount}</strong><span>自动操作</span></div><div><strong>{data.journal.reduce((sum, entry) => sum + entry.published, 0)}</strong><span>累计发布外链</span></div></div>
+    <div className="ll-journal-stats" aria-label="日志统计"><div><strong>{dates.length}</strong><span>记录天数</span></div><div><strong>{activityCount}</strong><span>自动操作</span></div><div><strong>{publications.total}</strong><span>累计发布外链</span></div></div>
+    <p className="ll-small ll-publication-help">累计发布按当前网站标签与外链的关联计数，同一网站在同一外链计 1 条。移除关联、删除外链或取消网站标记后，统计会相应减少。历史手动填报 {manualPublished} 条，单独保留，不与网站标签重复相加。</p>
+    <details className="ll-tag-settings ll-publication-summary"><summary>按网站查看发布数量 · {publications.websites.length} 个网站</summary>{publications.websites.length?<ul>{publications.websites.map(({tag,count})=><li key={tag.id}><strong>{tag.name}</strong><span>{count} 条</span></li>)}</ul>:<p className="ll-small">到外链库的“管理标签”中，将已有的网站名称标签勾选为网站标签，已有外链关联就会计入。</p>}</details>
     <form className="ll-journal-editor ll-card" onSubmit={save}>
       <div className="ll-journal-heading"><h3 ref={editor} tabIndex={-1}>{saved ? '编辑当天日志' : '记录一天的工作'}</h3><span className="ll-small">{draft ? '有修改待保存' : saved ? '已保存，可继续补充' : '每个日期一篇，可随时补记'}</span></div>
       <fieldset disabled={!ready || !date}>
-        <div className="ll-form-row"><label><span className="ll-label">日期</span><input type="date" required min="0001-01-01" max="9999-12-31" value={date} onChange={event => selectDate(event.target.value)} /></label><label><span className="ll-label">成功发布的外链数</span><input type="number" required min="0" max="100000" step="1" value={value.published} onChange={event => patch('published', event.target.value)} /></label></div>
+        <div className="ll-form-row"><label><span className="ll-label">日期</span><input type="date" required min="0001-01-01" max="9999-12-31" value={date} onChange={event => selectDate(event.target.value)} /></label><label><span className="ll-label">手动填报发布数（单独保留）</span><input type="number" required min="0" max="100000" step="1" value={value.published} onChange={event => patch('published', event.target.value)} /></label></div>
         <label><span className="ll-label">今天做了什么 <span aria-hidden="true">*</span></span><textarea required maxLength={10000} rows={5} value={value.work} onChange={event => patch('work', event.target.value)} placeholder="推广了哪个网站？在哪些平台发了外链？提交、审核和沟通有什么进展？" /></label>
         <label><span className="ll-label">经验与下一步（选填）</span><textarea maxLength={5000} rows={3} value={value.next} onChange={event => patch('next', event.target.value)} placeholder="哪些方法有效？遇到了什么问题？明天继续做什么？" /></label>
         <div className="ll-actions"><button type="submit" className="ll-primary" disabled={!!changedElsewhere}>保存日志</button>{draft && <button type="button" onClick={() => { if (window.confirm('放弃当前未保存的修改，重新载入这一天的记录？')) { setDraft(null); setError(''); setMessage('已重新载入。'); } }}>{changedElsewhere ? '重新载入' : '放弃修改'}</button>}<span className="ll-small">保存后纳入备份与个人云端同步。</span></div>
@@ -93,7 +98,7 @@ export default function LinkJournal({ data, setData, ready }: { data: LibraryDat
       const showJournal = !needle || journalMatches(entry);
       const items = activitiesFor(date).filter(item => !needle || activityMatches(item));
       return <article className="ll-card ll-journal-entry" key={date}>
-        <div className="ll-card-top"><h3><time dateTime={date}>{date}</time></h3><div className="ll-actions">{entry&&showJournal&&<span className="ll-journal-badge">发布 {entry.published} 条</span>}{items.length>0&&<span className="ll-journal-badge">自动操作 {items.length} 条</span>}</div></div>
+        <div className="ll-card-top"><h3><time dateTime={date}>{date}</time></h3><div className="ll-actions">{entry&&showJournal&&<span className="ll-journal-badge">手动填报 {entry.published} 条</span>}{items.length>0&&<span className="ll-journal-badge">自动操作 {items.length} 条</span>}</div></div>
         {entry&&showJournal&&<><p className="ll-journal-text">{entry.work}</p>{entry.next&&<div className="ll-journal-next"><span className="ll-label">经验与下一步</span><p className="ll-journal-text">{entry.next}</p></div>}<div className="ll-card-actions"><span className="ll-small">更新于 {new Date(entry.updatedAt).toLocaleString('zh-CN')}</span><div className="ll-actions"><button onClick={() => { selectDate(date); editor.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>编辑</button><button className="ll-quiet" onClick={() => remove(entry)}>删除</button></div></div></>}
         {items.length>0&&<ul className="ll-activity-list">{items.map(item=><li key={item.id}><div className="ll-activity-heading"><span className="ll-journal-badge">{activityLabels[item.kind]}</span><strong>{item.entryName}</strong>{item.entryUrl&&<a href={item.entryUrl} target="_blank" rel="noopener noreferrer" className="ll-small">{item.entryUrl}</a>}</div><p>{item.summary}</p>{item.before!==undefined&&<div className="ll-activity-change"><span className="ll-label">变更前</span><p>{item.before||'（空）'}</p></div>}{item.after!==undefined&&<div className="ll-activity-change"><span className="ll-label">变更后</span><p>{item.after||'（空）'}</p></div>}</li>)}</ul>}
       </article>;

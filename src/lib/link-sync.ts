@@ -17,7 +17,7 @@ export function emptyLibrary(data: LibraryData) {
     !Object.values(data.records).some(record => record.note || record.level !== -1 || record.seen);
 }
 export function planSync(local: LibraryData, cloud: CloudLibrary, base: SyncBase | null, initial: LibraryData = newData()): 'push' | 'pull' | 'equal' | 'conflict' {
-  // A v8 snapshot owns its complete list, including an intentionally empty list.
+  // A personal snapshot owns its complete list, including an intentionally empty list.
   if (!cloud.data) return 'push';
   if (sameLibrary(local, cloud.data)) return cloud.needsMigration ? 'push' : 'equal';
   if (base && sameLibrary(local, base.data)) return 'pull';

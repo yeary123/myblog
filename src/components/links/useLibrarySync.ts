@@ -23,7 +23,7 @@ async function api(path: string, init?: RequestInit) {
 }
 function parseCloud(raw: CloudLibrary): CloudLibrary {
   if (!Number.isSafeInteger(raw.revision) || raw.revision < 0 || (raw.data === null) !== (raw.revision === 0)) throw new Error('云端记录格式不正确，本机记录已保留。');
-  return { ...raw, needsMigration: raw.data !== null && raw.data.version !== 8, data: raw.data === null ? null : validateBackup(raw.data, allEntries) };
+  return { ...raw, needsMigration: raw.data !== null && raw.data.version !== 9, data: raw.data === null ? null : validateBackup(raw.data, allEntries) };
 }
 export function downloadLibrary(data: LibraryData, prefix = 'luna-links-backup') {
   const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));

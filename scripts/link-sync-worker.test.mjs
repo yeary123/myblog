@@ -4,7 +4,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFile } from 'node:fs/promises';
 import worker from '../worker/index.ts';
 import entries from '../src/data/external-links.json' with { type: 'json' };
-import { archiveTag, createLibraryEntry, deleteLibraryEntry, editLibraryEntry, setEntryFees, validateBackup, newData, permanentlyDeleteTag, restoreTag } from '../src/lib/link-library.ts';
+import { archiveTag, createLibraryEntry, deleteLibraryEntry, editLibraryEntry, setEntryFees, setTagWebsite, publicationStats, validateBackup, newData, permanentlyDeleteTag, restoreTag } from '../src/lib/link-library.ts';
 
 const schema = await readFile(new URL('../worker/migrations/0001_personal_library.sql', import.meta.url), 'utf8');
 const origin = 'https://builtbyluna.cc';
@@ -149,10 +149,10 @@ test('older pages cannot overwrite a personal snapshot or resurrect deleted defa
  const h=harness(t),cookie=await h.login();
  const data=deleteLibraryEntry(dataWith('仍保留'),entries[0]);
  assert.equal((await h.call('/library',{method:'PUT',cookie,body:{revision:0,data}})).status,200);
- for(const version of [1,2,3,4,5,6,7]){
+ for(const version of [1,2,3,4,5,6,7,8]){
   const legacy={version,tags:[],assignments:{},records:{},customEntries:[],feeOverrides:{},deletedTags:[],journal:[],activityLog:[]};
   const response=await h.call('/library',{method:'PUT',cookie,body:{revision:1,data:legacy}});
-  assert.equal(response.status,409);
+  assert.equal(response.status,426);
   assert.match((await response.json()).error,/刷新/);
   assert.deepEqual((await (await h.call('/library',{cookie})).json()).data,data);
  }
@@ -228,6 +228,32 @@ test('automatic activity syncs across sessions and older writes cannot erase his
   assert.equal((await h.call('/library', { method: 'PUT', cookie: a, body: { revision: 0, data } })).status, 200);
   assert.deepEqual((await (await h.call('/library', { cookie: b })).json()).data.activityLog, [item]);
   const { activityLog, ...legacy } = data;
-  assert.equal((await h.call('/library', { method: 'PUT', cookie: b, body: { revision: 1, data: { ...legacy, version: 6 } } })).status, 409);
+  assert.equal((await h.call('/library', { method: 'PUT', cookie: b, body: { revision: 1, data: { ...legacy, version: 6 } } })).status, 426);
   assert.deepEqual((await (await h.call('/library', { cookie: a })).json()).data.activityLog, [item]);
+});
+
+
+test('website markers, tag-type activity and archived tags sync without older pages wiping them',async t=>{
+ const h=harness(t),a=await h.login(),b=await h.login();
+ let data=dataWith('保留已有笔记');
+ data.tags=[{id:'tag-site',name:'我的网站'}];
+ data.assignments={[entries[0].id]:['tag-site'],[entries[1].id]:['tag-site']};
+ data=setTagWebsite(data,'tag-site',true);
+ data.activityLog=[{id:'act-type',date:'2026-11-15',entryId:entries[0].id,entryName:entries[0].name,kind:'tag-type-changed',summary:'设为网站标签'}];
+ assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:0,data}})).status,200);
+ const onB=(await (await h.call('/library',{cookie:b})).json()).data;
+ assert.deepEqual(onB,data);
+ assert.equal(publicationStats(onB).total,2);
+ const old={...data,version:8,tags:data.tags.map(({website,...tag})=>tag),activityLog:[]};
+ assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:1,data:old}})).status,426);
+ const malformed={...data,tags:[{...data.tags[0],website:'true'}]};
+ assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:1,data:malformed}})).status,400);
+ const archived=archiveTag(onB,'tag-site',123);
+ assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:1,data:archived}})).status,200);
+ const cloud=(await (await h.call('/library',{cookie:a})).json()).data;
+ assert.equal(cloud.deletedTags[0].tag.website,true);
+ assert.equal(publicationStats(cloud).total,0);
+ const restored=restoreTag(cloud,'tag-site');
+ assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:2,data:restored}})).status,200);
+ assert.equal(publicationStats((await (await h.call('/library',{cookie:b})).json()).data).total,2);
 });
