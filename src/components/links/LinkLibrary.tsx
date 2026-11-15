@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState, type ChangeEvent } from 'react';
 import allEntries from '../../data/external-links.json';
-import { archiveTag, assignedTags, createCustomEntry, entryFees, feeLabels, matchesFeeFilter, getRecord, maxCustomEntries, matchesTagFilters, newData, setEntryFees, permanentlyDeleteTag, restoreTag, validateBackup, type Entry, type Fee, type LibraryData, type Tag, type LinkActivity } from '../../lib/link-library';
+import { archiveTag, assignedTags, deleteLibraryEntry, createLibraryEntry, editLibraryEntry, entryFees, feeLabels, matchesFeeFilter, getRecord, maxEntries, matchesTagFilters, newData, setEntryFees, permanentlyDeleteTag, restoreTag, validateBackup, type Entry, type Fee, type LibraryData, type Tag, type LinkActivity } from '../../lib/link-library';
 import PersonalSync from './PersonalSync';
 import LinkJournal from './LinkJournal';
 import { useLibrarySync } from './useLibrarySync';
@@ -35,7 +35,7 @@ function AddLinkForm({onSave,onCancel,initial}:{onSave:(input:{name:string;url:s
 type LibrarySection = 'library' | 'journal' | 'handbooks' | 'handbook';
 
 export default function LinkLibrary({ initialSection = 'library', handbookId }: { initialSection?: LibrarySection; handbookId?: string }){
-  const [data,setData]=useState<LibraryData>(newData);
+  const [data,setData]=useState<LibraryData>(()=>newData(allEntries));
   const [ready,setReady]=useState(false);
   const [noteDrafts,setNoteDrafts]=useState<Record<string,{text:string;base:string}>>({});
   const hasUnsavedNotes=Object.values(noteDrafts).some(draft=>draft.text!==draft.base);
@@ -46,7 +46,7 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     return ()=>window.removeEventListener('beforeunload',warn);
   },[hasUnsavedNotes]);
   const draftNote=(id:string,draft:{text:string;base:string}|null)=>setNoteDrafts(old=>{const next={...old};if(draft)next[id]=draft;else delete next[id];return next;});
-  const entries = useMemo<Entry[]>(() => [...data.customEntries, ...allEntries], [data.customEntries]);
+  const entries = data.entries;
   const [addingLink,setAddingLink]=useState(false);
   const [editingLink,setEditingLink]=useState<Entry|null>(null);
   const addLinkButton=useRef<HTMLButtonElement>(null);
@@ -67,12 +67,12 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
   const [fee,setFee]=useState<Fee|null>(null);
   const [page,setPage]=useState(1);
   const fileInput=useRef<HTMLInputElement>(null);
-  const lastSaved=useRef(data);
+  const lastSaved=useRef<LibraryData|null>(null);
   const sync=useLibrarySync(data,setData,ready);
 
   useEffect(()=>{
     try{const saved=localStorage.getItem(storageKey);if(saved)setData(validateBackup(JSON.parse(saved),allEntries));}
-    catch{setStorageWarning('本地记录暂时无法读取或格式不兼容。请先导出备份；本次编辑会尝试重新保存。');}
+    catch{lastSaved.current=data;setStorageWarning('本地记录暂时无法读取或格式不兼容。请先保留原备份；本次编辑会尝试重新保存。');}
     setReady(true);
   },[]);
   useEffect(()=>{
@@ -101,10 +101,10 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
   const clearFilters=()=>{setQuery('');setSelected([]);setFee(null);resetPage();};
   const addLink=(input:{name:string;url:string;description:string}):string|null=>{
     try {
-      if(data.customEntries.length>=maxCustomEntries)return '最多添加 1000 个自定义外链。';
-      const entry=createCustomEntry(input,entries,'custom-'+crypto.randomUUID());
+      if(entries.length>=maxEntries)return `外链库最多保留 ${maxEntries} 个外链。`;
+      const entry=createLibraryEntry(input,entries,'custom-'+crypto.randomUUID());
       const activity=makeActivity(entry,'link-added','添加外链',undefined,`${entry.name}\n${entry.url}${entry.reasons[0]?`\n${entry.reasons[0]}`:''}`);
-      setData(old=>({...old,customEntries:[entry,...old.customEntries],activityLog:appendActivities(old.activityLog,[activity])}));
+      setData(old=>({...old,entries:[entry,...old.entries],activityLog:appendActivities(old.activityLog,[activity])}));
       clearFilters();setAddingLink(false);setMessage(`已添加「${entry.name}」。`);
       addLinkButton.current?.focus();
       return null;
@@ -112,24 +112,22 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
   };
   const editLink=(original:Entry,input:{name:string;url:string;description:string}):string|null=>{
     try{
-      if(!original.id.startsWith('custom-'))return '内置外链暂不支持修改。';
-      const current=data.customEntries.find(entry=>entry.id===original.id);
+      const current=data.entries.find(entry=>entry.id===original.id);
       if(!current||current.name!==original.name||current.url!==original.url||JSON.stringify(current.reasons)!==JSON.stringify(original.reasons))return '这条外链已被更新或删除，请关闭表单后重新打开。';
-      const updated=createCustomEntry(input,entries.filter(entry=>entry.id!==original.id),original.id);
+      const updated=editLibraryEntry(current,input,entries);
       const before=`${original.name}\n${original.url}${original.reasons[0]?`\n${original.reasons[0]}`:''}`;
       const after=`${updated.name}\n${updated.url}${updated.reasons[0]?`\n${updated.reasons[0]}`:''}`;
       if(before===after){setEditingLink(null);return null;}
       const activity=makeActivity(updated,'link-edited','修改外链',before,after);
-      setData(old=>({...old,customEntries:old.customEntries.map(entry=>entry.id===original.id?updated:entry),activityLog:appendActivities(old.activityLog,[activity])}));
+      setData(old=>({...old,entries:old.entries.map(entry=>entry.id===original.id?updated:entry),activityLog:appendActivities(old.activityLog,[activity])}));
       setEditingLink(null);setMessage(`已更新「${updated.name}」。`);return null;
     }catch(error){return error instanceof Error?error.message:'暂时无法修改外链。';}
   };
   const deleteLink=(entry:Entry)=>{
-    if(!entry.id.startsWith('custom-'))return;
-    if(!window.confirm(`删除「${entry.name}」？外链会从列表移除，操作记录会保留。`))return;
+    if(!window.confirm(`删除「${entry.name}」？外链及其笔记和标签关联会从你的外链库移除，操作记录会保留。`))return;
     const before=`${entry.name}\n${entry.url}${entry.reasons[0]?`\n${entry.reasons[0]}`:''}`;
     const activity=makeActivity(entry,'link-deleted','删除外链',before);
-    setData(old=>{const { [entry.id]:_record,...records}=old.records;const { [entry.id]:_assignment,...assignments}=old.assignments;const { [entry.id]:_fee,...feeOverrides}=old.feeOverrides;return {...old,customEntries:old.customEntries.filter(item=>item.id!==entry.id),records,assignments,feeOverrides,activityLog:appendActivities(old.activityLog,[activity])};});
+    setData(old=>({...deleteLibraryEntry(old,entry),activityLog:appendActivities(old.activityLog,[activity])}));
     if(editingLink?.id===entry.id)setEditingLink(null);
     setUndo(null);
     draftNote(entry.id,null);
@@ -220,14 +218,14 @@ export default function LinkLibrary({ initialSection = 'library', handbookId }: 
     setUndo(null);
   };
   const exportBackup=()=>{
-    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出自定义外链、费用标签、笔记、个人标签、手动日志和操作记录备份。');
+    const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='luna-links-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('已导出全部外链、费用标签、笔记、个人标签、手动日志和操作记录备份。');
   };
   const importBackup=async(event:ChangeEvent<HTMLInputElement>)=>{
     const file=event.target.files?.[0];event.target.value='';if(!file)return;
     try{
       if(file.size>5_000_000)throw new Error('备份文件过大。');
       const imported=validateBackup(JSON.parse(await file.text()),allEntries);
-      if(!window.confirm('导入会替换本浏览器中的自定义外链、费用标签、笔记、个人标签、手动日志和操作记录。建议先导出当前备份。继续导入？'))return;
+      if(!window.confirm('导入会替换本浏览器中的全部外链、费用标签、笔记、个人标签、手动日志和操作记录。建议先导出当前备份。继续导入？'))return;
       setData(imported);setUndo(null);setRemoval(null);setFee(null);setSelected([]);setAddingLink(false);setEditingLink(null);setPage(1);setMessage('备份已导入。');
     }catch(error){setMessage(error instanceof Error?error.message:'无法读取备份文件。');}
   };

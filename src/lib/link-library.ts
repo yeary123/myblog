@@ -3,11 +3,11 @@ export type Entry = { id: string; order: number; name: string; domain: string; u
 export const feeLabels = { free: '免费', paid: '收费' };
 export type Fee = keyof typeof feeLabels;
 export function entryFees(entry: Entry, data?: LibraryData): Fee[] {
-  const fees = data && Object.hasOwn(data.feeOverrides, entry.id) ? data.feeOverrides[entry.id] : entry.fees;
+  const fees = data?.entries.find(item => item.id === entry.id)?.fees ?? entry.fees;
   return (Object.keys(feeLabels) as Fee[]).filter(fee => fees?.includes(fee));
 }
 export function setEntryFees(data: LibraryData, entry: Entry, fees: Fee[]): LibraryData {
-  return { ...data, feeOverrides: { ...data.feeOverrides, [entry.id]: (Object.keys(feeLabels) as Fee[]).filter(fee => fees.includes(fee)) } };
+  return { ...data, entries: data.entries.map(item => item.id === entry.id ? { ...item, fees: (Object.keys(feeLabels) as Fee[]).filter(fee => fees.includes(fee)) } : item) };
 }
 export function matchesFeeFilter(entry: Entry, fee: Fee | null, data?: LibraryData): boolean {
   return fee === null || entryFees(entry, data).includes(fee);
@@ -17,12 +17,19 @@ export type RecordState = { level: number; note: string; seen: number };
 export type DeletedTag = { tag: Tag; entryIds: string[]; deletedAt: number; position: number };
 export type JournalEntry = { date: string; work: string; published: number; urls: string[]; next: string; updatedAt: number };
 export type LinkActivity = { id: string; date: string; entryId: string; entryName: string; entryUrl?: string; kind: 'link-added' | 'link-edited' | 'link-deleted' | 'tag-added' | 'tag-removed' | 'note-updated'; summary: string; before?: string; after?: string };
-export type LibraryData = { version: 7; feeOverrides: Record<string, Fee[]>; customEntries: Entry[]; tags: Tag[]; assignments: Record<string, string[]>; records: Record<string, RecordState>; deletedTags: DeletedTag[]; journal: JournalEntry[]; activityLog: LinkActivity[] };
+export type LibraryData = { version: 8; entries: Entry[]; tags: Tag[]; assignments: Record<string, string[]>; records: Record<string, RecordState>; deletedTags: DeletedTag[]; journal: JournalEntry[]; activityLog: LinkActivity[] };
 import { validateActivityLog, validateJournal } from './link-journal.ts';
 // Only used to remove the old built-in tags while migrating v1 browser data or backups.
 const legacyTagIds = new Set(['code','launch','content','community','directory','profile','design','reviews','social','showcase','writing','research','inspiration','ai']);
-export const newData = (): LibraryData => ({version:7,feeOverrides:{},customEntries:[],tags:[],assignments:{},records:{},deletedTags:[],journal:[],activityLog:[]});
-export const maxCustomEntries = 1000;
+// The product catalog is a seed, copied once into each personal library.
+export const newData = (entries: Entry[] = []): LibraryData => ({version:8,entries:validateEntries(entries),tags:[],assignments:{},records:{},deletedTags:[],journal:[],activityLog:[]});
+export const maxEntries = 2000;
+export function deleteLibraryEntry(data: LibraryData, entry: Entry): LibraryData {
+  const { [entry.id]: _record, ...records } = data.records;
+  const { [entry.id]: _assignment, ...assignments } = data.assignments;
+  return { ...data, entries: data.entries.filter(item => item.id !== entry.id), records, assignments,
+    deletedTags: data.deletedTags.map(item => ({ ...item, entryIds: item.entryIds.filter(id => id !== entry.id) })) };
+}
 export function normalizeLinkUrl(value: string): string {
   const input = value.trim();
   if (!input || input.length > 2048) throw new Error('请输入有效的网址，最多 2048 个字符。');
@@ -37,7 +44,7 @@ function linkKey(value: string) {
   url.hash = '';
   return url.href;
 }
-export function createCustomEntry(input: { name: string; url: string; description: string }, entries: Entry[], id: string): Entry {
+export function createLibraryEntry(input: { name: string; url: string; description: string }, entries: Entry[], id: string): Entry {
   const name = input.name.trim(), description = input.description.trim();
   if (!name || name.length > 120) throw new Error('请输入 1～120 个字符的外链名称。');
   if (description.length > 2000) throw new Error('说明最多 2000 个字符。');
@@ -45,14 +52,21 @@ export function createCustomEntry(input: { name: string; url: string; descriptio
   if (entries.some(entry => { try { return linkKey(entry.url) === linkKey(url); } catch { return false; } })) throw new Error('这个网址已在外链库中，可以搜索后直接使用。');
   return { id, order: 0, name, url, domain: new URL(url).hostname, votes: null, recommendationTotal: 0, reasons: description ? [description] : [] };
 }
-function validateCustomEntries(raw: unknown, entries: Entry[]): Entry[] {
-  if (!Array.isArray(raw) || raw.length > maxCustomEntries) throw new Error('自定义外链格式不正确或数量超过 1000 个。');
-  const ids = new Set(entries.map(entry => entry.id));
+export function editLibraryEntry(entry: Entry, input: { name: string; url: string; description: string }, entries: Entry[]): Entry {
+  // Existing duplicates must not prevent editing a name or description.
+  const candidates = linkKey(input.url) === linkKey(entry.url) ? [] : entries.filter(item => item.id !== entry.id);
+  const updated = createLibraryEntry(input, candidates, entry.id);
+  return { ...entry, name: updated.name, url: updated.url, domain: updated.domain, reasons: updated.reasons };
+}
+function validateEntries(raw: unknown, legacy = false, builtInEntries: Entry[] = []): Entry[] {
+  if (!Array.isArray(raw) || raw.length > (legacy ? 1000 : maxEntries)) throw new Error('外链列表格式不正确或数量超过上限。');
+  const ids = new Set(legacy ? builtInEntries.map(entry => entry.id) : []);
   return raw.map(item => {
-    if (!item || typeof item.id !== 'string' || !/^custom-[a-z0-9-]{1,80}$/.test(item.id) || ids.has(item.id) || typeof item.name !== 'string' || !item.name.trim() || item.name.trim().length > 120 || typeof item.url !== 'string' || !Array.isArray(item.reasons) || item.reasons.length > 1 || item.reasons.some((reason: unknown) => typeof reason !== 'string' || reason.length > 2000)) throw new Error('备份包含无效或重复的自定义外链。');
+    if (!item || typeof item.id !== 'string' || !/^[a-z0-9-]{1,100}$/.test(item.id) || (legacy && !/^custom-[a-z0-9-]{1,80}$/.test(item.id)) || ids.has(item.id) || typeof item.name !== 'string' || !item.name.trim() || item.name.trim().length > 120 || typeof item.url !== 'string' || !Array.isArray(item.reasons) || item.reasons.length > (legacy ? 1 : 20) || item.reasons.some((reason: unknown) => typeof reason !== 'string' || reason.length > 2000)) throw new Error('备份包含无效或重复的外链记录。');
     ids.add(item.id);
     const url = normalizeLinkUrl(item.url);
-    return { id: item.id, order: 0, name: item.name.trim(), url, domain: new URL(url).hostname, votes: null, recommendationTotal: 0, reasons: item.reasons.map((reason: string) => reason.trim()).filter(Boolean) };
+    if (item.fees !== undefined && (!Array.isArray(item.fees) || item.fees.length > 2 || item.fees.some((fee: unknown) => fee !== 'free' && fee !== 'paid') || new Set(item.fees).size !== item.fees.length)) throw new Error('外链费用标签格式不正确。');
+    return { id: item.id, order: Number.isSafeInteger(item.order) ? item.order : 0, name: item.name.trim(), url, domain: new URL(url).hostname, votes: typeof item.votes === 'number' && Number.isFinite(item.votes) ? item.votes : null, recommendationTotal: Number.isSafeInteger(item.recommendationTotal) && item.recommendationTotal >= 0 ? item.recommendationTotal : 0, reasons: item.reasons.map((reason: string) => reason.trim()).filter(Boolean), ...(item.fees !== undefined ? { fees: (Object.keys(feeLabels) as Fee[]).filter(fee => item.fees.includes(fee)) } : {}) };
   });
 }
 export const getRecord = (data: LibraryData, id: string): RecordState => data.records[id] ?? { level:-1,note:'',seen:0 };
@@ -96,10 +110,9 @@ export function restoreTag(data: LibraryData, id: string): LibraryData {
 }
 export function validateBackup(raw: unknown, entries: Entry[]): LibraryData {
   if(!raw||typeof raw!=='object')throw new Error('不是有效的备份文件。');
-  const r=raw as Omit<LibraryData,'version'> & {version:number};
-  if(![1,2,3,4,5,6,7].includes(r.version)||!Array.isArray(r.tags)||r.tags.length>200||!r.records||typeof r.records!=='object'||Array.isArray(r.records)||!r.assignments||typeof r.assignments!=='object'||Array.isArray(r.assignments))throw new Error('备份格式或版本不支持。');
-  const customEntries = r.version >= 5 ? validateCustomEntries(r.customEntries, entries) : [];
-  const libraryEntries = [...entries, ...customEntries];
+  const r=raw as Omit<LibraryData,'version'> & {version:number;customEntries?:unknown;feeOverrides?:Record<string, unknown>};
+  if(![1,2,3,4,5,6,7,8].includes(r.version)||!Array.isArray(r.tags)||r.tags.length>200||!r.records||typeof r.records!=='object'||Array.isArray(r.records)||!r.assignments||typeof r.assignments!=='object'||Array.isArray(r.assignments))throw new Error('备份格式或版本不支持。');
+  const libraryEntries = r.version >= 8 ? validateEntries(r.entries) : [...(r.version >= 5 ? validateEntries(r.customEntries, true, entries) : []), ...validateEntries(entries)];
   const ids=new Set<string>();const names=new Set<string>();
   const tags:Tag[]=[];
   for(const t of r.tags){
@@ -111,14 +124,14 @@ export function validateBackup(raw: unknown, entries: Entry[]): LibraryData {
     names.add(name.toLowerCase());tags.push({id:t.id,name});
   }
   const keptIds=new Set(tags.map(t=>t.id));
-  const data: LibraryData={version:7,feeOverrides:{},customEntries,tags,assignments:{},records:{},deletedTags:[],journal:r.version>=4?validateJournal(r.journal):[],activityLog:r.version>=7?validateActivityLog(r.activityLog):[]};
-  if (r.version >= 6) {
+  const data: LibraryData={version:8,entries:libraryEntries,tags,assignments:{},records:{},deletedTags:[],journal:r.version>=4?validateJournal(r.journal):[],activityLog:r.version>=7?validateActivityLog(r.activityLog):[]};
+  if (r.version >= 6 && r.version < 8) {
     if (!r.feeOverrides || typeof r.feeOverrides !== 'object' || Array.isArray(r.feeOverrides)) throw new Error('费用标签记录格式不正确。');
     const entryIds = new Set(libraryEntries.map(entry => entry.id));
     if (Object.keys(r.feeOverrides).length > entryIds.size) throw new Error('费用标签记录数量不正确。');
     for (const [id, fees] of Object.entries(r.feeOverrides)) {
       if (!entryIds.has(id) || !Array.isArray(fees) || fees.length > 2 || fees.some(fee => fee !== 'free' && fee !== 'paid') || new Set(fees).size !== fees.length) throw new Error('费用标签记录包含无效的外链或标签。');
-      data.feeOverrides[id] = (Object.keys(feeLabels) as Fee[]).filter(fee => fees.includes(fee));
+      libraryEntries.find(entry => entry.id === id)!.fees = (Object.keys(feeLabels) as Fee[]).filter(fee => fees.includes(fee));
     }
   }
   if (r.version >= 3) {

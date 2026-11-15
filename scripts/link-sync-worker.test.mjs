@@ -4,7 +4,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFile } from 'node:fs/promises';
 import worker from '../worker/index.ts';
 import entries from '../src/data/external-links.json' with { type: 'json' };
-import { archiveTag, createCustomEntry, newData, permanentlyDeleteTag, restoreTag } from '../src/lib/link-library.ts';
+import { archiveTag, createLibraryEntry, deleteLibraryEntry, editLibraryEntry, setEntryFees, validateBackup, newData, permanentlyDeleteTag, restoreTag } from '../src/lib/link-library.ts';
 
 const schema = await readFile(new URL('../worker/migrations/0001_personal_library.sql', import.meta.url), 'utf8');
 const origin = 'https://builtbyluna.cc';
@@ -39,27 +39,21 @@ function harness(t) {
   }
   return { env, sqlite, call, login };
 }
-const dataWith = note => ({ ...newData(), records: { [entries[0].id]: { note, level: 1, seen: 123 } } });
+const dataWith = note => ({ ...newData(entries), records: { [entries[0].id]: { note, level: 1, seen: 123 } } });
 
-test('journals sync between sessions, survive legacy writes, and support intentional deletion', async t => {
-  const h = harness(t);
-  const a = await h.login(), b = await h.login();
-  const data = { ...newData(), journal: [{ date: '2026-11-08', work: '提交了外链', published: 1, urls: ['https://example.com/post'], next: '', updatedAt: 123 }] };
-  assert.equal((await h.call('/library', { method: 'PUT', cookie: a, body: { revision: 0, data } })).status, 200);
-  assert.deepEqual((await (await h.call('/library', { cookie: b })).json()).data, data);
-  const { journal, ...legacy } = data;
-  for (const version of [3, 2]) {
-    assert.equal((await h.call('/library', { method: 'PUT', cookie: b, body: { revision: version === 3 ? 1 : 2, data: { ...legacy, version } } })).status, 200);
-    assert.deepEqual((await (await h.call('/library', { cookie: a })).json()).data.journal, journal);
-  }
-  assert.equal((await h.call('/library', { method: 'PUT', cookie: a, body: { revision: 3, data: { ...data, journal: [] } } })).status, 200);
-  assert.deepEqual((await (await h.call('/library', { cookie: b })).json()).data.journal, []);
+test('journals sync between sessions and support intentional deletion', async t => {
+ const h=harness(t),a=await h.login(),b=await h.login();
+ const data={...newData(entries),journal:[{date:'2026-11-08',work:'提交外链',published:1,urls:['https://example.com/post'],next:'',updatedAt:123}]};
+ assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:0,data}})).status,200);
+ assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,data);
+ assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:1,data:{...data,journal:[]}}})).status,200);
+ assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data.journal,[]);
 });
 
 test('private data requires authentication and the exact website origin', async t => {
   const h = harness(t);
   assert.equal((await h.call('/library')).status, 401);
-  assert.equal((await h.call('/library', { method: 'PUT', body: { revision: 0, data: newData() } })).status, 401);
+  assert.equal((await h.call('/library', { method: 'PUT', body: { revision: 0, data: newData(entries) } })).status, 401);
   const cookie = await h.login();
   assert.equal((await h.call('/library', { cookie, requestOrigin: 'https://evil.example' })).status, 403);
   assert.equal((await h.call('/session', { method: 'DELETE', cookie, requestOrigin: null })).status, 403);
@@ -117,7 +111,7 @@ test('invalid records and malformed requests cannot replace saved notes', async 
   const h = harness(t);
   const cookie = await h.login();
   await h.call('/library', { method: 'PUT', cookie, body: { revision: 0, data: dataWith('保留') } });
-  for (const body of [null, { revision: -1, data: newData() }, { revision: 1, data: { ...newData(), tags: [{ id: 'invalid id', name: '坏标签' }] } }, { revision: 1, data: dataWith('a'.repeat(2001)) }]) {
+  for (const body of [null, { revision: -1, data: newData(entries) }, { revision: 1, data: { ...newData(entries), tags: [{ id: 'invalid id', name: '坏标签' }] } }, { revision: 1, data: dataWith('a'.repeat(2001)) }]) {
     assert.equal((await h.call('/library', { method: 'PUT', cookie, body })).status, 400);
   }
   assert.deepEqual((await (await h.call('/library', { cookie })).json()).data, dataWith('保留'));
@@ -127,7 +121,7 @@ test('oversized personal libraries are rejected without truncating saved notes',
   const h = harness(t);
   const cookie = await h.login();
   await h.call('/library', { method: 'PUT', cookie, body: { revision: 0, data: dataWith('保留原记录') } });
-  const large = { ...newData(), records: Object.fromEntries(entries.map(entry => [entry.id, { note: '字'.repeat(2000), level: 0, seen: 1 }])) };
+  const large = { ...newData(entries), records: Object.fromEntries(entries.map(entry => [entry.id, { note: '字'.repeat(2000), level: 0, seen: 1 }])) };
   assert.equal((await h.call('/library', { method: 'PUT', cookie, body: { revision: 1, data: large } })).status, 413);
   assert.deepEqual((await (await h.call('/library', { cookie })).json()).data, dataWith('保留原记录'));
 });
@@ -151,51 +145,52 @@ test('recycle bin syncs across sessions and restores original associations witho
   assert.deepEqual(result.data, restored);
 });
 
-test('legacy clients cannot permanently delete tags or wipe an existing recycle bin', async t => {
-  const h = harness(t);
-  const cookie = await h.login();
-  const data = dataWith('仍保留');
-  data.tags = [{ id: 'tag-uke', name: 'uke' }];
-  data.assignments = { [entries[0].id]: ['tag-uke'] };
-  await h.call('/library', { method: 'PUT', cookie, body: { revision: 0, data } });
-  const legacy = { version: 2, tags: [], assignments: { [entries[0].id]: [] }, records: data.records };
-  assert.equal((await h.call('/library', { method: 'PUT', cookie, body: { revision: 1, data: legacy } })).status, 200);
-  const archived = await (await h.call('/library', { cookie })).json();
-  assert.equal(archived.data.deletedTags[0].tag.name, 'uke');
-  assert.deepEqual(archived.data.deletedTags[0].entryIds, [entries[0].id]);
-  assert.equal((await h.call('/library', { method: 'PUT', cookie, body: { revision: 2, data: legacy } })).status, 200);
-  assert.deepEqual((await (await h.call('/library', { cookie })).json()).data.deletedTags, archived.data.deletedTags);
+test('older pages cannot overwrite a personal snapshot or resurrect deleted default links', async t => {
+ const h=harness(t),cookie=await h.login();
+ const data=deleteLibraryEntry(dataWith('仍保留'),entries[0]);
+ assert.equal((await h.call('/library',{method:'PUT',cookie,body:{revision:0,data}})).status,200);
+ for(const version of [1,2,3,4,5,6,7]){
+  const legacy={version,tags:[],assignments:{},records:{},customEntries:[],feeOverrides:{},deletedTags:[],journal:[],activityLog:[]};
+  const response=await h.call('/library',{method:'PUT',cookie,body:{revision:1,data:legacy}});
+  assert.equal(response.status,409);
+  assert.match((await response.json()).error,/刷新/);
+  assert.deepEqual((await (await h.call('/library',{cookie})).json()).data,data);
+ }
 });
 
-test('personal links sync between devices and legacy writes retain their notes and tag associations', async t => {
-  const h=harness(t), a=await h.login(), b=await h.login();
-  const entry=createCustomEntry({name:'我的平台',url:'example.org/new',description:'发布教程'},entries,'custom-new');
-  const data={...newData(),customEntries:[entry],tags:[{id:'tag-mine',name:'我的'}],assignments:{[entry.id]:['tag-mine']},records:{[entry.id]:{level:1,note:'下次继续',seen:123}}};
-  assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:0,data}})).status,200);
-  assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,data);
-  const {customEntries,...legacy}=data;
-  const old={...legacy,version:4,records:{},assignments:{}};
-  assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:1,data:old}})).status,200);
-  assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data,data);
-  const archived=archiveTag(data,'tag-mine',1000);
-  assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:2,data:archived}})).status,200);
-  const {customEntries:ignored,...oldArchived}=archived;
-  assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:3,data:{...oldArchived,version:4,records:{},assignments:{}}}})).status,200);
-  assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data,archived);
-  const malformed={...data,customEntries:[{...entry,url:'javascript:alert(1)'}]};
-  assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:4,data:malformed}})).status,400);
+test('all links support edits, deletion and re-adding across devices with full history retained', async t => {
+ const h=harness(t),a=await h.login(),b=await h.login();
+ const data=dataWith('我的笔记');
+ const original=data.entries[0];
+ const edited=editLibraryEntry(original,{name:'我改的名称',url:'https://example.org/mine',description:'我的说明'},data.entries);
+ data.entries=data.entries.map(entry=>entry.id===edited.id?edited:entry);
+ assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:0,data}})).status,200);
+ assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,data);
+ const deleted=deleteLibraryEntry(data,edited);
+ deleted.activityLog=[{id:'act-deleted',date:'2026-11-15',entryId:edited.id,entryName:edited.name,entryUrl:edited.url,kind:'link-deleted',summary:'删除外链'}];
+ assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:1,data:deleted}})).status,200);
+ const stored=(await (await h.call('/library',{cookie:a})).json()).data;
+ assert.deepEqual(stored,deleted);
+ assert.equal(stored.entries.some(entry=>entry.id===original.id),false);
+ assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:1,data}})).status,409);
+ const added=createLibraryEntry({name:'重新添加',url:edited.url,description:''},stored.entries,'custom-readded');
+ const next={...stored,entries:[added,...stored.entries]};
+ assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:2,data:next}})).status,200);
+ assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,next);
 });
 
-test('archiving a tag in an old page preserves its personal-link associations', async t => {
-  const h=harness(t), cookie=await h.login();
-  const entry=createCustomEntry({name:'我的平台',url:'example.org/legacy',description:''},entries,'custom-legacy');
-  const data={...newData(),customEntries:[entry],tags:[{id:'tag-mine',name:'我的'}],assignments:{[entry.id]:['tag-mine']}};
-  await h.call('/library',{method:'PUT',cookie,body:{revision:0,data}});
-  const legacy={...newData(),version:4,deletedTags:[{tag:data.tags[0],position:0,deletedAt:1000,entryIds:[]}]};
-  assert.equal((await h.call('/library',{method:'PUT',cookie,body:{revision:1,data:legacy}})).status,200);
-  const saved=(await (await h.call('/library',{cookie})).json()).data;
-  assert.deepEqual(saved.deletedTags[0].entryIds,[entry.id]);
-  assert.deepEqual(restoreTag(saved,'tag-mine').assignments[entry.id],['tag-mine']);
+test('existing version 7 cloud data migrates into a full personal snapshot on first new-client save', async t => {
+ const h=harness(t),cookie=await h.login();
+ const custom=createLibraryEntry({name:'旧外链',url:'example.org/legacy',description:'原说明'},entries,'custom-legacy');
+ const old={version:7,customEntries:[custom],feeOverrides:{[entries[0].id]:[]},tags:[{id:'tag-old',name:'保留'}],assignments:{[entries[0].id]:['tag-old'],[custom.id]:['tag-old']},records:{[custom.id]:{note:'保留笔记',level:1,seen:123}},deletedTags:[],journal:[],activityLog:[]};
+ h.sqlite.prepare('INSERT INTO library(id,data_json,revision,updated_at) VALUES(1,?,1,?)').run(JSON.stringify(old),'2026-11-15T00:00:00Z');
+ const cloud=(await (await h.call('/library',{cookie})).json());
+ const migrated=validateBackup(cloud.data,entries);
+ assert.equal(migrated.entries.length,entries.length+1);
+ assert.deepEqual(migrated.entries.find(entry=>entry.id===entries[0].id).fees,[]);
+ assert.deepEqual(migrated.records,old.records);
+ assert.equal((await h.call('/library',{method:'PUT',cookie,body:{revision:cloud.revision,data:migrated}})).status,200);
+ assert.deepEqual((await (await h.call('/library',{cookie})).json()).data,migrated);
 });
 
 test('permanent deletion syncs across devices and stale writes cannot resurrect the tag',async t=>{
@@ -209,38 +204,30 @@ test('permanent deletion syncs across devices and stale writes cannot resurrect 
  assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:1,data:deleted}})).status,200);
  assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,deleted);
  assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:1,data:archived}})).status,409);
- const {deletedTags,...legacy}=deleted;
- assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:2,data:{...legacy,version:2}}})).status,200);
- assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data,deleted);
+
 });
 
-test('fee edits sync between devices, preserve explicit removal and survive older clients',async t=>{
- const h=harness(t),a=await h.login(),b=await h.login(),id=entries[0].id;
- const data={...dataWith('保留笔记'),feeOverrides:{[id]:[]}};
+test('fee changes belong to each link and sync including explicit removal',async t=>{
+ const h=harness(t),a=await h.login(),b=await h.login();
+ const data=setEntryFees(dataWith('保留笔记'),entries[0],[]);
  assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:0,data}})).status,200);
  assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,data);
- const {feeOverrides,...legacy}=data;
- for(const version of [5,4,3,2]){
-  const revision=6-version;
-  assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision,data:{...legacy,version}}})).status,200);
-  assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data.feeOverrides,{[id]:[]});
- }
- const changed={...data,feeOverrides:{[id]:['paid']}};
- assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:5,data:changed}})).status,200);
- assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,changed);
- assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:5,data}})).status,409);
- assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:6,data:{...data,feeOverrides:{[id]:['invalid']}}}})).status,400);
+ const changed=setEntryFees(data,entries[0],['paid']);
+ assert.equal((await h.call('/library',{method:'PUT',cookie:b,body:{revision:1,data:changed}})).status,200);
  assert.deepEqual((await (await h.call('/library',{cookie:a})).json()).data,changed);
+ const malformed={...changed,entries:[{...changed.entries[0],fees:['invalid']},...changed.entries.slice(1)]};
+ assert.equal((await h.call('/library',{method:'PUT',cookie:a,body:{revision:2,data:malformed}})).status,400);
+ assert.deepEqual((await (await h.call('/library',{cookie:b})).json()).data,changed);
 });
 
-test('automatic activity syncs across sessions and version 6 writes cannot erase history', async t => {
+test('automatic activity syncs across sessions and older writes cannot erase history', async t => {
   const h = harness(t);
   const a = await h.login(), b = await h.login();
   const item = { id: 'act-history', date: '2026-11-13', entryId: entries[0].id, entryName: entries[0].name, entryUrl: entries[0].url, kind: 'tag-added', summary: '添加标签', after: 'SEO' };
-  const data = { ...newData(), activityLog: [item] };
+  const data = { ...newData(entries), activityLog: [item] };
   assert.equal((await h.call('/library', { method: 'PUT', cookie: a, body: { revision: 0, data } })).status, 200);
   assert.deepEqual((await (await h.call('/library', { cookie: b })).json()).data.activityLog, [item]);
   const { activityLog, ...legacy } = data;
-  assert.equal((await h.call('/library', { method: 'PUT', cookie: b, body: { revision: 1, data: { ...legacy, version: 6 } } })).status, 200);
+  assert.equal((await h.call('/library', { method: 'PUT', cookie: b, body: { revision: 1, data: { ...legacy, version: 6 } } })).status, 409);
   assert.deepEqual((await (await h.call('/library', { cookie: a })).json()).data.activityLog, [item]);
 });

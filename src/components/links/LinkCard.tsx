@@ -29,7 +29,7 @@ export default function LinkCard({ entry, data, mentions, anchor, selectedTags, 
     setNoteMessage('笔记已保存。');
   };
   return <article className="ll-card" id={anchor ? `entry-${entry.id}` : undefined} data-entry-id={entry.id}>
-    <div className="ll-card-top"><div><h2>{entry.name}</h2><span className="ll-domain">{entry.domain}{entry.id.startsWith('custom-') && ' · 我添加的'}</span></div>{entry.id.startsWith('custom-')&&<div className="ll-actions"><button onClick={()=>onEditLink(entry)}>编辑</button><button className="ll-quiet" onClick={()=>onDeleteLink(entry)}>删除</button></div>}</div>
+    <div className="ll-card-top"><div><h2>{entry.name}</h2><span className="ll-domain">{entry.domain}</span></div><div className="ll-actions"><button onClick={()=>onEditLink(entry)}>编辑</button><button className="ll-quiet" onClick={()=>onDeleteLink(entry)}>删除</button></div></div>
     <div className="ll-tags ll-card-tags">
       {entryFees(entry, data).map(value => <span className="ll-tag-pair ll-fee-pair" key={'fee-' + value}><button className="ll-tag ll-fee-tag" aria-label={`查看${feeLabels[value]}外链`} aria-pressed={selectedFee === value} onClick={() => onFilterFee(value)}>{feeLabels[value]}</button><button className="ll-remove-tag" aria-label={`从 ${entry.name} 移除费用标签 ${feeLabels[value]}`} onClick={() => onToggleFee(entry, value)}>×</button></span>)}
       {assignedTags(data, entry).map(id => {

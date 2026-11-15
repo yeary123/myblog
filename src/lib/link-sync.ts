@@ -1,6 +1,6 @@
 import { newData, type LibraryData } from './link-library.ts';
 
-export type CloudLibrary = { data: LibraryData | null; revision: number; updatedAt: string | null };
+export type CloudLibrary = { data: LibraryData | null; revision: number; updatedAt: string | null; needsMigration?: boolean };
 export type SyncBase = { data: LibraryData; revision: number };
 
 // Object insertion order must not cause a false conflict between two devices.
@@ -13,15 +13,16 @@ export function sameLibrary(a: LibraryData, b: LibraryData) {
   return JSON.stringify(ordered(a)) === JSON.stringify(ordered(b));
 }
 export function emptyLibrary(data: LibraryData) {
-  return !Object.keys(data.feeOverrides).length && !data.customEntries.length && !data.journal.length && !data.activityLog.length && !data.tags.length && !data.deletedTags.length && !Object.values(data.assignments).some(tags => tags.length) &&
+  return !data.entries.length && !data.journal.length && !data.activityLog.length && !data.tags.length && !data.deletedTags.length && !Object.values(data.assignments).some(tags => tags.length) &&
     !Object.values(data.records).some(record => record.note || record.level !== -1 || record.seen);
 }
-export function planSync(local: LibraryData, cloud: CloudLibrary, base: SyncBase | null): 'push' | 'pull' | 'equal' | 'conflict' {
-  if (!cloud.data) return emptyLibrary(local) ? 'equal' : 'push';
-  if (sameLibrary(local, cloud.data)) return 'equal';
+export function planSync(local: LibraryData, cloud: CloudLibrary, base: SyncBase | null, initial: LibraryData = newData()): 'push' | 'pull' | 'equal' | 'conflict' {
+  // A v8 snapshot owns its complete list, including an intentionally empty list.
+  if (!cloud.data) return 'push';
+  if (sameLibrary(local, cloud.data)) return cloud.needsMigration ? 'push' : 'equal';
   if (base && sameLibrary(local, base.data)) return 'pull';
   if (base && sameLibrary(cloud.data, base.data)) return 'push';
-  if (!base && emptyLibrary(local)) return 'pull';
+  if (!base && sameLibrary(local, initial)) return 'pull';
   return 'conflict';
 }
 export function cloudData(cloud: CloudLibrary) { return cloud.data ?? newData(); }

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState, type Dispatch, type SetStateAction } from 'react';
 import allEntries from '../../data/external-links.json';
-import { validateBackup, type LibraryData } from '../../lib/link-library';
+import { newData, validateBackup, type LibraryData } from '../../lib/link-library';
 import { cloudData, planSync, sameLibrary, type CloudLibrary, type SyncBase } from '../../lib/link-sync';
 
 const endpoint = (import.meta.env.PUBLIC_LINK_SYNC_URL || '').replace(/\/$/, '');
@@ -23,7 +23,7 @@ async function api(path: string, init?: RequestInit) {
 }
 function parseCloud(raw: CloudLibrary): CloudLibrary {
   if (!Number.isSafeInteger(raw.revision) || raw.revision < 0 || (raw.data === null) !== (raw.revision === 0)) throw new Error('云端记录格式不正确，本机记录已保留。');
-  return { ...raw, data: raw.data === null ? null : validateBackup(raw.data, allEntries) };
+  return { ...raw, needsMigration: raw.data !== null && raw.data.version !== 8, data: raw.data === null ? null : validateBackup(raw.data, allEntries) };
 }
 export function downloadLibrary(data: LibraryData, prefix = 'luna-links-backup') {
   const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
@@ -89,13 +89,14 @@ export function useLibrarySync(data: LibraryData, setData: Dispatch<SetStateActi
       const cloud = parseCloud(await api('/library'));
       if (!active.current || !authenticated.current) return;
       const snapshot = local.current;
-      const plan = planSync(snapshot, cloud, base.current);
+      const plan = planSync(snapshot, cloud, base.current, newData(allEntries));
       if (plan === 'conflict') { markConflict(cloud); return; }
       if (plan === 'pull') {
         const next = cloudData(cloud);
         local.current = next;
         setData(next);
         remember(next, cloud);
+        if (cloud.needsMigration) pending.current = true;
       } else if (plan === 'push') {
         const saved = parseCloud(await api('/library', { method: 'PUT', body: JSON.stringify({ data: snapshot, revision: cloud.revision }) }));
         if (!active.current || !authenticated.current) return;

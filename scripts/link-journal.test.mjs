@@ -39,8 +39,8 @@ test('journal-only records upload, pull and detect concurrent edits', () => {
 
 test('explicit note saves preserve previous changes and ignore unchanged content', async () => {
   const { updateNoteActivity } = await import('../src/lib/link-journal.ts');
-  const link = { id: 'first', name: '同名外链', url: 'https://example.org/' };
-  const start = { ...newData(), records: { first: { level: 2, seen: 123, note: '旧笔记' } } };
+  const link = { id: 'first', name: '同名外链', url: 'https://example.org/',domain:'example.org',order:0,votes:null,recommendationTotal:0,reasons:[] };
+  const start = { ...newData([link]), records: { first: { level: 2, seen: 123, note: '旧笔记' } } };
   const saved = updateNoteActivity(start, link, '新笔记', 'act-first', '2026-11-13');
   assert.deepEqual(saved.records.first, { level: 2, seen: 123, note: '新笔记' });
   assert.equal(saved.activityLog.length, 1);
@@ -70,5 +70,5 @@ test('activity history never silently truncates and validates deleted-link snaps
   assert.throws(() => validateActivityLog([{ ...item, entryUrl: 'javascript:alert(1)' }]));
   assert.throws(() => validateActivityLog([{ ...item, date: '2026-02-30' }]));
   const { activityLog, ...v6 } = newData();
-  assert.deepEqual(validateBackup({ ...v6, version: 6 }, []).activityLog, []);
+  assert.deepEqual(validateBackup({ ...v6, version: 6,customEntries:[],feeOverrides:{} }, []).activityLog, []);
 });
